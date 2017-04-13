@@ -18,7 +18,7 @@
 <meta property="og:url" content="http://kevinjmh.github.io/2017/04/12/QA-on-Linux/index.html">
 <meta property="og:site_name" content="Manhua">
 <meta property="og:description" content="Linux ProblemsI’m in Mint可以把http://www.cnblogs.com/manhua/p/3631046.html删除了  Install下载-镜像地址http://mirrors.ustc.edu.cn/ubuntu-releases/ http://mirrors.163.com/ubuntu-releases/ zsync镜像更新假设目前已有镜像文件trusty">
-<meta property="og:updated_time" content="2017-04-12T08:25:21.329Z">
+<meta property="og:updated_time" content="2017-04-13T09:07:44.957Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="QA-on-Linux">
 <meta name="twitter:description" content="Linux ProblemsI’m in Mint可以把http://www.cnblogs.com/manhua/p/3631046.html删除了  Install下载-镜像地址http://mirrors.ustc.edu.cn/ubuntu-releases/ http://mirrors.163.com/ubuntu-releases/ zsync镜像更新假设目前已有镜像文件trusty">
@@ -50,7 +50,7 @@
 				<h1 class="site-name"><a href="/" title="Manhua">Manhua</a></h1>
 				<h2 class="blog-motto">Never Say Die</h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜單">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -66,7 +66,7 @@
  					
 					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
 						<label>Search</label>
-						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
 						<input type="hidden" name="q" value="site:kevinjmh.github.io">
 					</form>
 					
@@ -89,16 +89,16 @@
 		<a href="/about" title="Manhua" target="_blank" itemprop="author">Manhua</a>
 		
   <p class="article-time">
-    <time datetime="2017-04-12T08:24:02.000Z" itemprop="datePublished"> 發表於 2017-04-12</time>
+    <time datetime="2017-04-12T08:24:02.000Z" itemprop="datePublished"> Published 2017-04-12</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
 		<div id="toc" class="toc-article">
-			<strong class="toc-title">文章目錄</strong>
+			<strong class="toc-title">Contents</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux-Problems"><span class="toc-number">1.</span> <span class="toc-text">Linux Problems</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#I’m-in-Mint"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">I’m in Mint</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Install"><span class="toc-number">1.1.</span> <span class="toc-text">Install</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#下载-镜像地址"><span class="toc-number">1.1.1.</span> <span class="toc-text">下载-镜像地址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#zsync镜像更新"><span class="toc-number">1.1.2.</span> <span class="toc-text">zsync镜像更新</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#软件源、更新源"><span class="toc-number">1.1.3.</span> <span class="toc-text">软件源、更新源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#网易的源（163源，无论是不是教育网，速度都很快）"><span class="toc-number">1.1.4.</span> <span class="toc-text">网易的源（163源，无论是不是教育网，速度都很快）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#opencas"><span class="toc-number">1.1.5.</span> <span class="toc-text">opencas</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#双系统安装"><span class="toc-number">1.1.6.</span> <span class="toc-text">双系统安装</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#输入法"><span class="toc-number">1.2.</span> <span class="toc-text">输入法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装ibus-搜狗输入法"><span class="toc-number">1.2.1.</span> <span class="toc-text">安装ibus/搜狗输入法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Pinyin输入法只有双拼"><span class="toc-number">1.2.2.</span> <span class="toc-text">Pinyin输入法只有双拼</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ibus输入法没有候选词（ibus-restart）"><span class="toc-number">1.2.3.</span> <span class="toc-text">ibus输入法没有候选词（ibus restart）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#其他设置"><span class="toc-number">1.3.</span> <span class="toc-text">其他设置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#保护眼睛-休息提醒"><span class="toc-number">1.3.1.</span> <span class="toc-text">保护眼睛 休息提醒</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自动挂载NTFS磁盘"><span class="toc-number">1.3.2.</span> <span class="toc-text">自动挂载NTFS磁盘</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#亮度调节只有三级"><span class="toc-number">1.3.3.</span> <span class="toc-text">亮度调节只有三级</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改启动项倒计时"><span class="toc-number">1.3.4.</span> <span class="toc-text">修改启动项倒计时</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#临时更改terminal语言区域"><span class="toc-number">1.3.5.</span> <span class="toc-text">临时更改terminal语言区域</span></a></li></ol></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux-Problems"><span class="toc-number">1.</span> <span class="toc-text">Linux Problems</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#I’m-in-Mint"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">I’m in Mint</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Install"><span class="toc-number">1.1.</span> <span class="toc-text">Install</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#下载-镜像地址"><span class="toc-number">1.1.1.</span> <span class="toc-text">下载-镜像地址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#zsync镜像更新"><span class="toc-number">1.1.2.</span> <span class="toc-text">zsync镜像更新</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#命令行升级Ubuntu"><span class="toc-number">1.1.3.</span> <span class="toc-text">命令行升级Ubuntu</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#替换软件更新源"><span class="toc-number">1.1.4.</span> <span class="toc-text">替换软件更新源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#网易的源（163源，无论是不是教育网，速度都很快）"><span class="toc-number">1.1.5.</span> <span class="toc-text">网易的源（163源，无论是不是教育网，速度都很快）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#终端间通信"><span class="toc-number">1.1.6.</span> <span class="toc-text">终端间通信</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#shell-参数"><span class="toc-number">1.1.7.</span> <span class="toc-text">shell 参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#双系统安装"><span class="toc-number">1.1.8.</span> <span class="toc-text">双系统安装</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#输入法"><span class="toc-number">1.2.</span> <span class="toc-text">输入法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装ibus-搜狗输入法"><span class="toc-number">1.2.1.</span> <span class="toc-text">安装ibus/搜狗输入法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Pinyin输入法只有双拼"><span class="toc-number">1.2.2.</span> <span class="toc-text">Pinyin输入法只有双拼</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ibus输入法没有候选词（ibus-restart）"><span class="toc-number">1.2.3.</span> <span class="toc-text">ibus输入法没有候选词（ibus restart）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#其他设置"><span class="toc-number">1.3.</span> <span class="toc-text">其他设置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#保护眼睛-休息提醒"><span class="toc-number">1.3.1.</span> <span class="toc-text">保护眼睛 休息提醒</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自动挂载NTFS磁盘"><span class="toc-number">1.3.2.</span> <span class="toc-text">自动挂载NTFS磁盘</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#亮度调节只有三级"><span class="toc-number">1.3.3.</span> <span class="toc-text">亮度调节只有三级</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改启动项倒计时"><span class="toc-number">1.3.4.</span> <span class="toc-text">修改启动项倒计时</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#临时更改terminal语言区域"><span class="toc-number">1.3.5.</span> <span class="toc-text">临时更改terminal语言区域</span></a></li></ol></li></ol></li></ol>
 		
 		</div>
 		
@@ -113,14 +113,64 @@ zsync -i trusty-desktop-amd64.iso http://mirrors.ustc.edu.cn/ubuntu-releases/14.
 <p>Read trusty-desktop-amd64.iso. Target 35.3% complete. 实验证明这都能省下1/3的流量]</p>
 </blockquote>
 <p>最好更新后进行镜像的md5校验<code>md5sum ubuntu-14.04-desktop-i386.iso</code></p>
-<h3 id="软件源、更新源"><a href="#软件源、更新源" class="headerlink" title="软件源、更新源"></a>软件源、更新源</h3><p><code>sudo cp /etc/apt/sources.list /etc/apt/sources.list.old</code></p>
-<p><code>sudo gedit /etc/apt/sources.list</code></p>
-<h3 id="网易的源（163源，无论是不是教育网，速度都很快）"><a href="#网易的源（163源，无论是不是教育网，速度都很快）" class="headerlink" title="网易的源（163源，无论是不是教育网，速度都很快）"></a>网易的源（163源，无论是不是教育网，速度都很快）</h3><blockquote>
-<p>deb <a href="http://mirrors.163.com/ubuntu/" target="_blank" rel="external">http://mirrors.163.com/ubuntu/</a> vivid main universe restricted multiverse<br>deb-src <a href="http://mirrors.163.com/ubuntu/" target="_blank" rel="external">http://mirrors.163.com/ubuntu/</a> vivid main universe restricted multiverse<br>deb <a href="http://mirrors.163.com/ubuntu/" target="_blank" rel="external">http://mirrors.163.com/ubuntu/</a> vivid-security universe main multiverse restricted<br>deb-src <a href="http://mirrors.163.com/ubuntu/" target="_blank" rel="external">http://mirrors.163.com/ubuntu/</a> vivid-security universe main multiverse restricted<br>deb <a href="http://mirrors.163.com/ubuntu/" target="_blank" rel="external">http://mirrors.163.com/ubuntu/</a> vivid-updates universe main multiverse restricted<br>deb <a href="http://mirrors.163.com/ubuntu/" target="_blank" rel="external">http://mirrors.163.com/ubuntu/</a> vivid-proposed universe main multiverse restricted<br>deb-src <a href="http://mirrors.163.com/ubuntu/" target="_blank" rel="external">http://mirrors.163.com/ubuntu/</a> vivid-proposed universe main multiverse restricted<br>deb <a href="http://mirrors.163.com/ubuntu/" target="_blank" rel="external">http://mirrors.163.com/ubuntu/</a> vivid-backports universe main multiverse restricted<br>deb-src <a href="http://mirrors.163.com/ubuntu/" target="_blank" rel="external">http://mirrors.163.com/ubuntu/</a> vivid-backports universe main multiverse restricted<br>deb-src <a href="http://mirrors.163.com/ubuntu/" target="_blank" rel="external">http://mirrors.163.com/ubuntu/</a> vivid-updates universe main multiverse restricted</p>
-</blockquote>
-<h3 id="opencas"><a href="#opencas" class="headerlink" title="opencas"></a>opencas</h3><blockquote>
-<p>deb <a href="http://mirrors.opencas.cn/ubuntu/" target="_blank" rel="external">http://mirrors.opencas.cn/ubuntu/</a> vivid main universe restricted multiverse<br>deb-src <a href="http://mirrors.opencas.cn/ubuntu/" target="_blank" rel="external">http://mirrors.opencas.cn/ubuntu/</a> vivid main universe restricted multiverse<br>deb <a href="http://mirrors.opencas.cn/ubuntu/" target="_blank" rel="external">http://mirrors.opencas.cn/ubuntu/</a> vivid-security universe main multiverse restricted<br>deb-src <a href="http://mirrors.opencas.cn/ubuntu/" target="_blank" rel="external">http://mirrors.opencas.cn/ubuntu/</a> vivid-security universe main multiverse restricted<br>deb <a href="http://mirrors.opencas.cn/ubuntu/" target="_blank" rel="external">http://mirrors.opencas.cn/ubuntu/</a> vivid-updates universe main multiverse restricted<br>deb <a href="http://mirrors.opencas.cn/ubuntu/" target="_blank" rel="external">http://mirrors.opencas.cn/ubuntu/</a> vivid-proposed universe main multiverse restricted<br>deb-src <a href="http://mirrors.opencas.cn/ubuntu/" target="_blank" rel="external">http://mirrors.opencas.cn/ubuntu/</a> vivid-proposed universe main multiverse restricted<br>deb <a href="http://mirrors.opencas.cn/ubuntu/" target="_blank" rel="external">http://mirrors.opencas.cn/ubuntu/</a> vivid-backports universe main multiverse restricted<br>deb-src <a href="http://mirrors.opencas.cn/ubuntu/" target="_blank" rel="external">http://mirrors.opencas.cn/ubuntu/</a> vivid-backports universe main multiverse restricted<br>deb-src <a href="http://mirrors.opencas.cn/ubuntu/" target="_blank" rel="external">http://mirrors.opencas.cn/ubuntu/</a> vivid-updates universe main multiverse restricted</p>
-</blockquote>
+<h3 id="命令行升级Ubuntu"><a href="#命令行升级Ubuntu" class="headerlink" title="命令行升级Ubuntu"></a>命令行升级Ubuntu</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">sudo apt-get update</div><div class="line">sudo apt-get upgrade</div><div class="line">sudo apt-get dist-upgrade</div><div class="line">sudo apt-get install update-manager-core</div><div class="line">sudo do-release-upgrade</div></pre></td></tr></table></figure>
+<h3 id="替换软件更新源"><a href="#替换软件更新源" class="headerlink" title="替换软件更新源"></a>替换软件更新源</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">#确认原来的软件源地址</div><div class="line">less /etc/apt/sources.list</div><div class="line"># 备份</div><div class="line">sudo cp /etc/apt/sources.list /etc/apt/sources.list.old</div><div class="line"></div><div class="line">#假设cn.archive.ubuntu.com替换为mirrors.ustc.edu.cn</div><div class="line">#sed在本文内修改</div><div class="line">sed -i &apos;s/cn.archive.ubuntu.com/mirrors.ustc.edu.cn/&apos;   /etc/apt/sources.list  </div><div class="line"></div><div class="line">#使用vi修改</div><div class="line">sudo vi /etc/apt/sources.list</div><div class="line">:1,$s/cn.archive.ubuntu.com/mirrors.ustc.edu.cn/g</div></pre></td></tr></table></figure>
+<h3 id="网易的源（163源，无论是不是教育网，速度都很快）"><a href="#网易的源（163源，无论是不是教育网，速度都很快）" class="headerlink" title="网易的源（163源，无论是不是教育网，速度都很快）"></a>网易的源（163源，无论是不是教育网，速度都很快）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">deb http://mirrors.163.com/ubuntu/ vivid main universe restricted multiverse</div><div class="line">deb-src http://mirrors.163.com/ubuntu/ vivid main universe restricted multiverse</div><div class="line">deb http://mirrors.163.com/ubuntu/ vivid-security universe main multiverse restricted</div><div class="line">deb-src http://mirrors.163.com/ubuntu/ vivid-security universe main multiverse restricted</div><div class="line">deb http://mirrors.163.com/ubuntu/ vivid-updates universe main multiverse restricted</div><div class="line">deb http://mirrors.163.com/ubuntu/ vivid-proposed universe main multiverse restricted</div><div class="line">deb-src http://mirrors.163.com/ubuntu/ vivid-proposed universe main multiverse restricted</div><div class="line">deb http://mirrors.163.com/ubuntu/ vivid-backports universe main multiverse restricted</div><div class="line">deb-src http://mirrors.163.com/ubuntu/ vivid-backports universe main multiverse restricted</div><div class="line">deb-src http://mirrors.163.com/ubuntu/ vivid-updates universe main multiverse restricted</div></pre></td></tr></table></figure>
+<h3 id="终端间通信"><a href="#终端间通信" class="headerlink" title="终端间通信"></a>终端间通信</h3><p>linux里有自带的终端间通信命令：write、wall</p>
+<p>使用who命令，查看目前登入系统的用户信息，比如pts/0和pts/1是本机登录的两个终端。</p>
+<p>在终端0上输入命令<code>write manhua /dev/pts/1</code>,此时在终端0上输入hello，在终端1上会显示。但如果要使终端1也能发送消息到终端0，则需要在终端1上输入<code>write manhua /dev/pts/0</code>,然后两个终端就可以互通消息，类似我们常用的聊天工具。</p>
+<p>如果要终止聊天，在终端0处按ctrl +D，则在另一终端1处显示EOF，此时，终端0不能再向终端1发送消息，但终端1可以向终端0发送消息。</p>
+<p>wall广播功能</p>
+<p>echo “message” | wall ，这样所有的登录用户都可以收到“message”。</p>
+<h3 id="shell-参数"><a href="#shell-参数" class="headerlink" title="shell 参数"></a>shell 参数</h3><table>
+<thead>
+<tr>
+<th>变量</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$$</td>
+<td>Shell本身的PID（ProcessID）</td>
+</tr>
+<tr>
+<td>$!</td>
+<td>Shell最后运行的后台Process的PID</td>
+</tr>
+<tr>
+<td>$?</td>
+<td>最后运行的命令的结束代码（返回值）</td>
+</tr>
+<tr>
+<td>$-</td>
+<td>使用Set命令设定的Flag一览</td>
+</tr>
+<tr>
+<td>$*</td>
+<td>所有参数列表。如用「”」括起来,以”$1 $2 … $n”的形式输出所有参数</td>
+</tr>
+<tr>
+<td>$@</td>
+<td>所有参数列表。如用「”」括起来,以”$1” “$2” … “$n” 的形式输出所有参数</td>
+</tr>
+<tr>
+<td>$#</td>
+<td>添加到Shell的参数个数</td>
+</tr>
+<tr>
+<td>$0</td>
+<td>Shell本身的文件名</td>
+</tr>
+<tr>
+<td>$1～$n</td>
+<td>添加到Shell的各参数值。$1是第1参数、$2是第2参数</td>
+</tr>
+</tbody>
+</table>
+<p>测试代码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#!/bin/bash</span></div><div class="line"><span class="comment"># params.sh</span></div><div class="line"><span class="built_in">printf</span> <span class="string">"The complete list is %s\n"</span> <span class="string">"$$"</span></div><div class="line"><span class="built_in">printf</span> <span class="string">"The complete list is %s\n"</span> <span class="string">"$!"</span></div><div class="line"><span class="built_in">printf</span> <span class="string">"The complete list is %s\n"</span> <span class="string">"$?"</span></div><div class="line"><span class="built_in">printf</span> <span class="string">"The complete list is %s\n"</span> <span class="string">"$*"</span></div><div class="line"><span class="built_in">printf</span> <span class="string">"The complete list is %s\n"</span> <span class="string">"<span class="variable">$@</span>"</span></div><div class="line"><span class="built_in">printf</span> <span class="string">"The complete list is %s\n"</span> <span class="string">"<span class="variable">$#</span>"</span></div><div class="line"><span class="built_in">printf</span> <span class="string">"The complete list is %s\n"</span> <span class="string">"<span class="variable">$0</span>"</span></div><div class="line"><span class="built_in">printf</span> <span class="string">"The complete list is %s\n"</span> <span class="string">"<span class="variable">$1</span>"</span></div><div class="line"><span class="built_in">printf</span> <span class="string">"The complete list is %s\n"</span> <span class="string">"<span class="variable">$2</span></span></div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">$ bash params.sh 123456 QQ</div><div class="line">The complete list is 24249</div><div class="line">The complete list is</div><div class="line">The complete list is 0</div><div class="line">The complete list is 123456 QQ</div><div class="line">The complete list is 123456</div><div class="line">The complete list is QQ</div><div class="line">The complete list is 2</div><div class="line">The complete list is params.sh</div><div class="line">The complete list is 123456</div><div class="line">The complete list is QQ</div></pre></td></tr></table></figure>
 <h3 id="双系统安装"><a href="#双系统安装" class="headerlink" title="双系统安装"></a>双系统安装</h3><ul>
 <li><p>64位的vmlinuz有后缀名，删去就好了；</p>
 </li>
@@ -137,7 +187,7 @@ zsync -i trusty-desktop-amd64.iso http://mirrors.ustc.edu.cn/ubuntu-releases/14.
 </li>
 <li><p>安装搜狗官方的deb包 <a href="http://pinyin.sogou.com/linux/" target="_blank" rel="external">官网</a></p>
 </li>
-<li><p>重启-&gt;右下角键盘图标’设置’-&gt; ‘+’添加sougou </p>
+<li><p>重启-&gt;右下角键盘图标’设置’-&gt; ‘+’添加sougou</p>
 </li>
 </ul>
 <p>2.手动方法</p>
@@ -229,15 +279,15 @@ sudo apt-get install fcitx fcitx fcitx-bin fcitx-config-common fcitx-config-gtk 
 	
 
 </div>  
-      <div class="openaside"><a class="navbutton" href="#" title="顯示側邊欄"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="隱藏側邊欄"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
 <aside class="clearfix">
 
   
 <div class="github-card">
-<p class="asidetitle">Github 名片</p>
+<p class="asidetitle">Github Card</p>
 <div class="github-card" data-github="kevinjmh" data-width="220" data-height="119" data-theme="medium">
 <script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
 </div>
@@ -249,7 +299,7 @@ sudo apt-get install fcitx fcitx fcitx-bin fcitx-config-common fcitx-config-gtk 
 
   
 <div class="tagslist">
-	<p class="asidetitle">標簽</p>
+	<p class="asidetitle">Tags</p>
 		<ul class="clearfix">
 		
 			
@@ -261,7 +311,7 @@ sudo apt-get install fcitx fcitx fcitx-bin fcitx-config-common fcitx-config-gtk 
 
 
   <div class="linkslist">
-  <p class="asidetitle">友情鏈接</p>
+  <p class="asidetitle">Links</p>
     <ul>
         
           <li>
@@ -494,7 +544,7 @@ $(document).ready(function(){
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="返回頂部"><img src="/img/scrollup.png"/></a>
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 

@@ -1,0 +1,532 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Spark | Manhua</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Manhua">
+    
+
+    
+    <meta name="description" content="Spark简单之美 | RDD：基于内存的集群计算容错抽象 Spark on YarnSpark 官方提供了三种集群部署方案： Standalone, Mesos, YARN，区别就在于资源管理调度平台不同。 想在已有的Hadoop集群上使用Spark，实现Spark on Yarn只需修改配置文件vi ./conf/spark-env.sh添加以下内容  export HADOOP_HOME=/">
+<meta name="keywords">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spark">
+<meta property="og:url" content="http://kevinjmh.github.io/2017/04/13/spark/index.html">
+<meta property="og:site_name" content="Manhua">
+<meta property="og:description" content="Spark简单之美 | RDD：基于内存的集群计算容错抽象 Spark on YarnSpark 官方提供了三种集群部署方案： Standalone, Mesos, YARN，区别就在于资源管理调度平台不同。 想在已有的Hadoop集群上使用Spark，实现Spark on Yarn只需修改配置文件vi ./conf/spark-env.sh添加以下内容  export HADOOP_HOME=/">
+<meta property="og:updated_time" content="2017-04-13T08:34:34.962Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Spark">
+<meta name="twitter:description" content="Spark简单之美 | RDD：基于内存的集群计算容错抽象 Spark on YarnSpark 官方提供了三种集群部署方案： Standalone, Mesos, YARN，区别就在于资源管理调度平台不同。 想在已有的Hadoop集群上使用Spark，实现Spark on Yarn只需修改配置文件vi ./conf/spark-env.sh添加以下内容  export HADOOP_HOME=/">
+<meta name="twitter:creator" content="@jiangmanhua">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Manhua" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="Manhua" title="Manhua"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Manhua">Manhua</a></h1>
+				<h2 class="blog-motto">Never Say Die</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页 | Home</a></li>
+					
+						<li><a href="/archives">归档 | Archives</a></li>
+					
+						<li><a href="/about">简介 | About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:kevinjmh.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2017/04/13/spark/" title="Spark" itemprop="url">Spark</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Manhua" target="_blank" itemprop="author">Manhua</a>
+		
+  <p class="article-time">
+    <time datetime="2017-04-13T07:13:13.000Z" itemprop="datePublished"> Published 2017-04-13</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Spark"><span class="toc-number">1.</span> <span class="toc-text">Spark</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Spark-on-Yarn"><span class="toc-number">2.</span> <span class="toc-text">Spark on Yarn</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#测试代码"><span class="toc-number">3.</span> <span class="toc-text">测试代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pycharm访问spark"><span class="toc-number">4.</span> <span class="toc-text">pycharm访问spark</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-安装py4j"><span class="toc-number">4.0.1.</span> <span class="toc-text">1. 安装py4j</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-配置环境变量"><span class="toc-number">4.0.2.</span> <span class="toc-text">2. 配置环境变量</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-关联Spark和Hadoop"><span class="toc-number">4.0.3.</span> <span class="toc-text">3. 关联Spark和Hadoop</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-windows上的问题。"><span class="toc-number">4.0.4.</span> <span class="toc-text">4. windows上的问题。</span></a></li></ol></li></ol></li></ol>
+		
+		</div>
+		
+		<h3 id="Spark"><a href="#Spark" class="headerlink" title="Spark"></a>Spark</h3><p><a href="http://shiyanjun.cn/archives/744.html" target="_blank" rel="external">简单之美 | RDD：基于内存的集群计算容错抽象</a></p>
+<h3 id="Spark-on-Yarn"><a href="#Spark-on-Yarn" class="headerlink" title="Spark on Yarn"></a>Spark on Yarn</h3><p>Spark 官方提供了三种集群部署方案： Standalone, Mesos, YARN，区别就在于资源管理调度平台不同。</p>
+<p>想在已有的Hadoop集群上使用Spark，实现Spark on Yarn只需修改配置文件<code>vi ./conf/spark-env.sh</code>添加以下内容</p>
+<blockquote>
+<p>export HADOOP_HOME=/share/apps/hadoop</p>
+<p>export HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop</p>
+</blockquote>
+<p>任务提交主要参数（用好可以充分利用资源）</p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th style="text-align:right">含义   </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> –master MASTER_URL</td>
+<td style="text-align:right">可以是spark://host:port, mesos://host:port, yarn,  yarn-cluster,yarn-client, local</td>
+</tr>
+<tr>
+<td> –deploy-mode DEPLOY_MODE</td>
+<td style="text-align:right">Driver程序运行的地方，client或者cluster</td>
+</tr>
+<tr>
+<td> –class CLASS_NAME</td>
+<td style="text-align:right">主类名称，含包名</td>
+</tr>
+<tr>
+<td>–name NAME</td>
+<td style="text-align:right">Application名称</td>
+</tr>
+<tr>
+<td>–jars JARS</td>
+<td style="text-align:right">Driver依赖的第三方jar包</td>
+</tr>
+<tr>
+<td>–py-files PY_FILES</td>
+<td style="text-align:right">用逗号隔开的放置在Python应用程序PYTHONPATH上的.zip,  .egg, .py文件列表</td>
+</tr>
+<tr>
+<td>–files FILES</td>
+<td style="text-align:right">用逗号隔开的要放置在每个executor工作目录的文件列表</td>
+</tr>
+<tr>
+<td>–executor-memory MEM</td>
+<td style="text-align:right">executor内存大小，默认1G</td>
+</tr>
+<tr>
+<td>–total-executor-cores NUM</td>
+<td style="text-align:right">executor使用的总核数，仅限于Spark Alone、Spark on Mesos模式</td>
+</tr>
+<tr>
+<td>–executor-cores NUM</td>
+<td style="text-align:right">每个executor使用的内核数，默认为1，仅限于Spark on Yarn模式</td>
+</tr>
+<tr>
+<td>–queue QUEUE_NAME</td>
+<td style="text-align:right">提交应用程序给哪个YARN的队列，默认是default队列，仅限于Spark on Yarn模式</td>
+</tr>
+<tr>
+<td>–num-executors NUM</td>
+<td style="text-align:right">启动的executor数量，默认是2个，仅限于Spark on Yarn模式</td>
+</tr>
+</tbody>
+</table>
+<p>更多内容，见<a href="http://www.cnblogs.com/manhua/p/5145225.html" target="_blank" rel="external">博客文章</a></p>
+<h3 id="测试代码"><a href="#测试代码" class="headerlink" title="测试代码"></a>测试代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./bin/spark-submit --master yarn --name spark-test --class org.apache.spark.examples.SparkPi lib/spark-examples*.jar 10</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/python</span></div><div class="line"><span class="comment"># -*- coding: UTF-8 -*-</span></div><div class="line"></div><div class="line"><span class="comment"># test_spark.py</span></div><div class="line"><span class="keyword">from</span> pyspark <span class="keyword">import</span> SparkContext</div><div class="line"></div><div class="line">logFile = <span class="string">"C:\spark-2.0.2-bin-hadoop2.6\README.md"</span></div><div class="line">sc = SparkContext(<span class="string">"local"</span>,<span class="string">"Simple App"</span>)</div><div class="line">logData = sc.textFile(logFile).cache()</div><div class="line"></div><div class="line">numAs = logData.filter(<span class="keyword">lambda</span> s: <span class="string">'a'</span> <span class="keyword">in</span> s).count()</div><div class="line">numBs = logData.filter(<span class="keyword">lambda</span> s: <span class="string">'b'</span> <span class="keyword">in</span> s).count()</div><div class="line"></div><div class="line">print(<span class="string">"Lines with a: %i, lines with b: %i"</span>%(numAs, numBs))</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/python</span></div><div class="line"><span class="comment"># -*- coding: UTF-8 -*-</span></div><div class="line"></div><div class="line"><span class="comment"># testDFrame.py</span></div><div class="line"><span class="keyword">from</span> pyspark.sql <span class="keyword">import</span> SparkSession</div><div class="line"><span class="keyword">from</span> pyspark.sql <span class="keyword">import</span> Row</div><div class="line"><span class="keyword">from</span> pyspark.sql.types <span class="keyword">import</span> *</div><div class="line"><span class="keyword">import</span> sys</div><div class="line">reload(sys)</div><div class="line">sys.setdefaultencoding(<span class="string">"utf-8"</span>)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">schema_inference_example</span><span class="params">(spark)</span>:</span></div><div class="line">    sc = spark.sparkContext</div><div class="line"></div><div class="line">    <span class="comment"># Load a text file and convert each line to a Row.</span></div><div class="line">    lines = sc.textFile(<span class="string">"/user/jiangmanhua/Experiment/url_domain_labeled"</span>)</div><div class="line">    parts = lines.map(<span class="keyword">lambda</span> l: l.split(<span class="string">"\t"</span>))</div><div class="line">    label = parts.map(<span class="keyword">lambda</span> p: Row(label_name=p[<span class="number">0</span>], type=p[<span class="number">1</span>]))</div><div class="line"></div><div class="line">    <span class="comment"># Infer the schema, and register the DataFrame as a table.</span></div><div class="line">    schemaPeople = spark.createDataFrame(label)</div><div class="line">    schemaPeople.createOrReplaceTempView(<span class="string">"label"</span>)</div><div class="line"></div><div class="line">    <span class="comment"># SQL can be run over DataFrames that have been registered as a table.</span></div><div class="line">    teenagers = spark.sql(<span class="string">"SELECT type, count(label_name) as cc FROM label group by type"</span>)</div><div class="line"></div><div class="line">    <span class="comment"># The results of SQL queries are Dataframe objects.</span></div><div class="line">    <span class="comment"># rdd returns the content as an :class:`pyspark.RDD` of :class:`Row`.</span></div><div class="line">    teenNames = teenagers.rdd.map(<span class="keyword">lambda</span> p: <span class="string">"Name: "</span> + p.type + <span class="string">"cnt: "</span> + str(p.cc)).collect()</div><div class="line">    <span class="keyword">for</span> name <span class="keyword">in</span> teenNames:</div><div class="line">        print(name)</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</div><div class="line">    spark = SparkSession \</div><div class="line">        .builder \</div><div class="line">        .appName(<span class="string">"Python Spark SQL basic example"</span>) \</div><div class="line">        .config(<span class="string">"spark.some.config.option"</span>, <span class="string">"some-value"</span>) \</div><div class="line">        .getOrCreate()</div><div class="line">    schema_inference_example(spark)</div><div class="line"></div><div class="line">    spark.stop()</div></pre></td></tr></table></figure>
+<h3 id="pycharm访问spark"><a href="#pycharm访问spark" class="headerlink" title="pycharm访问spark"></a>pycharm访问spark</h3><h5 id="1-安装py4j"><a href="#1-安装py4j" class="headerlink" title="1. 安装py4j"></a>1. 安装py4j</h5><p>主要两个步骤：安装py4j、配置路径</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># Windows</div><div class="line">pip install py4j</div><div class="line"># Linux</div><div class="line">sudo pip2 install py4j</div></pre></td></tr></table></figure>
+<h5 id="2-配置环境变量"><a href="#2-配置环境变量" class="headerlink" title="2. 配置环境变量"></a>2. 配置环境变量</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">HADOOP_HOME = C:\hadoop-2.6.5</div><div class="line">SPARK_HOME = C:\spark-2.0.2-bin-hadoop2.6</div></pre></td></tr></table></figure>
+<p>也可以在pycharm中选择“Run” -&gt;“Edit Configurations” -&gt;“Environment variables” 增加SPARK_HOME目录以及HADOOP_HOME目录</p>
+<h5 id="3-关联Spark和Hadoop"><a href="#3-关联Spark和Hadoop" class="headerlink" title="3. 关联Spark和Hadoop"></a>3. 关联Spark和Hadoop</h5><p> 在<code>$PYTHON_HOME\lib\site-packages</code>下新建<code>pyspark.pth</code>文件内容为pyspark的目录 (如<code>D:\spark-2.0.2-bin-hadoop2.6\python</code>)</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># Linux</div><div class="line">echo /home/manhua/app/spark/python &gt; /home/manhua/.local/lib/python2.7/site-packages/pyspark.pth</div></pre></td></tr></table></figure>
+<h5 id="4-windows上的问题。"><a href="#4-windows上的问题。" class="headerlink" title="4. windows上的问题。"></a>4. windows上的问题。</h5><p>下载<a href="https://github.com/srccodes/hadoop-common-2.2.0-bin/tree/master/bin" target="_blank" rel="external">winutils.exe</a>放到C:\hadoop-2.6.5\bin</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://kevinjmh.github.io/2017/04/13/spark/" data-title="Spark | Manhua" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2017/04/13/docker/" title="Docker">
+  <strong>上一篇：</strong><br/>
+  <span>
+  Docker</span>
+</a>
+</div>
+
+
+</nav>
+
+	
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github Card</p>
+<div class="github-card" data-github="kevinjmh" data-width="220" data-height="119" data-theme="medium">
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+  </div>
+
+
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/Recommendation-System/" title="Recommendation System">Recommendation System<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://www.cnblogs.com/manhua" target="_blank" title="cnBlogs">cnBlogs</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m Manhua Jiang. <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/443181876" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/kevinjmh" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		<a href="https://twitter.com/jiangmanhua" target="_blank" class="icon-twitter" title="twitter"></a>
+		
+		
+		<a href="https://www.facebook.com/jiangmanhua" target="_blank" class="icon-facebook" title="facebook"></a>
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2017 
+		
+		<a href="/about" target="_blank" title="Manhua">Manhua</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+        getSize();
+        if (myWidth >= 1024) {
+          c.click();
+        }
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
