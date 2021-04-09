@@ -1,7 +1,7 @@
 
  <!DOCTYPE HTML>
-<html >
-<head>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
   
     <title>Docker | Manhua</title>
@@ -12,13 +12,13 @@
 
     
     <meta name="description" content="免sudo运行问题： 默认安装完 docker 后，每次执行 docker 都需要运行 sudo 命令，非常浪费时间影响效率 解决方案： 将用户加入该docker的group内，重新打开终端。Add the connected user “${USER}” to the docker group. 12sudo gpasswd -a $&amp;#123;USER&amp;#125; dockersudo ser">
-<meta name="keywords">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Docker">
 <meta property="og:url" content="http://kevinjmh.github.io/2017/04/13/docker/index.html">
 <meta property="og:site_name" content="Manhua">
 <meta property="og:description" content="免sudo运行问题： 默认安装完 docker 后，每次执行 docker 都需要运行 sudo 命令，非常浪费时间影响效率 解决方案： 将用户加入该docker的group内，重新打开终端。Add the connected user “${USER}” to the docker group. 12sudo gpasswd -a $&amp;#123;USER&amp;#125; dockersudo ser">
-<meta property="og:updated_time" content="2017-04-13T07:11:49.628Z">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2021-04-09T10:09:29.152Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker">
 <meta name="twitter:description" content="免sudo运行问题： 默认安装完 docker 后，每次执行 docker 都需要运行 sudo 命令，非常浪费时间影响效率 解决方案： 将用户加入该docker的group内，重新打开终端。Add the connected user “${USER}” to the docker group. 12sudo gpasswd -a $&amp;#123;USER&amp;#125; dockersudo ser">
@@ -36,7 +36,7 @@
     
     <link rel="stylesheet" href="/css/style.css">
 </head>
-
+</html>
   <body>
     <header>
       
@@ -89,7 +89,7 @@
 		<a href="/about" title="Manhua" target="_blank" itemprop="author">Manhua</a>
 		
   <p class="article-time">
-    <time datetime="2017-04-13T06:11:43.000Z" itemprop="datePublished"> Published 2017-04-13</time>
+    <time datetime="2017-04-13T14:11:43.000Z" itemprop="datePublished"> Published 2017-04-13</time>
     
   </p>
 </header>
@@ -106,22 +106,22 @@
 <p>默认安装完 docker 后，每次执行 docker 都需要运行 sudo 命令，非常浪费时间影响效率</p>
 <p><strong>解决方案：</strong></p>
 <p>将用户加入该docker的group内，重新打开终端。<br>Add the connected user “${USER}” to the docker group.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo gpasswd -a $&#123;USER&#125; docker</div><div class="line">sudo service docker restart</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo gpasswd -a $&#123;USER&#125; docker</span><br><span class="line">sudo service docker restart</span><br></pre></td></tr></table></figure>
 <h3 id="容器内网络问题"><a href="#容器内网络问题" class="headerlink" title="容器内网络问题"></a>容器内网络问题</h3><p><strong>问题：</strong></p>
 <p>Docker Daemon默认给Docker Container的DNS设置为8.8.8.8和8.8.4.4，但在国内这两个DNS服务不稳定，由此影响到网络。</p>
 <p><strong>解决方案：</strong></p>
 <ol>
 <li>临时方案：使用docker run命令启动容器的时候，设定–dns参数，如：</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker run -it --dns=172.20.1.4 ubuntu</div></pre></td></tr></table></figure>
-<ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it --dns=172.20.1.4 ubuntu</span><br></pre></td></tr></table></figure>
+<ol start="2">
 <li>全局修改：以上临时方案仅适用于docker run命令，docker build因为没有dns参数所以不能效仿。</li>
 </ol>
 <p>编辑<code>/etc/default/docker</code>添加–dns参数到Docker Daemon的<code>DOCKER_OPTS</code>。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">sudo vi /etc/default/docker</div><div class="line"># 末尾添加 DOCKER_OPTS=&quot;--dns 172.20.1.4&quot;</div><div class="line">sudo service docker stop</div><div class="line">sudo service docker start</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/default/docker</span><br><span class="line"><span class="meta">#</span><span class="bash"> 末尾添加 DOCKER_OPTS=<span class="string">"--dns 172.20.1.4"</span></span></span><br><span class="line">sudo service docker stop</span><br><span class="line">sudo service docker start</span><br></pre></td></tr></table></figure>
 <h3 id="慎用latest标签"><a href="#慎用latest标签" class="headerlink" title="慎用latest标签"></a>慎用latest标签</h3><p><code>latest</code>并不是永久赋予某一特定Docker镜像的标签，在t1使用<code>latest</code>镜像，应用容器运行正常;t2使用同一个<code>Dockerfile</code>来build镜像再运行应用容器，失效。<br>比如t1时ubuntu镜像的<code>latest</code>标签于<code>ubuntu:14.04</code>，t2时该latest标签属于<code>ubuntu:16.04</code>。因此Docker镜像建议使用指定的tag</p>
-<h3 id="替换更新源"><a href="#替换更新源" class="headerlink" title="替换更新源"></a>替换更新源</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sed -i &apos;s/archive.ubuntu.com/mirrors.ustc.edu.cn/&apos;   /etc/apt/sources.list</div><div class="line">apt-get update</div><div class="line">apt-get install vim -y</div></pre></td></tr></table></figure>
-<h3 id="docker建wordpress"><a href="#docker建wordpress" class="headerlink" title="docker建wordpress"></a>docker建wordpress</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">docker run --name wp-mysql -e MYSQL_ROOT_PASSWORD=root -d mysql:5.7</div><div class="line">docker run --name my-wordpress --link wp-mysql:mysql -p 8080:80 -d -e WORDPRESS_DB_PASSWORD=root wordpress</div></pre></td></tr></table></figure>
+<h3 id="替换更新源"><a href="#替换更新源" class="headerlink" title="替换更新源"></a>替换更新源</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/'   /etc/apt/sources.list</span><br><span class="line">apt-get update</span><br><span class="line">apt-get install vim -y</span><br></pre></td></tr></table></figure>
+<h3 id="docker建wordpress"><a href="#docker建wordpress" class="headerlink" title="docker建wordpress"></a>docker建wordpress</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker run --name wp-mysql -e MYSQL_ROOT_PASSWORD=root -d mysql:5.7</span><br><span class="line">docker run --name my-wordpress --link wp-mysql:mysql -p 8080:80 -d -e WORDPRESS_DB_PASSWORD=root wordpress</span><br></pre></td></tr></table></figure>
 <h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><p>镜像管理</p>
 <ul>
 <li>docker search ubuntu   搜索镜像</li>
@@ -183,18 +183,18 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2017/04/12/markdown-demo/" title="markdown高级使用示例">
+ <a href="/2017/04/13/spark/" title="Spark">
   <strong>上一篇：</strong><br/>
   <span>
-  markdown高级使用示例</span>
+  Spark</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/2017/04/13/spark/"  title="Spark">
+<a href="/2017/04/12/markdown-demo/"  title="markdown高级使用示例">
  <strong>下一篇：</strong><br/> 
- <span>Spark
+ <span>markdown高级使用示例
 </span>
 </a>
 </div>
@@ -288,7 +288,7 @@
 		
 
 		<p class="copyright">
-		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2017 
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2021 
 		
 		<a href="/about" target="_blank" title="Manhua">Manhua</a>
 		

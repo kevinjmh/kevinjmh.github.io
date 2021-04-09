@@ -1,7 +1,7 @@
 
  <!DOCTYPE HTML>
-<html >
-<head>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
   
     <title>QA-on-Linux | Manhua</title>
@@ -12,13 +12,13 @@
 
     
     <meta name="description" content="Linux ProblemsI’m in Mint可以把http://www.cnblogs.com/manhua/p/3631046.html删除了  Install下载-镜像地址http://mirrors.ustc.edu.cn/ubuntu-releases/ http://mirrors.163.com/ubuntu-releases/ zsync镜像更新假设目前已有镜像文件trusty">
-<meta name="keywords">
 <meta property="og:type" content="article">
 <meta property="og:title" content="QA-on-Linux">
 <meta property="og:url" content="http://kevinjmh.github.io/2017/04/12/QA-on-Linux/index.html">
 <meta property="og:site_name" content="Manhua">
 <meta property="og:description" content="Linux ProblemsI’m in Mint可以把http://www.cnblogs.com/manhua/p/3631046.html删除了  Install下载-镜像地址http://mirrors.ustc.edu.cn/ubuntu-releases/ http://mirrors.163.com/ubuntu-releases/ zsync镜像更新假设目前已有镜像文件trusty">
-<meta property="og:updated_time" content="2017-04-13T09:07:44.957Z">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2021-04-09T10:09:29.152Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="QA-on-Linux">
 <meta name="twitter:description" content="Linux ProblemsI’m in Mint可以把http://www.cnblogs.com/manhua/p/3631046.html删除了  Install下载-镜像地址http://mirrors.ustc.edu.cn/ubuntu-releases/ http://mirrors.163.com/ubuntu-releases/ zsync镜像更新假设目前已有镜像文件trusty">
@@ -36,7 +36,7 @@
     
     <link rel="stylesheet" href="/css/style.css">
 </head>
-
+</html>
   <body>
     <header>
       
@@ -89,7 +89,7 @@
 		<a href="/about" title="Manhua" target="_blank" itemprop="author">Manhua</a>
 		
   <p class="article-time">
-    <time datetime="2017-04-12T08:24:02.000Z" itemprop="datePublished"> Published 2017-04-12</time>
+    <time datetime="2017-04-12T16:24:02.000Z" itemprop="datePublished"> Published 2017-04-12</time>
     
   </p>
 </header>
@@ -102,10 +102,10 @@
 		
 		</div>
 		
-		<h1 id="Linux-Problems"><a href="#Linux-Problems" class="headerlink" title="Linux Problems"></a>Linux Problems</h1><h4 id="I’m-in-Mint"><a href="#I’m-in-Mint" class="headerlink" title="I’m in Mint"></a><em>I’m in Mint</em></h4><p>可以把<a href="http://www.cnblogs.com/manhua/p/3631046.html删除了" target="_blank" rel="external">http://www.cnblogs.com/manhua/p/3631046.html删除了</a></p>
+		<h1 id="Linux-Problems"><a href="#Linux-Problems" class="headerlink" title="Linux Problems"></a>Linux Problems</h1><h4 id="I’m-in-Mint"><a href="#I’m-in-Mint" class="headerlink" title="I’m in Mint"></a><em>I’m in Mint</em></h4><p>可以把<a href="http://www.cnblogs.com/manhua/p/3631046.html删除了" target="_blank" rel="noopener">http://www.cnblogs.com/manhua/p/3631046.html删除了</a></p>
 <hr>
-<h2 id="Install"><a href="#Install" class="headerlink" title="Install"></a>Install</h2><h3 id="下载-镜像地址"><a href="#下载-镜像地址" class="headerlink" title="下载-镜像地址"></a>下载-镜像地址</h3><p><a href="http://mirrors.ustc.edu.cn/ubuntu-releases/" target="_blank" rel="external">http://mirrors.ustc.edu.cn/ubuntu-releases/</a></p>
-<p><a href="http://mirrors.163.com/ubuntu-releases/" target="_blank" rel="external">http://mirrors.163.com/ubuntu-releases/</a></p>
+<h2 id="Install"><a href="#Install" class="headerlink" title="Install"></a>Install</h2><h3 id="下载-镜像地址"><a href="#下载-镜像地址" class="headerlink" title="下载-镜像地址"></a>下载-镜像地址</h3><p><a href="http://mirrors.ustc.edu.cn/ubuntu-releases/" target="_blank" rel="noopener">http://mirrors.ustc.edu.cn/ubuntu-releases/</a></p>
+<p><a href="http://mirrors.163.com/ubuntu-releases/" target="_blank" rel="noopener">http://mirrors.163.com/ubuntu-releases/</a></p>
 <h3 id="zsync镜像更新"><a href="#zsync镜像更新" class="headerlink" title="zsync镜像更新"></a>zsync镜像更新</h3><p>假设目前已有镜像文件trusty-desktop-amd64.iso，要更新到ubuntu-14.04-desktop-i386.iso</p>
 <pre><code>sudo apt-get install zsync
 zsync -i trusty-desktop-amd64.iso http://mirrors.ustc.edu.cn/ubuntu-releases/14.04/ubuntu-14.04-desktop-i386.iso.zsync
@@ -113,9 +113,9 @@ zsync -i trusty-desktop-amd64.iso http://mirrors.ustc.edu.cn/ubuntu-releases/14.
 <p>Read trusty-desktop-amd64.iso. Target 35.3% complete. 实验证明这都能省下1/3的流量]</p>
 </blockquote>
 <p>最好更新后进行镜像的md5校验<code>md5sum ubuntu-14.04-desktop-i386.iso</code></p>
-<h3 id="命令行升级Ubuntu"><a href="#命令行升级Ubuntu" class="headerlink" title="命令行升级Ubuntu"></a>命令行升级Ubuntu</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">sudo apt-get update</div><div class="line">sudo apt-get upgrade</div><div class="line">sudo apt-get dist-upgrade</div><div class="line">sudo apt-get install update-manager-core</div><div class="line">sudo do-release-upgrade</div></pre></td></tr></table></figure>
-<h3 id="替换软件更新源"><a href="#替换软件更新源" class="headerlink" title="替换软件更新源"></a>替换软件更新源</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">#确认原来的软件源地址</div><div class="line">less /etc/apt/sources.list</div><div class="line"># 备份</div><div class="line">sudo cp /etc/apt/sources.list /etc/apt/sources.list.old</div><div class="line"></div><div class="line">#假设cn.archive.ubuntu.com替换为mirrors.ustc.edu.cn</div><div class="line">#sed在本文内修改</div><div class="line">sed -i &apos;s/cn.archive.ubuntu.com/mirrors.ustc.edu.cn/&apos;   /etc/apt/sources.list  </div><div class="line"></div><div class="line">#使用vi修改</div><div class="line">sudo vi /etc/apt/sources.list</div><div class="line">:1,$s/cn.archive.ubuntu.com/mirrors.ustc.edu.cn/g</div></pre></td></tr></table></figure>
-<h3 id="网易的源（163源，无论是不是教育网，速度都很快）"><a href="#网易的源（163源，无论是不是教育网，速度都很快）" class="headerlink" title="网易的源（163源，无论是不是教育网，速度都很快）"></a>网易的源（163源，无论是不是教育网，速度都很快）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">deb http://mirrors.163.com/ubuntu/ vivid main universe restricted multiverse</div><div class="line">deb-src http://mirrors.163.com/ubuntu/ vivid main universe restricted multiverse</div><div class="line">deb http://mirrors.163.com/ubuntu/ vivid-security universe main multiverse restricted</div><div class="line">deb-src http://mirrors.163.com/ubuntu/ vivid-security universe main multiverse restricted</div><div class="line">deb http://mirrors.163.com/ubuntu/ vivid-updates universe main multiverse restricted</div><div class="line">deb http://mirrors.163.com/ubuntu/ vivid-proposed universe main multiverse restricted</div><div class="line">deb-src http://mirrors.163.com/ubuntu/ vivid-proposed universe main multiverse restricted</div><div class="line">deb http://mirrors.163.com/ubuntu/ vivid-backports universe main multiverse restricted</div><div class="line">deb-src http://mirrors.163.com/ubuntu/ vivid-backports universe main multiverse restricted</div><div class="line">deb-src http://mirrors.163.com/ubuntu/ vivid-updates universe main multiverse restricted</div></pre></td></tr></table></figure>
+<h3 id="命令行升级Ubuntu"><a href="#命令行升级Ubuntu" class="headerlink" title="命令行升级Ubuntu"></a>命令行升级Ubuntu</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get upgrade</span><br><span class="line">sudo apt-get dist-upgrade</span><br><span class="line">sudo apt-get install update-manager-core</span><br><span class="line">sudo do-release-upgrade</span><br></pre></td></tr></table></figure>
+<h3 id="替换软件更新源"><a href="#替换软件更新源" class="headerlink" title="替换软件更新源"></a>替换软件更新源</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>确认原来的软件源地址</span><br><span class="line">less /etc/apt/sources.list</span><br><span class="line"><span class="meta">#</span> 备份</span><br><span class="line">sudo cp /etc/apt/sources.list /etc/apt/sources.list.old</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>假设cn.archive.ubuntu.com替换为mirrors.ustc.edu.cn</span><br><span class="line"><span class="meta">#</span>sed在本文内修改</span><br><span class="line">sed -i 's/cn.archive.ubuntu.com/mirrors.ustc.edu.cn/'   /etc/apt/sources.list  </span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>使用vi修改</span><br><span class="line">sudo vi /etc/apt/sources.list</span><br><span class="line">:1,$s/cn.archive.ubuntu.com/mirrors.ustc.edu.cn/g</span><br></pre></td></tr></table></figure>
+<h3 id="网易的源（163源，无论是不是教育网，速度都很快）"><a href="#网易的源（163源，无论是不是教育网，速度都很快）" class="headerlink" title="网易的源（163源，无论是不是教育网，速度都很快）"></a>网易的源（163源，无论是不是教育网，速度都很快）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">deb http://mirrors.163.com/ubuntu/ vivid main universe restricted multiverse</span><br><span class="line">deb-src http://mirrors.163.com/ubuntu/ vivid main universe restricted multiverse</span><br><span class="line">deb http://mirrors.163.com/ubuntu/ vivid-security universe main multiverse restricted</span><br><span class="line">deb-src http://mirrors.163.com/ubuntu/ vivid-security universe main multiverse restricted</span><br><span class="line">deb http://mirrors.163.com/ubuntu/ vivid-updates universe main multiverse restricted</span><br><span class="line">deb http://mirrors.163.com/ubuntu/ vivid-proposed universe main multiverse restricted</span><br><span class="line">deb-src http://mirrors.163.com/ubuntu/ vivid-proposed universe main multiverse restricted</span><br><span class="line">deb http://mirrors.163.com/ubuntu/ vivid-backports universe main multiverse restricted</span><br><span class="line">deb-src http://mirrors.163.com/ubuntu/ vivid-backports universe main multiverse restricted</span><br><span class="line">deb-src http://mirrors.163.com/ubuntu/ vivid-updates universe main multiverse restricted</span><br></pre></td></tr></table></figure>
 <h3 id="终端间通信"><a href="#终端间通信" class="headerlink" title="终端间通信"></a>终端间通信</h3><p>linux里有自带的终端间通信命令：write、wall</p>
 <p>使用who命令，查看目前登入系统的用户信息，比如pts/0和pts/1是本机登录的两个终端。</p>
 <p>在终端0上输入命令<code>write manhua /dev/pts/1</code>,此时在终端0上输入hello，在终端1上会显示。但如果要使终端1也能发送消息到终端0，则需要在终端1上输入<code>write manhua /dev/pts/0</code>,然后两个终端就可以互通消息，类似我们常用的聊天工具。</p>
@@ -169,8 +169,8 @@ zsync -i trusty-desktop-amd64.iso http://mirrors.ustc.edu.cn/ubuntu-releases/14.
 </tbody>
 </table>
 <p>测试代码</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#!/bin/bash</span></div><div class="line"><span class="comment"># params.sh</span></div><div class="line"><span class="built_in">printf</span> <span class="string">"The complete list is %s\n"</span> <span class="string">"$$"</span></div><div class="line"><span class="built_in">printf</span> <span class="string">"The complete list is %s\n"</span> <span class="string">"$!"</span></div><div class="line"><span class="built_in">printf</span> <span class="string">"The complete list is %s\n"</span> <span class="string">"$?"</span></div><div class="line"><span class="built_in">printf</span> <span class="string">"The complete list is %s\n"</span> <span class="string">"$*"</span></div><div class="line"><span class="built_in">printf</span> <span class="string">"The complete list is %s\n"</span> <span class="string">"<span class="variable">$@</span>"</span></div><div class="line"><span class="built_in">printf</span> <span class="string">"The complete list is %s\n"</span> <span class="string">"<span class="variable">$#</span>"</span></div><div class="line"><span class="built_in">printf</span> <span class="string">"The complete list is %s\n"</span> <span class="string">"<span class="variable">$0</span>"</span></div><div class="line"><span class="built_in">printf</span> <span class="string">"The complete list is %s\n"</span> <span class="string">"<span class="variable">$1</span>"</span></div><div class="line"><span class="built_in">printf</span> <span class="string">"The complete list is %s\n"</span> <span class="string">"<span class="variable">$2</span></span></div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">$ bash params.sh 123456 QQ</div><div class="line">The complete list is 24249</div><div class="line">The complete list is</div><div class="line">The complete list is 0</div><div class="line">The complete list is 123456 QQ</div><div class="line">The complete list is 123456</div><div class="line">The complete list is QQ</div><div class="line">The complete list is 2</div><div class="line">The complete list is params.sh</div><div class="line">The complete list is 123456</div><div class="line">The complete list is QQ</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment"># params.sh</span></span><br><span class="line"><span class="built_in">printf</span> <span class="string">"The complete list is %s\n"</span> <span class="string">"$$"</span></span><br><span class="line"><span class="built_in">printf</span> <span class="string">"The complete list is %s\n"</span> <span class="string">"$!"</span></span><br><span class="line"><span class="built_in">printf</span> <span class="string">"The complete list is %s\n"</span> <span class="string">"$?"</span></span><br><span class="line"><span class="built_in">printf</span> <span class="string">"The complete list is %s\n"</span> <span class="string">"$*"</span></span><br><span class="line"><span class="built_in">printf</span> <span class="string">"The complete list is %s\n"</span> <span class="string">"<span class="variable">$@</span>"</span></span><br><span class="line"><span class="built_in">printf</span> <span class="string">"The complete list is %s\n"</span> <span class="string">"<span class="variable">$#</span>"</span></span><br><span class="line"><span class="built_in">printf</span> <span class="string">"The complete list is %s\n"</span> <span class="string">"<span class="variable">$0</span>"</span></span><br><span class="line"><span class="built_in">printf</span> <span class="string">"The complete list is %s\n"</span> <span class="string">"<span class="variable">$1</span>"</span></span><br><span class="line"><span class="built_in">printf</span> <span class="string">"The complete list is %s\n"</span> <span class="string">"<span class="variable">$2</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$ bash params.sh 123456 QQ</span><br><span class="line">The complete list is 24249</span><br><span class="line">The complete list is</span><br><span class="line">The complete list is 0</span><br><span class="line">The complete list is 123456 QQ</span><br><span class="line">The complete list is 123456</span><br><span class="line">The complete list is QQ</span><br><span class="line">The complete list is 2</span><br><span class="line">The complete list is params.sh</span><br><span class="line">The complete list is 123456</span><br><span class="line">The complete list is QQ</span><br></pre></td></tr></table></figure>
 <h3 id="双系统安装"><a href="#双系统安装" class="headerlink" title="双系统安装"></a>双系统安装</h3><ul>
 <li><p>64位的vmlinuz有后缀名，删去就好了；</p>
 </li>
@@ -185,7 +185,7 @@ zsync -i trusty-desktop-amd64.iso http://mirrors.ustc.edu.cn/ubuntu-releases/14.
 <ul>
 <li><p>setting-&gt;language-&gt;Input method-&gt;add support for fcitx</p>
 </li>
-<li><p>安装搜狗官方的deb包 <a href="http://pinyin.sogou.com/linux/" target="_blank" rel="external">官网</a></p>
+<li><p>安装搜狗官方的deb包 <a href="http://pinyin.sogou.com/linux/" target="_blank" rel="noopener">官网</a></p>
 </li>
 <li><p>重启-&gt;右下角键盘图标’设置’-&gt; ‘+’添加sougou</p>
 </li>
@@ -209,7 +209,7 @@ sudo apt-get install fcitx fcitx fcitx-bin fcitx-config-common fcitx-config-gtk 
 </li>
 </ul>
 <h2 id="其他设置"><a href="#其他设置" class="headerlink" title="其他设置"></a>其他设置</h2><h3 id="保护眼睛-休息提醒"><a href="#保护眼睛-休息提醒" class="headerlink" title="保护眼睛 休息提醒"></a>保护眼睛 休息提醒</h3><ul>
-<li><a href="http://www.workrave.org/download/" target="_blank" rel="external">Workrave</a> <code>sudo apt-get install Workrave</code></li>
+<li><a href="http://www.workrave.org/download/" target="_blank" rel="noopener">Workrave</a> <code>sudo apt-get install Workrave</code></li>
 </ul>
 <h3 id="自动挂载NTFS磁盘"><a href="#自动挂载NTFS磁盘" class="headerlink" title="自动挂载NTFS磁盘"></a>自动挂载NTFS磁盘</h3><ul>
 <li><p>查看硬盘分区情况<code>sudo fdisk -l</code></p>
@@ -258,18 +258,18 @@ sudo apt-get install fcitx fcitx fcitx-bin fcitx-config-common fcitx-config-gtk 
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2017/04/12/Markdown-Note/" title="Markdown-Note">
+ <a href="/2017/04/12/Resources/" title="Resources常用资源">
   <strong>上一篇：</strong><br/>
   <span>
-  Markdown-Note</span>
+  Resources常用资源</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/2017/04/12/Resources/"  title="Resources常用资源">
+<a href="/2017/04/12/Markdown-Note/"  title="Markdown-Note">
  <strong>下一篇：</strong><br/> 
- <span>Resources常用资源
+ <span>Markdown-Note
 </span>
 </a>
 </div>
@@ -363,7 +363,7 @@ sudo apt-get install fcitx fcitx fcitx-bin fcitx-config-common fcitx-config-gtk 
 		
 
 		<p class="copyright">
-		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2017 
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2021 
 		
 		<a href="/about" target="_blank" title="Manhua">Manhua</a>
 		
