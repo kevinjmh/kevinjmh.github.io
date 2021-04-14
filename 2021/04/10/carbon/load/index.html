@@ -4,25 +4,25 @@
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
   
-    <title>Film-Recommendation | Manhua</title>
+    <title>Carbondata加载逻辑 | Manhua</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Manhua">
     
 
     
-    <meta name="description" content="任务描述• 这是一个经典的评分预测任务。 要求在训练数据上学习得到评分模型，然后预测Test 数据上给定用户对给定电影的评分。 系统评价由预测评分与实际评分的误差决定。 • 除用户评分矩阵外，另有用户标记(tag)和电影元信息http://gucasir.org/SC/Proj/MovieRecTask.tbz 解压命令： tar jxvf MovieRecTask.tbz • 评分数据 (分为r">
-<meta name="keywords" content="project,recommendation">
+    <meta name="description" content="入口加载命令的入口在CarbonLoadDataCommand，command的处理主要分为meta和data两部分的处理。数据加载主要在org.apache.carbondata.spark.rdd.CarbonDataRDDFactory#loadCarbonData实现，还会根据数据来源、参数的不同进一步细分加载的具体实现，常见的是通过文件加载即loadDataFile。 加载和查询类似，l">
+<meta name="keywords" content="carbondata">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Film-Recommendation">
-<meta property="og:url" content="http://kevinjmh.github.io/2017/04/12/Film-Recommendation/index.html">
+<meta property="og:title" content="Carbondata加载逻辑">
+<meta property="og:url" content="http://kevinjmh.github.io/2021/04/10/carbon/load/index.html">
 <meta property="og:site_name" content="Manhua">
-<meta property="og:description" content="任务描述• 这是一个经典的评分预测任务。 要求在训练数据上学习得到评分模型，然后预测Test 数据上给定用户对给定电影的评分。 系统评价由预测评分与实际评分的误差决定。 • 除用户评分矩阵外，另有用户标记(tag)和电影元信息http://gucasir.org/SC/Proj/MovieRecTask.tbz 解压命令： tar jxvf MovieRecTask.tbz • 评分数据 (分为r">
+<meta property="og:description" content="入口加载命令的入口在CarbonLoadDataCommand，command的处理主要分为meta和data两部分的处理。数据加载主要在org.apache.carbondata.spark.rdd.CarbonDataRDDFactory#loadCarbonData实现，还会根据数据来源、参数的不同进一步细分加载的具体实现，常见的是通过文件加载即loadDataFile。 加载和查询类似，l">
 <meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2021-04-14T10:52:43.245Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Film-Recommendation">
-<meta name="twitter:description" content="任务描述• 这是一个经典的评分预测任务。 要求在训练数据上学习得到评分模型，然后预测Test 数据上给定用户对给定电影的评分。 系统评价由预测评分与实际评分的误差决定。 • 除用户评分矩阵外，另有用户标记(tag)和电影元信息http://gucasir.org/SC/Proj/MovieRecTask.tbz 解压命令： tar jxvf MovieRecTask.tbz • 评分数据 (分为r">
+<meta name="twitter:title" content="Carbondata加载逻辑">
+<meta name="twitter:description" content="入口加载命令的入口在CarbonLoadDataCommand，command的处理主要分为meta和data两部分的处理。数据加载主要在org.apache.carbondata.spark.rdd.CarbonDataRDDFactory#loadCarbonData实现，还会根据数据来源、参数的不同进一步细分加载的具体实现，常见的是通过文件加载即loadDataFile。 加载和查询类似，l">
 <meta name="twitter:creator" content="@jiangmanhua">
 
     
@@ -83,14 +83,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2017/04/12/Film-Recommendation/" title="Film-Recommendation" itemprop="url">Film-Recommendation</a>
+      <a href="/2021/04/10/carbon/load/" title="Carbondata加载逻辑" itemprop="url">Carbondata加载逻辑</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="Manhua" target="_blank" itemprop="author">Manhua</a>
 		
   <p class="article-time">
-    <time datetime="2017-04-12T16:14:10.000Z" itemprop="datePublished"> Published 2017-04-12</time>
+    <time datetime="2021-04-10T20:15:10.000Z" itemprop="datePublished"> Published 2021-04-10</time>
     
   </p>
 </header>
@@ -99,35 +99,27 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#任务描述"><span class="toc-number">1.</span> <span class="toc-text">任务描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#评价指标"><span class="toc-number">2.</span> <span class="toc-text">评价指标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析"><span class="toc-number">3.</span> <span class="toc-text">分析</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#入口"><span class="toc-number">1.</span> <span class="toc-text">入口</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#加载"><span class="toc-number">2.</span> <span class="toc-text">加载</span></a></li></ol>
 		
 		</div>
 		
-		<h2 id="任务描述"><a href="#任务描述" class="headerlink" title="任务描述"></a>任务描述</h2><p>• 这是一个经典的评分预测任务。 要求在训练数据上学习得到评分模型，然后预测Test 数据上给定用户对给定电影的评分。 系统评价由预测评分与实际评分的误差决定。</p>
-<p>• 除用户评分矩阵外，另有用户标记(tag)和电影元信息<br><a href="http://gucasir.org/SC/Proj/MovieRecTask.tbz" target="_blank" rel="noopener">http://gucasir.org/SC/Proj/MovieRecTask.tbz</a></p>
-<p>解压命令： tar jxvf MovieRecTask.tbz</p>
-<p>• 评分数据 (分为ra.train和ra.test两个文件)UserID::MovieID::Rating::Timestamp</p>
-<p>– 任务需预测的是ra.test文件中的Rating数据</p>
-<p>– 注意：不得使用 ra.test文件中的Rating进行训练！</p>
-<p>• 标签数据 (tags.dat) UserID::MovieID::Tag::Timestamp</p>
-<p>• 电影元信息数据 (movies.dat) MovieID::Title::Genres</p>
-<p>• 数据描述详见README.html</p>
-<h2 id="评价指标"><a href="#评价指标" class="headerlink" title="评价指标"></a>评价指标</h2><p>RMSE(Root Mean Squared Error),结果取四舍五入小数点后4位,精确到0.0001。</p>
-<p>例如，参赛者的算法预测用户对某电影的预测评分是Y,而用户对此电影的实际评分是X，那么所得的RMSE=sqrt(sum(for all items(XY)^2)/n)</p>
-<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2>  
+		<h1 id="入口"><a href="#入口" class="headerlink" title="入口"></a>入口</h1><p>加载命令的入口在CarbonLoadDataCommand，command的处理主要分为meta和data两部分的处理。数据加载主要在<code>org.apache.carbondata.spark.rdd.CarbonDataRDDFactory#loadCarbonData</code>实现，还会根据数据来源、参数的不同进一步细分加载的具体实现，常见的是通过文件加载即loadDataFile。</p>
+<h1 id="加载"><a href="#加载" class="headerlink" title="加载"></a>加载</h1><p>和查询类似，loadDataFile里同样涉及任务的划分，也是通过自定义RDD实现(NewCarbonDataLoadRDD)，里面的DataLoadExecutor中DataLoadProcessBuilder定义了加载的流程pipeline，包括输入、转换、排序、写出。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> AbstractDataLoadProcessorStep <span class="title">buildInternal</span><span class="params">(CarbonIterator[] inputIterators,</span></span></span><br><span class="line"><span class="function"><span class="params">    CarbonDataLoadConfiguration configuration)</span> </span>&#123;</span><br><span class="line">  <span class="comment">// 1. Reads the data input iterators and parses the data.</span></span><br><span class="line">  AbstractDataLoadProcessorStep inputProcessorStep =</span><br><span class="line">      <span class="keyword">new</span> InputProcessorStepImpl(configuration, inputIterators);</span><br><span class="line">  <span class="comment">// 2. Converts the data like dictionary or non dictionary or complex objects depends on</span></span><br><span class="line">  <span class="comment">// data types and configurations.</span></span><br><span class="line">  AbstractDataLoadProcessorStep converterProcessorStep =</span><br><span class="line">      <span class="keyword">new</span> DataConverterProcessorStepImpl(configuration, inputProcessorStep);</span><br><span class="line">  <span class="comment">// 3. Sorts the data by SortColumn</span></span><br><span class="line">  AbstractDataLoadProcessorStep sortProcessorStep =</span><br><span class="line">      <span class="keyword">new</span> SortProcessorStepImpl(configuration, converterProcessorStep);</span><br><span class="line">  <span class="comment">// 4. Writes the sorted data in carbondata format.</span></span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> DataWriterProcessorStepImpl(configuration, sortProcessorStep);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/Application/">Application</a>
+  <a class="article-category-link" href="/categories/BigData/">BigData</a>
 </div>
 
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/project/">project</a><a href="/tags/recommendation/">recommendation</a>
+  <span></span> <a href="/tags/carbondata/">carbondata</a>
   </div>
 
 </div>
@@ -136,7 +128,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://kevinjmh.github.io/2017/04/12/Film-Recommendation/" data-title="Film-Recommendation | Manhua" data-tsina="null" class="share clearfix">
+	  <div data-url="http://kevinjmh.github.io/2021/04/10/carbon/load/" data-title="Carbondata加载逻辑 | Manhua" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -149,19 +141,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2017/04/12/Get-to-know-Cloud/" title="Get-to-know-Cloud">
-  <strong>上一篇：</strong><br/>
-  <span>
-  Get-to-know-Cloud</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2017/04/12/ContactSync/"  title="ContactSync">
+<a href="/2021/04/10/carbon/query/"  title="Carbondata查询逻辑">
  <strong>下一篇：</strong><br/> 
- <span>ContactSync
+ <span>Carbondata查询逻辑
 </span>
 </a>
 </div>

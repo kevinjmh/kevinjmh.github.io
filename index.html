@@ -80,16 +80,35 @@
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/2021/04/09/carbon/pr/" title="Carbondata PR" itemprop="url">
+    <a href="/2021/04/10/carbon/load/" title="Carbondata加载逻辑" itemprop="url">
   
-    <h1 itemprop="name">Carbondata PR</h1>
+    <h1 itemprop="name">Carbondata加载逻辑</h1>
     
      
-           <p itemprop="description" >CarbonFor each column stored in carbon, we will record min-max value in meta space called DataChunk.
-It is recommanded to set a proper colum</p>
+           <p itemprop="description" >入口加载命令的入口在CarbonLoadDataCommand，command的处理主要分为meta和data两部分的处理。数据加载主要在org.apache.carbondata.spark.rdd.CarbonDataRDDFactory#loadCarbonData实现，还</p>
         
     
-    <time datetime="2021-04-09T20:15:10.000Z" itemprop="datePublished">2021-04-09</time>
+    <time datetime="2021-04-10T20:15:10.000Z" itemprop="datePublished">2021-04-10</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/2021/04/10/carbon/query/" title="Carbondata查询逻辑" itemprop="url">
+  
+    <h1 itemprop="name">Carbondata查询逻辑</h1>
+    
+     
+           <p itemprop="description" >入口CarbonSession继承SparkSession，查询时我们使用的是CarbonSession。12345678override def sql(sqlText: String): DataFrame = &amp;#123;  withProfiler(    sqlText</p>
+        
+    
+    <time datetime="2021-04-10T20:15:10.000Z" itemprop="datePublished">2021-04-10</time>
   </a>
 </section>
 
@@ -109,6 +128,27 @@ It is recommanded to set a proper colum</p>
            <p itemprop="description" >What is carbonCarbondata is an indexed columnar data format for fast analytics on big data platform, like parquet, orc.
 Reference Site
 Offic</p>
+        
+    
+    <time datetime="2021-04-09T20:15:10.000Z" itemprop="datePublished">2021-04-09</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/2021/04/09/carbon/pr/" title="Carbondata PR" itemprop="url">
+  
+    <h1 itemprop="name">Carbondata PR</h1>
+    
+     
+           <p itemprop="description" >CarbonFor each column stored in carbon, we will record min-max value in meta space called DataChunk.
+It is recommanded to set a proper colum</p>
         
     
     <time datetime="2021-04-09T20:15:10.000Z" itemprop="datePublished">2021-04-09</time>
@@ -262,57 +302,10 @@ htt</p>
 
 
 
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2017/04/12/Film-Recommendation/" title="Film-Recommendation" itemprop="url">
-  
-    <h1 itemprop="name">Film-Recommendation</h1>
-    
-     
-           <p itemprop="description" >任务描述• 这是一个经典的评分预测任务。 要求在训练数据上学习得到评分模型，然后预测Test 数据上给定用户对给定电影的评分。 系统评价由预测评分与实际评分的误差决定。
-• 除用户评分矩阵外，另有用户标记(tag)和电影元信息http://gucasir.org/SC/Proj/</p>
-        
-    
-    <time datetime="2017-04-12T16:14:10.000Z" itemprop="datePublished">2017-04-12</time>
-  </a>
-</section>
 
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2017/04/12/ContactSync/" title="ContactSync" itemprop="url">
-  
-    <h1 itemprop="name">ContactSync</h1>
-    
-     
-           <p itemprop="description" >Idea首先大家进入到同一群组，然后将自己的联系方式上传，组内的其他成员可以通过该软件即时获取他人信息，并且有同学更新信息时，其他人也可以自动获取更新信息，避免出现不能及时联系到其他人
-功能 AND 测试内容
-用户
-
-imei自动登录
-用户信息更新
-logout
-login
-
-
-</p>
-        
-    
-    <time datetime="2017-04-12T16:11:43.000Z" itemprop="datePublished">2017-04-12</time>
-  </a>
-</section>
-
-
-
-
-
-
+  <nav id="page-nav" class="clearfix unexpand">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next<span></span></a>
+  </nav>
 
 </div>
       <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
@@ -341,7 +334,7 @@ login
 		  
 		
 		  
-			<li><a href="/categories/BigData/" title="BigData">BigData<sup>2</sup></a></li>
+			<li><a href="/categories/BigData/" title="BigData">BigData<sup>4</sup></a></li>
 		  
 		
 		  
@@ -360,6 +353,10 @@ login
 <div class="tagslist">
 	<p class="asidetitle">Tags</p>
 		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/carbondata/" title="carbondata">carbondata<sup>3</sup></a></li>
+			
 		
 			
 				<li><a href="/tags/project/" title="project">project<sup>2</sup></a></li>
@@ -383,10 +380,6 @@ login
 		
 			
 				<li><a href="/tags/carbon/" title="carbon">carbon<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/carbondata/" title="carbondata">carbondata<sup>1</sup></a></li>
 			
 		
 			

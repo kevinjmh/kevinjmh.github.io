@@ -4,25 +4,25 @@
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
   
-    <title>Film-Recommendation | Manhua</title>
+    <title>Carbondata查询逻辑 | Manhua</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Manhua">
     
 
     
-    <meta name="description" content="任务描述• 这是一个经典的评分预测任务。 要求在训练数据上学习得到评分模型，然后预测Test 数据上给定用户对给定电影的评分。 系统评价由预测评分与实际评分的误差决定。 • 除用户评分矩阵外，另有用户标记(tag)和电影元信息http://gucasir.org/SC/Proj/MovieRecTask.tbz 解压命令： tar jxvf MovieRecTask.tbz • 评分数据 (分为r">
-<meta name="keywords" content="project,recommendation">
+    <meta name="description" content="入口CarbonSession继承SparkSession，查询时我们使用的是CarbonSession。12345678override def sql(sqlText: String): DataFrame = &amp;#123;  withProfiler(    sqlText,    (qe, sse) =&amp;gt; &amp;#123;        new Dataset[Row](self, qe">
+<meta name="keywords" content="carbondata">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Film-Recommendation">
-<meta property="og:url" content="http://kevinjmh.github.io/2017/04/12/Film-Recommendation/index.html">
+<meta property="og:title" content="Carbondata查询逻辑">
+<meta property="og:url" content="http://kevinjmh.github.io/2021/04/10/carbon/query/index.html">
 <meta property="og:site_name" content="Manhua">
-<meta property="og:description" content="任务描述• 这是一个经典的评分预测任务。 要求在训练数据上学习得到评分模型，然后预测Test 数据上给定用户对给定电影的评分。 系统评价由预测评分与实际评分的误差决定。 • 除用户评分矩阵外，另有用户标记(tag)和电影元信息http://gucasir.org/SC/Proj/MovieRecTask.tbz 解压命令： tar jxvf MovieRecTask.tbz • 评分数据 (分为r">
+<meta property="og:description" content="入口CarbonSession继承SparkSession，查询时我们使用的是CarbonSession。12345678override def sql(sqlText: String): DataFrame = &amp;#123;  withProfiler(    sqlText,    (qe, sse) =&amp;gt; &amp;#123;        new Dataset[Row](self, qe">
 <meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2021-04-14T10:52:43.245Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Film-Recommendation">
-<meta name="twitter:description" content="任务描述• 这是一个经典的评分预测任务。 要求在训练数据上学习得到评分模型，然后预测Test 数据上给定用户对给定电影的评分。 系统评价由预测评分与实际评分的误差决定。 • 除用户评分矩阵外，另有用户标记(tag)和电影元信息http://gucasir.org/SC/Proj/MovieRecTask.tbz 解压命令： tar jxvf MovieRecTask.tbz • 评分数据 (分为r">
+<meta name="twitter:title" content="Carbondata查询逻辑">
+<meta name="twitter:description" content="入口CarbonSession继承SparkSession，查询时我们使用的是CarbonSession。12345678override def sql(sqlText: String): DataFrame = &amp;#123;  withProfiler(    sqlText,    (qe, sse) =&amp;gt; &amp;#123;        new Dataset[Row](self, qe">
 <meta name="twitter:creator" content="@jiangmanhua">
 
     
@@ -83,14 +83,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2017/04/12/Film-Recommendation/" title="Film-Recommendation" itemprop="url">Film-Recommendation</a>
+      <a href="/2021/04/10/carbon/query/" title="Carbondata查询逻辑" itemprop="url">Carbondata查询逻辑</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="Manhua" target="_blank" itemprop="author">Manhua</a>
 		
   <p class="article-time">
-    <time datetime="2017-04-12T16:14:10.000Z" itemprop="datePublished"> Published 2017-04-12</time>
+    <time datetime="2021-04-10T20:15:10.000Z" itemprop="datePublished"> Published 2021-04-10</time>
     
   </p>
 </header>
@@ -99,35 +99,43 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#任务描述"><span class="toc-number">1.</span> <span class="toc-text">任务描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#评价指标"><span class="toc-number">2.</span> <span class="toc-text">评价指标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析"><span class="toc-number">3.</span> <span class="toc-text">分析</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#入口"><span class="toc-number">1.</span> <span class="toc-text">入口</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#查询"><span class="toc-number">2.</span> <span class="toc-text">查询</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CarbonScanRDD"><span class="toc-number">3.</span> <span class="toc-text">CarbonScanRDD</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#internalGetPartitions"><span class="toc-number">3.1.</span> <span class="toc-text">internalGetPartitions</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#internalCompute"><span class="toc-number">3.2.</span> <span class="toc-text">internalCompute</span></a></li></ol></li></ol>
 		
 		</div>
 		
-		<h2 id="任务描述"><a href="#任务描述" class="headerlink" title="任务描述"></a>任务描述</h2><p>• 这是一个经典的评分预测任务。 要求在训练数据上学习得到评分模型，然后预测Test 数据上给定用户对给定电影的评分。 系统评价由预测评分与实际评分的误差决定。</p>
-<p>• 除用户评分矩阵外，另有用户标记(tag)和电影元信息<br><a href="http://gucasir.org/SC/Proj/MovieRecTask.tbz" target="_blank" rel="noopener">http://gucasir.org/SC/Proj/MovieRecTask.tbz</a></p>
-<p>解压命令： tar jxvf MovieRecTask.tbz</p>
-<p>• 评分数据 (分为ra.train和ra.test两个文件)UserID::MovieID::Rating::Timestamp</p>
-<p>– 任务需预测的是ra.test文件中的Rating数据</p>
-<p>– 注意：不得使用 ra.test文件中的Rating进行训练！</p>
-<p>• 标签数据 (tags.dat) UserID::MovieID::Tag::Timestamp</p>
-<p>• 电影元信息数据 (movies.dat) MovieID::Title::Genres</p>
-<p>• 数据描述详见README.html</p>
-<h2 id="评价指标"><a href="#评价指标" class="headerlink" title="评价指标"></a>评价指标</h2><p>RMSE(Root Mean Squared Error),结果取四舍五入小数点后4位,精确到0.0001。</p>
-<p>例如，参赛者的算法预测用户对某电影的预测评分是Y,而用户对此电影的实际评分是X，那么所得的RMSE=sqrt(sum(for all items(XY)^2)/n)</p>
-<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2>  
+		<h1 id="入口"><a href="#入口" class="headerlink" title="入口"></a>入口</h1><p>CarbonSession继承SparkSession，查询时我们使用的是CarbonSession。<br><figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">def</span> <span class="title">sql</span></span>(sqlText: <span class="type">String</span>): <span class="type">DataFrame</span> = &#123;</span><br><span class="line">  withProfiler(</span><br><span class="line">    sqlText,</span><br><span class="line">    (qe, sse) =&gt; &#123;</span><br><span class="line">        <span class="keyword">new</span> <span class="type">Dataset</span>[<span class="type">Row</span>](self, qe, <span class="type">RowEncoder</span>(qe.analyzed.schema))</span><br><span class="line">    &#125;</span><br><span class="line">  )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这里除了增加withProfiler用于统计耗时外与SparkSQL原来的处理实质是一样的，只是为了获取时间调整了一下代码。</p>
+<p>在withProfiler中有一行代码实现string解析成LogicalPlan：</p>
+<p><code>val logicalPlan = sessionState.sqlParser.parsePlan(sqlText)</code></p>
+<p>关键的地方在于CarbonSessionStateBuilder修改了sqlParser，使用Carbondata自定义的实现，具体的语法定义在CarbonSpark2SqlParser（处理carbon独有的命令）。所以要修改、增减命令的话都是要在这里处理，另外还有一部分在DDLStrategy（这是因为部分命令与spark原有的冲突，这里判断是carbon表后进行处理实现的替换）。</p>
+<blockquote>
+<p>Carbon2.0开始通过CarbonExtensions使用Extension的方式注入</p>
+</blockquote>
+<h1 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h1><p>对查询计划的优化调整可以看QueryExecution的实现，最终就是转换成RDD执行获取结果。</p>
+<p>和sqlParser类似，在CarbonSessionStateBuilder修改了extraStrategies使用Carbondata自定义的CarbonLateDecodeStrategy，CarbonLateDecodeStrategy中通过CarbonDatasourceHadoopRelation.buildScan得到CarbonScanRDD。</p>
+<p>CarbonLateDecodeStrategy包含一些优化的预处理，从类名上可知还涉及到字典编码列的延迟解码。延迟解码的好处在于只对最终结果的数据解码，减少了不必要的计算。</p>
+<h1 id="CarbonScanRDD"><a href="#CarbonScanRDD" class="headerlink" title="CarbonScanRDD"></a>CarbonScanRDD</h1><p>CarbonScanRDD是carbon自定义的RDD实现，所以关注点主要也在RDD的getPartitions和compute两个方法。</p>
+<p>由于CarbonScanRDD继承CarbonRDD，且CarbonRDD做了简单的封装，所以我们要看的internalGetPartitions和internalCompute。</p>
+<p>需要说明的是，到了CarbonScanRDD说明正在读carbon表的数据，而sql的其余逻辑是不涉及的。</p>
+<h2 id="internalGetPartitions"><a href="#internalGetPartitions" class="headerlink" title="internalGetPartitions"></a>internalGetPartitions</h2><p>决定了多少个查询任务从carbon表中获取数据。</p>
+<p>重点函数：distributeColumnarSplits，它基于本地性和策略实现对任务的合并调整，策略包括custom、block（文件）、blocklet、merge_small_files</p>
+<h2 id="internalCompute"><a href="#internalCompute" class="headerlink" title="internalCompute"></a>internalCompute</h2><p>单个任务的数据读取，常用的是VectorizedCarbonRecordReader，一条或者一批的记录返回。</p>
+<p>记录的获取通过QueryExecutor实现，使用迭代器获取数据。具体的读取数据就结合前面提及的format定义相关类。</p>
+<p>BlockletFilterScanner、BlockletFullScanner中则是真正涉及读操作的部分，还包含了filter处理跳过不必要数据的实现。</p>
+  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/Application/">Application</a>
+  <a class="article-category-link" href="/categories/BigData/">BigData</a>
 </div>
 
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/project/">project</a><a href="/tags/recommendation/">recommendation</a>
+  <span></span> <a href="/tags/carbondata/">carbondata</a>
   </div>
 
 </div>
@@ -136,7 +144,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://kevinjmh.github.io/2017/04/12/Film-Recommendation/" data-title="Film-Recommendation | Manhua" data-tsina="null" class="share clearfix">
+	  <div data-url="http://kevinjmh.github.io/2021/04/10/carbon/query/" data-title="Carbondata查询逻辑 | Manhua" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -150,18 +158,18 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2017/04/12/Get-to-know-Cloud/" title="Get-to-know-Cloud">
+ <a href="/2021/04/10/carbon/load/" title="Carbondata加载逻辑">
   <strong>上一篇：</strong><br/>
   <span>
-  Get-to-know-Cloud</span>
+  Carbondata加载逻辑</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/2017/04/12/ContactSync/"  title="ContactSync">
+<a href="/2021/04/09/carbon/1_carbon/"  title="Day 1 to Carbondata">
  <strong>下一篇：</strong><br/> 
- <span>ContactSync
+ <span>Day 1 to Carbondata
 </span>
 </a>
 </div>
