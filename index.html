@@ -81,21 +81,19 @@
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/2021/09/26/Cluster-setup/" title="Cluster-setup" itemprop="url">
+    <a href="/2022/01/20/System/VM-dev-env/" title="vm" itemprop="url">
   
-    <h1 itemprop="name">Cluster-setup</h1>
+    <h1 itemprop="name">vm</h1>
     
      
-           <p itemprop="description" >cluster-setupBIOS config for Disk
-SystemDisk Raid 1
-JBOD
-
-OSon demand, ubuntu\fedora\centos\suse\redhat
-root passwordsudo passwd root
-ssh123</p>
+           <p itemprop="description" >编译环境
+new vm(vbox)同时连通本机和外网-两张网卡nat+hostonly
+install: jdk,maven https://maven.apache.org/download.cgi
+set maven mirror:
+123456&amp;lt;mirror&amp;gt; </p>
         
     
-    <time datetime="2021-09-26T16:11:43.000Z" itemprop="datePublished">2021-09-26</time>
+    <time datetime="2022-01-20T14:11:43.000Z" itemprop="datePublished">2022-01-20</time>
   </a>
 </section>
 
@@ -107,15 +105,16 @@ ssh123</p>
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/2021/04/10/carbon/load/" title="Carbondata加载逻辑" itemprop="url">
+    <a href="/2022/01/20/Tools/TF-ML/" title="TF-ML" itemprop="url">
   
-    <h1 itemprop="name">Carbondata加载逻辑</h1>
+    <h1 itemprop="name">TF-ML</h1>
     
      
-           <p itemprop="description" >入口加载命令的入口在CarbonLoadDataCommand，command的处理主要分为meta和data两部分的处理。数据加载主要在org.apache.carbondata.spark.rdd.CarbonDataRDDFactory#loadCarbonData实现，还</p>
+           <p itemprop="description" >https://tensorflow.google.cn/resources/learn-ml/theoretical-and-advanced-machine-learning?hl=zh-cn
+https://tensorflow.google.cn/tutorials/ke</p>
         
     
-    <time datetime="2021-04-10T20:15:10.000Z" itemprop="datePublished">2021-04-10</time>
+    <time datetime="2022-01-20T14:11:43.000Z" itemprop="datePublished">2022-01-20</time>
   </a>
 </section>
 
@@ -127,16 +126,16 @@ ssh123</p>
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/2021/04/10/carbon/query/" title="Carbondata查询逻辑" itemprop="url">
+    <a href="/2022/01/20/Tools/android/" title="android" itemprop="url">
   
-    <h1 itemprop="name">Carbondata查询逻辑</h1>
+    <h1 itemprop="name">android</h1>
     
      
-           <p itemprop="description" >入口CarbonSession继承SparkSession，查询时我们使用的是CarbonSession。
-12345678override def sql(sqlText: String): DataFrame = &amp;#123;  withProfiler(    sqlTex</p>
+           <p itemprop="description" >获取控件信息
+连接C:\Users\Manhua\AppData\Local\Android\Sdk\platform-tools\adb.exe connect 127.0.0.1:620012.截图后鼠标指向即可C:\Users\Manhua\AppData\Local\An</p>
         
     
-    <time datetime="2021-04-10T20:15:10.000Z" itemprop="datePublished">2021-04-10</time>
+    <time datetime="2022-01-20T14:11:43.000Z" itemprop="datePublished">2022-01-20</time>
   </a>
 </section>
 
@@ -148,17 +147,19 @@ ssh123</p>
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/2021/04/09/carbon/1_carbon/" title="Day 1 to Carbondata" itemprop="url">
+    <a href="/2022/01/20/Tools/dolphinscheduler/" title="dolphinscheduler" itemprop="url">
   
-    <h1 itemprop="name">Day 1 to Carbondata</h1>
+    <h1 itemprop="name">dolphinscheduler</h1>
     
      
-           <p itemprop="description" >What is carbonCarbondata is an indexed columnar data format for fast analytics on big data platform, like parquet, orc.
-Reference Site
-Offic</p>
+           <p itemprop="description" >dolphinscheduler调度情况报表t_ds_process_instance关键字段
+
+name(流程名+时间戳)
+process_definition_id （可关联得流程名）
+state （流程实例状态：0 提交成功,1 正在运行,2 准备暂停,3 暂停,4 准备停</p>
         
     
-    <time datetime="2021-04-09T20:15:10.000Z" itemprop="datePublished">2021-04-09</time>
+    <time datetime="2022-01-20T14:11:43.000Z" itemprop="datePublished">2022-01-20</time>
   </a>
 </section>
 
@@ -170,16 +171,17 @@ Offic</p>
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/2021/04/09/carbon/pr/" title="Carbondata PR" itemprop="url">
+    <a href="/2022/01/20/Tools/doris/" title="doris" itemprop="url">
   
-    <h1 itemprop="name">Carbondata PR</h1>
+    <h1 itemprop="name">doris</h1>
     
      
-           <p itemprop="description" >CarbonFor each column stored in carbon, we will record min-max value in meta space called DataChunk.
-It is recommanded to set a proper colum</p>
+           <p itemprop="description" >FE(Frontend)  1-5台（分为 Follower 和 Observer），存储元数据，包括日志和 image，通常从几百 MB 到几个 GB 不等。
+BE(Backend)  10-100台，存放用户数据。3副本。
+Broker 是用于访问外部数据源（如 hdfs）的</p>
         
     
-    <time datetime="2021-04-09T20:15:10.000Z" itemprop="datePublished">2021-04-09</time>
+    <time datetime="2022-01-20T14:11:43.000Z" itemprop="datePublished">2022-01-20</time>
   </a>
 </section>
 
@@ -191,17 +193,17 @@ It is recommanded to set a proper colum</p>
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/2017/04/13/spark/spark/" title="Spark" itemprop="url">
+    <a href="/2022/01/20/Tools/elasticsearch/" title="elasticsearch" itemprop="url">
   
-    <h1 itemprop="name">Spark</h1>
+    <h1 itemprop="name">elasticsearch</h1>
     
      
-           <p itemprop="description" >Spark简单之美 | RDD：基于内存的集群计算容错抽象
-Spark on YarnSpark 官方提供了三种集群部署方案： Standalone, Mesos, YARN，区别就在于资源管理调度平台不同。
-想在已有的Hadoop集群上使用Spark，实现Spark on Ya</p>
+           <p itemprop="description" >baiscindex → dbtype → tabledocument → row
+https://www.cnblogs.com/TianFang/p/12945202.htmltext支持分词  keyword不进行分词
+installhttps://www.elastic.</p>
         
     
-    <time datetime="2017-04-13T15:13:13.000Z" itemprop="datePublished">2017-04-13</time>
+    <time datetime="2022-01-20T14:11:43.000Z" itemprop="datePublished">2022-01-20</time>
   </a>
 </section>
 
@@ -213,18 +215,20 @@ Spark on YarnSpark 官方提供了三种集群部署方案： Standalone, Mesos,
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/2017/04/13/docker/" title="Docker" itemprop="url">
+    <a href="/2022/01/20/Tools/flink/" title="flink" itemprop="url">
   
-    <h1 itemprop="name">Docker</h1>
+    <h1 itemprop="name">flink</h1>
     
      
-           <p itemprop="description" >免sudo运行问题：
-默认安装完 docker 后，每次执行 docker 都需要运行 sudo 命令，非常浪费时间影响效率
-解决方案：
-将用户加入该docker的group内，重新打开终端。Add the connected user “${USER}” to the dock</p>
+           <p itemprop="description" >flinkFlink applications code -&amp;gt; JobGraph -&amp;gt; JobManager -&amp;gt; TaskManagers
+环境
+
+ExecutionEnvironment
+StreamExecutionEnvironment
+TableEnv</p>
         
     
-    <time datetime="2017-04-13T14:11:43.000Z" itemprop="datePublished">2017-04-13</time>
+    <time datetime="2022-01-20T14:11:43.000Z" itemprop="datePublished">2022-01-20</time>
   </a>
 </section>
 
@@ -236,22 +240,17 @@ Spark on YarnSpark 官方提供了三种集群部署方案： Standalone, Mesos,
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/2017/04/12/Resources/" title="Resources常用资源" itemprop="url">
+    <a href="/2022/01/20/Tools/hdfs/" title="hdfs" itemprop="url">
   
-    <h1 itemprop="name">Resources常用资源</h1>
+    <h1 itemprop="name">hdfs</h1>
     
      
-           <p itemprop="description" >常用软件OSMSDN itellyouUSTC Mirror
-Internet
-世界之窗
-Firefox
-Firefox pcx
-Vivaldi
-
-123456789wget https://dl.google.com/linux/direct/google-chrome-sta</p>
+           <p itemprop="description" >文件保护删除hdfs删除逻辑为，路径上所有需要删除的文件节点的父目录有w权限
+即：即使A用户是根目录的所有者，只要A创建/允许创建了B用户的目录且该目录下有数据，只要A不是超级用户则不能删除。注意若该目录下无文件，则该目录依然能被删除。
+操作方式启动：使用hdfs用户启动hado</p>
         
     
-    <time datetime="2017-04-12T16:25:49.000Z" itemprop="datePublished">2017-04-12</time>
+    <time datetime="2022-01-20T14:11:43.000Z" itemprop="datePublished">2022-01-20</time>
   </a>
 </section>
 
@@ -263,18 +262,16 @@ Vivaldi
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/2017/04/12/QA-on-Linux/" title="QA-on-Linux" itemprop="url">
+    <a href="/2022/01/20/Tools/kylin /" title="kylin" itemprop="url">
   
-    <h1 itemprop="name">QA-on-Linux</h1>
+    <h1 itemprop="name">kylin</h1>
     
      
-           <p itemprop="description" >Linux ProblemsI’m in Mint可以把 http://www.cnblogs.com/manhua/p/3631046.html 删除了
-
-Install下载-镜像地址http://mirrors.ustc.edu.cn/ubuntu-releases/
-htt</p>
+           <p itemprop="description" >在126搭建新组件服务：
+kylin 4.0.0hadoop 3.2.2spark 3.2.0  - 代码写死支持spark2.4/3.1.  修改kylin.sh 环境变量的SPARK_HOME=/data/soft/kylin/sparkhttp://mirrors.ustc</p>
         
     
-    <time datetime="2017-04-12T16:24:02.000Z" itemprop="datePublished">2017-04-12</time>
+    <time datetime="2022-01-20T14:11:43.000Z" itemprop="datePublished">2022-01-20</time>
   </a>
 </section>
 
@@ -286,20 +283,18 @@ htt</p>
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/2017/04/12/Markdown-Note/" title="Markdown-Note" itemprop="url">
+    <a href="/2022/01/20/Tools/metabase/" title="metabase" itemprop="url">
   
-    <h1 itemprop="name">Markdown-Note</h1>
+    <h1 itemprop="name">metabase</h1>
     
      
-           <p itemprop="description" >段落和换行「由一个或多个连续的文本行组成」这句话其实暗示了 Markdown 允许段落内的强迫换行（插入换行符）,so如果你确实想要依赖 Markdown 来插入换行标签的话，在插入处先按入两个以上的空格然后回车
-标题#标题一
-##标题二
-###标题三
-####标题四
-#####</p>
+           <p itemprop="description" >应用只用于单纯查询数据+展示
+账号邮箱+密码
+日志创建自定义配置文件 log4j2.xml
+12345678910111213141516171819202122232425262728&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot</p>
         
     
-    <time datetime="2017-04-12T16:23:14.000Z" itemprop="datePublished">2017-04-12</time>
+    <time datetime="2022-01-20T14:11:43.000Z" itemprop="datePublished">2022-01-20</time>
   </a>
 </section>
 
@@ -310,7 +305,7 @@ htt</p>
 
 
   <nav id="page-nav" class="clearfix unexpand">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next&lt;span&gt;&lt;&#x2F;span&gt;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next&lt;span&gt;&lt;&#x2F;span&gt;</a>
   </nav>
 
 </div>
@@ -344,7 +339,7 @@ htt</p>
 		  
 		
 		  
-			<li><a href="/categories/CheatSheet/" title="CheatSheet">CheatSheet<sup>2</sup></a></li>
+			<li><a href="/categories/CheatSheet/" title="CheatSheet">CheatSheet<sup>16</sup></a></li>
 		  
 		
 		  
@@ -369,11 +364,11 @@ htt</p>
 			
 		
 			
-				<li><a href="/tags/hadoop/" title="hadoop">hadoop<sup>1</sup></a></li>
+				<li><a href="/tags/software/" title="software">software<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/recommendation/" title="recommendation">recommendation<sup>1</sup></a></li>
+				<li><a href="/tags/hadoop/" title="hadoop">hadoop<sup>1</sup></a></li>
 			
 		
 			
@@ -381,11 +376,11 @@ htt</p>
 			
 		
 			
-				<li><a href="/tags/software/" title="software">software<sup>1</sup></a></li>
+				<li><a href="/tags/docker/" title="docker">docker<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/docker/" title="docker">docker<sup>1</sup></a></li>
+				<li><a href="/tags/recommendation/" title="recommendation">recommendation<sup>1</sup></a></li>
 			
 		
 			
