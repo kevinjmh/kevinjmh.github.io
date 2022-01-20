@@ -1,7 +1,7 @@
 
  <!DOCTYPE HTML>
-<html>
-<head><meta name="generator" content="Hexo 3.9.0">
+<html lang="en">
+<head>
   <meta charset="UTF-8">
   
     <title>Docker | Manhua</title>
@@ -12,17 +12,17 @@
 
     
     <meta name="description" content="免sudo运行问题： 默认安装完 docker 后，每次执行 docker 都需要运行 sudo 命令，非常浪费时间影响效率 解决方案： 将用户加入该docker的group内，重新打开终端。Add the connected user “${USER}” to the docker group. 12sudo gpasswd -a $&amp;#123;USER&amp;#125; dockersudo ser">
-<meta name="keywords" content="docker">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Docker">
 <meta property="og:url" content="http://kevinjmh.github.io/2017/04/13/docker/index.html">
 <meta property="og:site_name" content="Manhua">
 <meta property="og:description" content="免sudo运行问题： 默认安装完 docker 后，每次执行 docker 都需要运行 sudo 命令，非常浪费时间影响效率 解决方案： 将用户加入该docker的group内，重新打开终端。Add the connected user “${USER}” to the docker group. 12sudo gpasswd -a $&amp;#123;USER&amp;#125; dockersudo ser">
-<meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2021-09-26T06:33:15.042Z">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2017-04-13T14:11:43.000Z">
+<meta property="article:modified_time" content="2022-01-20T07:15:12.718Z">
+<meta property="article:author" content="Manhua">
+<meta property="article:tag" content="docker">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Docker">
-<meta name="twitter:description" content="免sudo运行问题： 默认安装完 docker 后，每次执行 docker 都需要运行 sudo 命令，非常浪费时间影响效率 解决方案： 将用户加入该docker的group内，重新打开终端。Add the connected user “${USER}” to the docker group. 12sudo gpasswd -a $&amp;#123;USER&amp;#125; dockersudo ser">
 <meta name="twitter:creator" content="@jiangmanhua">
 
     
@@ -35,9 +35,11 @@
     <link rel="apple-touch-icon" href="/img/pacman.jpg">
     <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
     
-    <link rel="stylesheet" href="/css/style.css">
-</head>
-</html>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.0.0"></head>
+
   <body>
     <header>
       
@@ -99,7 +101,7 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#免sudo运行"><span class="toc-number">1.</span> <span class="toc-text">免sudo运行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#容器内网络问题"><span class="toc-number">2.</span> <span class="toc-text">容器内网络问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#慎用latest标签"><span class="toc-number">3.</span> <span class="toc-text">慎用latest标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#替换更新源"><span class="toc-number">4.</span> <span class="toc-text">替换更新源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#docker建wordpress"><span class="toc-number">5.</span> <span class="toc-text">docker建wordpress</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常用命令"><span class="toc-number">6.</span> <span class="toc-text">常用命令</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%8Dsudo%E8%BF%90%E8%A1%8C"><span class="toc-number">1.</span> <span class="toc-text">免sudo运行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%B9%E5%99%A8%E5%86%85%E7%BD%91%E7%BB%9C%E9%97%AE%E9%A2%98"><span class="toc-number">2.</span> <span class="toc-text">容器内网络问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%85%8E%E7%94%A8latest%E6%A0%87%E7%AD%BE"><span class="toc-number">3.</span> <span class="toc-text">慎用latest标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9B%BF%E6%8D%A2%E6%9B%B4%E6%96%B0%E6%BA%90"><span class="toc-number">4.</span> <span class="toc-text">替换更新源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#docker%E5%BB%BAwordpress"><span class="toc-number">5.</span> <span class="toc-text">docker建wordpress</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-number">6.</span> <span class="toc-text">常用命令</span></a></li></ol>
 		
 		</div>
 		
@@ -108,6 +110,7 @@
 <p><strong>解决方案：</strong></p>
 <p>将用户加入该docker的group内，重新打开终端。<br>Add the connected user “${USER}” to the docker group.</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo gpasswd -a $&#123;USER&#125; docker</span><br><span class="line">sudo service docker restart</span><br></pre></td></tr></table></figure>
+
 <h3 id="容器内网络问题"><a href="#容器内网络问题" class="headerlink" title="容器内网络问题"></a>容器内网络问题</h3><p><strong>问题：</strong></p>
 <p>Docker Daemon默认给Docker Container的DNS设置为8.8.8.8和8.8.4.4，但在国内这两个DNS服务不稳定，由此影响到网络。</p>
 <p><strong>解决方案：</strong></p>
@@ -115,14 +118,19 @@
 <li>临时方案：使用docker run命令启动容器的时候，设定–dns参数，如：</li>
 </ol>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it --dns=172.20.1.4 ubuntu</span><br></pre></td></tr></table></figure>
+
 <ol start="2">
 <li>全局修改：以上临时方案仅适用于docker run命令，docker build因为没有dns参数所以不能效仿。</li>
 </ol>
 <p>编辑<code>/etc/default/docker</code>添加–dns参数到Docker Daemon的<code>DOCKER_OPTS</code>。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/default/docker</span><br><span class="line"><span class="meta">#</span><span class="bash"> 末尾添加 DOCKER_OPTS=<span class="string">"--dns 172.20.1.4"</span></span></span><br><span class="line">sudo service docker stop</span><br><span class="line">sudo service docker start</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/default/docker</span><br><span class="line"><span class="meta">#</span><span class="bash"> 末尾添加 DOCKER_OPTS=<span class="string">&quot;--dns 172.20.1.4&quot;</span></span></span><br><span class="line">sudo service docker stop</span><br><span class="line">sudo service docker start</span><br></pre></td></tr></table></figure>
+
 <h3 id="慎用latest标签"><a href="#慎用latest标签" class="headerlink" title="慎用latest标签"></a>慎用latest标签</h3><p><code>latest</code>并不是永久赋予某一特定Docker镜像的标签，在t1使用<code>latest</code>镜像，应用容器运行正常;t2使用同一个<code>Dockerfile</code>来build镜像再运行应用容器，失效。<br>比如t1时ubuntu镜像的<code>latest</code>标签于<code>ubuntu:14.04</code>，t2时该latest标签属于<code>ubuntu:16.04</code>。因此Docker镜像建议使用指定的tag</p>
-<h3 id="替换更新源"><a href="#替换更新源" class="headerlink" title="替换更新源"></a>替换更新源</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/'   /etc/apt/sources.list</span><br><span class="line">apt-get update</span><br><span class="line">apt-get install vim -y</span><br></pre></td></tr></table></figure>
+<h3 id="替换更新源"><a href="#替换更新源" class="headerlink" title="替换更新源"></a>替换更新源</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sed -i &#x27;s/archive.ubuntu.com/mirrors.ustc.edu.cn/&#x27;   /etc/apt/sources.list</span><br><span class="line">apt-get update</span><br><span class="line">apt-get install vim -y</span><br></pre></td></tr></table></figure>
+
 <h3 id="docker建wordpress"><a href="#docker建wordpress" class="headerlink" title="docker建wordpress"></a>docker建wordpress</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker run --name wp-mysql -e MYSQL_ROOT_PASSWORD=root -d mysql:5.7</span><br><span class="line">docker run --name my-wordpress --link wp-mysql:mysql -p 8080:80 -d -e WORDPRESS_DB_PASSWORD=root wordpress</span><br></pre></td></tr></table></figure>
+
+
 <h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><p>镜像管理</p>
 <ul>
 <li>docker search ubuntu   搜索镜像</li>
@@ -138,12 +146,14 @@
 <li>docker run 其他参数<blockquote>
 <ul>
 <li>-name testContainer 指定容器名称</li>
+</ul>
+</blockquote>
+<ul>
 <li>-p 80:80 指定端口映射</li>
 <li>-P 随机端口，可通过docker port <code>ID/name</code> 查看</li>
 <li>-it 交互</li>
 <li>-d 后台运行，可通过docker attach <code>ID/name</code>连接容器</li>
 </ul>
-</blockquote>
 </li>
 </ul>
 <p>容器管理</p>
@@ -180,7 +190,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://kevinjmh.github.io/2017/04/13/docker/" data-title="Docker | Manhua" data-tsina="null" class="share clearfix">
+	  <div data-url="http://kevinjmh.github.io/2017/04/13/docker/" data-title="Docker | Manhua" data-tsina="" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -354,7 +364,7 @@
 		
 
 		<p class="copyright">
-		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2021 
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2022 
 		
 		<a href="/about" target="_blank" title="Manhua">Manhua</a>
 		

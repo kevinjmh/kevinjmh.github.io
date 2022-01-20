@@ -1,7 +1,7 @@
 
  <!DOCTYPE HTML>
-<html>
-<head><meta name="generator" content="Hexo 3.9.0">
+<html lang="en">
+<head>
   <meta charset="UTF-8">
   
     <title>Spark | Manhua</title>
@@ -11,18 +11,18 @@
     
 
     
-    <meta name="description" content="Spark简单之美 | RDD：基于内存的集群计算容错抽象 Spark on YarnSpark 官方提供了三种集群部署方案： Standalone, Mesos, YARN，区别就在于资源管理调度平台不同。 想在已有的Hadoop集群上使用Spark，实现Spark on Yarn只需修改配置文件vi ./conf/spark-env.sh添加以下内容  export HADOOP_HOME=/">
-<meta name="keywords" content="spark">
+    <meta name="description" content="Spark简单之美 | RDD：基于内存的集群计算容错抽象 Spark on YarnSpark 官方提供了三种集群部署方案： Standalone, Mesos, YARN，区别就在于资源管理调度平台不同。 想在已有的Hadoop集群上使用Spark，实现Spark on Yarn只需修改配置文件vi .&#x2F;conf&#x2F;spark-env.sh添加以下内容  export HADOOP_HOME&#x3D;&#x2F;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Spark">
 <meta property="og:url" content="http://kevinjmh.github.io/2017/04/13/spark/spark/index.html">
 <meta property="og:site_name" content="Manhua">
-<meta property="og:description" content="Spark简单之美 | RDD：基于内存的集群计算容错抽象 Spark on YarnSpark 官方提供了三种集群部署方案： Standalone, Mesos, YARN，区别就在于资源管理调度平台不同。 想在已有的Hadoop集群上使用Spark，实现Spark on Yarn只需修改配置文件vi ./conf/spark-env.sh添加以下内容  export HADOOP_HOME=/">
-<meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2021-09-26T06:33:15.042Z">
+<meta property="og:description" content="Spark简单之美 | RDD：基于内存的集群计算容错抽象 Spark on YarnSpark 官方提供了三种集群部署方案： Standalone, Mesos, YARN，区别就在于资源管理调度平台不同。 想在已有的Hadoop集群上使用Spark，实现Spark on Yarn只需修改配置文件vi .&#x2F;conf&#x2F;spark-env.sh添加以下内容  export HADOOP_HOME&#x3D;&#x2F;">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2017-04-13T15:13:13.000Z">
+<meta property="article:modified_time" content="2022-01-20T07:15:12.718Z">
+<meta property="article:author" content="Manhua">
+<meta property="article:tag" content="spark">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Spark">
-<meta name="twitter:description" content="Spark简单之美 | RDD：基于内存的集群计算容错抽象 Spark on YarnSpark 官方提供了三种集群部署方案： Standalone, Mesos, YARN，区别就在于资源管理调度平台不同。 想在已有的Hadoop集群上使用Spark，实现Spark on Yarn只需修改配置文件vi ./conf/spark-env.sh添加以下内容  export HADOOP_HOME=/">
 <meta name="twitter:creator" content="@jiangmanhua">
 
     
@@ -35,9 +35,11 @@
     <link rel="apple-touch-icon" href="/img/pacman.jpg">
     <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
     
-    <link rel="stylesheet" href="/css/style.css">
-</head>
-</html>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.0.0"></head>
+
   <body>
     <header>
       
@@ -99,11 +101,11 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Spark"><span class="toc-number">1.</span> <span class="toc-text">Spark</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Spark-on-Yarn"><span class="toc-number">2.</span> <span class="toc-text">Spark on Yarn</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#测试代码"><span class="toc-number">3.</span> <span class="toc-text">测试代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pycharm访问spark"><span class="toc-number">4.</span> <span class="toc-text">pycharm访问spark</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-安装py4j"><span class="toc-number">4.0.1.</span> <span class="toc-text">1. 安装py4j</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-配置环境变量"><span class="toc-number">4.0.2.</span> <span class="toc-text">2. 配置环境变量</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-关联Spark和Hadoop"><span class="toc-number">4.0.3.</span> <span class="toc-text">3. 关联Spark和Hadoop</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-windows上的问题。"><span class="toc-number">4.0.4.</span> <span class="toc-text">4. windows上的问题。</span></a></li></ol></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Spark"><span class="toc-number">1.</span> <span class="toc-text">Spark</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Spark-on-Yarn"><span class="toc-number">2.</span> <span class="toc-text">Spark on Yarn</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E4%BB%A3%E7%A0%81"><span class="toc-number">3.</span> <span class="toc-text">测试代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pycharm%E8%AE%BF%E9%97%AEspark"><span class="toc-number">4.</span> <span class="toc-text">pycharm访问spark</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E5%AE%89%E8%A3%85py4j"><span class="toc-number">4.0.1.</span> <span class="toc-text">1. 安装py4j</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-number">4.0.2.</span> <span class="toc-text">2. 配置环境变量</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-%E5%85%B3%E8%81%94Spark%E5%92%8CHadoop"><span class="toc-number">4.0.3.</span> <span class="toc-text">3. 关联Spark和Hadoop</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-windows%E4%B8%8A%E7%9A%84%E9%97%AE%E9%A2%98%E3%80%82"><span class="toc-number">4.0.4.</span> <span class="toc-text">4. windows上的问题。</span></a></li></ol></li></ol></li></ol>
 		
 		</div>
 		
-		<h3 id="Spark"><a href="#Spark" class="headerlink" title="Spark"></a>Spark</h3><p><a href="http://shiyanjun.cn/archives/744.html" target="_blank" rel="noopener">简单之美 | RDD：基于内存的集群计算容错抽象</a></p>
+		<h3 id="Spark"><a href="#Spark" class="headerlink" title="Spark"></a>Spark</h3><p><a target="_blank" rel="noopener" href="http://shiyanjun.cn/archives/744.html">简单之美 | RDD：基于内存的集群计算容错抽象</a></p>
 <h3 id="Spark-on-Yarn"><a href="#Spark-on-Yarn" class="headerlink" title="Spark on Yarn"></a>Spark on Yarn</h3><p>Spark 官方提供了三种集群部署方案： Standalone, Mesos, YARN，区别就在于资源管理调度平台不同。</p>
 <p>想在已有的Hadoop集群上使用Spark，实现Spark on Yarn只需修改配置文件<code>vi ./conf/spark-env.sh</code>添加以下内容</p>
 <blockquote>
@@ -115,71 +117,74 @@
 <thead>
 <tr>
 <th>参数名称</th>
-<th style="text-align:right">含义   </th>
+<th align="right">含义</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td> –master MASTER_URL</td>
-<td style="text-align:right">可以是spark://host:port, mesos://host:port, yarn,  yarn-cluster,yarn-client, local</td>
+<tbody><tr>
+<td>–master MASTER_URL</td>
+<td align="right">可以是spark://host:port, mesos://host:port, yarn,  yarn-cluster,yarn-client, local</td>
 </tr>
 <tr>
-<td> –deploy-mode DEPLOY_MODE</td>
-<td style="text-align:right">Driver程序运行的地方，client或者cluster</td>
+<td>–deploy-mode DEPLOY_MODE</td>
+<td align="right">Driver程序运行的地方，client或者cluster</td>
 </tr>
 <tr>
-<td> –class CLASS_NAME</td>
-<td style="text-align:right">主类名称，含包名</td>
+<td>–class CLASS_NAME</td>
+<td align="right">主类名称，含包名</td>
 </tr>
 <tr>
 <td>–name NAME</td>
-<td style="text-align:right">Application名称</td>
+<td align="right">Application名称</td>
 </tr>
 <tr>
 <td>–jars JARS</td>
-<td style="text-align:right">Driver依赖的第三方jar包</td>
+<td align="right">Driver依赖的第三方jar包</td>
 </tr>
 <tr>
 <td>–py-files PY_FILES</td>
-<td style="text-align:right">用逗号隔开的放置在Python应用程序PYTHONPATH上的.zip,  .egg, .py文件列表</td>
+<td align="right">用逗号隔开的放置在Python应用程序PYTHONPATH上的.zip,  .egg, .py文件列表</td>
 </tr>
 <tr>
 <td>–files FILES</td>
-<td style="text-align:right">用逗号隔开的要放置在每个executor工作目录的文件列表</td>
+<td align="right">用逗号隔开的要放置在每个executor工作目录的文件列表</td>
 </tr>
 <tr>
 <td>–executor-memory MEM</td>
-<td style="text-align:right">executor内存大小，默认1G</td>
+<td align="right">executor内存大小，默认1G</td>
 </tr>
 <tr>
 <td>–total-executor-cores NUM</td>
-<td style="text-align:right">executor使用的总核数，仅限于Spark Alone、Spark on Mesos模式</td>
+<td align="right">executor使用的总核数，仅限于Spark Alone、Spark on Mesos模式</td>
 </tr>
 <tr>
 <td>–executor-cores NUM</td>
-<td style="text-align:right">每个executor使用的内核数，默认为1，仅限于Spark on Yarn模式</td>
+<td align="right">每个executor使用的内核数，默认为1，仅限于Spark on Yarn模式</td>
 </tr>
 <tr>
 <td>–queue QUEUE_NAME</td>
-<td style="text-align:right">提交应用程序给哪个YARN的队列，默认是default队列，仅限于Spark on Yarn模式</td>
+<td align="right">提交应用程序给哪个YARN的队列，默认是default队列，仅限于Spark on Yarn模式</td>
 </tr>
 <tr>
 <td>–num-executors NUM</td>
-<td style="text-align:right">启动的executor数量，默认是2个，仅限于Spark on Yarn模式</td>
+<td align="right">启动的executor数量，默认是2个，仅限于Spark on Yarn模式</td>
 </tr>
-</tbody>
-</table>
-<p>更多内容，见<a href="http://www.cnblogs.com/manhua/p/5145225.html" target="_blank" rel="noopener">博客文章</a></p>
+</tbody></table>
+<p>更多内容，见<a target="_blank" rel="noopener" href="http://www.cnblogs.com/manhua/p/5145225.html">博客文章</a></p>
 <h3 id="测试代码"><a href="#测试代码" class="headerlink" title="测试代码"></a>测试代码</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./bin/spark-submit --master yarn --name spark-test --class org.apache.spark.examples.SparkPi lib/spark-examples*.jar 10</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># -*- coding: UTF-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># test_spark.py</span></span><br><span class="line"><span class="keyword">from</span> pyspark <span class="keyword">import</span> SparkContext</span><br><span class="line"></span><br><span class="line">logFile = <span class="string">"C:\spark-2.0.2-bin-hadoop2.6\README.md"</span></span><br><span class="line">sc = SparkContext(<span class="string">"local"</span>,<span class="string">"Simple App"</span>)</span><br><span class="line">logData = sc.textFile(logFile).cache()</span><br><span class="line"></span><br><span class="line">numAs = logData.filter(<span class="keyword">lambda</span> s: <span class="string">'a'</span> <span class="keyword">in</span> s).count()</span><br><span class="line">numBs = logData.filter(<span class="keyword">lambda</span> s: <span class="string">'b'</span> <span class="keyword">in</span> s).count()</span><br><span class="line"></span><br><span class="line">print(<span class="string">"Lines with a: %i, lines with b: %i"</span>%(numAs, numBs))</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># -*- coding: UTF-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># testDFrame.py</span></span><br><span class="line"><span class="keyword">from</span> pyspark.sql <span class="keyword">import</span> SparkSession</span><br><span class="line"><span class="keyword">from</span> pyspark.sql <span class="keyword">import</span> Row</span><br><span class="line"><span class="keyword">from</span> pyspark.sql.types <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line">reload(sys)</span><br><span class="line">sys.setdefaultencoding(<span class="string">"utf-8"</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">schema_inference_example</span><span class="params">(spark)</span>:</span></span><br><span class="line">    sc = spark.sparkContext</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Load a text file and convert each line to a Row.</span></span><br><span class="line">    lines = sc.textFile(<span class="string">"/user/jiangmanhua/Experiment/url_domain_labeled"</span>)</span><br><span class="line">    parts = lines.map(<span class="keyword">lambda</span> l: l.split(<span class="string">"\t"</span>))</span><br><span class="line">    label = parts.map(<span class="keyword">lambda</span> p: Row(label_name=p[<span class="number">0</span>], type=p[<span class="number">1</span>]))</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Infer the schema, and register the DataFrame as a table.</span></span><br><span class="line">    schemaPeople = spark.createDataFrame(label)</span><br><span class="line">    schemaPeople.createOrReplaceTempView(<span class="string">"label"</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># SQL can be run over DataFrames that have been registered as a table.</span></span><br><span class="line">    teenagers = spark.sql(<span class="string">"SELECT type, count(label_name) as cc FROM label group by type"</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># The results of SQL queries are Dataframe objects.</span></span><br><span class="line">    <span class="comment"># rdd returns the content as an :class:`pyspark.RDD` of :class:`Row`.</span></span><br><span class="line">    teenNames = teenagers.rdd.map(<span class="keyword">lambda</span> p: <span class="string">"Name: "</span> + p.type + <span class="string">"cnt: "</span> + str(p.cc)).collect()</span><br><span class="line">    <span class="keyword">for</span> name <span class="keyword">in</span> teenNames:</span><br><span class="line">        print(name)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    spark = SparkSession \</span><br><span class="line">        .builder \</span><br><span class="line">        .appName(<span class="string">"Python Spark SQL basic example"</span>) \</span><br><span class="line">        .config(<span class="string">"spark.some.config.option"</span>, <span class="string">"some-value"</span>) \</span><br><span class="line">        .getOrCreate()</span><br><span class="line">    schema_inference_example(spark)</span><br><span class="line"></span><br><span class="line">    spark.stop()</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># -*- coding: UTF-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># test_spark.py</span></span><br><span class="line"><span class="keyword">from</span> pyspark <span class="keyword">import</span> SparkContext</span><br><span class="line"></span><br><span class="line">logFile = <span class="string">&quot;C:\spark-2.0.2-bin-hadoop2.6\README.md&quot;</span></span><br><span class="line">sc = SparkContext(<span class="string">&quot;local&quot;</span>,<span class="string">&quot;Simple App&quot;</span>)</span><br><span class="line">logData = sc.textFile(logFile).cache()</span><br><span class="line"></span><br><span class="line">numAs = logData.<span class="built_in">filter</span>(<span class="keyword">lambda</span> s: <span class="string">&#x27;a&#x27;</span> <span class="keyword">in</span> s).count()</span><br><span class="line">numBs = logData.<span class="built_in">filter</span>(<span class="keyword">lambda</span> s: <span class="string">&#x27;b&#x27;</span> <span class="keyword">in</span> s).count()</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Lines with a: %i, lines with b: %i&quot;</span>%(numAs, numBs))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># -*- coding: UTF-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># testDFrame.py</span></span><br><span class="line"><span class="keyword">from</span> pyspark.sql <span class="keyword">import</span> SparkSession</span><br><span class="line"><span class="keyword">from</span> pyspark.sql <span class="keyword">import</span> Row</span><br><span class="line"><span class="keyword">from</span> pyspark.sql.types <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line">reload(sys)</span><br><span class="line">sys.setdefaultencoding(<span class="string">&quot;utf-8&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">schema_inference_example</span>(<span class="params">spark</span>):</span></span><br><span class="line">    sc = spark.sparkContext</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Load a text file and convert each line to a Row.</span></span><br><span class="line">    lines = sc.textFile(<span class="string">&quot;/user/jiangmanhua/Experiment/url_domain_labeled&quot;</span>)</span><br><span class="line">    parts = lines.<span class="built_in">map</span>(<span class="keyword">lambda</span> l: l.split(<span class="string">&quot;\t&quot;</span>))</span><br><span class="line">    label = parts.<span class="built_in">map</span>(<span class="keyword">lambda</span> p: Row(label_name=p[<span class="number">0</span>], <span class="built_in">type</span>=p[<span class="number">1</span>]))</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Infer the schema, and register the DataFrame as a table.</span></span><br><span class="line">    schemaPeople = spark.createDataFrame(label)</span><br><span class="line">    schemaPeople.createOrReplaceTempView(<span class="string">&quot;label&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># SQL can be run over DataFrames that have been registered as a table.</span></span><br><span class="line">    teenagers = spark.sql(<span class="string">&quot;SELECT type, count(label_name) as cc FROM label group by type&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># The results of SQL queries are Dataframe objects.</span></span><br><span class="line">    <span class="comment"># rdd returns the content as an :class:`pyspark.RDD` of :class:`Row`.</span></span><br><span class="line">    teenNames = teenagers.rdd.<span class="built_in">map</span>(<span class="keyword">lambda</span> p: <span class="string">&quot;Name: &quot;</span> + p.<span class="built_in">type</span> + <span class="string">&quot;cnt: &quot;</span> + <span class="built_in">str</span>(p.cc)).collect()</span><br><span class="line">    <span class="keyword">for</span> name <span class="keyword">in</span> teenNames:</span><br><span class="line">        <span class="built_in">print</span>(name)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    spark = SparkSession \</span><br><span class="line">        .builder \</span><br><span class="line">        .appName(<span class="string">&quot;Python Spark SQL basic example&quot;</span>) \</span><br><span class="line">        .config(<span class="string">&quot;spark.some.config.option&quot;</span>, <span class="string">&quot;some-value&quot;</span>) \</span><br><span class="line">        .getOrCreate()</span><br><span class="line">    schema_inference_example(spark)</span><br><span class="line"></span><br><span class="line">    spark.stop()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
 <h3 id="pycharm访问spark"><a href="#pycharm访问spark" class="headerlink" title="pycharm访问spark"></a>pycharm访问spark</h3><h5 id="1-安装py4j"><a href="#1-安装py4j" class="headerlink" title="1. 安装py4j"></a>1. 安装py4j</h5><p>主要两个步骤：安装py4j、配置路径</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> Windows</span></span><br><span class="line">pip install py4j</span><br><span class="line"><span class="meta">#</span><span class="bash"> Linux</span></span><br><span class="line">sudo pip2 install py4j</span><br></pre></td></tr></table></figure>
-<h5 id="2-配置环境变量"><a href="#2-配置环境变量" class="headerlink" title="2. 配置环境变量"></a>2. 配置环境变量</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">HADOOP_HOME = C:\hadoop-2.6.5</span><br><span class="line">SPARK_HOME = C:\spark-2.0.2-bin-hadoop2.6</span><br></pre></td></tr></table></figure>
+
+<h5 id="2-配置环境变量"><a href="#2-配置环境变量" class="headerlink" title="2. 配置环境变量"></a>2. 配置环境变量</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">HADOOP_HOME = C:\hadoop-2.6.5</span><br><span class="line">SPARK_HOME = C:\spark-2.0.2-bin-hadoop2.6</span><br></pre></td></tr></table></figure>
 <p>也可以在pycharm中选择“Run” -&gt;“Edit Configurations” -&gt;“Environment variables” 增加SPARK_HOME目录以及HADOOP_HOME目录</p>
 <h5 id="3-关联Spark和Hadoop"><a href="#3-关联Spark和Hadoop" class="headerlink" title="3. 关联Spark和Hadoop"></a>3. 关联Spark和Hadoop</h5><p> 在<code>$PYTHON_HOME\lib\site-packages</code>下新建<code>pyspark.pth</code>文件内容为pyspark的目录 (如<code>D:\spark-2.0.2-bin-hadoop2.6\python</code>)</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># Linux</span><br><span class="line">echo /home/manhua/app/spark/python &gt; /home/manhua/.local/lib/python2.7/site-packages/pyspark.pth</span><br></pre></td></tr></table></figure>
-<h5 id="4-windows上的问题。"><a href="#4-windows上的问题。" class="headerlink" title="4. windows上的问题。"></a>4. windows上的问题。</h5><p>下载<a href="https://github.com/srccodes/hadoop-common-2.2.0-bin/tree/master/bin" target="_blank" rel="noopener">winutils.exe</a>放到C:\hadoop-2.6.5\bin</p>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># Linux</span><br><span class="line">echo /home/manhua/app/spark/python &gt; /home/manhua/.local/lib/python2.7/site-packages/pyspark.pth  </span><br></pre></td></tr></table></figure>
+<h5 id="4-windows上的问题。"><a href="#4-windows上的问题。" class="headerlink" title="4. windows上的问题。"></a>4. windows上的问题。</h5><p>下载<a target="_blank" rel="noopener" href="https://github.com/srccodes/hadoop-common-2.2.0-bin/tree/master/bin">winutils.exe</a>放到C:\hadoop-2.6.5\bin</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -202,7 +207,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://kevinjmh.github.io/2017/04/13/spark/spark/" data-title="Spark | Manhua" data-tsina="null" class="share clearfix">
+	  <div data-url="http://kevinjmh.github.io/2017/04/13/spark/spark/" data-title="Spark | Manhua" data-tsina="" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -376,7 +381,7 @@
 		
 
 		<p class="copyright">
-		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2021 
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2022 
 		
 		<a href="/about" target="_blank" title="Manhua">Manhua</a>
 		
