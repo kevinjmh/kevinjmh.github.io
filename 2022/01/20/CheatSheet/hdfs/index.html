@@ -1,0 +1,574 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>hdfs | Manhua</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Manhua">
+    
+
+    
+    <meta name="description" content="文件保护删除hdfs删除逻辑为，路径上所有需要删除的文件节点的父目录有w权限 即：即使A用户是根目录的所有者，只要A创建&#x2F;允许创建了B用户的目录且该目录下有数据，只要A不是超级用户则不能删除。注意若该目录下无文件，则该目录依然能被删除。 操作方式启动：使用hdfs用户启动hadoop服务 任务部署：ds， 上传jar包、运行任务都将以hadoop运行，生产是数据hadoop写出为755 个人调试&#x2F;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hdfs">
+<meta property="og:url" content="http://kevinjmh.github.io/2022/01/20/CheatSheet/hdfs/index.html">
+<meta property="og:site_name" content="Manhua">
+<meta property="og:description" content="文件保护删除hdfs删除逻辑为，路径上所有需要删除的文件节点的父目录有w权限 即：即使A用户是根目录的所有者，只要A创建&#x2F;允许创建了B用户的目录且该目录下有数据，只要A不是超级用户则不能删除。注意若该目录下无文件，则该目录依然能被删除。 操作方式启动：使用hdfs用户启动hadoop服务 任务部署：ds， 上传jar包、运行任务都将以hadoop运行，生产是数据hadoop写出为755 个人调试&#x2F;">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-01-20T14:11:43.000Z">
+<meta property="article:modified_time" content="2022-01-28T03:25:09.885Z">
+<meta property="article:author" content="Manhua">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:creator" content="@jiangmanhua">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Manhua" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="Manhua" title="Manhua"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Manhua">Manhua</a></h1>
+				<h2 class="blog-motto">Never Say Die</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页 | Home</a></li>
+					
+						<li><a href="/archives">归档 | Archives</a></li>
+					
+						<li><a href="/about">简介 | About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:kevinjmh.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2022/01/20/CheatSheet/hdfs/" title="hdfs" itemprop="url">hdfs</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Manhua" target="_blank" itemprop="author">Manhua</a>
+		
+  <p class="article-time">
+    <time datetime="2022-01-20T14:11:43.000Z" itemprop="datePublished"> Published 2022-01-20</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E4%BF%9D%E6%8A%A4%E5%88%A0%E9%99%A4"><span class="toc-number">1.</span> <span class="toc-text">文件保护删除</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E6%96%B9%E5%BC%8F"><span class="toc-number">1.1.</span> <span class="toc-text">操作方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E6%9D%83%E9%99%90"><span class="toc-number">1.2.</span> <span class="toc-text">配置权限</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#hadoop-policy-xml"><span class="toc-number">2.</span> <span class="toc-text">hadoop-policy.xml</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#yarn-site"><span class="toc-number">3.</span> <span class="toc-text">yarn-site</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%B7%A8%E9%9B%86%E7%BE%A4%E5%A4%8D%E5%88%B6"><span class="toc-number">4.</span> <span class="toc-text">跨集群复制</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95%E5%AE%B9%E9%87%8F%E9%99%90%E5%88%B6"><span class="toc-number">4.1.</span> <span class="toc-text">目录容量限制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#webhdfs%E4%BD%BF%E7%94%A8"><span class="toc-number">4.2.</span> <span class="toc-text">webhdfs使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%BA%E6%9E%B6%E6%84%9F%E7%9F%A5"><span class="toc-number">4.3.</span> <span class="toc-text">机架感知</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E6%96%87%E4%BB%B6%E5%90%88%E5%B9%B6"><span class="toc-number">4.4.</span> <span class="toc-text">小文件合并</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9F%AD%E8%B7%AF%E8%AF%BB"><span class="toc-number">4.5.</span> <span class="toc-text">短路读</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<h1 id="文件保护删除"><a href="#文件保护删除" class="headerlink" title="文件保护删除"></a>文件保护删除</h1><p>hdfs删除逻辑为，路径上所有需要删除的文件节点的父目录有w权限</p>
+<p>即：即使A用户是根目录的所有者，只要A创建/允许创建了B用户的目录且该目录下有数据，只要A不是超级用户则不能删除。注意若该目录下无文件，则该目录依然能被删除。</p>
+<h2 id="操作方式"><a href="#操作方式" class="headerlink" title="操作方式"></a>操作方式</h2><p>启动：使用hdfs用户启动hadoop服务</p>
+<p>任务部署：ds， 上传jar包、运行任务都将以hadoop运行，生产是数据hadoop写出为755</p>
+<p>个人调试/查看数据：可以本地执行hadoop/spark/flink命令执行</p>
+<p>数据保护：定期修改关键数据为hdfs用户下755，只有hdfs可删除文件</p>
+<p>hdfs dfs -chown hdfs xxx<br>#hdfs dfs -chmod  -R 755 xxx</p>
+<h2 id="配置权限"><a href="#配置权限" class="headerlink" title="配置权限"></a>配置权限</h2><p>hdfs dfs -getfacl /</p>
+<p>单个用户设置权限<br>hdfs dfs -setfacl -m user:jiangmanhua:rwx /hive/warehouse/label.db</p>
+<h1 id="hadoop-policy-xml"><a href="#hadoop-policy-xml" class="headerlink" title="hadoop-policy.xml"></a>hadoop-policy.xml</h1><p>yarn rmadmin -refreshServiceAcl<br>hadoop dfsadmin -refreshServiceAcl</p>
+<p>基础开关<br>hadoop.security.authorization=true</p>
+<p>控制提交任务/ JobTracker<br>security.job.client.protocol.acl</p>
+<p>访问HDFS /NameNode<br>security.client.protocol.acl</p>
+<h1 id="yarn-site"><a href="#yarn-site" class="headerlink" title="yarn-site"></a>yarn-site</h1><p>开启yarn ACLs:<br>hadoop: core-site.xml<br>hadoop.security.authorization=true  #开启服务级别验证,否则hadoop组件的acl设置不生效<br>yarn: yarn-site.xml<br><property><br><name>yarn.acl.enable</name><br><value>true</value><br></property><br><property><br><name>yarn.admin.acl</name><br><value>hdfs</value><br></property></p>
+<p>$ vi $HADOOP_CONF_DIR/capacity-scheduler.xml<br>$ yarn rmadmin -refreshQueues</p>
+<p>yarn.scheduler.capacity.root.<queue-path>.acl_submit_applications</p>
+<h1 id="跨集群复制"><a href="#跨集群复制" class="headerlink" title="跨集群复制"></a>跨集群复制</h1><p>[Test case from new cluster]</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hadoop distcp hdfs://ip:9000/hive/spark-jars/metrics-core-4.1.1.jar /</span><br><span class="line">hadoop distcp /spark/lib/HikariCP-2.5.1.jar  hdfs://ip:9000/</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="目录容量限制"><a href="#目录容量限制" class="headerlink" title="目录容量限制"></a>目录容量限制</h2><p>hdfs dfs -count -q -h /tmp/a<br>目录个数，文件个数，文件总计大小</p>
+<p>文件数量<br>hdfs dfsadmin -setQuota 2 /tmp/a<br>清除限制<br>hdfs dfsadmin -clrQuota /tmp/a</p>
+<p>文件大小<br>hdfs dfsadmin -setSpaceQuota 5M /tmp/a<br>清除限制<br>hdfs dfsadmin -clrSpaceQuota /tmp/a</p>
+<h2 id="webhdfs使用"><a href="#webhdfs使用" class="headerlink" title="webhdfs使用"></a>webhdfs使用</h2><p><a target="_blank" rel="noopener" href="http://10.17.41.126:50070/explorer.html#/">http://10.17.41.126:50070/explorer.html#/</a></p>
+<p>user.name=hadoop</p>
+<p>List</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -i  &quot;http://10.17.41.126:50070/webhdfs/v1/opendata?op=LISTSTATUS&quot;</span><br></pre></td></tr></table></figure>
+
+<p>Create</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -i -X PUT &quot;http://10.17.41.126:50070/webhdfs/v1/opendata/testFile?op=CREATE&amp;overwrite=false&amp;replication=1&quot;</span><br></pre></td></tr></table></figure>
+
+<p>返回datanode信息：<br><a target="_blank" rel="noopener" href="http://lgjf-zyc6-hcy-svr553.cmic:50075/webhdfs/v1/opendata/testFile?op=CREATE&amp;namenoderpcaddress=LGJF-ZYC6-HCY-SVR553:9000&amp;createflag=&amp;createparent=true&amp;overwrite=false&amp;replication=1">http://LGJF-ZYC6-HCY-SVR553.cmic:50075/webhdfs/v1/opendata/testFile?op=CREATE&amp;namenoderpcaddress=LGJF-ZYC6-HCY-SVR553:9000&amp;createflag=&amp;createparent=true&amp;overwrite=false&amp;replication=1</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -i -X PUT -T &lt;LOCAL_FILE&gt; &quot;http://LGJF-ZYC6-HCY-SVR553.cmic:50075/webhdfs/v1/opendata/testFile?&amp;op=CREATE&amp;namenoderpcaddress=LGJF-ZYC6-HCY-SVR553:9000&amp;createflag=&amp;createparent=true&amp;overwrite=false&amp;replication=1&quot;</span><br></pre></td></tr></table></figure>
+<p>脚本化可参考：<a target="_blank" rel="noopener" href="https://github.com/pensz/hdfs_tools/tree/master/shell">https://github.com/pensz/hdfs_tools/tree/master/shell</a></p>
+<p>控制容量 <a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_30338481/article/details/94915052">https://blog.csdn.net/weixin_30338481/article/details/94915052</a></p>
+<h2 id="机架感知"><a href="#机架感知" class="headerlink" title="机架感知"></a>机架感知</h2><p>core-default.xml中增加配置</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;property&gt; </span><br><span class="line">&lt;name&gt;net.topology.script.file.name&lt;/name&gt; </span><br><span class="line">&lt;value&gt;/home/rack_topology.sh&lt;/value&gt; </span><br><span class="line">&lt;/property&gt; </span><br></pre></td></tr></table></figure>
+
+<p>rack_topology.sh</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">TOPO=/mnt/d/topology.data</span><br><span class="line"></span><br><span class="line">while [ $# -gt 0 ] ; do</span><br><span class="line">  nodeArg=$1</span><br><span class="line">  result=`awk -v var=$&#123;nodeArg&#125; &#x27;$1 == var &#123;print $2&#125;&#x27; $&#123;TOPO&#125;`</span><br><span class="line">  shift</span><br><span class="line">  if [ -z &quot;$result&quot; ] ; then</span><br><span class="line">    echo -n &quot;/default/rack &quot;</span><br><span class="line">  else</span><br><span class="line">    echo -n &quot;$result &quot;</span><br><span class="line">  fi</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+
+<p>topology.data</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hadoopdata1.com     /dc1/rack1</span><br><span class="line">hadoopdata1         /dc1/rack1</span><br><span class="line">10.1.1.1            /dc1/rack2</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import sys</span><br><span class="line">rack = &#123;dn178.tj&quot;:&quot;rack1&quot;,</span><br><span class="line">        dn187.tj&quot;:&quot;rack2&quot;</span><br><span class="line">        &quot;192.168.1.178&quot;:&quot;rack1&quot;,</span><br><span class="line">        &quot;192.168.1.187&quot;:&quot;rack2&quot;,</span><br><span class="line">        &#125;</span><br><span class="line">if __name__==&quot;__main__&quot;:</span><br><span class="line">    print &quot;/&quot; + rack.get(sys.argv[1],&quot;rack0&quot;)</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="小文件合并"><a href="#小文件合并" class="headerlink" title="小文件合并"></a>小文件合并</h2><p><a target="_blank" rel="noopener" href="http://hadoop.apache.org/docs/current/hadoop-archives/HadoopArchives.html">http://hadoop.apache.org/docs/current/hadoop-archives/HadoopArchives.html</a></p>
+<h2 id="短路读"><a href="#短路读" class="headerlink" title="短路读"></a>短路读</h2><p><a target="_blank" rel="noopener" href="https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/ShortCircuitLocalReads.html">https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/ShortCircuitLocalReads.html</a><br><a target="_blank" rel="noopener" href="https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/NativeLibraries.html">https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/NativeLibraries.html</a></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/CheatSheet/">CheatSheet</a>
+</div>
+
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://kevinjmh.github.io/2022/01/20/CheatSheet/hdfs/" data-title="hdfs | Manhua" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2022/01/20/CheatSheet/hbase/" title="hbase">
+  <strong>上一篇：</strong><br/>
+  <span>
+  hbase</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2022/01/20/CheatSheet/kylin /"  title="kylin">
+ <strong>下一篇：</strong><br/> 
+ <span>kylin
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github Card</p>
+<div class="github-card" data-github="kevinjmh" data-width="220" data-height="119" data-theme="medium">
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+  </div>
+
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Application/" title="Application">Application<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/BigData/" title="BigData">BigData<sup>5</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/CheatSheet/" title="CheatSheet">CheatSheet<sup>19</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Info/" title="Info">Info<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/carbondata/" title="carbondata">carbondata<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/project/" title="project">project<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/hadoop/" title="hadoop">hadoop<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/markdown/" title="markdown">markdown<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/docker/" title="docker">docker<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/software/" title="software">software<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/recommendation/" title="recommendation">recommendation<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/spark/" title="spark">spark<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/carbon/" title="carbon">carbon<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://www.cnblogs.com/manhua" target="_blank" title="cnBlogs">cnBlogs</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m Manhua Jiang. <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/443181876" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/kevinjmh" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		<a href="https://twitter.com/jiangmanhua" target="_blank" class="icon-twitter" title="twitter"></a>
+		
+		
+		<a href="https://www.facebook.com/jiangmanhua" target="_blank" class="icon-facebook" title="facebook"></a>
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2022 
+		
+		<a href="/about" target="_blank" title="Manhua">Manhua</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+        getSize();
+        if (myWidth >= 1024) {
+          c.click();
+        }
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

@@ -81,7 +81,50 @@
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/2022/01/20/Tools/metabase/" title="metabase" itemprop="url">
+    <a href="/2022/01/20/CheatSheet/hdfs/" title="hdfs" itemprop="url">
+  
+    <h1 itemprop="name">hdfs</h1>
+    
+     
+           <p itemprop="description" >文件保护删除hdfs删除逻辑为，路径上所有需要删除的文件节点的父目录有w权限
+即：即使A用户是根目录的所有者，只要A创建/允许创建了B用户的目录且该目录下有数据，只要A不是超级用户则不能删除。注意若该目录下无文件，则该目录依然能被删除。
+操作方式启动：使用hdfs用户启动hado</p>
+        
+    
+    <time datetime="2022-01-20T14:11:43.000Z" itemprop="datePublished">2022-01-20</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/2022/01/20/CheatSheet/kylin /" title="kylin" itemprop="url">
+  
+    <h1 itemprop="name">kylin</h1>
+    
+     
+           <p itemprop="description" >在126搭建新组件服务：
+kylin 4.0.0hadoop 3.2.2spark 3.2.0  - 代码写死支持spark2.4/3.1.  修改kylin.sh 环境变量的SPARK_HOME=/data/soft/kylin/sparkhttp://mirrors.ustc</p>
+        
+    
+    <time datetime="2022-01-20T14:11:43.000Z" itemprop="datePublished">2022-01-20</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/2022/01/20/CheatSheet/metabase/" title="metabase" itemprop="url">
   
     <h1 itemprop="name">metabase</h1>
     
@@ -104,7 +147,7 @@
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/2022/01/20/Tools/parquet/" title="parquet" itemprop="url">
+    <a href="/2022/01/20/CheatSheet/parquet/" title="parquet" itemprop="url">
   
     <h1 itemprop="name">parquet</h1>
     
@@ -127,7 +170,7 @@ org.apache.spark.sql.DataFrameWriter#save
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/2022/01/20/Tools/python/" title="python" itemprop="url">
+    <a href="/2022/01/20/CheatSheet/python/" title="python" itemprop="url">
   
     <h1 itemprop="name">python</h1>
     
@@ -153,7 +196,7 @@ curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/2022/01/20/Tools/windows/" title="windows" itemprop="url">
+    <a href="/2022/01/20/CheatSheet/windows/" title="windows" itemprop="url">
   
     <h1 itemprop="name">windows</h1>
     
@@ -173,7 +216,7 @@ curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/2022/01/20/Tools/yarn/" title="yarn" itemprop="url">
+    <a href="/2022/01/20/CheatSheet/yarn/" title="yarn" itemprop="url">
   
     <h1 itemprop="name">yarn</h1>
     
@@ -194,7 +237,31 @@ curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/2021/09/26/Tools/Cluster-setup/" title="Cluster-setup" itemprop="url">
+    <a href="/2022/01/20/System/VM-dev-env/" title="vm" itemprop="url">
+  
+    <h1 itemprop="name">vm</h1>
+    
+     
+           <p itemprop="description" >编译环境
+new vm(vbox)同时连通本机和外网-(两张网卡nat + hostonly)
+install: jdk,maven https://maven.apache.org/download.cgi
+set maven mirror:
+123456&amp;lt;mirror&amp;</p>
+        
+    
+    <time datetime="2022-01-20T14:11:43.000Z" itemprop="datePublished">2022-01-20</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/2021/09/26/CheatSheet/Cluster-setup/" title="Cluster-setup" itemprop="url">
   
     <h1 itemprop="name">Cluster-setup</h1>
     
@@ -219,7 +286,7 @@ root passwordsudo passwd ro</p>
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/2021/04/10/Tools/carbon/load/" title="Carbondata加载逻辑" itemprop="url">
+    <a href="/2021/04/10/Doc/carbon/load/" title="Carbondata加载逻辑" itemprop="url">
   
     <h1 itemprop="name">Carbondata加载逻辑</h1>
     
@@ -236,73 +303,9 @@ root passwordsudo passwd ro</p>
 
 
 
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2021/04/10/Tools/carbon/query/" title="Carbondata查询逻辑" itemprop="url">
-  
-    <h1 itemprop="name">Carbondata查询逻辑</h1>
-    
-     
-           <p itemprop="description" >入口CarbonSession继承SparkSession，查询时我们使用的是CarbonSession。
-12345678override def sql(sqlText: String): DataFrame = &amp;#123;  withProfiler(    sqlTex</p>
-        
-    
-    <time datetime="2021-04-10T20:15:10.000Z" itemprop="datePublished">2021-04-10</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2021/04/09/Tools/carbon/1_carbon/" title="Day 1 to Carbondata" itemprop="url">
-  
-    <h1 itemprop="name">Day 1 to Carbondata</h1>
-    
-     
-           <p itemprop="description" >What is carbonCarbondata is an indexed columnar data format for fast analytics on big data platform, like parquet, orc.
-Reference Site
-Offic</p>
-        
-    
-    <time datetime="2021-04-09T20:15:10.000Z" itemprop="datePublished">2021-04-09</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2021/04/09/Tools/carbon/pr/" title="Carbondata PR" itemprop="url">
-  
-    <h1 itemprop="name">Carbondata PR</h1>
-    
-     
-           <p itemprop="description" >CarbonFor each column stored in carbon, we will record min-max value in meta space called DataChunk.
-It is recommanded to set a proper colum</p>
-        
-    
-    <time datetime="2021-04-09T20:15:10.000Z" itemprop="datePublished">2021-04-09</time>
-  </a>
-</section>
-
-
-
-
-
-
 
   <nav id="page-nav" class="clearfix unexpand">
-    <a class="extend prev" rel="prev" href="/">&lt;span&gt;&lt;&#x2F;span&gt;Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next&lt;span&gt;&lt;&#x2F;span&gt;</a>
+    <a class="extend prev" rel="prev" href="/">&lt;span&gt;&lt;&#x2F;span&gt;Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">Next&lt;span&gt;&lt;&#x2F;span&gt;</a>
   </nav>
 
 </div>
@@ -332,11 +335,11 @@ It is recommanded to set a proper colum</p>
 		  
 		
 		  
-			<li><a href="/categories/BigData/" title="BigData">BigData<sup>4</sup></a></li>
+			<li><a href="/categories/BigData/" title="BigData">BigData<sup>5</sup></a></li>
 		  
 		
 		  
-			<li><a href="/categories/CheatSheet/" title="CheatSheet">CheatSheet<sup>17</sup></a></li>
+			<li><a href="/categories/CheatSheet/" title="CheatSheet">CheatSheet<sup>19</sup></a></li>
 		  
 		
 		  
@@ -361,10 +364,6 @@ It is recommanded to set a proper colum</p>
 			
 		
 			
-				<li><a href="/tags/software/" title="software">software<sup>1</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/hadoop/" title="hadoop">hadoop<sup>1</sup></a></li>
 			
 		
@@ -377,15 +376,19 @@ It is recommanded to set a proper colum</p>
 			
 		
 			
+				<li><a href="/tags/software/" title="software">software<sup>1</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/recommendation/" title="recommendation">recommendation<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/carbon/" title="carbon">carbon<sup>1</sup></a></li>
+				<li><a href="/tags/spark/" title="spark">spark<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/spark/" title="spark">spark<sup>1</sup></a></li>
+				<li><a href="/tags/carbon/" title="carbon">carbon<sup>1</sup></a></li>
 			
 		
 		</ul>
