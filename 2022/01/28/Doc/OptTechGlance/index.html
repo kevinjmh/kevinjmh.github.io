@@ -19,7 +19,7 @@
 <meta property="og:description" content="HDFS Short-Circuit Local Reads dfs.client.read.shortcircuit co-located client read data file directly bypass DataNode process    YARN Multi Local Dirs yarn.nodemanager.local-dirs use for multi local d">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-01-28T10:15:10.000Z">
-<meta property="article:modified_time" content="2022-01-28T03:25:09.885Z">
+<meta property="article:modified_time" content="2022-02-10T07:55:25.557Z">
 <meta property="article:author" content="Manhua">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:creator" content="@jiangmanhua">
@@ -100,7 +100,7 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#HDFS"><span class="toc-number">1.</span> <span class="toc-text">HDFS</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#YARN"><span class="toc-number">2.</span> <span class="toc-text">YARN</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Spark"><span class="toc-number">3.</span> <span class="toc-text">Spark</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Zero-Copy"><span class="toc-number">4.</span> <span class="toc-text">Zero-Copy</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#HDFS"><span class="toc-number">1.</span> <span class="toc-text">HDFS</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#YARN"><span class="toc-number">2.</span> <span class="toc-text">YARN</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Spark"><span class="toc-number">3.</span> <span class="toc-text">Spark</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Zero-Copy"><span class="toc-number">4.</span> <span class="toc-text">Zero-Copy</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#File-Format"><span class="toc-number">5.</span> <span class="toc-text">File Format</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Compress-Codec"><span class="toc-number">6.</span> <span class="toc-text">Compress Codec</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Data-Lake"><span class="toc-number">7.</span> <span class="toc-text">Data Lake</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#DB-query"><span class="toc-number">8.</span> <span class="toc-text">DB query</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Accelerate"><span class="toc-number">9.</span> <span class="toc-text">Accelerate</span></a></li></ol>
 		
 		</div>
 		
@@ -127,6 +127,7 @@
 <li>will not take advantage of JIT if compiled bytecode is too large (depending on JVM)</li>
 </ul>
 </li>
+<li>Delta Lake (storage level)</li>
 </ul>
 <h1 id="Zero-Copy"><a href="#Zero-Copy" class="headerlink" title="Zero-Copy"></a>Zero-Copy</h1><ul>
 <li>RDMA (hardware required)<ul>
@@ -137,6 +138,33 @@
 <li><a target="_blank" rel="noopener" href="https://github.com/F-Stack/f-stack">FStack</a> </li>
 </ul>
 </li>
+</ul>
+<h1 id="File-Format"><a href="#File-Format" class="headerlink" title="File Format"></a>File Format</h1><ul>
+<li>carbondata</li>
+<li>parquet</li>
+<li>orc</li>
+</ul>
+<h1 id="Compress-Codec"><a href="#Compress-Codec" class="headerlink" title="Compress Codec"></a>Compress Codec</h1><ul>
+<li>snappy</li>
+<li>lz4</li>
+<li>zstd</li>
+</ul>
+<h1 id="Data-Lake"><a href="#Data-Lake" class="headerlink" title="Data Lake"></a>Data Lake</h1><ul>
+<li>delta</li>
+<li>hudi (aims to streaming)</li>
+<li>iceberg</li>
+</ul>
+<h1 id="DB-query"><a href="#DB-query" class="headerlink" title="DB query"></a>DB query</h1><ul>
+<li>hive</li>
+<li>presto/trino</li>
+<li>impala</li>
+<li>greenplum</li>
+<li>clickhouse</li>
+<li>doris</li>
+</ul>
+<h1 id="Accelerate"><a href="#Accelerate" class="headerlink" title="Accelerate"></a>Accelerate</h1><ul>
+<li>alluxio</li>
+<li>ignite</li>
 </ul>
   
 	</div>
@@ -212,7 +240,7 @@
 		  
 		
 		  
-			<li><a href="/categories/CheatSheet/" title="CheatSheet">CheatSheet<sup>19</sup></a></li>
+			<li><a href="/categories/CheatSheet/" title="CheatSheet">CheatSheet<sup>20</sup></a></li>
 		  
 		
 		  
