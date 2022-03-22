@@ -4,19 +4,19 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>linux | Manhua</title>
+    <title>Shell | Manhua</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Manhua">
     
 
     
-    <meta name="description" content="fork: retry: Resource temporarily unavailable  12345678910111213141516&#x2F;etc&#x2F;security&#x2F;limits.d&#x2F;90-nproc.conf*          soft    nproc    65535hadoop     soft    nproc     257529root       soft    nproc">
+    <meta name="description" content="读取文件为参数12ans_lines&#x3D;&#96;sed -n 1p  $&amp;#123;verf_file&amp;#125;&#96;ans_md5&#x3D;&#96;sed -n 2p $&amp;#123;verf_file&amp;#125;&#96;  if-else1234567891011121314# value equalif [ $&amp;#123;ans_lines&amp;#125; -eq $&amp;#123;lines&amp;#125; ]then    ech">
 <meta property="og:type" content="article">
-<meta property="og:title" content="linux">
-<meta property="og:url" content="http://kevinjmh.github.io/2022/02/24/CheatSheet/linux-error/index.html">
+<meta property="og:title" content="Shell">
+<meta property="og:url" content="http://kevinjmh.github.io/2022/02/24/CheatSheet/Shell/index.html">
 <meta property="og:site_name" content="Manhua">
-<meta property="og:description" content="fork: retry: Resource temporarily unavailable  12345678910111213141516&#x2F;etc&#x2F;security&#x2F;limits.d&#x2F;90-nproc.conf*          soft    nproc    65535hadoop     soft    nproc     257529root       soft    nproc">
+<meta property="og:description" content="读取文件为参数12ans_lines&#x3D;&#96;sed -n 1p  $&amp;#123;verf_file&amp;#125;&#96;ans_md5&#x3D;&#96;sed -n 2p $&amp;#123;verf_file&amp;#125;&#96;  if-else1234567891011121314# value equalif [ $&amp;#123;ans_lines&amp;#125; -eq $&amp;#123;lines&amp;#125; ]then    ech">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-02-24T14:11:43.000Z">
 <meta property="article:modified_time" content="2022-03-22T03:42:13.901Z">
@@ -84,7 +84,7 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2022/02/24/CheatSheet/linux-error/" title="linux" itemprop="url">linux</a>
+      <a href="/2022/02/24/CheatSheet/Shell/" title="Shell" itemprop="url">Shell</a>
   </h1>
   <p class="article-author">By
        
@@ -100,38 +100,21 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-6"><a class="toc-link" href="#Python%EF%BC%9A%E4%BB%A5wb%E6%A8%A1%E5%BC%8F%E6%89%93%E5%BC%80%E6%96%87%E4%BB%B6"><span class="toc-number">1.</span> <span class="toc-text">Python：以wb模式打开文件</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6%E4%B8%BA%E5%8F%82%E6%95%B0"><span class="toc-number">1.</span> <span class="toc-text">读取文件为参数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#if-else"><span class="toc-number">2.</span> <span class="toc-text">if-else</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ftp"><span class="toc-number">3.</span> <span class="toc-text">ftp</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#loop-file-in-dir"><span class="toc-number">4.</span> <span class="toc-text">loop file in dir</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#tar"><span class="toc-number">5.</span> <span class="toc-text">tar</span></a></li></ol>
 		
 		</div>
 		
-		<ul>
-<li>fork: retry: Resource temporarily unavailable</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">/etc/security/limits.d/90-nproc.conf</span><br><span class="line"></span><br><span class="line">*          soft    nproc    65535</span><br><span class="line">hadoop     soft    nproc     257529</span><br><span class="line">root       soft    nproc     unlimited</span><br><span class="line"></span><br><span class="line">修改后重启进程</span><br><span class="line"></span><br><span class="line">其他信息查看命令：</span><br><span class="line"></span><br><span class="line">ps h -Led -o user | sort | uniq -c | sort -n</span><br><span class="line"></span><br><span class="line">ps -o nlwp,pid,lwp,args -u hadoop | sort -n</span><br><span class="line"></span><br><span class="line">第一列NLWP为线程数</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+		<h1 id="读取文件为参数"><a href="#读取文件为参数" class="headerlink" title="读取文件为参数"></a>读取文件为参数</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ans_lines=`sed -n 1p  $&#123;verf_file&#125;`</span><br><span class="line">ans_md5=`sed -n 2p $&#123;verf_file&#125;`</span><br></pre></td></tr></table></figure>
 
-<ul>
-<li> IllegalArgumentException at java.nio.CharBuffer.allocate(CharBuffer.java:334)</li>
-</ul>
-<p>原因： 单行数据过大</p>
-<p>问题复现：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// spark-shell + 本地，触发上述报错，获得文件和行号</span><br><span class="line">new org.apache.hadoop.io.Text(x)</span><br><span class="line">// 定位数据</span><br><span class="line">less +4828553 -N 2021090100_nda_0.txt</span><br><span class="line">// 过滤数据</span><br><span class="line">awk &#x27;&#123; if (length($0)&lt;10000) print $0&#125;&#x27; 2021090100_nda_0.txt &gt; filter_nda</span><br></pre></td></tr></table></figure>
+<h1 id="if-else"><a href="#if-else" class="headerlink" title="if-else"></a>if-else</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> value equal</span></span><br><span class="line">if [ $&#123;ans_lines&#125; -eq $&#123;lines&#125; ]</span><br><span class="line">then</span><br><span class="line">    echo &quot;lines is ok&quot;</span><br><span class="line">else</span><br><span class="line">    echo &quot;lines is not ok&quot;</span><br><span class="line">fi</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> file exist</span></span><br><span class="line">hdfs dfs -test -d $&#123;HDFS_path&#125;/wap</span><br><span class="line">if [ $? == 0 ]; then</span><br><span class="line">    hdfs dfs -rmr $&#123;HDFS_path&#125;/wap</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
 
-<ul>
-<li>欧元分隔符如何输出</li>
-</ul>
-<p>目标：输出GB2312编码的欧元符€</p>
-<p>方案：需要使用byte方式写出：（不能是char、string）</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">FileOutputStream fos = <span class="keyword">new</span> FileOutputStream(f);</span><br><span class="line"><span class="keyword">byte</span>[] bb = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">1</span>];</span><br><span class="line">bb[<span class="number">0</span>] = (<span class="keyword">byte</span>)<span class="number">0x80</span>; <span class="comment">// 即€</span></span><br><span class="line">fos.write(bb);</span><br><span class="line">fos.write(<span class="string">&quot;123abc中文&quot;</span>.getBytes(<span class="string">&quot;gb2312&quot;</span>));</span><br><span class="line">fos.flush();</span><br><span class="line">fos.close();</span><br></pre></td></tr></table></figure>
+<h1 id="ftp"><a href="#ftp" class="headerlink" title="ftp"></a>ftp</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">sftp_get_wap()</span><br><span class="line">&#123;</span><br><span class="line">    if [ -d $&#123;sftpLocal_wap&#125; ]; then</span><br><span class="line">       rm -rf $&#123;sftpLocal_wap&#125;</span><br><span class="line">    fi</span><br><span class="line">    mkdir -p $&#123;sftpLocal_wap&#125;</span><br><span class="line">    expect &lt;&lt;- EOF</span><br><span class="line">    set timeout 5</span><br><span class="line">    spawn sftp $sftp_user@$sftp_IP</span><br><span class="line">    expect &#123;</span><br><span class="line">        &quot;(yes/no)?&quot; &#123;send &quot;yes\r&quot;; expect_continue &#125;</span><br><span class="line">        &quot;*assword:&quot; &#123;send &quot;$sftp_password\r&quot;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    expect &quot;sftp&gt;&quot;</span><br><span class="line">    send &quot;cd $sftpRemote_wap\n&quot;</span><br><span class="line">    expect &quot;sftp&gt;&quot;</span><br><span class="line">    send &quot;lcd $sftpLocal_wap\n&quot;</span><br><span class="line">    expect &quot;sftp&gt;&quot;</span><br><span class="line">    set timeout -1</span><br><span class="line">    send &quot;mget *$DT_time*log\n&quot;</span><br><span class="line">    expect &quot;sftp&gt;&quot;</span><br><span class="line">    set timeout -1</span><br><span class="line">    send &quot;mget *$DT_time*verf.txt\n&quot;</span><br><span class="line">    expect &quot;sftp&gt;&quot;</span><br><span class="line">    send &quot;bye\n&quot;</span><br><span class="line">EOF</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><a target="_blank" rel="noopener" href="https://ask.csdn.net/questions/743012">https://ask.csdn.net/questions/743012</a></p>
-<h6 id="Python：以wb模式打开文件"><a href="#Python：以wb模式打开文件" class="headerlink" title="Python：以wb模式打开文件"></a>Python：以wb模式打开文件</h6><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">f.write(<span class="string">b&#x27;\x80&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<h1 id="loop-file-in-dir"><a href="#loop-file-in-dir" class="headerlink" title="loop file in dir"></a>loop file in dir</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">fileList=`ls *$DT_time*.zip`</span><br><span class="line">fileArr=($fileList)</span><br><span class="line">for fileName in $&#123;fileArr[@]&#125;</span><br><span class="line">do</span><br><span class="line">    unzip  $unzip_name</span><br><span class="line">done</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<ul>
-<li>jps – process information unavailable</li>
-</ul>
-<p>问题：无法显示进程名称</p>
-<p>解决：删除目录</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -rf /tmp/hsperfdata_*</span><br></pre></td></tr></table></figure>
+
+<h1 id="tar"><a href="#tar" class="headerlink" title="tar"></a>tar</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zcf wap.tar.gz wap --exclude *.zip --remove-files</span><br></pre></td></tr></table></figure>
+
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -144,7 +127,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://kevinjmh.github.io/2022/02/24/CheatSheet/linux-error/" data-title="linux | Manhua" data-tsina="" class="share clearfix">
+	  <div data-url="http://kevinjmh.github.io/2022/02/24/CheatSheet/Shell/" data-title="Shell | Manhua" data-tsina="" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -157,19 +140,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2022/02/24/CheatSheet/Shell/" title="Shell">
-  <strong>上一篇：</strong><br/>
-  <span>
-  Shell</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2022/02/21/CheatSheet/daily/"  title="Daily">
+<a href="/2022/02/24/CheatSheet/linux-error/"  title="linux">
  <strong>下一篇：</strong><br/> 
- <span>Daily
+ <span>linux
 </span>
 </a>
 </div>
