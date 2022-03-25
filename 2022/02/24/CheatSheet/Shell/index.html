@@ -19,7 +19,7 @@
 <meta property="og:description" content="读取文件为参数12ans_lines&#x3D;&#96;sed -n 1p  $&amp;#123;verf_file&amp;#125;&#96;ans_md5&#x3D;&#96;sed -n 2p $&amp;#123;verf_file&amp;#125;&#96;  if-else1234567891011121314# value equalif [ $&amp;#123;ans_lines&amp;#125; -eq $&amp;#123;lines&amp;#125; ]then    ech">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-02-24T14:11:43.000Z">
-<meta property="article:modified_time" content="2022-03-22T03:42:13.901Z">
+<meta property="article:modified_time" content="2022-03-25T03:59:30.226Z">
 <meta property="article:author" content="Manhua">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:creator" content="@jiangmanhua">
@@ -100,7 +100,7 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6%E4%B8%BA%E5%8F%82%E6%95%B0"><span class="toc-number">1.</span> <span class="toc-text">读取文件为参数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#if-else"><span class="toc-number">2.</span> <span class="toc-text">if-else</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ftp"><span class="toc-number">3.</span> <span class="toc-text">ftp</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#loop-file-in-dir"><span class="toc-number">4.</span> <span class="toc-text">loop file in dir</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#tar"><span class="toc-number">5.</span> <span class="toc-text">tar</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6%E4%B8%BA%E5%8F%82%E6%95%B0"><span class="toc-number">1.</span> <span class="toc-text">读取文件为参数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#if-else"><span class="toc-number">2.</span> <span class="toc-text">if-else</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ftp"><span class="toc-number">3.</span> <span class="toc-text">ftp</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#loop-file-in-dir"><span class="toc-number">4.</span> <span class="toc-text">loop file in dir</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#tar"><span class="toc-number">5.</span> <span class="toc-text">tar</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E6%97%A5%E6%9C%9F"><span class="toc-number">6.</span> <span class="toc-text">常用日期</span></a></li></ol>
 		
 		</div>
 		
@@ -115,6 +115,9 @@
 
 <h1 id="tar"><a href="#tar" class="headerlink" title="tar"></a>tar</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zcf wap.tar.gz wap --exclude *.zip --remove-files</span><br></pre></td></tr></table></figure>
 
+<h1 id="常用日期"><a href="#常用日期" class="headerlink" title="常用日期"></a>常用日期</h1><p>ymd=${date}<br>year=${ymd:0:4}<br>month=${ymd:4:2}<br>day=${ymd:6:2}</p>
+<p>nowdate=<code>date +%Y%m01</code> #本月第一天<br>startdate=<code>date -d&quot;$nowdate last month&quot; +%Y%m%d</code> #上个月第一天<br>enddate=<code>date -d&quot;$nowdate last day&quot; +%Y%m%d</code> #上个月最后一天</p>
+<p>daytime=20220315<br>year=${daytime:0:4}<br>month=${daytime:4:2}<br>nowdate=${year}${month}01<br>nextmonth=<code>date -d&quot;$nowdate +1 month&quot; +%Y%m%d</code><br>enddate=<code>date -d&quot;$nextmonth last day&quot; +%Y%m%d</code> #本月最后一天</p>
   
 	</div>
 		<footer class="article-footer clearfix">
