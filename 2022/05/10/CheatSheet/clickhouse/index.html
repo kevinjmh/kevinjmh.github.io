@@ -4,22 +4,22 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Manhua</title>
+    <title>clickhouse | Manhua</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Manhua">
     
 
     
-    <meta name="description" content="installpip install selenium https:&#x2F;&#x2F;www.selenium.dev&#x2F;documentation&#x2F;webdriver&#x2F;getting_started&#x2F;install_drivers&#x2F; play12345678910111213141516171819202122232425262728293031323334353637383940414243444546474">
+    <meta name="description" content="Hello Worldclickhouse start clickhouse-client 原理Share Nothing 架构 shard + replica； shard间隔离 Table -&gt; Part(类似segment 目录隔离)  -&gt; 颗粒级别的列 (单独的bin数据文件和mrk元信息文件) 数据分布123456789101112id_test 表名    ├── all">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Manhua">
-<meta property="og:url" content="http://kevinjmh.github.io/2022/05/06/CheatSheet/selenium/index.html">
+<meta property="og:title" content="clickhouse">
+<meta property="og:url" content="http://kevinjmh.github.io/2022/05/10/CheatSheet/clickhouse/index.html">
 <meta property="og:site_name" content="Manhua">
-<meta property="og:description" content="installpip install selenium https:&#x2F;&#x2F;www.selenium.dev&#x2F;documentation&#x2F;webdriver&#x2F;getting_started&#x2F;install_drivers&#x2F; play12345678910111213141516171819202122232425262728293031323334353637383940414243444546474">
+<meta property="og:description" content="Hello Worldclickhouse start clickhouse-client 原理Share Nothing 架构 shard + replica； shard间隔离 Table -&gt; Part(类似segment 目录隔离)  -&gt; 颗粒级别的列 (单独的bin数据文件和mrk元信息文件) 数据分布123456789101112id_test 表名    ├── all">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-05-06T09:04:57.645Z">
-<meta property="article:modified_time" content="2022-05-06T09:04:57.645Z">
+<meta property="article:published_time" content="2022-05-10T12:11:43.000Z">
+<meta property="article:modified_time" content="2022-05-13T03:33:54.111Z">
 <meta property="article:author" content="Manhua">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:creator" content="@jiangmanhua">
@@ -84,14 +84,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2022/05/06/CheatSheet/selenium/" title="" itemprop="url"></a>
+      <a href="/2022/05/10/CheatSheet/clickhouse/" title="clickhouse" itemprop="url">clickhouse</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="Manhua" target="_blank" itemprop="author">Manhua</a>
 		
   <p class="article-time">
-    <time datetime="2022-05-06T09:04:57.645Z" itemprop="datePublished"> Published 2022-05-06</time>
+    <time datetime="2022-05-10T12:11:43.000Z" itemprop="datePublished"> Published 2022-05-10</time>
     
   </p>
 </header>
@@ -100,19 +100,40 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#install"><span class="toc-number">1.</span> <span class="toc-text">install</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#play"><span class="toc-number">2.</span> <span class="toc-text">play</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Hello-World"><span class="toc-number">1.</span> <span class="toc-text">Hello World</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8E%9F%E7%90%86"><span class="toc-number">2.</span> <span class="toc-text">原理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%88%86%E5%B8%83"><span class="toc-number">3.</span> <span class="toc-text">数据分布</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B"><span class="toc-number">3.1.</span> <span class="toc-text">加载过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%8B%E7%BC%A9%E5%9D%97"><span class="toc-number">3.2.</span> <span class="toc-text">压缩块</span></a></li></ol></li></ol>
 		
 		</div>
 		
-		<h1 id="install"><a href="#install" class="headerlink" title="install"></a>install</h1><p>pip install selenium</p>
-<p><a target="_blank" rel="noopener" href="https://www.selenium.dev/documentation/webdriver/getting_started/install_drivers/">https://www.selenium.dev/documentation/webdriver/getting_started/install_drivers/</a></p>
-<h1 id="play"><a href="#play" class="headerlink" title="play"></a>play</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.common.by <span class="keyword">import</span> By</span><br><span class="line"></span><br><span class="line"><span class="comment"># edge = webdriver.Edge()</span></span><br><span class="line"><span class="comment"># edge.get(&quot;https://www.baidu.com&quot;)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Tester</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        self.driver = webdriver.Chrome()</span><br><span class="line">        self.driver.get(</span><br><span class="line">            <span class="string">&quot;https://dangjian.hxq.komect.com/hldjLogin/?activityId=1717&amp;corpId=753063193924136960&amp;homeUrl=http&quot;</span></span><br><span class="line">            <span class="string">&quot;://dangjian.hxq.komect.com/dkdtweb/&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">login</span>(<span class="params">self, phone</span>):</span></span><br><span class="line">        self.driver.find_element(By.CLASS_NAME, <span class="string">&quot;input-user-phone&quot;</span>).clear()</span><br><span class="line">        self.driver.find_element(By.CLASS_NAME, <span class="string">&quot;input-user-phone&quot;</span>).send_keys(phone)</span><br><span class="line">        self.driver.find_element(By.CLASS_NAME, <span class="string">&quot;get-code&quot;</span>).click()</span><br><span class="line">        code = <span class="built_in">input</span>(<span class="string">&quot;输入验证码:&quot;</span>)</span><br><span class="line">        self.driver.find_element(By.ID, <span class="string">&quot;loginCode&quot;</span>).clear()</span><br><span class="line">        self.driver.find_element(By.ID, <span class="string">&quot;loginCode&quot;</span>).send_keys(code)</span><br><span class="line">        self.driver.find_element(By.CLASS_NAME, <span class="string">&quot;login-btn&quot;</span>).click()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">play</span>(<span class="params">self</span>):</span></span><br><span class="line">        self.driver.find_element(By.CLASS_NAME, <span class="string">&quot;btn-begin&quot;</span>).click()  <span class="comment"># 开始</span></span><br><span class="line">        time.sleep(<span class="number">5</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">5</span>):</span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                self.driver.find_element(By.XPATH, <span class="string">&#x27;//*[@id=&quot;app&quot;]/div/div[1]/div[11]/div[3]/div[3]/div/div&#x27;</span>)</span><br><span class="line">                hasc = <span class="literal">True</span></span><br><span class="line">            <span class="keyword">except</span>:</span><br><span class="line">                hasc = <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> hasc:</span><br><span class="line">                self.driver.find_element(By.XPATH, <span class="string">&#x27;//*[@id=&quot;app&quot;]/div/div[1]/div[11]/div[3]/div[3]/div/div&#x27;</span>).click()</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                self.driver.find_element(By.XPATH, <span class="string">&#x27;//*[@id=&quot;app&quot;]/div/div[1]/div[11]/div[3]/div[1]/div/div&#x27;</span>).click()</span><br><span class="line">            time.sleep(<span class="number">5</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># self.driver.find_element(By.XPATH, &#x27;//*[@id=&quot;app&quot;]/div/div[1]/div[11]/div[3]/div[1]/div/div&#x27;).click()</span></span><br><span class="line">        <span class="comment"># self.driver.find_element(By.XPATH, &#x27;//*[@id=&quot;app&quot;]/div/div[1]/div[11]/div[3]/div[2]/div/div&#x27;).click()</span></span><br><span class="line">        <span class="comment"># self.driver.find_element(By.XPATH, &#x27;//*[@id=&quot;app&quot;]/div/div[1]/div[11]/div[3]/div[3]/div/div&#x27;).click()</span></span><br><span class="line">        <span class="comment"># self.driver.find_element(By.XPATH, &#x27;//*[@id=&quot;app&quot;]/div/div[1]/div[11]/div[3]/div[4]/div/div&#x27;).click()</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># self.driver.find_element(By.XPATH, &#x27;//*[@id=&quot;app&quot;]/div/div[1]/div[8]&#x27;)</span></span><br><span class="line"></span><br><span class="line">        <span class="built_in">print</span>(self.driver.find_element(By.CLASS_NAME, <span class="string">&quot;result-got&quot;</span>).text)</span><br><span class="line">        self.driver.find_element(By.CLASS_NAME, <span class="string">&quot;btn-continue&quot;</span>).click()  <span class="comment"># 继续挑战</span></span><br><span class="line">        time.sleep(<span class="number">3</span>)</span><br><span class="line"></span><br><span class="line">        self.driver.get_cookies()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">start_game</span>(<span class="params">self, n</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;score: &quot;</span> + self.driver.find_element(By.CLASS_NAME, <span class="string">&quot;value&quot;</span>).text)</span><br><span class="line">        self.driver.find_element(By.CLASS_NAME, <span class="string">&quot;with-computer&quot;</span>).click()</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">            <span class="built_in">print</span>(i)</span><br><span class="line">            self.play()</span><br><span class="line">            </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__del__</span>(<span class="params">self</span>):</span></span><br><span class="line">        self.driver.quit()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    instance = Tester()</span><br><span class="line">    phone = <span class="string">&quot;xx&quot;</span></span><br><span class="line">    instance.login(phone)</span><br><span class="line">    instance.start_game(<span class="number">10</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+		<h1 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World"></a>Hello World</h1><p>clickhouse start</p>
+<p>clickhouse-client</p>
+<h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><p>Share Nothing 架构</p>
+<p>shard + replica； shard间隔离</p>
+<p>Table -&gt; Part(类似segment 目录隔离)  -&gt; 颗粒级别的列 (单独的bin数据文件和mrk元信息文件)</p>
+<h1 id="数据分布"><a href="#数据分布" class="headerlink" title="数据分布"></a>数据分布</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">id_test 表名</span><br><span class="line">    ├── all_1_1_0 分区</span><br><span class="line">    │   ├── ID.bin 默认 lz4 压缩</span><br><span class="line">    │   ├── ID.mrk2 记录数据块在 bin 文件中的偏移量</span><br><span class="line">    │   ├── StringID.bin</span><br><span class="line">    │   ├── StringID.mrk2</span><br><span class="line">    │   ├── checksums.txt 校验文件</span><br><span class="line">    │   ├── columns.txt 列名以及数据类型</span><br><span class="line">    │   ├── count.txt 数据的总行数</span><br><span class="line">    │   └── primary.idx 主键索引文件</span><br><span class="line">    ├── detached</span><br><span class="line">    └── format_version.txt</span><br></pre></td></tr></table></figure>
 
-<p>pip install webdriver-manager</p>
+<p>ParitionID_MinBlockNum_MaxBlockNum_level，示例202103_1_1_0，不代表连续的block</p>
+<p>ParitionID： 分区字段的值<br>MinBlockNum： 最小快序号<br>MaxBlockNum： 最大块序号<br>Level： 参与合并的次数</p>
+<p>BlockNum是表内全局累加，每次创建一个新的分区目录，就会累加1。</p>
+<h2 id="加载过程"><a href="#加载过程" class="headerlink" title="加载过程"></a>加载过程</h2><p>Input -&gt; granularity=8192 (类似blocklet) -&gt; blocksize (类似block) -&gt; compress -&gt; block落盘</p>
+<p>Index:</p>
+<ul>
+<li>主键：以index_granularity为单位</li>
+<li>MinMax：以index_granularity为单位</li>
+<li>Set (distinct值)：以index_granularity为单位</li>
+<li>BloomFilter</li>
+</ul>
+<h2 id="压缩块"><a href="#压缩块" class="headerlink" title="压缩块"></a>压缩块</h2><p>数据存储文件column.bin中存储的是一列数据。<br>一个压缩数据块由头信息和压缩数据两部分组成，头信息固定使用9位字节表示，具体由1个UInt8（1字节）整型和2个UInt32(4字节)整型组成，<br>分别代表使用的压缩算法类型、压缩后的数据大小和压缩前的数据大小。<br>每个压缩数据块的体积，按照其压缩前的数据字节大小，都被严格控制在64KB ~ 1MB，<br>其上下限分别由 min_compress-block_size(默认65535=64KB)与max_compress_block_size(默认1MB)参数指定。</p>
+<p>每8192条记录，其实就是一条一级索引，一个索引区间压缩成一个数据块.<br>新版本的Clickhouse中，会默认开启自适应granularity，新增配置项index_granularity_bytes来使得一个granule的数据大小不仅取决于行数，也取决于数据大小</p>
+<p>数据标记文件数据存储文件column.mrk与数据存储文件column.bin文件一一对应，是一级索引与数据块之间关系的数据</p>
   
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/CheatSheet/">CheatSheet</a>
+</div>
 
 
 </div>
@@ -121,7 +142,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://kevinjmh.github.io/2022/05/06/CheatSheet/selenium/" data-title="Manhua" data-tsina="" class="share clearfix">
+	  <div data-url="http://kevinjmh.github.io/2022/05/10/CheatSheet/clickhouse/" data-title="clickhouse | Manhua" data-tsina="" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -134,6 +155,14 @@
 	
 <nav class="article-nav clearfix">
  
+ <div class="prev" >
+ <a href="/2022/05/13/CheatSheet/selenium/" title="">
+  <strong>上一篇：</strong><br/>
+  <span>
+  (no title)</span>
+</a>
+</div>
+
 
 <div class="next">
 <a href="/2022/03/30/CheatSheet/zeppelin/"  title="zeppelin">
@@ -178,7 +207,7 @@
 		  
 		
 		  
-			<li><a href="/categories/CheatSheet/" title="CheatSheet">CheatSheet<sup>21</sup></a></li>
+			<li><a href="/categories/CheatSheet/" title="CheatSheet">CheatSheet<sup>22</sup></a></li>
 		  
 		
 		  
