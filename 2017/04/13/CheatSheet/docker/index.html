@@ -11,15 +11,15 @@
     
 
     
-    <meta name="description" content="免sudo运行问题： 默认安装完 docker 后，每次执行 docker 都需要运行 sudo 命令，非常浪费时间影响效率 解决方案： 将用户加入该docker的group内，重新打开终端。Add the connected user “${USER}” to the docker group. 12sudo gpasswd -a $&amp;#123;USER&amp;#125; dockersudo ser">
+    <meta name="description" content="Infomoby、docker-ce与docker-ee最早的时候docker就是一个开源项目，主要由docker公司维护。 2017年年初，docker公司将原先的docker项目改名为moby，并创建了docker-ce和docker-ee。 这三者的关系是： moby是继承了原先的docker的项目，是社区维护的的开源项目，谁都可以在moby的基础打造自己的容器产品 docker-ce是do">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Docker">
 <meta property="og:url" content="http://kevinjmh.github.io/2017/04/13/CheatSheet/docker/index.html">
 <meta property="og:site_name" content="Manhua">
-<meta property="og:description" content="免sudo运行问题： 默认安装完 docker 后，每次执行 docker 都需要运行 sudo 命令，非常浪费时间影响效率 解决方案： 将用户加入该docker的group内，重新打开终端。Add the connected user “${USER}” to the docker group. 12sudo gpasswd -a $&amp;#123;USER&amp;#125; dockersudo ser">
+<meta property="og:description" content="Infomoby、docker-ce与docker-ee最早的时候docker就是一个开源项目，主要由docker公司维护。 2017年年初，docker公司将原先的docker项目改名为moby，并创建了docker-ce和docker-ee。 这三者的关系是： moby是继承了原先的docker的项目，是社区维护的的开源项目，谁都可以在moby的基础打造自己的容器产品 docker-ce是do">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2017-04-13T14:11:43.000Z">
-<meta property="article:modified_time" content="2022-05-13T03:33:54.111Z">
+<meta property="article:modified_time" content="2022-05-25T02:41:49.253Z">
 <meta property="article:author" content="Manhua">
 <meta property="article:tag" content="docker">
 <meta name="twitter:card" content="summary">
@@ -101,11 +101,18 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%8Dsudo%E8%BF%90%E8%A1%8C"><span class="toc-number">1.</span> <span class="toc-text">免sudo运行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#windows-hyper-v"><span class="toc-number">2.</span> <span class="toc-text">windows hyper-v</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%B9%E5%99%A8%E5%86%85%E7%BD%91%E7%BB%9C%E9%97%AE%E9%A2%98"><span class="toc-number">3.</span> <span class="toc-text">容器内网络问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%85%8E%E7%94%A8latest%E6%A0%87%E7%AD%BE"><span class="toc-number">4.</span> <span class="toc-text">慎用latest标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9B%BF%E6%8D%A2%E6%9B%B4%E6%96%B0%E6%BA%90"><span class="toc-number">5.</span> <span class="toc-text">替换更新源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#docker%E5%BB%BAwordpress"><span class="toc-number">6.</span> <span class="toc-text">docker建wordpress</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-number">7.</span> <span class="toc-text">常用命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%9A%E8%BF%87Dockerfile%E5%88%9B%E5%BB%BA%E9%95%9C%E5%83%8F"><span class="toc-number">8.</span> <span class="toc-text">通过Dockerfile创建镜像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Docker-Compose"><span class="toc-number">9.</span> <span class="toc-text">Docker Compose</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9E%84%E5%BB%BA%E9%9B%86%E7%BE%A4"><span class="toc-number"></span> <span class="toc-text">构建集群</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#mysql"><span class="toc-number"></span> <span class="toc-text">mysql</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%96%E8%AF%91%E7%8E%AF%E5%A2%83"><span class="toc-number"></span> <span class="toc-text">编译环境</span></a>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Info"><span class="toc-number">1.</span> <span class="toc-text">Info</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#install"><span class="toc-number">2.</span> <span class="toc-text">install</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%8Dsudo%E8%BF%90%E8%A1%8C"><span class="toc-number">2.1.</span> <span class="toc-text">免sudo运行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#windows-hyper-v"><span class="toc-number">2.2.</span> <span class="toc-text">windows hyper-v</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%B9%E5%99%A8%E5%86%85%E7%BD%91%E7%BB%9C%E9%97%AE%E9%A2%98"><span class="toc-number">2.3.</span> <span class="toc-text">容器内网络问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%85%8E%E7%94%A8latest%E6%A0%87%E7%AD%BE"><span class="toc-number">2.4.</span> <span class="toc-text">慎用latest标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9B%BF%E6%8D%A2%E6%9B%B4%E6%96%B0%E6%BA%90"><span class="toc-number">2.5.</span> <span class="toc-text">替换更新源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#docker%E5%BB%BAwordpress"><span class="toc-number">2.6.</span> <span class="toc-text">docker建wordpress</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-number">2.7.</span> <span class="toc-text">常用命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%9A%E8%BF%87Dockerfile%E5%88%9B%E5%BB%BA%E9%95%9C%E5%83%8F"><span class="toc-number">2.8.</span> <span class="toc-text">通过Dockerfile创建镜像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Docker-Compose"><span class="toc-number">2.9.</span> <span class="toc-text">Docker Compose</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9E%84%E5%BB%BA%E9%9B%86%E7%BE%A4"><span class="toc-number"></span> <span class="toc-text">构建集群</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#mysql"><span class="toc-number">1.</span> <span class="toc-text">mysql</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%96%E8%AF%91%E7%8E%AF%E5%A2%83"><span class="toc-number">2.</span> <span class="toc-text">编译环境</span></a></li></ol>
 		
 		</div>
 		
-		<h3 id="免sudo运行"><a href="#免sudo运行" class="headerlink" title="免sudo运行"></a>免sudo运行</h3><p><strong>问题：</strong></p>
+		<h2 id="Info"><a href="#Info" class="headerlink" title="Info"></a>Info</h2><p>moby、docker-ce与docker-ee<br>最早的时候docker就是一个开源项目，主要由docker公司维护。</p>
+<p>2017年年初，docker公司将原先的docker项目改名为moby，并创建了docker-ce和docker-ee。</p>
+<p>这三者的关系是：</p>
+<p>moby是继承了原先的docker的项目，是社区维护的的开源项目，谁都可以在moby的基础打造自己的容器产品</p>
+<p>docker-ce是docker公司维护的开源项目，是一个基于moby项目的免费的容器产品<br>docker-ee是docker公司维护的闭源产品，是docker公司的商业产品。</p>
+<h2 id="install"><a href="#install" class="headerlink" title="install"></a>install</h2><p>moby: yum install docker</p>
+<p>docker-ce: curl -fsSL <a target="_blank" rel="noopener" href="https://get.docker.com/">https://get.docker.com/</a> | sh</p>
+<h3 id="免sudo运行"><a href="#免sudo运行" class="headerlink" title="免sudo运行"></a>免sudo运行</h3><p><strong>问题：</strong></p>
 <p>默认安装完 docker 后，每次执行 docker 都需要运行 sudo 命令，非常浪费时间影响效率</p>
 <p><strong>解决方案：</strong></p>
 <p>将用户加入该docker的group内，重新打开终端。<br>Add the connected user “${USER}” to the docker group.</p>
