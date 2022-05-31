@@ -19,7 +19,7 @@
 <meta property="og:description" content="编译环境1 new vm(vbox)同时连通本机和外网-(两张网卡nat + hostonly) install: jdk,maven https:&#x2F;&#x2F;maven.apache.org&#x2F;download.cgi set maven mirror: 123456&lt;mirror&gt;    &lt;id&gt;aliyunmaven&lt;&#x2F;id&gt;    &lt;mirrorOf&gt;">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-01-20T14:11:43.000Z">
-<meta property="article:modified_time" content="2022-05-25T02:41:49.257Z">
+<meta property="article:modified_time" content="2022-05-31T02:47:06.575Z">
 <meta property="article:author" content="Manhua">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:creator" content="@jiangmanhua">
@@ -114,7 +114,8 @@
 <li>安装<a target="_blank" rel="noopener" href="https://multipass.run/">multipass</a></li>
 <li>挂载目录<ul>
 <li>multipass set local.privileged-mounts=true</li>
-<li>multipass mount E:\ primary</li>
+<li>multipass exec primary mkdir /mnt/e</li>
+<li>multipass mount E:\ primary:/mnt/e</li>
 </ul>
 </li>
 <li>修改系统更新源<ul>
@@ -133,7 +134,7 @@
 </li>
 <li>问题<ul>
 <li>空间不足，需要挂载</li>
-<li>挂载后目录路径编译代码时有问题</li>
+<li>挂载后无法管理权限，脚本无法直接执行</li>
 </ul>
 </li>
 </ul>
