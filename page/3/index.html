@@ -81,6 +81,28 @@
   
 <section class="post" itemscope itemprop="blogitem">
   
+    <a href="/2022/01/20/CheatSheet/hdfs/" title="hdfs" itemprop="url">
+  
+    <h1 itemprop="name">hdfs</h1>
+    
+     
+           <p itemprop="description" >文件保护删除hdfs删除逻辑为，路径上所有需要删除的文件节点的父目录有w权限
+即：即使A用户是根目录的所有者，只要A创建/允许创建了B用户的目录且该目录下有数据，只要A不是超级用户则不能删除。注意若该目录下无文件，则该目录依然能被删除。
+操作方式启动：使用hdfs用户启动hado</p>
+        
+    
+    <time datetime="2022-01-20T14:11:43.000Z" itemprop="datePublished">2022-01-20</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
     <a href="/2022/01/20/CheatSheet/kylin/" title="kylin" itemprop="url">
   
     <h1 itemprop="name">kylin</h1>
@@ -276,26 +298,6 @@ root passwordsudo passwd ro</p>
         
     
     <time datetime="2021-09-26T16:11:43.000Z" itemprop="datePublished">2021-09-26</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2021/04/10/Doc/carbon/load/" title="Carbondata加载逻辑" itemprop="url">
-  
-    <h1 itemprop="name">Carbondata加载逻辑</h1>
-    
-     
-           <p itemprop="description" >入口加载命令的入口在CarbonLoadDataCommand，command的处理主要分为meta和data两部分的处理。数据加载主要在org.apache.carbondata.spark.rdd.CarbonDataRDDFactory#loadCarbonData实现，还</p>
-        
-    
-    <time datetime="2021-04-10T20:15:10.000Z" itemprop="datePublished">2021-04-10</time>
   </a>
 </section>
 
