@@ -11,15 +11,15 @@
     
 
     
-    <meta name="description" content="installpip install selenium https:&#x2F;&#x2F;www.selenium.dev&#x2F;documentation&#x2F;webdriver&#x2F;getting_started&#x2F;install_drivers&#x2F; play12345678910111213141516171819202122232425262728293031323334353637383940414243444546474">
+    <meta name="description" content="Prometheus collects and stores its metrics as time series data Components  Prometheus server:  scrapes and stores time series data 单文件 alertmanager exporter node_exporter   Grafana, for visualize [opt">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Manhua">
-<meta property="og:url" content="http://kevinjmh.github.io/2022/06/02/CheatSheet/selenium/index.html">
+<meta property="og:url" content="http://kevinjmh.github.io/2022/06/16/CheatSheet/prometheus/index.html">
 <meta property="og:site_name" content="Manhua">
-<meta property="og:description" content="installpip install selenium https:&#x2F;&#x2F;www.selenium.dev&#x2F;documentation&#x2F;webdriver&#x2F;getting_started&#x2F;install_drivers&#x2F; play12345678910111213141516171819202122232425262728293031323334353637383940414243444546474">
+<meta property="og:description" content="Prometheus collects and stores its metrics as time series data Components  Prometheus server:  scrapes and stores time series data 单文件 alertmanager exporter node_exporter   Grafana, for visualize [opt">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-06-02T09:30:28.362Z">
-<meta property="article:modified_time" content="2022-06-02T09:30:28.362Z">
+<meta property="article:published_time" content="2022-06-16T03:52:04.019Z">
+<meta property="article:modified_time" content="2022-06-16T03:52:04.019Z">
 <meta property="article:author" content="Manhua">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:creator" content="@jiangmanhua">
@@ -84,14 +84,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2022/06/02/CheatSheet/selenium/" title="" itemprop="url"></a>
+      <a href="/2022/06/16/CheatSheet/prometheus/" title="" itemprop="url"></a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="Manhua" target="_blank" itemprop="author">Manhua</a>
 		
   <p class="article-time">
-    <time datetime="2022-06-02T09:30:28.362Z" itemprop="datePublished"> Published 2022-06-02</time>
+    <time datetime="2022-06-16T03:52:04.019Z" itemprop="datePublished"> Published 2022-06-16</time>
     
   </p>
 </header>
@@ -100,15 +100,25 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#install"><span class="toc-number">1.</span> <span class="toc-text">install</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#play"><span class="toc-number">2.</span> <span class="toc-text">play</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#play-node-info-metrics"><span class="toc-number">1.</span> <span class="toc-text">play - node info metrics</span></a></li></ol>
 		
 		</div>
 		
-		<h1 id="install"><a href="#install" class="headerlink" title="install"></a>install</h1><p>pip install selenium</p>
-<p><a target="_blank" rel="noopener" href="https://www.selenium.dev/documentation/webdriver/getting_started/install_drivers/">https://www.selenium.dev/documentation/webdriver/getting_started/install_drivers/</a></p>
-<h1 id="play"><a href="#play" class="headerlink" title="play"></a>play</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.common.by <span class="keyword">import</span> By</span><br><span class="line"></span><br><span class="line"><span class="comment"># edge = webdriver.Edge()</span></span><br><span class="line"><span class="comment"># edge.get(&quot;https://www.baidu.com&quot;)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Tester</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        self.driver = webdriver.Chrome()</span><br><span class="line">        self.driver.get(</span><br><span class="line">            <span class="string">&quot;https://dangjian.hxq.komect.com/hldjLogin/?activityId=1717&amp;corpId=753063193924136960&amp;homeUrl=http&quot;</span></span><br><span class="line">            <span class="string">&quot;://dangjian.hxq.komect.com/dkdtweb/&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">login</span>(<span class="params">self, phone</span>):</span></span><br><span class="line">        self.driver.find_element(By.CLASS_NAME, <span class="string">&quot;input-user-phone&quot;</span>).clear()</span><br><span class="line">        self.driver.find_element(By.CLASS_NAME, <span class="string">&quot;input-user-phone&quot;</span>).send_keys(phone)</span><br><span class="line">        self.driver.find_element(By.CLASS_NAME, <span class="string">&quot;get-code&quot;</span>).click()</span><br><span class="line">        code = <span class="built_in">input</span>(<span class="string">&quot;输入验证码:&quot;</span>)</span><br><span class="line">        self.driver.find_element(By.ID, <span class="string">&quot;loginCode&quot;</span>).clear()</span><br><span class="line">        self.driver.find_element(By.ID, <span class="string">&quot;loginCode&quot;</span>).send_keys(code)</span><br><span class="line">        self.driver.find_element(By.CLASS_NAME, <span class="string">&quot;login-btn&quot;</span>).click()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">play</span>(<span class="params">self</span>):</span></span><br><span class="line">        self.driver.find_element(By.CLASS_NAME, <span class="string">&quot;btn-begin&quot;</span>).click()  <span class="comment"># 开始</span></span><br><span class="line">        time.sleep(<span class="number">5</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">5</span>):</span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                self.driver.find_element(By.XPATH, <span class="string">&#x27;//*[@id=&quot;app&quot;]/div/div[1]/div[11]/div[3]/div[3]/div/div&#x27;</span>)</span><br><span class="line">                hasc = <span class="literal">True</span></span><br><span class="line">            <span class="keyword">except</span>:</span><br><span class="line">                hasc = <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> hasc:</span><br><span class="line">                self.driver.find_element(By.XPATH, <span class="string">&#x27;//*[@id=&quot;app&quot;]/div/div[1]/div[11]/div[3]/div[3]/div/div&#x27;</span>).click()</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                self.driver.find_element(By.XPATH, <span class="string">&#x27;//*[@id=&quot;app&quot;]/div/div[1]/div[11]/div[3]/div[1]/div/div&#x27;</span>).click()</span><br><span class="line">            time.sleep(<span class="number">5</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># self.driver.find_element(By.XPATH, &#x27;//*[@id=&quot;app&quot;]/div/div[1]/div[11]/div[3]/div[1]/div/div&#x27;).click()</span></span><br><span class="line">        <span class="comment"># self.driver.find_element(By.XPATH, &#x27;//*[@id=&quot;app&quot;]/div/div[1]/div[11]/div[3]/div[2]/div/div&#x27;).click()</span></span><br><span class="line">        <span class="comment"># self.driver.find_element(By.XPATH, &#x27;//*[@id=&quot;app&quot;]/div/div[1]/div[11]/div[3]/div[3]/div/div&#x27;).click()</span></span><br><span class="line">        <span class="comment"># self.driver.find_element(By.XPATH, &#x27;//*[@id=&quot;app&quot;]/div/div[1]/div[11]/div[3]/div[4]/div/div&#x27;).click()</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># self.driver.find_element(By.XPATH, &#x27;//*[@id=&quot;app&quot;]/div/div[1]/div[8]&#x27;)</span></span><br><span class="line"></span><br><span class="line">        <span class="built_in">print</span>(self.driver.find_element(By.CLASS_NAME, <span class="string">&quot;result-got&quot;</span>).text)</span><br><span class="line">        self.driver.find_element(By.CLASS_NAME, <span class="string">&quot;btn-continue&quot;</span>).click()  <span class="comment"># 继续挑战</span></span><br><span class="line">        time.sleep(<span class="number">3</span>)</span><br><span class="line"></span><br><span class="line">        self.driver.get_cookies()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">start_game</span>(<span class="params">self, n</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;score: &quot;</span> + self.driver.find_element(By.CLASS_NAME, <span class="string">&quot;value&quot;</span>).text)</span><br><span class="line">        self.driver.find_element(By.CLASS_NAME, <span class="string">&quot;with-computer&quot;</span>).click()</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">            <span class="built_in">print</span>(i)</span><br><span class="line">            self.play()</span><br><span class="line">            </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__del__</span>(<span class="params">self</span>):</span></span><br><span class="line">        self.driver.quit()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    instance = Tester()</span><br><span class="line">    phone = <span class="string">&quot;xx&quot;</span></span><br><span class="line">    instance.login(phone)</span><br><span class="line">    instance.start_game(<span class="number">10</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>pip install webdriver-manager</p>
+		<p>Prometheus collects and stores its metrics as time series data</p>
+<p>Components</p>
+<ul>
+<li>Prometheus server:  scrapes and stores time series data 单文件</li>
+<li>alertmanager</li>
+<li>exporter<ul>
+<li>node_exporter</li>
+</ul>
+</li>
+<li>Grafana, for visualize [optional]</li>
+</ul>
+<h2 id="play-node-info-metrics"><a href="#play-node-info-metrics" class="headerlink" title="play - node info metrics"></a>play - node info metrics</h2><ol>
+<li>run exporter to generate metrics</li>
+<li>add config to server to listen<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">scrape_configs:</span><br><span class="line">  - job_name:       &#x27;node&#x27;</span><br><span class="line"></span><br><span class="line">    # Override the global default and scrape targets from this job every 5 seconds.</span><br><span class="line">    scrape_interval: 5s</span><br><span class="line"></span><br><span class="line">    static_configs:</span><br><span class="line">      - targets: [&#x27;192.168.56.105:8081&#x27;, &#x27;192.168.56.105:8082&#x27;]</span><br><span class="line">        labels:</span><br><span class="line">          group: &#x27;production&#x27;</span><br><span class="line"></span><br><span class="line">      - targets: [&#x27;localhost:8082&#x27;]</span><br><span class="line">        labels:</span><br><span class="line">          group: &#x27;canary&#x27;</span><br></pre></td></tr></table></figure></li>
+</ol>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -121,7 +131,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://kevinjmh.github.io/2022/06/02/CheatSheet/selenium/" data-title="Manhua" data-tsina="" class="share clearfix">
+	  <div data-url="http://kevinjmh.github.io/2022/06/16/CheatSheet/prometheus/" data-title="Manhua" data-tsina="" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -135,7 +145,7 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2022/06/02/CheatSheet/prometheus/" title="">
+ <a href="/2022/06/16/System/Dns/" title="">
   <strong>上一篇：</strong><br/>
   <span>
   (no title)</span>
@@ -144,7 +154,7 @@
 
 
 <div class="next">
-<a href="/2022/06/02/System/Dns/"  title="">
+<a href="/2022/06/16/CheatSheet/selenium/"  title="">
  <strong>下一篇：</strong><br/> 
  <span>(no title)
 </span>

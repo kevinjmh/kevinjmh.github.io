@@ -19,7 +19,7 @@
 <meta property="og:description" content="pip curl https:&#x2F;&#x2F;bootstrap.pypa.io&#x2F;get-pip.py -o get-pip.py python get-pip.py   C:\python27\scirpts下运行 easy_install pip  修改更新源linux ~&#x2F;.pip&#x2F;pip.conf 12[global]index-url &#x3D; https:&#x2F;&#x2F;pypi.tuna.tsinghua.edu">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-01-20T14:11:43.000Z">
-<meta property="article:modified_time" content="2022-06-02T09:30:28.362Z">
+<meta property="article:modified_time" content="2022-06-16T03:52:04.019Z">
 <meta property="article:author" content="Manhua">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:creator" content="@jiangmanhua">
@@ -122,7 +122,8 @@
 
 <h1 id="文件服务器"><a href="#文件服务器" class="headerlink" title="文件服务器"></a>文件服务器</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -m http.server -h</span><br></pre></td></tr></table></figure>
 
-<h1 id="转exe"><a href="#转exe" class="headerlink" title="转exe"></a>转exe</h1><p>C:\Users\Manhua\AppData\Local\Programs\Python\Python39\Scripts&gt; .\pyinstaller.exe -F D:\para.py</p>
+<h1 id="转exe"><a href="#转exe" class="headerlink" title="转exe"></a>转exe</h1><p>pip install pyinstaller<br>C:\Users\Manhua\AppData\Local\Programs\Python\Python310\Scripts&gt; .\pyinstaller.exe -F D:\para.py</p>
+<p>-F：仅仅生成一个文件，不暴露其他信息，启动较慢。<br>-D：生成一个文件夹，里面是多文件模式，启动快。<br>-w：窗口模式打包，不显示控制台。<br>-c：跟图标路径，作为应用icon。<br>–-hidden-import 应用需要的包，但是没有被打包进来，这里的错误是最多的，因为一般是第三方包隐式调用其他包，然后打包出来的程序显示Fate Error不能运行。</p>
   
 	</div>
 		<footer class="article-footer clearfix">
