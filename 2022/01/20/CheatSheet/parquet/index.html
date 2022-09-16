@@ -19,7 +19,7 @@
 <meta property="og:description" content="df.write.mode(“overwrite”).format(“parquet”).save(path) org.apache.spark.sql.DataFrameWriter#save 定位table 获得relation 12runCommand(df.sparkSession, &quot;save&quot;) &amp;#123;  AppendData.byName(relation,">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-01-20T14:11:43.000Z">
-<meta property="article:modified_time" content="2022-08-26T09:03:59.503Z">
+<meta property="article:modified_time" content="2022-09-16T04:03:02.626Z">
 <meta property="article:author" content="Manhua">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:creator" content="@jiangmanhua">
@@ -100,7 +100,7 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#mr"><span class="toc-number">1.</span> <span class="toc-text">mr</span></a></li></ol>
 		
 		</div>
 		
@@ -110,6 +110,8 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">runCommand(df.sparkSession, &quot;save&quot;) &#123;</span><br><span class="line">  AppendData.byName(relation, df.logicalPlan, extraOptions.toMap)</span><br></pre></td></tr></table></figure>
 
 <p>LoadDataCommand<br>catalog.loadTable</p>
+<h1 id="mr"><a href="#mr" class="headerlink" title="mr"></a>mr</h1><p>作用InputFormat -&gt; getSplit -&gt; get Reader</p>
+<p>parquet.task.side.metadata<br>  true时使用父类FileInputFormat获得的split一对一任务 ；<br>  false时，读取所有footer，涉及参数mapred.max.split.size mapred.min.split.size，在指定大小范围下，属于同一个HDFSBlock(中点)的rowgroup放在同一个split中</p>
   
 	</div>
 		<footer class="article-footer clearfix">

