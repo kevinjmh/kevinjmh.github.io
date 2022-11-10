@@ -11,15 +11,15 @@
     
 
     
-    <meta name="description" content="Prometheus collects and stores its metrics as time series data Components  Prometheus server:  scrapes and stores time series data 单文件 alertmanager exporter node_exporter   Grafana, for visualize [opt">
+    <meta name="description" content="installpip install pyqt5 https:&#x2F;&#x2F;pythonpyqt.com&#x2F;pyqt-hello-world&#x2F; create windowimport sysfrom PyQt5 import QtWidgets app &#x3D; QtWidgets.QApplication(sys.argv)windows &#x3D; QtWidgets.QWidget() # constructor w">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Manhua">
-<meta property="og:url" content="http://kevinjmh.github.io/2022/10/19/CheatSheet/prometheus/index.html">
+<meta property="og:url" content="http://kevinjmh.github.io/2022/11/10/CheatSheet/pyQt5/index.html">
 <meta property="og:site_name" content="Manhua">
-<meta property="og:description" content="Prometheus collects and stores its metrics as time series data Components  Prometheus server:  scrapes and stores time series data 单文件 alertmanager exporter node_exporter   Grafana, for visualize [opt">
+<meta property="og:description" content="installpip install pyqt5 https:&#x2F;&#x2F;pythonpyqt.com&#x2F;pyqt-hello-world&#x2F; create windowimport sysfrom PyQt5 import QtWidgets app &#x3D; QtWidgets.QApplication(sys.argv)windows &#x3D; QtWidgets.QWidget() # constructor w">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-10-19T08:12:56.435Z">
-<meta property="article:modified_time" content="2022-10-19T08:12:56.435Z">
+<meta property="article:published_time" content="2022-11-10T08:48:44.492Z">
+<meta property="article:modified_time" content="2022-11-10T08:48:44.492Z">
 <meta property="article:author" content="Manhua">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:creator" content="@jiangmanhua">
@@ -84,14 +84,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2022/10/19/CheatSheet/prometheus/" title="" itemprop="url"></a>
+      <a href="/2022/11/10/CheatSheet/pyQt5/" title="" itemprop="url"></a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="Manhua" target="_blank" itemprop="author">Manhua</a>
 		
   <p class="article-time">
-    <time datetime="2022-10-19T08:12:56.435Z" itemprop="datePublished"> Published 2022-10-19</time>
+    <time datetime="2022-11-10T08:48:44.492Z" itemprop="datePublished"> Published 2022-11-10</time>
     
   </p>
 </header>
@@ -100,25 +100,18 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#play-node-info-metrics"><span class="toc-number">1.</span> <span class="toc-text">play - node info metrics</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#install"><span class="toc-number">1.</span> <span class="toc-text">install</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#create-window"><span class="toc-number">2.</span> <span class="toc-text">create window</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#button"><span class="toc-number">3.</span> <span class="toc-text">button</span></a></li></ol>
 		
 		</div>
 		
-		<p>Prometheus collects and stores its metrics as time series data</p>
-<p>Components</p>
-<ul>
-<li>Prometheus server:  scrapes and stores time series data 单文件</li>
-<li>alertmanager</li>
-<li>exporter<ul>
-<li>node_exporter</li>
-</ul>
-</li>
-<li>Grafana, for visualize [optional]</li>
-</ul>
-<h2 id="play-node-info-metrics"><a href="#play-node-info-metrics" class="headerlink" title="play - node info metrics"></a>play - node info metrics</h2><ol>
-<li>run exporter to generate metrics</li>
-<li>add config to server to listen<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">scrape_configs:</span><br><span class="line">  - job_name:       &#x27;node&#x27;</span><br><span class="line"></span><br><span class="line">    # Override the global default and scrape targets from this job every 5 seconds.</span><br><span class="line">    scrape_interval: 5s</span><br><span class="line"></span><br><span class="line">    static_configs:</span><br><span class="line">      - targets: [&#x27;192.168.56.105:8081&#x27;, &#x27;192.168.56.105:8082&#x27;]</span><br><span class="line">        labels:</span><br><span class="line">          group: &#x27;production&#x27;</span><br><span class="line"></span><br><span class="line">      - targets: [&#x27;localhost:8082&#x27;]</span><br><span class="line">        labels:</span><br><span class="line">          group: &#x27;canary&#x27;</span><br></pre></td></tr></table></figure></li>
-</ol>
+		<h1 id="install"><a href="#install" class="headerlink" title="install"></a>install</h1><p>pip install pyqt5</p>
+<p><a target="_blank" rel="noopener" href="https://pythonpyqt.com/pyqt-hello-world/">https://pythonpyqt.com/pyqt-hello-world/</a></p>
+<h1 id="create-window"><a href="#create-window" class="headerlink" title="create window"></a>create window</h1><p>import sys<br>from PyQt5 import QtWidgets</p>
+<p>app = QtWidgets.QApplication(sys.argv)<br>windows = QtWidgets.QWidget() # constructor without a parent is called a window</p>
+<p>windows.show()</p>
+<p>windows.resize(500,500)<br>windows.move(300,300)<br>windows.setWindowTitle(‘Title’)<br>sys.exit(app.exec_())</p>
+<h1 id="button"><a href="#button" class="headerlink" title="button"></a>button</h1><p>import sys<br>from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QHBoxLayout</p>
+<p>if <strong>name</strong> == ‘<strong>main</strong>‘:<br>app = QApplication(sys.argv)<br>w = QWidget()<br>layout = QHBoxLayout()<br>btn = QPushButton(“Hello World!”)<br>layout.addWidget(btn)<br>w.setLayout(layout)<br>w.resize(250, 150)<br>w.move(300, 300)<br>w.setWindowTitle(‘Simple’)<br>w.show()<br>sys.exit(app.exec_())</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -131,7 +124,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://kevinjmh.github.io/2022/10/19/CheatSheet/prometheus/" data-title="Manhua" data-tsina="" class="share clearfix">
+	  <div data-url="http://kevinjmh.github.io/2022/11/10/CheatSheet/pyQt5/" data-title="Manhua" data-tsina="" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -145,7 +138,7 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2022/10/19/CheatSheet/pandas/" title="">
+ <a href="/2022/11/10/CheatSheet/prometheus/" title="">
   <strong>上一篇：</strong><br/>
   <span>
   (no title)</span>
@@ -154,7 +147,7 @@
 
 
 <div class="next">
-<a href="/2022/10/19/CheatSheet/selenium/"  title="">
+<a href="/2022/11/10/CheatSheet/selenium/"  title="">
  <strong>下一篇：</strong><br/> 
  <span>(no title)
 </span>

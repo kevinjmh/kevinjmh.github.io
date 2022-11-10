@@ -19,7 +19,7 @@
 <meta property="og:description" content="pip curl https:&#x2F;&#x2F;bootstrap.pypa.io&#x2F;get-pip.py -o get-pip.py python get-pip.py   C:\python27\scirpts下运行 easy_install pip  修改更新源linux ~&#x2F;.pip&#x2F;pip.conf 12[global]index-url &#x3D; https:&#x2F;&#x2F;pypi.tuna.tsinghua.edu">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-01-20T14:11:43.000Z">
-<meta property="article:modified_time" content="2022-10-19T08:12:56.435Z">
+<meta property="article:modified_time" content="2022-11-10T08:48:44.492Z">
 <meta property="article:author" content="Manhua">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:creator" content="@jiangmanhua">
@@ -122,12 +122,17 @@
 
 <h1 id="文件服务器"><a href="#文件服务器" class="headerlink" title="文件服务器"></a>文件服务器</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -m http.server -h</span><br></pre></td></tr></table></figure>
 
-<h1 id="转exe"><a href="#转exe" class="headerlink" title="转exe"></a>转exe</h1><p>pip install pyinstaller<br>C:\Users\Manhua\AppData\Local\Programs\Python\Python310\Scripts&gt; .\pyinstaller.exe -F D:\para.py</p>
-<p>-F：仅仅生成一个文件，不暴露其他信息，启动较慢。<br>-D：生成一个文件夹，里面是多文件模式，启动快。<br>-w：窗口模式打包，不显示控制台。<br>-c：跟图标路径，作为应用icon。<br>–-hidden-import 应用需要的包，但是没有被打包进来，这里的错误是最多的，因为一般是第三方包隐式调用其他包，然后打包出来的程序显示Fate Error不能运行。</p>
+<h1 id="转exe"><a href="#转exe" class="headerlink" title="转exe"></a>转exe</h1><p>pip install pyinstaller<br>C:\Users\Manhua\AppData\Local\Programs\Python\Python38\Scripts\pyinstaller.exe -w –onefile –hidden-import PySide6 .\QTImgClassifier.py</p>
+<p>-F：仅仅生成一个文件，不暴露其他信息，启动较慢。<br>-D：生成一个文件夹，里面是多文件模式，启动快。<br>-w：窗口模式打包，不显示控制台。<br>-c：跟图标路径，作为应用icon。<br>–-hidden-import 应用需要的包，但是没有被打包进来，这里的错误是最多的，因为一般是第三方包隐式调用其他包，然后打包出来的程序显示Fatal Error不能运行。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">使用pyinstaller打包的时候有看到缺少api-ms-win-core-path-l1-1-0.dll的警告，尝试下载这个DLL确依然不能解决问题。</span><br><span class="line">是因为Python3.9已经不再支持Win7了，最后发布二进制的是Python3.8.10  https://www.python.org/ftp/python/3.8.10/</span><br></pre></td></tr></table></figure>
+
 <p>pip install py2exe<br>先写一个简单的脚本，文件名：helloworld.py<br>还需要个用于发布程序的设置脚本：mysetup.py</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> distutils.core <span class="keyword">import</span> setup</span><br><span class="line"><span class="keyword">import</span> py2exe</span><br><span class="line"></span><br><span class="line">setup(console=[<span class="string">&quot;helloworld.py&quot;</span>])</span><br></pre></td></tr></table></figure>
 <p>python mysetup.py py2exe</p>
-<p>.py<br>setup(console=[“NetworkHelper.py”])</p>
+<p>整个dist目录发布</p>
+<p>===<br>pip install nuitka<br><a target="_blank" rel="noopener" href="https://sourceforge.net/projects/mingw-w64/files/mingw-w64/mingw-w64-release/">https://sourceforge.net/projects/mingw-w64/files/mingw-w64/mingw-w64-release/</a><br>x86_64-7.3.0-release-win32-seh-rt_v5-rev0.7z</p>
+<p>python -m nuitka –disable-console –show-memory –show-progress –standalone –plugin-enable=pyside6 hello.py<br>python -m nuitka –onefile hello.py   [make sure that the mere standalone is working, before turning to single file]</p>
+<p>–disable-console</p>
   
 	</div>
 		<footer class="article-footer clearfix">
