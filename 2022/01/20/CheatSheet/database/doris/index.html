@@ -1,0 +1,574 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>doris | Manhua</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Manhua">
+    
+
+    
+    <meta name="description" content="架构FE(Frontend)  1-5台（分为 Follower 和 Observer），存储元数据，包括日志和 image，通常从几百 MB 到几个 GB 不等。 BE(Backend)  10-100台，存放用户数据。3副本。 Broker 是用于访问外部数据源（如 hdfs）的进程。通常，在每台机器上部署一个 broker 实例即可。 一台机器上可以部署多个 BE 实例，但是只能部署一个 F">
+<meta property="og:type" content="article">
+<meta property="og:title" content="doris">
+<meta property="og:url" content="http://kevinjmh.github.io/2022/01/20/CheatSheet/database/doris/index.html">
+<meta property="og:site_name" content="Manhua">
+<meta property="og:description" content="架构FE(Frontend)  1-5台（分为 Follower 和 Observer），存储元数据，包括日志和 image，通常从几百 MB 到几个 GB 不等。 BE(Backend)  10-100台，存放用户数据。3副本。 Broker 是用于访问外部数据源（如 hdfs）的进程。通常，在每台机器上部署一个 broker 实例即可。 一台机器上可以部署多个 BE 实例，但是只能部署一个 F">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-01-20T14:11:43.000Z">
+<meta property="article:modified_time" content="2023-04-07T06:33:13.442Z">
+<meta property="article:author" content="Manhua">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:creator" content="@jiangmanhua">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Manhua" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="Manhua" title="Manhua"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Manhua">Manhua</a></h1>
+				<h2 class="blog-motto">Never Say Die</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页 | Home</a></li>
+					
+						<li><a href="/archives">归档 | Archives</a></li>
+					
+						<li><a href="/about">简介 | About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:kevinjmh.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2022/01/20/CheatSheet/database/doris/" title="doris" itemprop="url">doris</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Manhua" target="_blank" itemprop="author">Manhua</a>
+		
+  <p class="article-time">
+    <time datetime="2022-01-20T14:11:43.000Z" itemprop="datePublished"> Published 2022-01-20</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9E%B6%E6%9E%84"><span class="toc-number">1.</span> <span class="toc-text">架构</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E9%85%8D%E7%BD%AE"><span class="toc-number">2.</span> <span class="toc-text">常用配置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-number">3.</span> <span class="toc-text">常用命令</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C"><span class="toc-number">4.</span> <span class="toc-text">常用操作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#broker-load"><span class="toc-number">4.1.</span> <span class="toc-text">broker load</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#export"><span class="toc-number">4.2.</span> <span class="toc-text">export</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#batch-delete"><span class="toc-number">4.3.</span> <span class="toc-text">batch delete</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#check-load-state"><span class="toc-number">4.4.</span> <span class="toc-text">check load state</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%89%B9%E6%AE%8A%E8%AF%B4%E6%98%8E"><span class="toc-number">5.</span> <span class="toc-text">特殊说明</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%A3%80%E6%9F%A5"><span class="toc-number">6.</span> <span class="toc-text">数据检查</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B-Tablet-Meta"><span class="toc-number">6.1.</span> <span class="toc-text">查看 Tablet Meta</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#palo-studio"><span class="toc-number">6.2.</span> <span class="toc-text">palo studio</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-number">7.</span> <span class="toc-text">问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BB%E6%9C%BA%E8%B4%9F%E8%BD%BD%E8%BF%87%E5%A4%A7%E6%97%B6-doris%E8%BF%9B%E7%A8%8B%E8%A2%ABkill-gt-%E5%86%85%E5%AD%98%E5%B8%B8%E9%A9%BB%E5%8D%A0%E7%94%A8"><span class="toc-number">7.1.</span> <span class="toc-text">主机负载过大时 doris进程被kill &#x3D;&gt; 内存常驻占用</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<h1 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h1><p>FE(Frontend)  1-5台（分为 Follower 和 Observer），存储元数据，包括日志和 image，通常从几百 MB 到几个 GB 不等。</p>
+<p>BE(Backend)  10-100台，存放用户数据。3副本。</p>
+<p>Broker 是用于访问外部数据源（如 hdfs）的进程。通常，在每台机器上部署一个 broker 实例即可。</p>
+<p>一台机器上可以部署多个 BE 实例，但是只能部署一个 FE。<br>多个FE所在服务器的时钟必须保持一致（允许最多5秒的时钟偏差）</p>
+<h1 id="常用配置"><a href="#常用配置" class="headerlink" title="常用配置"></a>常用配置</h1><p>http://<ip>:8010</p>
+<p>${DORIS_HOME}/doris-meta<br>storage_root_path = /data/soft/doris/storage<br>sys_log_dir = ${DORIS_HOME}/log</p>
+<p>BE 节点需要先在 FE 中添加，才可加入集群（默认9030）Doris 内置 root 和 admin 用户</p>
+<h1 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h1><p>连接到 FE：<br>mysql -h <ip> -P 8035 -uroot -p</p>
+<p>use example_db;</p>
+<p>CREATE TABLE IF NOT EXISTS example_db.expamle_tbl<br>(<br><code>user_id</code> LARGEINT NOT NULL COMMENT “用户id”,<br><code>last_visit_date</code> DATETIME REPLACE DEFAULT “1970-01-01 00:00:00” COMMENT “用户最后一次访问时间”,<br><code>cost</code> BIGINT SUM DEFAULT “0” COMMENT “用户总消费”<br>)<br>AGGREGATE KEY(<code>user_id</code>)<br>DISTRIBUTED BY HASH(user_id)</p>
+<p>insert into example_db.expamle_tbl values (1, ‘1970-01-01 00:00:00’,10)<br>insert into example_db.expamle_tbl values (1, ‘1971-01-01 00:00:00’,10)<br>insert into example_db.expamle_tbl values (1, ‘1969-01-01 00:00:00’,5)</p>
+<p>select * from example_db.expamle_tbl;</p>
+<p>spark-shell –master local[2]  –jars  /data/tmp/doris-spark-connector-3.0.3-2.12-1.0.0-SNAPSHOT.jar</p>
+<h1 id="常用操作"><a href="#常用操作" class="headerlink" title="常用操作"></a>常用操作</h1><h2 id="broker-load"><a href="#broker-load" class="headerlink" title="broker load"></a>broker load</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">LOAD LABEL test_up984948464479_bmp$ymd</span><br><span class="line">     (</span><br><span class="line">     DATA INFILE(&quot;hdfs://cluster2/tmp/*&quot;)</span><br><span class="line">     <span class="keyword">INTO</span> <span class="keyword">TABLE</span> tbl</span><br><span class="line">     FORMAT <span class="keyword">AS</span> &quot;parquet&quot;</span><br><span class="line">     (seqid, userid, serviceid, startdate, enddate, updatetime)</span><br><span class="line">     <span class="keyword">SET</span>(</span><br><span class="line">       seqid<span class="operator">=</span>seqid,</span><br><span class="line">       userid<span class="operator">=</span>userid,</span><br><span class="line">       serviceid<span class="operator">=</span>serviceid,</span><br><span class="line">       startdate<span class="operator">=</span>startdate,</span><br><span class="line">       enddate<span class="operator">=</span>enddate,</span><br><span class="line">       updatetime<span class="operator">=</span>updatetime)</span><br><span class="line">     )</span><br><span class="line">     <span class="keyword">WITH</span> BROKER <span class="string">&#x27;hdfs_broker&#x27;</span>(</span><br><span class="line">         &quot;username&quot;<span class="operator">=</span>&quot;hadoop&quot;,</span><br><span class="line">         &quot;password&quot;<span class="operator">=</span>&quot;&quot;)</span><br><span class="line">     PROPERTIES(&quot;max_filter_ratio&quot; <span class="operator">=</span> &quot;1&quot;);</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="export"><a href="#export" class="headerlink" title="export"></a>export</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">/</span><span class="operator">/</span> <span class="keyword">set</span> enable_parallel_outfile <span class="operator">=</span> <span class="literal">true</span>; <span class="comment">--并行得到的数据不对！！@202202</span></span><br><span class="line"><span class="keyword">select</span> seqid <span class="keyword">from</span> fclean <span class="keyword">where</span> enddate <span class="operator">&lt;</span><span class="string">&#x27;202203&#x27;</span>  <span class="keyword">into</span> outfile &quot;hdfs://tmp/&quot;</span><br><span class="line">FORMAT <span class="keyword">AS</span> CSV</span><br><span class="line">properties (&quot;hdfs.fs.defaultFS&quot; <span class="operator">=</span> &quot;hdfs://host:port&quot;, &quot;hdfs.hdfs_user&quot; <span class="operator">=</span> &quot;hadoop&quot;)</span><br><span class="line"></span><br><span class="line"><span class="operator">/</span><span class="operator">/</span> better</span><br><span class="line"><span class="keyword">select</span> seqid <span class="keyword">from</span> fclean limit <span class="number">3</span>  <span class="keyword">into</span> outfile &quot;hdfs://cluster2/tmp/123&quot;</span><br><span class="line">FORMAT <span class="keyword">AS</span> CSV<span class="operator">/</span>parquet</span><br><span class="line">properties (&quot;broker.name&quot; <span class="operator">=</span> &quot;hdfs_broker&quot;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="batch-delete"><a href="#batch-delete" class="headerlink" title="batch delete"></a>batch delete</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">LOAD LABEL bmp.delete_16491519487 (</span><br><span class="line"><span class="keyword">DELETE</span> DATA INFILE(&quot;hdfs://cluster2/tmp/*&quot;)</span><br><span class="line"><span class="keyword">INTO</span> <span class="keyword">TABLE</span> fclean</span><br><span class="line">COLUMNS TERMINATED <span class="keyword">BY</span> &quot;\t&quot;</span><br><span class="line">(seqid)</span><br><span class="line"><span class="keyword">SET</span></span><br><span class="line">(</span><br><span class="line">seqid<span class="operator">=</span>seqid</span><br><span class="line">)</span><br><span class="line">) <span class="keyword">WITH</span> BROKER <span class="string">&#x27;hdfs_broker&#x27;</span>(</span><br><span class="line">&quot;username&quot;<span class="operator">=</span>&quot;hadoop&quot;,</span><br><span class="line">&quot;password&quot;<span class="operator">=</span>&quot;&quot;)</span><br><span class="line">PROPERTIES (</span><br><span class="line">&quot;timeout&quot; <span class="operator">=</span> &quot;3600&quot;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<h2 id="check-load-state"><a href="#check-load-state" class="headerlink" title="check load state"></a>check load state</h2><p><a target="_blank" rel="noopener" href="https://doris.apache.org/zh-CN/administrator-guide/http-actions/fe/get-load-state.html">https://doris.apache.org/zh-CN/administrator-guide/http-actions/fe/get-load-state.html</a></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">curl -u username:passwd  http://ip:8010/api/bmp/get_load_state?label=&lt;label_name&gt;</span><br></pre></td></tr></table></figure>
+
+<h1 id="特殊说明"><a href="#特殊说明" class="headerlink" title="特殊说明"></a>特殊说明</h1><ul>
+<li>按条件删除数据<ul>
+<li>delete条件只能是key列</li>
+<li>折衷方案<ul>
+<li>非key列允许为null</li>
+<li>ALTER TABLE fclean2 ENABLE FEATURE “BATCH_DELETE”</li>
+<li>根据条件导出待删除数据的key列</li>
+<li>通过导入方式删除</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="数据检查"><a href="#数据检查" class="headerlink" title="数据检查"></a>数据检查</h1><p>SHOW FRONTENDS;<br>SHOW BACKENDS;<br>SHOW BROKER;<br>SHOW PROC ‘/statistic’;<br>SHOW PROC ‘/statistic/124226’;</p>
+<p>ALTER TABLE tbl MODIFY PARTITION p1 SET(“replication_num” = “2”);</p>
+<p>ADMIN SHOW REPLICA DISTRIBUTION FROM t_bms_service_sub;<br>ADMIN SHOW REPLICA STATUS FROM bmp.t_bms_service_sub WHERE STATUS != “OK”;<br>| TabletId | ReplicaId | BackendId | Version | LastFailedVersion | LastSuccessVersion | CommittedVersion | SchemaHash | VersionNum | IsBad | State  | Status |</p>
+<p>SHOW TABLE STATUS from bmp;<br>SHOW TABLET FROM tbl1;<br>SHOW TABLET 29502553;</p>
+<p>Tablet 对应的目录，通常位于 data/shard_id/tablet_id/schema_hash<br>BE 端引入了 RocksDB，用于存储 tablet 的元信息</p>
+<h2 id="查看-Tablet-Meta"><a href="#查看-Tablet-Meta" class="headerlink" title="查看 Tablet Meta"></a>查看 Tablet Meta</h2><p>http://{host}:{port}/api/meta/header/{tablet_id}/{schema_hash}<br>./lib/meta_tool –root_path=/data/soft/doris/storage –operation=get_meta –tablet_id=228348 –schema_hash=2083337138</p>
+<h2 id="palo-studio"><a href="#palo-studio" class="headerlink" title="palo studio"></a>palo studio</h2><p>palo是doris前身在百度内部的名称</p>
+<p>palo-studio可看作doris+metabase<br><a target="_blank" rel="noopener" href="http://palo.baidu.com/docs/%E7%94%9F%E6%80%81%E5%B7%A5%E5%85%B7/Palo-Studio/%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2">http://palo.baidu.com/docs/%E7%94%9F%E6%80%81%E5%B7%A5%E5%85%B7/Palo-Studio/%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2</a></p>
+<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><h2 id="主机负载过大时-doris进程被kill-gt-内存常驻占用"><a href="#主机负载过大时-doris进程被kill-gt-内存常驻占用" class="headerlink" title="主机负载过大时 doris进程被kill =&gt; 内存常驻占用"></a>主机负载过大时 doris进程被kill =&gt; 内存常驻占用</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[Fri May 13 09:19:06 2022] Out of memory: Kill process 19651 (palo_be) score 183 or sacrifice child</span><br><span class="line">[Fri May 13 09:19:06 2022] Killed process 19651 (palo_be), UID 1538, total-vm:73392408kB, anon-rss:48302876kB, file-rss:0kB, shmem-rss:0kB</span><br><span class="line">[Fri May 13 09:19:06 2022] [19659]  1538 19651 18348102 12076299   34582        0             0 palo_be</span><br><span class="line">[Fri May 13 09:19:06 2022] Out of memory: Kill process 19659 (palo_be) score 183 or sacrifice child</span><br><span class="line">[Fri May 13 09:19:06 2022] Killed process 19659 (palo_be), UID 1538, total-vm:73392408kB, anon-rss:48305196kB, file-rss:0kB, shmem-rss:0kB</span><br></pre></td></tr></table></figure>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/CheatSheet/">CheatSheet</a>
+</div>
+
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://kevinjmh.github.io/2022/01/20/CheatSheet/database/doris/" data-title="doris | Manhua" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2022/01/20/CheatSheet/computing/yarn/" title="yarn">
+  <strong>上一篇：</strong><br/>
+  <span>
+  yarn</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2022/01/20/CheatSheet/database/elasticsearch/"  title="elasticsearch">
+ <strong>下一篇：</strong><br/> 
+ <span>elasticsearch
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github Card</p>
+<div class="github-card" data-github="kevinjmh" data-width="220" data-height="119" data-theme="medium">
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+  </div>
+
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Application/" title="Application">Application<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/BigData/" title="BigData">BigData<sup>5</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/CheatSheet/" title="CheatSheet">CheatSheet<sup>22</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Info/" title="Info">Info<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/慢话/" title="慢话">慢话<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/carbondata/" title="carbondata">carbondata<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/project/" title="project">project<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/software/" title="software">software<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/recommendation/" title="recommendation">recommendation<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/docker/" title="docker">docker<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/markdown/" title="markdown">markdown<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/carbon/" title="carbon">carbon<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/spark/" title="spark">spark<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/hadoop/" title="hadoop">hadoop<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://www.cnblogs.com/manhua" target="_blank" title="cnBlogs">cnBlogs</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m Manhua Jiang. <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/443181876" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/kevinjmh" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		<a href="https://twitter.com/jiangmanhua" target="_blank" class="icon-twitter" title="twitter"></a>
+		
+		
+		<a href="https://www.facebook.com/jiangmanhua" target="_blank" class="icon-facebook" title="facebook"></a>
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2023 
+		
+		<a href="/about" target="_blank" title="Manhua">Manhua</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+        getSize();
+        if (myWidth >= 1024) {
+          c.click();
+        }
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

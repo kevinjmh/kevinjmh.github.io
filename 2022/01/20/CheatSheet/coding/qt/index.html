@@ -1,0 +1,570 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>qt | Manhua</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Manhua">
+    
+
+    
+    <meta name="description" content="版本说明PyQt6和PySide6都是用于调用Qt6API的Python库，使用它们可以轻松在Python语言中创建基于Qt的GUI程序；PyQt6和PySide6最大的不同表现在发行许可上； PyQt6是由RiverbankComputing公司开发，出现的比较早；它采用GPLv3许可证和商业许可证发布；这表示你如果使用PyQt6，则必须将你的代码进行开源；如果要闭源，则需要购买商业许可； Py">
+<meta property="og:type" content="article">
+<meta property="og:title" content="qt">
+<meta property="og:url" content="http://kevinjmh.github.io/2022/01/20/CheatSheet/coding/qt/index.html">
+<meta property="og:site_name" content="Manhua">
+<meta property="og:description" content="版本说明PyQt6和PySide6都是用于调用Qt6API的Python库，使用它们可以轻松在Python语言中创建基于Qt的GUI程序；PyQt6和PySide6最大的不同表现在发行许可上； PyQt6是由RiverbankComputing公司开发，出现的比较早；它采用GPLv3许可证和商业许可证发布；这表示你如果使用PyQt6，则必须将你的代码进行开源；如果要闭源，则需要购买商业许可； Py">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-01-20T14:11:43.000Z">
+<meta property="article:modified_time" content="2023-04-07T06:33:13.438Z">
+<meta property="article:author" content="Manhua">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:creator" content="@jiangmanhua">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Manhua" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="Manhua" title="Manhua"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Manhua">Manhua</a></h1>
+				<h2 class="blog-motto">Never Say Die</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页 | Home</a></li>
+					
+						<li><a href="/archives">归档 | Archives</a></li>
+					
+						<li><a href="/about">简介 | About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:kevinjmh.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2022/01/20/CheatSheet/coding/qt/" title="qt" itemprop="url">qt</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Manhua" target="_blank" itemprop="author">Manhua</a>
+		
+  <p class="article-time">
+    <time datetime="2022-01-20T14:11:43.000Z" itemprop="datePublished"> Published 2022-01-20</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%89%88%E6%9C%AC%E8%AF%B4%E6%98%8E"><span class="toc-number">1.</span> <span class="toc-text">版本说明</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PySide6"><span class="toc-number">2.</span> <span class="toc-text">PySide6</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PySide6%E5%B7%A5%E5%85%B7"><span class="toc-number">3.</span> <span class="toc-text">PySide6工具</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5"><span class="toc-number">4.</span> <span class="toc-text">概念</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Hello-World"><span class="toc-number">5.</span> <span class="toc-text">Hello World</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B%E5%AE%9E%E4%BE%8B"><span class="toc-number">6.</span> <span class="toc-text">开发流程实例</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A0%B9%E6%8D%AEui%E6%96%87%E4%BB%B6%E7%94%9F%E6%88%90%E7%95%8C%E9%9D%A2"><span class="toc-number">7.</span> <span class="toc-text">根据ui文件生成界面</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8%E5%BA%94%E7%94%A8"><span class="toc-number">8.</span> <span class="toc-text">启动应用</span></a></li></ol>
+		
+		</div>
+		
+		<h1 id="版本说明"><a href="#版本说明" class="headerlink" title="版本说明"></a>版本说明</h1><p>PyQt6和PySide6都是用于调用Qt6API的Python库，使用它们可以轻松在Python语言中创建基于Qt的GUI程序；<br>PyQt6和PySide6最大的不同表现在发行许可上；</p>
+<p>PyQt6是由RiverbankComputing公司开发，出现的比较早；它采用GPLv3许可证和商业许可证发布；这表示你如果使用PyQt6，则必须将你的代码进行开源；如果要闭源，则需要购买商业许可；</p>
+<p>PySide6是Qt官方的库亲儿子，出现的时间要比PyQt晚的多，这也是很多人知道PyQt不知道PySide的原因；但随着版本的迭代，PySide6越来越强大，作者更看好PySide；</p>
+<p>PySide6采用LGPL许可发布，这意味着只要你以调用动态链接库的形式使用Qt，你可以以任何形式（商业、非商业、开源、非开源）发布你的程序；</p>
+<h1 id="PySide6"><a href="#PySide6" class="headerlink" title="PySide6"></a>PySide6</h1><p><code>pip install pyside6</code></p>
+<h1 id="PySide6工具"><a href="#PySide6工具" class="headerlink" title="PySide6工具"></a>PySide6工具</h1><p>工具:</p>
+<ul>
+<li>designer.exe，Qt Designer，可轻松画出UI；</li>
+<li>uic.exe，用于将.ui文件转换成.py文件；</li>
+<li>rcc.exe，把编写的.qrc资源文件换成.py文件；</li>
+</ul>
+<p>Pycharm工具配置：<br>File - Settings - Tools - External Tools，点击 + Create Tool配置。<br>（选中要处理的文件后）依次点击 Tools - External Tools 即可启动对应工具。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Name: QtDisigner</span><br><span class="line">Program : C:\Users\Manhua\AppData\Local\Programs\Python\Python310\Lib\site-packages\PySide6\designer.exe</span><br><span class="line">Working directory: $FileDir$</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Name: PyUIC</span><br><span class="line">Program : C:\Users\Manhua\AppData\Local\Programs\Python\Python310\Scripts\pyside6-uic.exe</span><br><span class="line">Arguments: $FileName$ -o $FileNameWithoutExtension$.py</span><br><span class="line">Working directory: $FileDir$</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Name: PyRCC</span><br><span class="line">Program : C:\Users\Manhua\AppData\Local\Programs\Python\Python310\Scripts\pyside6-rcc.exe </span><br><span class="line">Arguments: $FileName$ -o $FileNameWithoutExtension$_rc.py</span><br><span class="line">Working directory: $FileDir$</span><br></pre></td></tr></table></figure>
+
+<h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><p>QApplication 对于任何使用Qt的GUI应用程序，都只有一个QApplication对象，提供基于QWidget 的应用程序所需的一些功能<br>QWidget类是所有用户界面对象的基类<br>  QMainWindow 类提供一个有菜单条、锚接窗口（例如工具条）和一个状态条的主应用程序窗口。<br>  QDialog类是对话框窗口的基类<br>信号 signal → 事件<br>槽 slot → 回调函数</p>
+<h1 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World"></a>Hello World</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">from</span> PySide6 <span class="keyword">import</span> QtCore, QtWidgets, QtGui</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyWidget</span>(<span class="params">QtWidgets.QWidget</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line">        self.button = QtWidgets.QPushButton(<span class="string">&quot;点这里&quot;</span>)</span><br><span class="line">        self.layout = QtWidgets.QVBoxLayout(self)</span><br><span class="line">        self.layout.addWidget(self.button)</span><br><span class="line">        self.button.clicked.connect(self.showMessage)</span><br><span class="line"></span><br><span class="line"><span class="meta">    @QtCore.Slot()</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">showMessage</span>(<span class="params">self</span>):</span></span><br><span class="line">        msgBox = QtWidgets.QMessageBox()</span><br><span class="line">        msgBox.setText(<span class="string">&quot;Hello world&quot;</span>)</span><br><span class="line">        msgBox.setStandardButtons(QtWidgets.QMessageBox.Ok)</span><br><span class="line">        ret = msgBox.<span class="built_in">exec</span>()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    app = QtWidgets.QApplication([])</span><br><span class="line">    widget = MyWidget()</span><br><span class="line">    widget.resize(<span class="number">300</span>, <span class="number">200</span>)</span><br><span class="line">    widget.show()</span><br><span class="line">    sys.exit(app.<span class="built_in">exec</span>())</span><br></pre></td></tr></table></figure>
+
+<h1 id="开发流程实例"><a href="#开发流程实例" class="headerlink" title="开发流程实例"></a>开发流程实例</h1><ul>
+<li>designer绘制界面 设置信号/槽</li>
+<li>由ui生成界面显示py文件 修改回调函数(每次更新ui后都要处理)</li>
+<li>新建业务逻辑py文件，导入界面文件</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/jia666666/article/details/81534260">实战参考</a></p>
+<p><code>Weather.py</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="comment">################################################################################</span></span><br><span class="line"><span class="comment">## Form generated from reading UI file &#x27;Weather.ui&#x27;</span></span><br><span class="line"><span class="comment">##</span></span><br><span class="line"><span class="comment">## Created by: Qt User Interface Compiler version 6.3.0</span></span><br><span class="line"><span class="comment">##</span></span><br><span class="line"><span class="comment">## WARNING! All changes made in this file will be lost when recompiling UI file!</span></span><br><span class="line"><span class="comment">################################################################################</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> PySide6.QtCore <span class="keyword">import</span> (QCoreApplication, QDate, QDateTime, QLocale,</span><br><span class="line">    QMetaObject, QObject, QPoint, QRect,</span><br><span class="line">    QSize, QTime, QUrl, Qt)</span><br><span class="line"><span class="keyword">from</span> PySide6.QtGui <span class="keyword">import</span> (QBrush, QColor, QConicalGradient, QCursor,</span><br><span class="line">    QFont, QFontDatabase, QGradient, QIcon,</span><br><span class="line">    QImage, QKeySequence, QLinearGradient, QPainter,</span><br><span class="line">    QPalette, QPixmap, QRadialGradient, QTransform)</span><br><span class="line"><span class="keyword">from</span> PySide6.QtWidgets <span class="keyword">import</span> (QApplication, QComboBox, QDialog, QGroupBox,</span><br><span class="line">    QLabel, QPushButton, QSizePolicy, QTextEdit,</span><br><span class="line">    QWidget)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Ui_Dialog</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">setupUi</span>(<span class="params">self, Dialog</span>):</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> Dialog.objectName():</span><br><span class="line">            Dialog.setObjectName(<span class="string">u&quot;Dialog&quot;</span>)</span><br><span class="line">        Dialog.resize(<span class="number">400</span>, <span class="number">300</span>)</span><br><span class="line">        self.queryButton = QPushButton(Dialog)</span><br><span class="line">        self.queryButton.setObjectName(<span class="string">u&quot;queryButton&quot;</span>)</span><br><span class="line">        self.queryButton.setGeometry(QRect(<span class="number">100</span>, <span class="number">240</span>, <span class="number">75</span>, <span class="number">24</span>))</span><br><span class="line">        self.clearButton = QPushButton(Dialog)</span><br><span class="line">        self.clearButton.setObjectName(<span class="string">u&quot;clearButton&quot;</span>)</span><br><span class="line">        self.clearButton.setGeometry(QRect(<span class="number">210</span>, <span class="number">240</span>, <span class="number">75</span>, <span class="number">24</span>))</span><br><span class="line">        self.groupBox = QGroupBox(Dialog)</span><br><span class="line">        self.groupBox.setObjectName(<span class="string">u&quot;groupBox&quot;</span>)</span><br><span class="line">        self.groupBox.setGeometry(QRect(<span class="number">10</span>, <span class="number">20</span>, <span class="number">371</span>, <span class="number">201</span>))</span><br><span class="line">        self.label = QLabel(self.groupBox)</span><br><span class="line">        self.label.setObjectName(<span class="string">u&quot;label&quot;</span>)</span><br><span class="line">        self.label.setGeometry(QRect(<span class="number">30</span>, <span class="number">30</span>, <span class="number">51</span>, <span class="number">16</span>))</span><br><span class="line">        self.comboBox = QComboBox(self.groupBox)</span><br><span class="line">        self.comboBox.addItem(<span class="string">&quot;&quot;</span>)</span><br><span class="line">        self.comboBox.addItem(<span class="string">&quot;&quot;</span>)</span><br><span class="line">        self.comboBox.addItem(<span class="string">&quot;&quot;</span>)</span><br><span class="line">        self.comboBox.setObjectName(<span class="string">u&quot;comboBox&quot;</span>)</span><br><span class="line">        self.comboBox.setGeometry(QRect(<span class="number">100</span>, <span class="number">30</span>, <span class="number">68</span>, <span class="number">22</span>))</span><br><span class="line">        self.textEdit = QTextEdit(self.groupBox)</span><br><span class="line">        self.textEdit.setObjectName(<span class="string">u&quot;textEdit&quot;</span>)</span><br><span class="line">        self.textEdit.setGeometry(QRect(<span class="number">30</span>, <span class="number">60</span>, <span class="number">311</span>, <span class="number">131</span>))</span><br><span class="line"></span><br><span class="line">        self.retranslateUi(Dialog)</span><br><span class="line">        self.queryButton.clicked.connect(Dialog.queryWeather)</span><br><span class="line">        self.clearButton.clicked.connect(Dialog.clearText)</span><br><span class="line"></span><br><span class="line">        QMetaObject.connectSlotsByName(Dialog)</span><br><span class="line">    <span class="comment"># setupUi</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">retranslateUi</span>(<span class="params">self, Dialog</span>):</span></span><br><span class="line">        Dialog.setWindowTitle(QCoreApplication.translate(<span class="string">&quot;Dialog&quot;</span>, <span class="string">u&quot;Dialog&quot;</span>, <span class="literal">None</span>))</span><br><span class="line">        self.queryButton.setText(QCoreApplication.translate(<span class="string">&quot;Dialog&quot;</span>, <span class="string">u&quot;Query&quot;</span>, <span class="literal">None</span>))</span><br><span class="line">        self.clearButton.setText(QCoreApplication.translate(<span class="string">&quot;Dialog&quot;</span>, <span class="string">u&quot;Clear&quot;</span>, <span class="literal">None</span>))</span><br><span class="line">        self.groupBox.setTitle(QCoreApplication.translate(<span class="string">&quot;Dialog&quot;</span>, <span class="string">u&quot;city weather&quot;</span>, <span class="literal">None</span>))</span><br><span class="line">        self.label.setText(QCoreApplication.translate(<span class="string">&quot;Dialog&quot;</span>, <span class="string">u&quot;City&quot;</span>, <span class="literal">None</span>))</span><br><span class="line">        self.comboBox.setItemText(<span class="number">0</span>, QCoreApplication.translate(<span class="string">&quot;Dialog&quot;</span>, <span class="string">u&quot;\u5317\u4eac&quot;</span>, <span class="literal">None</span>))</span><br><span class="line">        self.comboBox.setItemText(<span class="number">1</span>, QCoreApplication.translate(<span class="string">&quot;Dialog&quot;</span>, <span class="string">u&quot;\u4e0a\u6d77&quot;</span>, <span class="literal">None</span>))</span><br><span class="line">        self.comboBox.setItemText(<span class="number">2</span>, QCoreApplication.translate(<span class="string">&quot;Dialog&quot;</span>, <span class="string">u&quot;\u5929\u6d25&quot;</span>, <span class="literal">None</span>))</span><br><span class="line"></span><br><span class="line">    <span class="comment"># retranslateUi</span></span><br></pre></td></tr></table></figure>
+
+<p><code>MainWeather.py</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coding:utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> Weather</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> PySide6.QtWidgets <span class="keyword">import</span> QApplication, QDialog</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MainDialog</span>(<span class="params">QDialog</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, parent=<span class="literal">None</span></span>):</span></span><br><span class="line">        <span class="built_in">super</span>(MainDialog, self).__init__(parent)</span><br><span class="line">        self.ui = Weather.Ui_Dialog()</span><br><span class="line">        self.ui.setupUi(self)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">queryWeather</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(self.ui.comboBox.currentIndex())</span><br><span class="line">        cityName = self.ui.comboBox.currentText()</span><br><span class="line">        cityCode = self.getCode(cityName)</span><br><span class="line"></span><br><span class="line">        r = requests.get(<span class="string">&quot;http://t.weather.sojson.com/api/weather/city/&#123;&#125;&quot;</span>.<span class="built_in">format</span>(cityCode))</span><br><span class="line"></span><br><span class="line">        <span class="built_in">print</span>(r.json())</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> r.json().get(<span class="string">&#x27;status&#x27;</span>) == <span class="number">200</span>:</span><br><span class="line">            weatherMsg = <span class="string">&#x27;城市：&#123;&#125;\n日期：&#123;&#125;\n天气：&#123;&#125;\nPM 2.5：&#123;&#125; &#123;&#125;\n温度：&#123;&#125;\n湿度：&#123;&#125;\n风力：&#123;&#125;\n\n&#123;&#125;&#x27;</span>.<span class="built_in">format</span>(</span><br><span class="line">                r.json()[<span class="string">&#x27;cityInfo&#x27;</span>][<span class="string">&#x27;city&#x27;</span>],</span><br><span class="line">                r.json()[<span class="string">&#x27;data&#x27;</span>][<span class="string">&#x27;forecast&#x27;</span>][<span class="number">0</span>][<span class="string">&#x27;ymd&#x27;</span>],</span><br><span class="line">                r.json()[<span class="string">&#x27;data&#x27;</span>][<span class="string">&#x27;forecast&#x27;</span>][<span class="number">0</span>][<span class="string">&#x27;type&#x27;</span>],</span><br><span class="line">                <span class="built_in">int</span>(r.json()[<span class="string">&#x27;data&#x27;</span>][<span class="string">&#x27;pm25&#x27;</span>]),</span><br><span class="line">                r.json()[<span class="string">&#x27;data&#x27;</span>][<span class="string">&#x27;quality&#x27;</span>],</span><br><span class="line">                r.json()[<span class="string">&#x27;data&#x27;</span>][<span class="string">&#x27;wendu&#x27;</span>],</span><br><span class="line">                r.json()[<span class="string">&#x27;data&#x27;</span>][<span class="string">&#x27;shidu&#x27;</span>],</span><br><span class="line">                r.json()[<span class="string">&#x27;data&#x27;</span>][<span class="string">&#x27;forecast&#x27;</span>][<span class="number">0</span>][<span class="string">&#x27;fl&#x27;</span>],</span><br><span class="line">                r.json()[<span class="string">&#x27;data&#x27;</span>][<span class="string">&#x27;forecast&#x27;</span>][<span class="number">0</span>][<span class="string">&#x27;notice&#x27;</span>],</span><br><span class="line">            )</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            weatherMsg = <span class="string">&#x27;天气查询失败，请稍后再试！&#x27;</span></span><br><span class="line"></span><br><span class="line">        self.ui.textEdit.setText(weatherMsg)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getCode</span>(<span class="params">self, cityName</span>):</span></span><br><span class="line">        cityDict = &#123;<span class="string">&quot;北京&quot;</span>: <span class="string">&quot;101010100&quot;</span>,</span><br><span class="line">                    <span class="string">&quot;上海&quot;</span>: <span class="string">&quot;101020100&quot;</span>,</span><br><span class="line">                    <span class="string">&quot;天津&quot;</span>: <span class="string">&quot;101030100&quot;</span>&#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> cityDict.get(cityName, <span class="string">&#x27;101010100&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">clearText</span>(<span class="params">self</span>):</span></span><br><span class="line">        self.ui.textEdit.clear()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    myapp = QApplication(sys.argv)</span><br><span class="line">    myDlg = MainDialog()</span><br><span class="line">    myDlg.show()</span><br><span class="line">    sys.exit(myapp.<span class="built_in">exec</span>())</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="根据ui文件生成界面"><a href="#根据ui文件生成界面" class="headerlink" title="根据ui文件生成界面"></a>根据ui文件生成界面</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> PySide6.QtWidgets <span class="keyword">import</span> QApplication, QMainWindow</span><br><span class="line"><span class="keyword">from</span> PySide6.QtCore <span class="keyword">import</span> QFile</span><br><span class="line"><span class="keyword">from</span> PySide6.QtUiTools <span class="keyword">import</span> QUiLoader</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MainWindow</span>(<span class="params">QMainWindow</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">super</span>(MainWindow, self).__init__()</span><br><span class="line">        self.load_ui()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">load_ui</span>(<span class="params">self</span>):</span></span><br><span class="line">        loader = QUiLoader()</span><br><span class="line"></span><br><span class="line">        ui_file = QFile(<span class="string">&quot;form.ui&quot;</span>)</span><br><span class="line">        ui_file.<span class="built_in">open</span>(QFile.ReadOnly)</span><br><span class="line">        self.ui = loader.load(ui_file, self)</span><br><span class="line">        ui_file.close()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    app = QApplication([])</span><br><span class="line">    windows = MainWindow()</span><br><span class="line">    windows.ui.show()</span><br><span class="line">    sys.exit(app.<span class="built_in">exec</span>())</span><br></pre></td></tr></table></figure>
+
+<h1 id="启动应用"><a href="#启动应用" class="headerlink" title="启动应用"></a>启动应用</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line">os.system(&quot;calc&quot;)</span><br><span class="line">os.system(&quot;notepad&quot;)</span><br><span class="line">os.system(&quot;start msedge www.baidu.com&quot;)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PySide6.QtCore <span class="keyword">import</span> QProcess</span><br><span class="line">process = QProcess()</span><br><span class="line">process.start(<span class="string">&quot;notepad.exe&quot;</span>)</span><br><span class="line">process.close()</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> PySide6.QtCore <span class="keyword">import</span> QUrl</span><br><span class="line"><span class="keyword">from</span> PySide6.QtGui <span class="keyword">import</span> QDesktopServices</span><br><span class="line">QDesktopServices.openUrl(QUrl(<span class="string">&quot;https://blog.csdn.net&quot;</span>))</span><br></pre></td></tr></table></figure>
+
+
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/CheatSheet/">CheatSheet</a>
+</div>
+
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://kevinjmh.github.io/2022/01/20/CheatSheet/coding/qt/" data-title="qt | Manhua" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2022/01/20/CheatSheet/coding/python/" title="python">
+  <strong>上一篇：</strong><br/>
+  <span>
+  python</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2022/01/20/CheatSheet/computing/flink/"  title="flink">
+ <strong>下一篇：</strong><br/> 
+ <span>flink
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github Card</p>
+<div class="github-card" data-github="kevinjmh" data-width="220" data-height="119" data-theme="medium">
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+  </div>
+
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Application/" title="Application">Application<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/BigData/" title="BigData">BigData<sup>5</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/CheatSheet/" title="CheatSheet">CheatSheet<sup>22</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Info/" title="Info">Info<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/慢话/" title="慢话">慢话<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/carbondata/" title="carbondata">carbondata<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/project/" title="project">project<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/software/" title="software">software<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/recommendation/" title="recommendation">recommendation<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/docker/" title="docker">docker<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/markdown/" title="markdown">markdown<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/carbon/" title="carbon">carbon<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/spark/" title="spark">spark<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/hadoop/" title="hadoop">hadoop<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://www.cnblogs.com/manhua" target="_blank" title="cnBlogs">cnBlogs</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m Manhua Jiang. <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/443181876" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/kevinjmh" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		<a href="https://twitter.com/jiangmanhua" target="_blank" class="icon-twitter" title="twitter"></a>
+		
+		
+		<a href="https://www.facebook.com/jiangmanhua" target="_blank" class="icon-facebook" title="facebook"></a>
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2023 
+		
+		<a href="/about" target="_blank" title="Manhua">Manhua</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+        getSize();
+        if (myWidth >= 1024) {
+          c.click();
+        }
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

@@ -1,0 +1,563 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>clickhouse | Manhua</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Manhua">
+    
+
+    
+    <meta name="description" content="Hello Worldclickhouse start clickhouse-client 原理Share Nothing 架构 shard + replica； shard间隔离 Table -&gt; Part(类似segment 目录隔离)  -&gt; 颗粒级别的列 (单独的bin数据文件和mrk元信息文件) 数据分布123456789101112id_test 表名    ├── all">
+<meta property="og:type" content="article">
+<meta property="og:title" content="clickhouse">
+<meta property="og:url" content="http://kevinjmh.github.io/2022/05/10/CheatSheet/database/clickhouse/index.html">
+<meta property="og:site_name" content="Manhua">
+<meta property="og:description" content="Hello Worldclickhouse start clickhouse-client 原理Share Nothing 架构 shard + replica； shard间隔离 Table -&gt; Part(类似segment 目录隔离)  -&gt; 颗粒级别的列 (单独的bin数据文件和mrk元信息文件) 数据分布123456789101112id_test 表名    ├── all">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-05-10T12:11:43.000Z">
+<meta property="article:modified_time" content="2023-04-07T06:33:13.442Z">
+<meta property="article:author" content="Manhua">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:creator" content="@jiangmanhua">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Manhua" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="Manhua" title="Manhua"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Manhua">Manhua</a></h1>
+				<h2 class="blog-motto">Never Say Die</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页 | Home</a></li>
+					
+						<li><a href="/archives">归档 | Archives</a></li>
+					
+						<li><a href="/about">简介 | About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:kevinjmh.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2022/05/10/CheatSheet/database/clickhouse/" title="clickhouse" itemprop="url">clickhouse</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Manhua" target="_blank" itemprop="author">Manhua</a>
+		
+  <p class="article-time">
+    <time datetime="2022-05-10T12:11:43.000Z" itemprop="datePublished"> Published 2022-05-10</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Hello-World"><span class="toc-number">1.</span> <span class="toc-text">Hello World</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8E%9F%E7%90%86"><span class="toc-number">2.</span> <span class="toc-text">原理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%88%86%E5%B8%83"><span class="toc-number">3.</span> <span class="toc-text">数据分布</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B"><span class="toc-number">3.1.</span> <span class="toc-text">加载过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%8B%E7%BC%A9%E5%9D%97"><span class="toc-number">3.2.</span> <span class="toc-text">压缩块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F-%E5%89%AF%E6%9C%AC"><span class="toc-number">3.3.</span> <span class="toc-text">分布式  副本</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BF%9E%E6%8E%A5spark"><span class="toc-number">4.</span> <span class="toc-text">连接spark</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#housepower"><span class="toc-number">4.1.</span> <span class="toc-text">housepower</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#jdbc"><span class="toc-number">4.2.</span> <span class="toc-text">jdbc</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<h1 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World"></a>Hello World</h1><p>clickhouse start</p>
+<p>clickhouse-client</p>
+<h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><p>Share Nothing 架构</p>
+<p>shard + replica； shard间隔离</p>
+<p>Table -&gt; Part(类似segment 目录隔离)  -&gt; 颗粒级别的列 (单独的bin数据文件和mrk元信息文件)</p>
+<h1 id="数据分布"><a href="#数据分布" class="headerlink" title="数据分布"></a>数据分布</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">id_test 表名</span><br><span class="line">    ├── all_1_1_0 分区</span><br><span class="line">    │   ├── ID.bin 默认 lz4 压缩</span><br><span class="line">    │   ├── ID.mrk2 记录数据块在 bin 文件中的偏移量</span><br><span class="line">    │   ├── StringID.bin</span><br><span class="line">    │   ├── StringID.mrk2</span><br><span class="line">    │   ├── checksums.txt 校验文件</span><br><span class="line">    │   ├── columns.txt 列名以及数据类型</span><br><span class="line">    │   ├── count.txt 数据的总行数</span><br><span class="line">    │   └── primary.idx 主键索引文件</span><br><span class="line">    ├── detached</span><br><span class="line">    └── format_version.txt</span><br></pre></td></tr></table></figure>
+
+<p>ParitionID_MinBlockNum_MaxBlockNum_level，示例202103_1_1_0，不代表连续的block</p>
+<p>ParitionID： 分区字段的值<br>MinBlockNum： 最小快序号<br>MaxBlockNum： 最大块序号<br>Level： 参与合并的次数</p>
+<p>BlockNum是表内全局累加，每次创建一个新的分区目录，就会累加1。</p>
+<h2 id="加载过程"><a href="#加载过程" class="headerlink" title="加载过程"></a>加载过程</h2><p>Input -&gt; granularity=8192 (类似blocklet) -&gt; blocksize (类似block) -&gt; compress -&gt; block落盘</p>
+<p>Index:</p>
+<ul>
+<li>主键：以index_granularity为单位</li>
+<li>MinMax：以index_granularity为单位</li>
+<li>Set (distinct值)：以index_granularity为单位</li>
+<li>BloomFilter</li>
+</ul>
+<h2 id="压缩块"><a href="#压缩块" class="headerlink" title="压缩块"></a>压缩块</h2><p>数据存储文件column.bin中存储的是一列数据。<br>一个压缩数据块由头信息和压缩数据两部分组成，头信息固定使用9位字节表示，具体由1个UInt8（1字节）整型和2个UInt32(4字节)整型组成，<br>分别代表使用的压缩算法类型、压缩后的数据大小和压缩前的数据大小。<br>每个压缩数据块的体积，按照其压缩前的数据字节大小，都被严格控制在64KB ~ 1MB，<br>其上下限分别由 min_compress-block_size(默认65535=64KB)与max_compress_block_size(默认1MB)参数指定。</p>
+<p>每8192条记录，其实就是一条一级索引，一个索引区间压缩成一个数据块.<br>新版本的Clickhouse中，会默认开启自适应granularity，新增配置项index_granularity_bytes来使得一个granule的数据大小不仅取决于行数，也取决于数据大小</p>
+<p>数据标记文件数据存储文件column.mrk与数据存储文件column.bin文件一一对应，是一级索引与数据块之间关系的数据</p>
+<h2 id="分布式-副本"><a href="#分布式-副本" class="headerlink" title="分布式  副本"></a>分布式  副本</h2><p>创建集群 指定分片和副本； 注意单个节点只支持存储单个分片单个副本，否则报错 <code>DB::Exception: There are two exactly the same ClickHouse instance</code><br>(但可以一个节点 运行多个不同端口实例)</p>
+<p>spark-clickhouse-connector的分区数取决于shards数量</p>
+<p>internal_replication参数，<br>为true代表了只写入shard内的一台，与ZooKeeper配合进行复制；<br>为false代表了写入shard内所有的replica，与分布式表配合进行复制。</p>
+<p>使用写分布式表的缺点：<br>①使用写分布式表进行复制，则可能出现写一边成功一边失败的情况，数据的一致性不可控，<br>②在一台服务器宕机一阵子以后，再恢复过来则这个时间段里面的数据不能自动恢复从另外的replica恢复过来。</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43786255/article/details/106292490">https://blog.csdn.net/weixin_43786255/article/details/106292490</a></p>
+<p>CREATE DATABASE IF NOT EXISTS bmp ON CLUSTER analysis;<br>drop table bmp.t_bms_service_sub_local ON CLUSTER  analysis;<br>CREATE TABLE IF NOT EXISTS bmp.t_bms_service_sub_local ON CLUSTER  analysis …;<br>CREATE TABLE  bmp.t_bms_service_sub ON CLUSTER analysis() ENGINE = Distributed(‘analysis’, ‘bmp’, ‘t_bms_service_sub_local’, hiveHash(seqid));</p>
+<h1 id="连接spark"><a href="#连接spark" class="headerlink" title="连接spark"></a>连接spark</h1><h2 id="housepower"><a href="#housepower" class="headerlink" title="housepower"></a>housepower</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">    &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;com.github.housepower&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;clickhouse-spark-runtime-3.2_2.12&lt;/artifactId&gt;</span><br><span class="line">        &lt;version&gt;0.2.0&lt;/version&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">    </span><br><span class="line">val ck = SparkSession.builder</span><br><span class="line">        .config(&quot;spark.sql.catalog.clickhouse&quot;, &quot;xenon.clickhouse.ClickHouseCatalog&quot;)</span><br><span class="line">        .config(&quot;spark.sql.catalog.clickhouse.host&quot;, &quot;north-191&quot;)</span><br><span class="line">        .config(&quot;spark.sql.catalog.clickhouse.grpc_port&quot;, &quot;9100&quot;) // 9109</span><br><span class="line">        .config(&quot;spark.sql.catalog.clickhouse.user&quot;, &quot;default&quot;)</span><br><span class="line">        .config(&quot;spark.sql.catalog.clickhouse.password&quot;, &quot;xxx&quot;)</span><br><span class="line">        .config(&quot;spark.sql.catalog.clickhouse.database&quot;, &quot;bmp&quot;)</span><br><span class="line">  .master(&quot;local[2]&quot;)</span><br><span class="line">  .enableHiveSupport()</span><br><span class="line">  .getOrCreate()</span><br><span class="line"></span><br><span class="line">ck.sessionState.catalog.listTables(&quot;default&quot;)</span><br><span class="line"></span><br><span class="line">ck.sql(&quot;use clickhouse&quot;).show()</span><br><span class="line">ck.sql(&quot;show tables&quot;).show()</span><br><span class="line">ck.sql(&quot;select * from t_bms_service_sub&quot;).show()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="jdbc"><a href="#jdbc" class="headerlink" title="jdbc"></a>jdbc</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">    &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;com.clickhouse&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;clickhouse-jdbc&lt;/artifactId&gt;</span><br><span class="line">        &lt;version&gt;0.3.2-patch9&lt;/version&gt;</span><br><span class="line">        &lt;classifier&gt;http&lt;/classifier&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">val sub = spark.read.format(&quot;jdbc&quot;)</span><br><span class="line">  .option(&quot;driver&quot;, &quot;com.clickhouse.jdbc.ClickHouseDriver&quot;)</span><br><span class="line">  .option(&quot;url&quot;, &quot;jdbc:clickhouse://ip:8123/default&quot;)</span><br><span class="line">  .option(&quot;dbtable&quot;, &quot;t &quot;)</span><br><span class="line">  .option(&quot;user&quot;, &quot;default&quot;)</span><br><span class="line">  .option(&quot;password&quot;, &quot;&quot;)</span><br><span class="line">  .load()</span><br><span class="line">  .show()</span><br></pre></td></tr></table></figure>
+
+
+
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/CheatSheet/">CheatSheet</a>
+</div>
+
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://kevinjmh.github.io/2022/05/10/CheatSheet/database/clickhouse/" data-title="clickhouse | Manhua" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2022/05/26/CheatSheet/database/delta/" title="Delta Lake">
+  <strong>上一篇：</strong><br/>
+  <span>
+  Delta Lake</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2022/03/30/CheatSheet/visualization/zeppelin/"  title="zeppelin">
+ <strong>下一篇：</strong><br/> 
+ <span>zeppelin
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github Card</p>
+<div class="github-card" data-github="kevinjmh" data-width="220" data-height="119" data-theme="medium">
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+  </div>
+
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Application/" title="Application">Application<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/BigData/" title="BigData">BigData<sup>5</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/CheatSheet/" title="CheatSheet">CheatSheet<sup>22</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Info/" title="Info">Info<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/慢话/" title="慢话">慢话<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/carbondata/" title="carbondata">carbondata<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/project/" title="project">project<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/software/" title="software">software<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/recommendation/" title="recommendation">recommendation<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/docker/" title="docker">docker<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/markdown/" title="markdown">markdown<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/carbon/" title="carbon">carbon<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/spark/" title="spark">spark<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/hadoop/" title="hadoop">hadoop<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://www.cnblogs.com/manhua" target="_blank" title="cnBlogs">cnBlogs</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m Manhua Jiang. <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/443181876" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/kevinjmh" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		<a href="https://twitter.com/jiangmanhua" target="_blank" class="icon-twitter" title="twitter"></a>
+		
+		
+		<a href="https://www.facebook.com/jiangmanhua" target="_blank" class="icon-facebook" title="facebook"></a>
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2023 
+		
+		<a href="/about" target="_blank" title="Manhua">Manhua</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+        getSize();
+        if (myWidth >= 1024) {
+          c.click();
+        }
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

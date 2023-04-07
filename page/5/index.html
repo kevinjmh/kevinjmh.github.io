@@ -81,16 +81,17 @@
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/2022/01/20/CheatSheet/metabase/" title="metabase" itemprop="url">
+    <a href="/2022/01/20/CheatSheet/computing/flink/" title="flink" itemprop="url">
   
-    <h1 itemprop="name">metabase</h1>
+    <h1 itemprop="name">flink</h1>
     
      
-           <p itemprop="description" >应用只用于单纯查询数据+展示
-查询方式jdbc连接现有查询引擎
-账号邮箱+密码
-日志创建自定义配置文件 log4j2.xml
-12345678910111213141516171819202122232425262728&amp;lt;?xml version=&amp;quot;1.0&amp;quo</p>
+           <p itemprop="description" >flinkFlink applications code -&amp;gt; JobGraph -&amp;gt; JobManager -&amp;gt; TaskManagers
+环境
+
+ExecutionEnvironment
+StreamExecutionEnvironment
+TableEnv</p>
         
     
     <time datetime="2022-01-20T14:11:43.000Z" itemprop="datePublished">2022-01-20</time>
@@ -105,98 +106,7 @@
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/2022/01/20/CheatSheet/parquet/" title="parquet" itemprop="url">
-  
-    <h1 itemprop="name">parquet</h1>
-    
-     
-           <p itemprop="description" >df.write.mode(“overwrite”).format(“parquet”).save(path)
-org.apache.spark.sql.DataFrameWriter#save
-定位table 获得relation
-12runCommand(df.sparkSe</p>
-        
-    
-    <time datetime="2022-01-20T14:11:43.000Z" itemprop="datePublished">2022-01-20</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2022/01/20/CheatSheet/python/" title="python" itemprop="url">
-  
-    <h1 itemprop="name">python</h1>
-    
-     
-           <p itemprop="description" >pip
-curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-python get-pip.py
-
-
-C:\python27\scirpts下运行 easy_install pip
-
-修改更新源linux ~/.pip/p</p>
-        
-    
-    <time datetime="2022-01-20T14:11:43.000Z" itemprop="datePublished">2022-01-20</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2022/01/20/CheatSheet/qt/" title="qt" itemprop="url">
-  
-    <h1 itemprop="name">qt</h1>
-    
-     
-           <p itemprop="description" >版本说明PyQt6和PySide6都是用于调用Qt6API的Python库，使用它们可以轻松在Python语言中创建基于Qt的GUI程序；PyQt6和PySide6最大的不同表现在发行许可上；
-PyQt6是由RiverbankComputing公司开发，出现的比较早；它采用GPL</p>
-        
-    
-    <time datetime="2022-01-20T14:11:43.000Z" itemprop="datePublished">2022-01-20</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2022/01/20/CheatSheet/windows/" title="windows" itemprop="url">
-  
-    <h1 itemprop="name">windows</h1>
-    
-     
-           <p itemprop="description" >进程参数12wmic process where caption=&amp;quot;cmd.exe&amp;quot; get caption,commandline /valuewmic process where caption=&amp;quot;xshell.exe&amp;quot; get cap</p>
-        
-    
-    <time datetime="2022-01-20T14:11:43.000Z" itemprop="datePublished">2022-01-20</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2022/01/20/CheatSheet/yarn/" title="yarn" itemprop="url">
+    <a href="/2022/01/20/CheatSheet/computing/yarn/" title="yarn" itemprop="url">
   
     <h1 itemprop="name">yarn</h1>
     
@@ -217,17 +127,77 @@ PyQt6是由RiverbankComputing公司开发，出现的比较早；它采用GPL</p
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/2022/01/20/System/VM-dev-env/" title="vm" itemprop="url">
+    <a href="/2022/01/20/CheatSheet/database/doris/" title="doris" itemprop="url">
   
-    <h1 itemprop="name">vm</h1>
+    <h1 itemprop="name">doris</h1>
     
      
-           <p itemprop="description" >编译环境1
-new vm(vbox)同时连通本机和外网-(两张网卡nat + hostonly)
-install: jdk,maven https://maven.apache.org/download.cgi
-set maven mirror:
+           <p itemprop="description" >架构FE(Frontend)  1-5台（分为 Follower 和 Observer），存储元数据，包括日志和 image，通常从几百 MB 到几个 GB 不等。
+BE(Backend)  10-100台，存放用户数据。3副本。
+Broker 是用于访问外部数据源（如 hdfs</p>
+        
+    
+    <time datetime="2022-01-20T14:11:43.000Z" itemprop="datePublished">2022-01-20</time>
+  </a>
+</section>
 
-只有一张网卡工作时 修改配置后</p>
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/2022/01/20/CheatSheet/database/elasticsearch/" title="elasticsearch" itemprop="url">
+  
+    <h1 itemprop="name">elasticsearch</h1>
+    
+     
+           <p itemprop="description" >baiscindex → dbtype → tabledocument → row
+https://www.cnblogs.com/TianFang/p/12945202.htmltext支持分词  keyword不进行分词
+installhttps://www.elastic.</p>
+        
+    
+    <time datetime="2022-01-20T14:11:43.000Z" itemprop="datePublished">2022-01-20</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/2022/01/20/CheatSheet/database/hbase/" title="hbase" itemprop="url">
+  
+    <h1 itemprop="name">hbase</h1>
+    
+     
+           <p itemprop="description" >create ‘UserActiveDate’, {NAME=&amp;gt;’lastActive’, VERSIONS=&amp;gt;3, MIN_VERSIONS =&amp;gt; 1, TTL=&amp;gt;15552000, COMPRESSION =&amp;gt; ‘SNAPPY’}, {NUMRE</p>
+        
+    
+    <time datetime="2022-01-20T14:11:43.000Z" itemprop="datePublished">2022-01-20</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/2022/01/20/CheatSheet/database/kylin/" title="kylin" itemprop="url">
+  
+    <h1 itemprop="name">kylin</h1>
+    
+     
+           <p itemprop="description" >在126搭建新组件服务：
+kylin 4.0.0hadoop 3.2.2spark 3.2.0  - 代码写死支持spark2.4/3.1.  修改kylin.sh 环境变量的SPARK_HOME=/data/soft/kylin/sparkhttp://mirrors.ustc</p>
         
     
     <time datetime="2022-01-20T14:11:43.000Z" itemprop="datePublished">2022-01-20</time>
@@ -266,20 +236,17 @@ state （流程实例状态：0 提交成功,1 正在运行,2 准备暂停,3 暂
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/2021/09/26/CheatSheet/Cluster-setup/" title="Cluster-setup" itemprop="url">
+    <a href="/2022/01/20/CheatSheet/mobile/android/" title="android" itemprop="url">
   
-    <h1 itemprop="name">Cluster-setup</h1>
+    <h1 itemprop="name">android</h1>
     
      
-           <p itemprop="description" >Cluster-setupBIOS config for Disk
-SystemDisk Raid 1
-DataDisk JBOD
-
-OSon demand, ubuntu\fedora\centos\suse\redhat
-root passwordsudo passwd ro</p>
+           <p itemprop="description" >https://developer.android.google.cn/studio/releases/platform-tools?hl=zh-cn#downloads.html
+uiautomator获取控件信息
+连接(Nox)C:\Users\Manhua\AppData\</p>
         
     
-    <time datetime="2021-09-26T16:11:43.000Z" itemprop="datePublished">2021-09-26</time>
+    <time datetime="2022-01-20T14:11:43.000Z" itemprop="datePublished">2022-01-20</time>
   </a>
 </section>
 
@@ -291,15 +258,37 @@ root passwordsudo passwd ro</p>
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/2021/04/10/Doc/carbon/load/" title="Carbondata加载逻辑" itemprop="url">
+    <a href="/2022/01/20/CheatSheet/os/windows/" title="windows" itemprop="url">
   
-    <h1 itemprop="name">Carbondata加载逻辑</h1>
+    <h1 itemprop="name">windows</h1>
     
      
-           <p itemprop="description" >入口加载命令的入口在CarbonLoadDataCommand，command的处理主要分为meta和data两部分的处理。数据加载主要在org.apache.carbondata.spark.rdd.CarbonDataRDDFactory#loadCarbonData实现，还</p>
+           <p itemprop="description" >进程参数12wmic process where caption=&amp;quot;cmd.exe&amp;quot; get caption,commandline /valuewmic process where caption=&amp;quot;xshell.exe&amp;quot; get cap</p>
         
     
-    <time datetime="2021-04-10T20:15:10.000Z" itemprop="datePublished">2021-04-10</time>
+    <time datetime="2022-01-20T14:11:43.000Z" itemprop="datePublished">2022-01-20</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/2022/01/20/CheatSheet/storage/hdfs/" title="hdfs" itemprop="url">
+  
+    <h1 itemprop="name">hdfs</h1>
+    
+     
+           <p itemprop="description" >文件保护删除hdfs删除逻辑为，路径上所有需要删除的文件节点的父目录有w权限
+即：即使A用户是根目录的所有者，只要A创建/允许创建了B用户的目录且该目录下有数据，只要A不是超级用户则不能删除。注意若该目录下无文件，则该目录依然能被删除。
+操作方式启动：使用hdfs用户启动hado</p>
+        
+    
+    <time datetime="2022-01-20T14:11:43.000Z" itemprop="datePublished">2022-01-20</time>
   </a>
 </section>
 
@@ -373,14 +362,6 @@ root passwordsudo passwd ro</p>
 			
 		
 			
-				<li><a href="/tags/markdown/" title="markdown">markdown<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/docker/" title="docker">docker<sup>1</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/software/" title="software">software<sup>1</sup></a></li>
 			
 		
@@ -389,11 +370,19 @@ root passwordsudo passwd ro</p>
 			
 		
 			
-				<li><a href="/tags/spark/" title="spark">spark<sup>1</sup></a></li>
+				<li><a href="/tags/docker/" title="docker">docker<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/markdown/" title="markdown">markdown<sup>1</sup></a></li>
 			
 		
 			
 				<li><a href="/tags/carbon/" title="carbon">carbon<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/spark/" title="spark">spark<sup>1</sup></a></li>
 			
 		
 			

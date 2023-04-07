@@ -1,0 +1,544 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>android | Manhua</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Manhua">
+    
+
+    
+    <meta name="description" content="https:&#x2F;&#x2F;developer.android.google.cn&#x2F;studio&#x2F;releases&#x2F;platform-tools?hl&#x3D;zh-cn#downloads.html uiautomator获取控件信息 连接(Nox)C:\Users\Manhua\AppData\Local\Android\Sdk\platform-tools\adb.exe connect 127.0.0.1:6">
+<meta property="og:type" content="article">
+<meta property="og:title" content="android">
+<meta property="og:url" content="http://kevinjmh.github.io/2022/01/20/CheatSheet/mobile/android/index.html">
+<meta property="og:site_name" content="Manhua">
+<meta property="og:description" content="https:&#x2F;&#x2F;developer.android.google.cn&#x2F;studio&#x2F;releases&#x2F;platform-tools?hl&#x3D;zh-cn#downloads.html uiautomator获取控件信息 连接(Nox)C:\Users\Manhua\AppData\Local\Android\Sdk\platform-tools\adb.exe connect 127.0.0.1:6">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-01-20T14:11:43.000Z">
+<meta property="article:modified_time" content="2023-04-07T06:33:13.442Z">
+<meta property="article:author" content="Manhua">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:creator" content="@jiangmanhua">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Manhua" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="Manhua" title="Manhua"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Manhua">Manhua</a></h1>
+				<h2 class="blog-motto">Never Say Die</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页 | Home</a></li>
+					
+						<li><a href="/archives">归档 | Archives</a></li>
+					
+						<li><a href="/about">简介 | About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:kevinjmh.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2022/01/20/CheatSheet/mobile/android/" title="android" itemprop="url">android</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Manhua" target="_blank" itemprop="author">Manhua</a>
+		
+  <p class="article-time">
+    <time datetime="2022-01-20T14:11:43.000Z" itemprop="datePublished"> Published 2022-01-20</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#uiautomator"><span class="toc-number">1.</span> <span class="toc-text">uiautomator</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#uiautomator2"><span class="toc-number">2.</span> <span class="toc-text">uiautomator2</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E5%BC%80%E5%8F%91%E8%80%85%E6%A8%A1%E5%BC%8F%E8%8E%B7%E5%8F%96%E9%BC%A0%E6%A0%87%E5%9D%90%E6%A0%87"><span class="toc-number">3.</span> <span class="toc-text">使用开发者模式获取鼠标坐标</span></a></li></ol>
+		
+		</div>
+		
+		<p><a target="_blank" rel="noopener" href="https://developer.android.google.cn/studio/releases/platform-tools?hl=zh-cn#downloads.html">https://developer.android.google.cn/studio/releases/platform-tools?hl=zh-cn#downloads.html</a></p>
+<h1 id="uiautomator"><a href="#uiautomator" class="headerlink" title="uiautomator"></a>uiautomator</h1><p>获取控件信息</p>
+<p>连接(Nox)<br>C:\Users\Manhua\AppData\Local\Android\Sdk\platform-tools\adb.exe connect 127.0.0.1:62001<br>连接(Mumu root权限开启)<br>C:\Users\Manhua\AppData\Local\Android\Sdk\platform-tools\adb.exe connect 127.0.0.1:7555</p>
+<p>2.截图后鼠标指向即可 (获取组件xml和位置信息)<br>C:\Users\Manhua\AppData\Local\Android\Sdk\tools\bin\uiautomatorviewer.bat</p>
+<h1 id="uiautomator2"><a href="#uiautomator2" class="headerlink" title="uiautomator2"></a>uiautomator2</h1><p>pip install -U uiautomator2<br>python -m uiautomator2 init<br>pip install weditor==0.6.4<br>python -m weditor</p>
+<h1 id="使用开发者模式获取鼠标坐标"><a href="#使用开发者模式获取鼠标坐标" class="headerlink" title="使用开发者模式获取鼠标坐标"></a>使用开发者模式获取鼠标坐标</h1><p>adb.exe install C:\Users\Manhua\Downloads\xxx.apk</p>
+<p>docker run –privileged -d -p 6080:6080 -p 5554:5554 -p 5555:5555 -p 4723:4723 –name android-12 budtmo/docker-android-x86-12.0</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line">import time</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def runADB(cmd, wait_time=1):</span><br><span class="line">    os.system(cmd)</span><br><span class="line">    time.sleep(wait_time)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def listDev():</span><br><span class="line">    runADB(&quot;adb devices&quot;, 0)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def putFile(local_path, remote_path):</span><br><span class="line">    cmd = &quot;adb push &#123;local_path&#125; /sdcard/&#123;remote_path&#125;&quot;</span><br><span class="line">    runADB(cmd.format(**locals()))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def getFile(remote_path, local_path):</span><br><span class="line">    cmd = &quot;adb pull /sdcard/&#123;remote_path&#125; &#123;local_path&#125;&quot;</span><br><span class="line">    runADB(cmd.format(**locals()))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def installApk(local_apk_path):</span><br><span class="line">    cmd = &quot;adb install &#123;local_apk_path&#125;&quot;</span><br><span class="line">    runADB(cmd.format(**locals()))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def tap(x, y,  wait_time=1):</span><br><span class="line">    cmd = &quot;adb shell input tap &#123;x&#125; &#123;y&#125;&quot;</span><br><span class="line">    runADB(cmd.format(**locals()), wait_time)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def longTap(x, y):</span><br><span class="line">    swipe(x, y, x, y, 1000)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def swipe(startX, endX, startY, endY, timeToSwipe):</span><br><span class="line">    cmd = &quot;adb shell input swipe &#123;startX&#125; &#123;startY&#125; &#123;endX&#125; &#123;endY&#125; &#123;timeToSwipe&#125;&quot;</span><br><span class="line">    runADB(cmd.format(**locals()))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def swipeUp():</span><br><span class="line">    swipe(100, 400, 100, 100, 300)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def swipeDown():</span><br><span class="line">    swipe(100, 100, 100, 400, 300)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def keyevent(num):</span><br><span class="line">    cmd = &quot;adb shell input keyevent &#123;num&#125;&quot;</span><br><span class="line">    runADB(cmd.format(**locals()))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def back():</span><br><span class="line">    keyevent(4)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def home():</span><br><span class="line">    keyevent(3)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def enter():</span><br><span class="line">    keyevent(66)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def esc():</span><br><span class="line">    keyevent(111)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def intent(intent_name, paras):</span><br><span class="line">    cmd = &quot;adb shell am start -a &#123;intent_name&#125; -d &#123;paras&#125;&quot;</span><br><span class="line">    runADB(cmd.format(**locals()))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def call(phone):</span><br><span class="line">    intent(&quot;android.intent.action.CALL&quot;, phone)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def web(url):</span><br><span class="line">    intent(&quot;android.intent.action.VIEW&quot;, url)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># &#123;包名&#125;/.&#123;主Activity名&#125;</span><br><span class="line">def launch(app):</span><br><span class="line">    cmd = &quot;adb shell am start -n &#123;app&#125; &quot;</span><br><span class="line">    runADB(cmd.format(**locals()))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def listPkg():</span><br><span class="line">    cmd = &quot;adb shell pm list package &quot;</span><br><span class="line">    runADB(cmd)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def screenshot(filename):</span><br><span class="line">    cmd = &quot;adb shell screencap /sdcard/&#123;filename&#125;.png &quot;</span><br><span class="line">    runADB(cmd.format(**locals()))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def screenshotToPC(local_path, filename):</span><br><span class="line">    screenshot(filename)</span><br><span class="line">    getFile(&quot;/sdcard/&quot;+filename+&quot;.png&quot;, local_path)</span><br><span class="line">    cmd = &quot;adb shell rm /sdcard/&#123;filename&#125;.png&quot;</span><br><span class="line">    runADB(cmd.format(**locals()))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def ershida():</span><br><span class="line">    # tap(360, 930)  # 人机</span><br><span class="line">    # loop</span><br><span class="line">    tap(360, 980, 5)  # 开始</span><br><span class="line"></span><br><span class="line">    tap(360, 710, 5)  # A</span><br><span class="line">    tap(360, 840, 5)  # B</span><br><span class="line">    tap(360, 710, 5)  # A</span><br><span class="line">    tap(360, 840, 5)  # B</span><br><span class="line">    tap(360, 710, 5)  # A</span><br><span class="line">    tap(360, 930, 3)  # 继续挑战</span><br><span class="line"></span><br><span class="line">    # tap(360, 710, 5)  # A</span><br><span class="line">    # tap(360, 840, 5)  # B</span><br><span class="line">    # tap(360, 980, 5)  # C</span><br><span class="line">    # tap(360, 1120, 5)  # D</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def ershida10():</span><br><span class="line">    tap(360, 930)  # 人机</span><br><span class="line">    for i in range(10):</span><br><span class="line">        print(i)</span><br><span class="line">        ershida()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ == &#x27;__main__&#x27;:</span><br><span class="line">    runADB(&quot;adb version&quot;, 0)</span><br><span class="line"></span><br><span class="line"># from PhoneADB import *</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/CheatSheet/">CheatSheet</a>
+</div>
+
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://kevinjmh.github.io/2022/01/20/CheatSheet/mobile/android/" data-title="android | Manhua" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2022/01/20/CheatSheet/dolphinscheduler/dolphinscheduler/" title="dolphinscheduler">
+  <strong>上一篇：</strong><br/>
+  <span>
+  dolphinscheduler</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2022/01/20/CheatSheet/os/windows/"  title="windows">
+ <strong>下一篇：</strong><br/> 
+ <span>windows
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github Card</p>
+<div class="github-card" data-github="kevinjmh" data-width="220" data-height="119" data-theme="medium">
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+  </div>
+
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Application/" title="Application">Application<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/BigData/" title="BigData">BigData<sup>5</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/CheatSheet/" title="CheatSheet">CheatSheet<sup>22</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Info/" title="Info">Info<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/慢话/" title="慢话">慢话<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/carbondata/" title="carbondata">carbondata<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/project/" title="project">project<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/software/" title="software">software<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/recommendation/" title="recommendation">recommendation<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/docker/" title="docker">docker<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/markdown/" title="markdown">markdown<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/carbon/" title="carbon">carbon<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/spark/" title="spark">spark<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/hadoop/" title="hadoop">hadoop<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://www.cnblogs.com/manhua" target="_blank" title="cnBlogs">cnBlogs</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m Manhua Jiang. <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/443181876" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/kevinjmh" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		<a href="https://twitter.com/jiangmanhua" target="_blank" class="icon-twitter" title="twitter"></a>
+		
+		
+		<a href="https://www.facebook.com/jiangmanhua" target="_blank" class="icon-facebook" title="facebook"></a>
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2023 
+		
+		<a href="/about" target="_blank" title="Manhua">Manhua</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+        getSize();
+        if (myWidth >= 1024) {
+          c.click();
+        }
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
