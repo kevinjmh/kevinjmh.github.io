@@ -81,17 +81,18 @@
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/2023/05/12/CheatSheet/profile/performance/" title="" itemprop="url">
+    <a href="/2023/06/14/CheatSheet/database/kyuubi/" title="" itemprop="url">
   
     <h1 itemprop="name"></h1>
     
      
-           <p itemprop="description" >nmonnmonhttps://nmon.sourceforge.net/pmwiki.php?n=Site.Download
-nmon analyserhttps://nmon.sourceforge.net/pmwiki.php?n=Site.Nmon-Analyser
-ht</p>
+           <p itemprop="description" >Instllhttp://mirrors.ustc.edu.cn/
+Setup配置JAVA_HOME，SPARK_HOME。还支持Flink、Trino
+bin/kyuubi startbin/kyuubi stop
+org.apache.kyuubi.engine.spark.</p>
         
     
-    <time datetime="2023-05-12T09:06:04.874Z" itemprop="datePublished">2023-05-12</time>
+    <time datetime="2023-06-14T08:06:51.816Z" itemprop="datePublished">2023-06-14</time>
   </a>
 </section>
 
@@ -103,7 +104,159 @@ ht</p>
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/2023/05/12/CheatSheet/profile/prometheus/" title="" itemprop="url">
+    <a href="/2023/06/14/CheatSheet/database/mysql/" title="" itemprop="url">
+  
+    <h1 itemprop="name"></h1>
+    
+     
+           <p itemprop="description" >导出数据mysql -u root -h 10.3.4.194  -p -e “select * from dolphinscheduler.t_ds_user;” &amp;gt; userinfo.log
+执行命令mysql -u root -h 10.3.4.194  -p -e </p>
+        
+    
+    <time datetime="2023-06-14T08:06:51.816Z" itemprop="datePublished">2023-06-14</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/2023/06/14/CheatSheet/database/ranger/" title="" itemprop="url">
+  
+    <h1 itemprop="name"></h1>
+    
+     
+           <p itemprop="description" >https://blog.cloudera.com/sentry-to-ranger-a-concise-guide/</p>
+        
+    
+    <time datetime="2023-06-14T08:06:51.816Z" itemprop="datePublished">2023-06-14</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/2023/06/14/CheatSheet/database/synchronization/" title="" itemprop="url">
+  
+    <h1 itemprop="name"></h1>
+    
+     
+           <p itemprop="description" >数据库同步JDBC默认情况下都是单线程，速度慢；可优化为并行，但过大的并行会对数据源库造成压力；
+Datax对Oracle支持通过对splitPk进行sample查询后，根据网络限制计算得到的分片任务数，计算得各个任务的上下界作为where条件来并行
+Seatunel目前从源码看</p>
+        
+    
+    <time datetime="2023-06-14T08:06:51.816Z" itemprop="datePublished">2023-06-14</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/2023/06/14/CheatSheet/mq/kafka/" title="" itemprop="url">
+  
+    <h1 itemprop="name"></h1>
+    
+     
+           <p itemprop="description" >Kafka 2.8.0，移除了对Zookeeper的依赖，通过KRaft进行自己的集群管理Kafka 3.3.1 Mark KRaft as Production Ready
+Raft协议是当今最流行的分布式协调算法，Etcd、Consul等系统的基础，就来自于此。
+总结一下其实</p>
+        
+    
+    <time datetime="2023-06-14T08:06:51.816Z" itemprop="datePublished">2023-06-14</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/2023/06/14/CheatSheet/os/iptables/" title="" itemprop="url">
+  
+    <h1 itemprop="name"></h1>
+    
+     
+           <p itemprop="description" >IPtableiptables只是Linux防火墙的管理工具而已，位于/sbin/iptables。真正实现防火墙功能的是netfilter，它是Linux内核中实现包过滤的内部结构。
+iptables传输数据包的过程:
+当一个数据包进入网卡时，它首先进入PREROUTING链，</p>
+        
+    
+    <time datetime="2023-06-14T08:06:51.816Z" itemprop="datePublished">2023-06-14</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/2023/06/14/CheatSheet/os/profile/" title="" itemprop="url">
+  
+    <h1 itemprop="name"></h1>
+    
+     
+           <p itemprop="description" >/etc/profile登录时执行并从/etc/profile.d目录的配置文件中搜集shell的设置
+/etc/bashrc打开新的shell时
+~/.profile当用户登录时,该文件仅仅执行一次!默认情况下,他设置一些环境变量,执行用户的.bashrc文件.
+~/.bash</p>
+        
+    
+    <time datetime="2023-06-14T08:06:51.816Z" itemprop="datePublished">2023-06-14</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/2023/06/14/CheatSheet/profile/performance/" title="" itemprop="url">
+  
+    <h1 itemprop="name"></h1>
+    
+     
+           <p itemprop="description" >nmonnmonhttps://nmon.sourceforge.net/pmwiki.php?n=Site.Download
+nmon analyserhttps://nmon.sourceforge.net/pmwiki.php?n=Site.Nmon-Analyser
+ht</p>
+        
+    
+    <time datetime="2023-06-14T08:06:51.816Z" itemprop="datePublished">2023-06-14</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/2023/06/14/CheatSheet/profile/prometheus/" title="" itemprop="url">
   
     <h1 itemprop="name"></h1>
     
@@ -115,7 +268,7 @@ Prometheus server:  scrapes and stores time series data 单文件
 alert</p>
         
     
-    <time datetime="2023-05-12T09:06:04.874Z" itemprop="datePublished">2023-05-12</time>
+    <time datetime="2023-06-14T08:06:51.816Z" itemprop="datePublished">2023-06-14</time>
   </a>
 </section>
 
@@ -127,7 +280,7 @@ alert</p>
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/2023/05/12/CheatSheet/scheduler/airflow/" title="" itemprop="url">
+    <a href="/2023/06/14/CheatSheet/scheduler/airflow/" title="" itemprop="url">
   
     <h1 itemprop="name"></h1>
     
@@ -137,169 +290,7 @@ alert</p>
 UI比较复杂</p>
         
     
-    <time datetime="2023-05-12T09:06:04.874Z" itemprop="datePublished">2023-05-12</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2023/05/12/CheatSheet/storage/ozone/" title="" itemprop="url">
-  
-    <h1 itemprop="name"></h1>
-    
-     
-           <p itemprop="description" >Ozone/HDDShttps://ozone.apache.org/docs/1.2.1/index.html
-分布式存储
-兼容S3对象存储API兼容HDFS使用RAFT协议
-概念：Ozone consists of volumes, buckets, and keys.nam</p>
-        
-    
-    <time datetime="2023-05-12T09:06:04.874Z" itemprop="datePublished">2023-05-12</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2023/05/12/Doc/carbon/env_hyperv/" title="" itemprop="url">
-  
-    <h1 itemprop="name"></h1>
-    
-     
-           <p itemprop="description" >与虚拟机完全通过xshell/moba等工具交互
-
-
-Linux mint
-jdk8
-hdfs3.3.4
-spark3.1.3
-
-环境变量可选写入/etc/profile或者~/.profile
-hadoop伪分布配置https://hadoop.apache.org/docs/</p>
-        
-    
-    <time datetime="2023-05-12T09:06:04.874Z" itemprop="datePublished">2023-05-12</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2023/05/12/Solution/database/dataTable/" title="" itemprop="url">
-  
-    <h1 itemprop="name"></h1>
-    
-     
-           <p itemprop="description" >dim补数时使用历史版本表名增加时间信息 / 增加含时间信息的分区， 通过函数根据时间获取对应的表/分区，默认返回最新版本
-以下为表名增加时间信息的示例
-1234567891011121314151617181920212223242526def getChannelTable(</p>
-        
-    
-    <time datetime="2023-05-12T09:06:04.874Z" itemprop="datePublished">2023-05-12</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2023/05/12/Solution/efficiency/windows/" title="" itemprop="url">
-  
-    <h1 itemprop="name"></h1>
-    
-     
-           <p itemprop="description" >快捷启动工具
-fluentSearch
-listary
-
-热键工具AutoHotKey
-示例
-1234567::pop::SendInput 19802021823&amp;#123;Enter&amp;#125;return::=-=::SendInput &amp;#123;Del&amp;#125;&amp;#1</p>
-        
-    
-    <time datetime="2023-05-12T09:06:04.874Z" itemprop="datePublished">2023-05-12</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2023/05/12/Solution/management/work/" title="" itemprop="url">
-  
-    <h1 itemprop="name"></h1>
-    
-     
-           <p itemprop="description" >业务挤压时间，忙于应付各种突如其来的需要，无暇优化、做细</p>
-        
-    
-    <time datetime="2023-05-12T09:06:04.874Z" itemprop="datePublished">2023-05-12</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2023/05/12/CheatSheet/algorithm/raft/" title="" itemprop="url">
-  
-    <h1 itemprop="name"></h1>
-    
-     
-           <p itemprop="description" >解决的问题： 一致性用途：Fault Tolerant 在部分节点宕机后仍能正常服务
-按照论文所述，原生的Paxos算法使用了一种点对点（peer-to-peer）的方式，所有节点地位是平等的。在理想情况下，算法的目的是制定一个决策，这对于简化的模型比较有意义。但在工业界很少会有</p>
-        
-    
-    <time datetime="2023-05-12T09:06:04.870Z" itemprop="datePublished">2023-05-12</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2023/05/12/CheatSheet/coding/java/" title="" itemprop="url">
-  
-    <h1 itemprop="name"></h1>
-    
-     
-           <p itemprop="description" >更新jar包内class文件jar uvf hadoop-common-2.8.3-lg.jar org/apache/hadoop/fs/FileUtil.class
-IllegalArgumentException at java.nio.CharBuffer.allocat</p>
-        
-    
-    <time datetime="2023-05-12T09:06:04.870Z" itemprop="datePublished">2023-05-12</time>
+    <time datetime="2023-06-14T08:06:51.816Z" itemprop="datePublished">2023-06-14</time>
   </a>
 </section>
 
