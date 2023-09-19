@@ -81,6 +81,143 @@
   
 <section class="post" itemscope itemprop="blogitem">
   
+    <a href="/2023/09/19/Doc/hdfs/" title="" itemprop="url">
+  
+    <h1 itemprop="name"></h1>
+    
+     
+           <p itemprop="description" >写盘策略节点-磁盘
+偏好位置
+IO隔离</p>
+        
+    
+    <time datetime="2023-09-19T06:38:54.232Z" itemprop="datePublished">2023-09-19</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/2023/09/19/Doc/spark/" title="" itemprop="url">
+  
+    <h1 itemprop="name"></h1>
+    
+     
+           <p itemprop="description" >多counter性能问题 - whole stage codegen，生成的代码长度超过JIT
+开窗counter - spark context 外包一层
+任务调度本地性
+任务数量</p>
+        
+    
+    <time datetime="2023-09-19T06:38:54.232Z" itemprop="datePublished">2023-09-19</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/2023/09/19/Doc/yarn/" title="" itemprop="url">
+  
+    <h1 itemprop="name"></h1>
+    
+     
+           <p itemprop="description" >调度模式
+常驻 还是 任务
+队列 资源配额
+任务管理
+yarn黑入-学习手动向yarn申请资源并调度脚本运行</p>
+        
+    
+    <time datetime="2023-09-19T06:38:54.232Z" itemprop="datePublished">2023-09-19</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/2023/09/19/Doc/carbon/other_tools/" title="" itemprop="url">
+  
+    <h1 itemprop="name"></h1>
+    
+     
+           <p itemprop="description" >小数据量对比
+alluxio - 适合异地多机房，网络带宽足够大，机器学习这种数据短期重复使用的
+ignite - 小数据量，本地计算
+IQ
+presto
+carbondata
+FromcarbonToSpark尽量上位原理 不讲细节。 不提carbon，但是讲其中的相关内容？+</p>
+        
+    
+    <time datetime="2023-09-19T06:38:54.232Z" itemprop="datePublished">2023-09-19</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/2023/09/19/Solution/database/dataTable/" title="" itemprop="url">
+  
+    <h1 itemprop="name"></h1>
+    
+     
+           <p itemprop="description" >dim补数时使用历史版本表名增加时间信息 / 增加含时间信息的分区， 通过函数根据时间获取对应的表/分区，默认返回最新版本
+以下为表名增加时间信息的示例
+1234567891011121314151617181920212223242526def getChannelTable(</p>
+        
+    
+    <time datetime="2023-09-19T06:38:54.232Z" itemprop="datePublished">2023-09-19</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/2023/09/19/Solution/management/work/" title="" itemprop="url">
+  
+    <h1 itemprop="name"></h1>
+    
+     
+           <p itemprop="description" >业务挤压时间，忙于应付各种突如其来的需要，无暇优化、做细</p>
+        
+    
+    <time datetime="2023-09-19T06:38:54.232Z" itemprop="datePublished">2023-09-19</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
     <a href="/2023/09/19/CheatSheet/seatunnel/" title="" itemprop="url">
   
     <h1 itemprop="name"></h1>
@@ -89,7 +226,7 @@
            <p itemprop="description" >install123export version=&amp;quot;2.3.3&amp;quot;wget &amp;quot;https://archive.apache.org/dist/incubator/seatunnel/$&amp;#123;version&amp;#125;/apache-seatunn</p>
         
     
-    <time datetime="2023-09-19T02:23:45.106Z" itemprop="datePublished">2023-09-19</time>
+    <time datetime="2023-09-19T06:38:54.228Z" itemprop="datePublished">2023-09-19</time>
   </a>
 </section>
 
@@ -101,17 +238,17 @@
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/2023/09/19/CheatSheet/mq/kafka/" title="" itemprop="url">
+    <a href="/2023/09/19/Doc/JIT/" title="" itemprop="url">
   
     <h1 itemprop="name"></h1>
     
      
-           <p itemprop="description" >Kafka 2.8.0，移除了对Zookeeper的依赖，通过KRaft进行自己的集群管理Kafka 3.3.1 Mark KRaft as Production Ready
-Raft协议是当今最流行的分布式协调算法，Etcd、Consul等系统的基础，就来自于此。
-总结一下其实</p>
+           <p itemprop="description" >JIT的动机基于“二八定律”，20%的热点代码占据了程序80%的执行时间
+即使开启了JIT，也少不了代码编译和字节码解释的过程。JIT处理的是热点代码（hotspot code，或叫热门代码）。
+热点代码就是频繁执行的代码块，比如循环里面的代码。JIT有一套逻辑判断是否热点代码。</p>
         
     
-    <time datetime="2023-09-19T02:23:45.106Z" itemprop="datePublished">2023-09-19</time>
+    <time datetime="2023-09-19T06:38:54.228Z" itemprop="datePublished">2023-09-19</time>
   </a>
 </section>
 
@@ -123,17 +260,17 @@ Raft协议是当今最流行的分布式协调算法，Etcd、Consul等系统的
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/2023/09/19/CheatSheet/os/Ubuntu/" title="" itemprop="url">
+    <a href="/2023/09/19/CheatSheet/database/copy-on-write/" title="" itemprop="url">
   
     <h1 itemprop="name"></h1>
     
      
-           <p itemprop="description" >下载-镜像地址http://mirrors.ustc.edu.cn/ubuntu-releases/
-http://mirrors.163.com/ubuntu-releases/
-zsync镜像更新假设目前已有镜像文件trusty-desktop-amd64.iso，要更新到u</p>
+           <p itemprop="description" >写时复制（Copy-on-write，简称COW）
+性能优化策略
+ if you modify the second variable, Swift takes a full copy at that point so that only the second variable </p>
         
     
-    <time datetime="2023-09-19T02:23:45.106Z" itemprop="datePublished">2023-09-19</time>
+    <time datetime="2023-09-19T06:38:54.228Z" itemprop="datePublished">2023-09-19</time>
   </a>
 </section>
 
@@ -145,151 +282,19 @@ zsync镜像更新假设目前已有镜像文件trusty-desktop-amd64.iso，要更
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/2023/09/19/CheatSheet/os/profile/" title="" itemprop="url">
+    <a href="/2023/09/19/CheatSheet/database/kyuubi/" title="" itemprop="url">
   
     <h1 itemprop="name"></h1>
     
      
-           <p itemprop="description" >/etc/profile登录时执行并从/etc/profile.d目录的配置文件中搜集shell的设置
-/etc/bashrc打开新的shell时
-~/.profile当用户登录时,该文件仅仅执行一次!默认情况下,他设置一些环境变量,执行用户的.bashrc文件.
-~/.bash</p>
+           <p itemprop="description" >解决多租户的共享查询问题，作为多个查询引擎的统一入口
+HA通过zk实现
+Installhttp://mirrors.ustc.edu.cn/
+Setup配置JAVA_HOME，SPARK_HOME。还支持Flink、Trino
+bin/kyuubi startbin/kyuubi</p>
         
     
-    <time datetime="2023-09-19T02:23:45.106Z" itemprop="datePublished">2023-09-19</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2023/09/19/CheatSheet/os/iptables/" title="" itemprop="url">
-  
-    <h1 itemprop="name"></h1>
-    
-     
-           <p itemprop="description" >IPtableiptables只是Linux防火墙的管理工具而已，位于/sbin/iptables。真正实现防火墙功能的是netfilter，它是Linux内核中实现包过滤的内部结构。
-iptables传输数据包的过程:
-当一个数据包进入网卡时，它首先进入PREROUTING链，</p>
-        
-    
-    <time datetime="2023-09-19T02:23:45.106Z" itemprop="datePublished">2023-09-19</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2023/09/19/CheatSheet/profile/performance/" title="" itemprop="url">
-  
-    <h1 itemprop="name"></h1>
-    
-     
-           <p itemprop="description" >nmonnmonhttps://nmon.sourceforge.net/pmwiki.php?n=Site.Download
-nmon analyserhttps://nmon.sourceforge.net/pmwiki.php?n=Site.Nmon-Analyser
-ht</p>
-        
-    
-    <time datetime="2023-09-19T02:23:45.106Z" itemprop="datePublished">2023-09-19</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2023/09/19/CheatSheet/profile/prometheus/" title="" itemprop="url">
-  
-    <h1 itemprop="name"></h1>
-    
-     
-           <p itemprop="description" >Prometheus collects and stores its metrics as time series data
-Components
-
-Prometheus server:  scrapes and stores time series data 单文件
-alert</p>
-        
-    
-    <time datetime="2023-09-19T02:23:45.106Z" itemprop="datePublished">2023-09-19</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2023/09/19/CheatSheet/scheduler/airflow/" title="" itemprop="url">
-  
-    <h1 itemprop="name"></h1>
-    
-     
-           <p itemprop="description" >语言：Python特色：Workflows as code
-上述两点结合，可以有动态流程
-UI比较复杂</p>
-        
-    
-    <time datetime="2023-09-19T02:23:45.106Z" itemprop="datePublished">2023-09-19</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2023/09/19/CheatSheet/storage/ozone/" title="" itemprop="url">
-  
-    <h1 itemprop="name"></h1>
-    
-     
-           <p itemprop="description" >Ozone/HDDShttps://ozone.apache.org/docs/1.2.1/index.html
-分布式存储
-兼容S3对象存储API兼容HDFS使用RAFT协议
-概念：Ozone consists of volumes, buckets, and keys.nam</p>
-        
-    
-    <time datetime="2023-09-19T02:23:45.106Z" itemprop="datePublished">2023-09-19</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2023/09/19/CheatSheet/virtualization/wsl/" title="" itemprop="url">
-  
-    <h1 itemprop="name"></h1>
-    
-     
-           <p itemprop="description" >InitEnv通过迁移 更改WSL存储目录12345678wsl -l --all -vwsl --shutdownwsl --export Ubuntu E:\runtime\wsl-ubuntu.tarwsl --unregister Ubuntuwsl --import U</p>
-        
-    
-    <time datetime="2023-09-19T02:23:45.106Z" itemprop="datePublished">2023-09-19</time>
+    <time datetime="2023-09-19T06:38:54.228Z" itemprop="datePublished">2023-09-19</time>
   </a>
 </section>
 
@@ -300,7 +305,7 @@ UI比较复杂</p>
 
 
   <nav id="page-nav" class="clearfix unexpand">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/">Next&lt;span&gt;&lt;&#x2F;span&gt;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/2/">Next&lt;span&gt;&lt;&#x2F;span&gt;</a>
   </nav>
 
 </div>
@@ -330,7 +335,7 @@ UI比较复杂</p>
 		  
 		
 		  
-			<li><a href="/categories/BigData/" title="BigData">BigData<sup>5</sup></a></li>
+			<li><a href="/categories/BigData/" title="BigData">BigData<sup>7</sup></a></li>
 		  
 		
 		  
@@ -355,11 +360,15 @@ UI比较复杂</p>
 		<ul class="clearfix">
 		
 			
-				<li><a href="/tags/carbondata/" title="carbondata">carbondata<sup>3</sup></a></li>
+				<li><a href="/tags/carbondata/" title="carbondata">carbondata<sup>4</sup></a></li>
 			
 		
 			
 				<li><a href="/tags/project/" title="project">project<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/rdma/" title="rdma">rdma<sup>1</sup></a></li>
 			
 		
 			
