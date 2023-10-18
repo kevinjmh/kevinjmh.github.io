@@ -81,15 +81,21 @@
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/2023/10/17/CheatSheet/virtualization/wsl/" title="" itemprop="url">
+    <a href="/2023/10/18/Doc/carbon/other_tools/" title="" itemprop="url">
   
     <h1 itemprop="name"></h1>
     
      
-           <p itemprop="description" >InitEnv通过迁移 更改WSL存储目录12345678wsl -l --all -vwsl --shutdownwsl --export Ubuntu E:\runtime\wsl-ubuntu.tarwsl --unregister Ubuntuwsl --import U</p>
+           <p itemprop="description" >小数据量对比
+alluxio - 适合异地多机房，网络带宽足够大，机器学习这种数据短期重复使用的
+ignite - 小数据量，本地计算
+IQ
+presto
+carbondata
+FromcarbonToSpark尽量上位原理 不讲细节。 不提carbon，但是讲其中的相关内容？+</p>
         
     
-    <time datetime="2023-10-17T01:17:47.776Z" itemprop="datePublished">2023-10-17</time>
+    <time datetime="2023-10-18T09:31:22.956Z" itemprop="datePublished">2023-10-18</time>
   </a>
 </section>
 
@@ -101,7 +107,30 @@
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/2023/10/17/CheatSheet/computing/spark/hugeJoin/" title="" itemprop="url">
+    <a href="/2023/10/18/Doc/spark/spark/" title="" itemprop="url">
+  
+    <h1 itemprop="name"></h1>
+    
+     
+           <p itemprop="description" >多counter性能问题 - whole stage codegen，生成的代码长度超过JIT
+开窗counter - spark context 外包一层
+任务调度本地性
+任务数量</p>
+        
+    
+    <time datetime="2023-10-18T09:31:22.956Z" itemprop="datePublished">2023-10-18</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/2023/10/18/CheatSheet/computing/spark/hugeJoin/" title="" itemprop="url">
   
     <h1 itemprop="name"></h1>
     
@@ -110,7 +139,7 @@
 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525</p>
         
     
-    <time datetime="2023-10-17T01:17:47.776Z" itemprop="datePublished">2023-10-17</time>
+    <time datetime="2023-10-18T09:31:22.956Z" itemprop="datePublished">2023-10-18</time>
   </a>
 </section>
 
@@ -122,7 +151,7 @@
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/2023/10/17/CheatSheet/computing/spark/scheduler/" title="" itemprop="url">
+    <a href="/2023/10/18/CheatSheet/computing/spark/scheduler/" title="" itemprop="url">
   
     <h1 itemprop="name"></h1>
     
@@ -133,7 +162,7 @@ Job（作业）：由Action算子触发生成的由一个或多个Stage组成的
 Stage（</p>
         
     
-    <time datetime="2023-10-17T01:17:47.776Z" itemprop="datePublished">2023-10-17</time>
+    <time datetime="2023-10-18T09:31:22.956Z" itemprop="datePublished">2023-10-18</time>
   </a>
 </section>
 
@@ -145,7 +174,7 @@ Stage（</p>
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/2023/10/17/CheatSheet/scheduler/dolphinscheduler/AlertServer/" title="" itemprop="url">
+    <a href="/2023/10/18/CheatSheet/scheduler/dolphinscheduler/AlertServer/" title="" itemprop="url">
   
     <h1 itemprop="name"></h1>
     
@@ -154,7 +183,7 @@ Stage（</p>
 Spring 是用于创建企业应用的流行 Java 应用框架。Spring Boot 是 Spring 框架的演进，可帮助您轻松创建独立的，生产级的基于 Spr</p>
         
     
-    <time datetime="2023-10-17T01:17:47.776Z" itemprop="datePublished">2023-10-17</time>
+    <time datetime="2023-10-18T09:31:22.956Z" itemprop="datePublished">2023-10-18</time>
   </a>
 </section>
 
@@ -166,7 +195,7 @@ Spring 是用于创建企业应用的流行 Java 应用框架。Spring Boot 是 
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/2023/10/17/CheatSheet/scheduler/dolphinscheduler/readme/" title="" itemprop="url">
+    <a href="/2023/10/18/CheatSheet/scheduler/dolphinscheduler/readme/" title="" itemprop="url">
   
     <h1 itemprop="name"></h1>
     
@@ -176,7 +205,50 @@ Spring 是用于创建企业应用的流行 Java 应用框架。Spring Boot 是 
 会出现跨月时出错。20230401执行20230431</p>
         
     
-    <time datetime="2023-10-17T01:17:47.776Z" itemprop="datePublished">2023-10-17</time>
+    <time datetime="2023-10-18T09:31:22.956Z" itemprop="datePublished">2023-10-18</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/2023/10/18/Doc/spark/code/core/api/" title="" itemprop="url">
+  
+    <h1 itemprop="name"></h1>
+    
+     
+           <p itemprop="description" >api.java该包用于java编程时
+JavaDoubleRDD将scala Double 转java Double
+注意一行代码：import java.lang.&amp;#123;Double =&amp;gt; JDouble&amp;#125;scala语法起了个类的别名
+而java也有类似</p>
+        
+    
+    <time datetime="2023-10-18T09:31:22.956Z" itemprop="datePublished">2023-10-18</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/2023/10/18/Doc/spark/code/core/protobuf-storetypes/" title="" itemprop="url">
+  
+    <h1 itemprop="name"></h1>
+    
+     
+           <p itemprop="description" >信息传递数据结构</p>
+        
+    
+    <time datetime="2023-10-18T09:31:22.956Z" itemprop="datePublished">2023-10-18</time>
   </a>
 </section>
 
@@ -219,72 +291,6 @@ Safe mode is ON. The reported blocks 3 needs additional 2 blocks to reach the th
         
     
     <time datetime="2022-05-30T14:11:43.000Z" itemprop="datePublished">2022-05-30</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2022/05/26/CheatSheet/database/delta/" title="Delta Lake" itemprop="url">
-  
-    <h1 itemprop="name">Delta Lake</h1>
-    
-     
-           <p itemprop="description" >https://docs.delta.io/1.2.1/delta-utility.html
-ReleaseDelta Lake 2.0.x  - for spark 3.2
-Delta Lake 2.1/2.x  - for spark 3.3
-入口sql1234spark-s</p>
-        
-    
-    <time datetime="2022-05-26T14:11:43.000Z" itemprop="datePublished">2022-05-26</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2022/05/10/CheatSheet/database/clickhouse/" title="clickhouse" itemprop="url">
-  
-    <h1 itemprop="name">clickhouse</h1>
-    
-     
-           <p itemprop="description" >Hello Worldclickhouse start
-clickhouse-client
-概念主键primary keys： not unique, determines how the data is sorted =&amp;gt; 理解为carbondata的sort colum</p>
-        
-    
-    <time datetime="2022-05-10T12:11:43.000Z" itemprop="datePublished">2022-05-10</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2022/03/30/CheatSheet/visualization/zeppelin/" title="zeppelin" itemprop="url">
-  
-    <h1 itemprop="name">zeppelin</h1>
-    
-     
-           <p itemprop="description" >https://zeppelin.apache.org/download.html
-cp conf/zeppelin-site.xml.template conf/zeppelin-site.xmlvi conf/zeppelin-site.xml修改zeppelin-site.</p>
-        
-    
-    <time datetime="2022-03-30T14:11:43.000Z" itemprop="datePublished">2022-03-30</time>
   </a>
 </section>
 
