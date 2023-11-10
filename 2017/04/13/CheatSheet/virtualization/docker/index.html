@@ -19,7 +19,7 @@
 <meta property="og:description" content="Infomoby、docker-ce与docker-ee最早的时候docker就是一个开源项目，主要由docker公司维护。 2017年年初，docker公司将原先的docker项目改名为moby，并创建了docker-ce和docker-ee。 这三者的关系是： moby是继承了原先的docker的项目，是社区维护的的开源项目，谁都可以在moby的基础打造自己的容器产品 docker-ce是do">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2017-04-13T14:11:43.000Z">
-<meta property="article:modified_time" content="2023-10-18T09:31:22.956Z">
+<meta property="article:modified_time" content="2023-11-10T06:58:49.061Z">
 <meta property="article:author" content="Manhua">
 <meta property="article:tag" content="docker">
 <meta name="twitter:card" content="summary">
@@ -191,7 +191,9 @@
 <h3 id="Docker-Compose"><a href="#Docker-Compose" class="headerlink" title="Docker Compose"></a>Docker Compose</h3><p>用于定义和运行多容器 Docker 的应用程序工具<br>docker-compose -v</p>
 <h1 id="Windows环境下的使用"><a href="#Windows环境下的使用" class="headerlink" title="Windows环境下的使用"></a>Windows环境下的使用</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p><a target="_blank" rel="noopener" href="https://docs.docker.com/get-docker/">https://docs.docker.com/get-docker/</a><br><a target="_blank" rel="noopener" href="https://hub.docker.com/">https://hub.docker.com/</a></p>
 <p>新版建议使用基于WSL2，使用异常会涉及以下命令：<br>wsl –install<br>wsl –update<br>wsl –set-version 2<br>wsl –status<br>wsl –version<br>wsl –shutdown<br>wsl –unregister docker-desktop-data<br>wsl –terminate <Distribution Name><br>wsl –list –verbose<br>wsl –distribution <Distribution Name></p>
-<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><h2 id="常用环境"><a href="#常用环境" class="headerlink" title="常用环境"></a>常用环境</h2><h3 id="mysql"><a href="#mysql" class="headerlink" title="mysql"></a>mysql</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -di --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 mysql:5.7</span><br></pre></td></tr></table></figure>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><h2 id="常用环境"><a href="#常用环境" class="headerlink" title="常用环境"></a>常用环境</h2><p>mysql &lt;–  metastore<br>metastore &lt;– HDFS<br>metastore &lt;– Spark<br>HDFS &lt;– Spark</p>
+<p>HDFS和metastore建议捆绑，因为metastore需要HADOOP_HOME</p>
+<h3 id="mysql"><a href="#mysql" class="headerlink" title="mysql"></a>mysql</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -di --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 mysql:5.7</span><br></pre></td></tr></table></figure>
 
 <h3 id="hive"><a href="#hive" class="headerlink" title="hive"></a>hive</h3><p>Dockerfile</p>
 <p>docker pull centos:7</p>
