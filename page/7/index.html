@@ -130,16 +130,39 @@ set maven mirror:
   
 <section class="post" itemscope itemprop="blogitem">
   
+    <a href="/2022/01/20/CheatSheet/storage/hdfs/" title="hdfs" itemprop="url">
+  
+    <h1 itemprop="name">hdfs</h1>
+    
+     
+           <p itemprop="description" >文件保护删除hdfs删除逻辑为，路径上所有需要删除的文件节点的父目录有w权限
+即：即使A用户是根目录的所有者，只要A创建/允许创建了B用户的目录且该目录下有数据，只要A不是超级用户则不能删除。注意若该目录下无文件，则该目录依然能被删除。
+操作方式启动：使用hdfs用户启动hado</p>
+        
+    
+    <time datetime="2022-01-20T14:11:43.000Z" itemprop="datePublished">2022-01-20</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
     <a href="/2022/01/20/CheatSheet/scheduler/dolphinscheduler/dolphinscheduler/" title="dolphinscheduler" itemprop="url">
   
     <h1 itemprop="name">dolphinscheduler</h1>
     
      
-           <p itemprop="description" >dolphinscheduler调度情况报表t_ds_process_instance关键字段
-
-name(流程名+时间戳)
-process_definition_id （可关联得流程名）
-state （流程实例状态：0 提交成功,1 正在运行,2 准备暂停,3 暂停,4 准备停</p>
+           <p itemprop="description" >dolphinschedulerSite 
+Is：分布式 工作流 调度平台，带DAG可视化
+For：复杂任务依赖  
+去中心化（动态主，zk选）  
+DolphinScheduler本身不依赖Hadoop、Hive、Spark,仅是会调用他们的Client，用于对应任务的提交
+基</p>
         
     
     <time datetime="2022-01-20T14:11:43.000Z" itemprop="datePublished">2022-01-20</time>
@@ -272,28 +295,6 @@ root passwordsudo passwd ro</p>
         
     
     <time datetime="2021-04-10T15:13:13.000Z" itemprop="datePublished">2021-04-10</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2021/04/09/Doc/carbon/1_carbon/" title="Day 1 to Carbondata" itemprop="url">
-  
-    <h1 itemprop="name">Day 1 to Carbondata</h1>
-    
-     
-           <p itemprop="description" >What is carbonCarbondata is an indexed columnar data format for fast analytics on big data platform, like parquet, orc.
-Reference Site
-Offic</p>
-        
-    
-    <time datetime="2021-04-09T20:15:10.000Z" itemprop="datePublished">2021-04-09</time>
   </a>
 </section>
 
