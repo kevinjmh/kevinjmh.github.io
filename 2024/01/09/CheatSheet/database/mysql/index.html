@@ -1,0 +1,549 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Manhua</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Manhua">
+    
+
+    
+    <meta name="description" content="安装MariaDBhttps:&#x2F;&#x2F;mariadb.com&#x2F;kb&#x2F;en&#x2F;yum&#x2F; 12345678910111213141516171819vi &#x2F;etc&#x2F;yum.repos.d&#x2F;MariaDB.repo[mariadb]name &#x3D; MariaDB-10.3baseurl&#x3D;http:&#x2F;&#x2F;142.4.219.197&#x2F;10.3&#x2F;centos7-amd64# alternative: baseurl&#x3D;h">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Manhua">
+<meta property="og:url" content="http://kevinjmh.github.io/2024/01/09/CheatSheet/database/mysql/index.html">
+<meta property="og:site_name" content="Manhua">
+<meta property="og:description" content="安装MariaDBhttps:&#x2F;&#x2F;mariadb.com&#x2F;kb&#x2F;en&#x2F;yum&#x2F; 12345678910111213141516171819vi &#x2F;etc&#x2F;yum.repos.d&#x2F;MariaDB.repo[mariadb]name &#x3D; MariaDB-10.3baseurl&#x3D;http:&#x2F;&#x2F;142.4.219.197&#x2F;10.3&#x2F;centos7-amd64# alternative: baseurl&#x3D;h">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-01-09T08:09:48.467Z">
+<meta property="article:modified_time" content="2024-01-09T08:09:48.467Z">
+<meta property="article:author" content="Manhua">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:creator" content="@jiangmanhua">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Manhua" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="Manhua" title="Manhua"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Manhua">Manhua</a></h1>
+				<h2 class="blog-motto">Never Say Die</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页 | Home</a></li>
+					
+						<li><a href="/archives">归档 | Archives</a></li>
+					
+						<li><a href="/about">简介 | About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:kevinjmh.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2024/01/09/CheatSheet/database/mysql/" title="" itemprop="url"></a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Manhua" target="_blank" itemprop="author">Manhua</a>
+		
+  <p class="article-time">
+    <time datetime="2024-01-09T08:09:48.467Z" itemprop="datePublished"> Published 2024-01-09</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">1.</span> <span class="toc-text">安装</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#MariaDB"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">MariaDB</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#mysql"><span class="toc-number">1.0.0.2.</span> <span class="toc-text">mysql</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BB%E4%B8%BB%E4%BA%92%E5%A4%87%E9%85%8D%E7%BD%AE"><span class="toc-number">1.0.0.3.</span> <span class="toc-text">主主互备配置</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%BC%E5%87%BA%E6%95%B0%E6%8D%AE"><span class="toc-number">1.0.1.</span> <span class="toc-text">导出数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4"><span class="toc-number">1.0.2.</span> <span class="toc-text">执行命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%87%E4%BB%BD%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">1.0.3.</span> <span class="toc-text">备份数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%81%A2%E5%A4%8D%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">1.0.4.</span> <span class="toc-text">恢复数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86"><span class="toc-number">1.0.5.</span> <span class="toc-text">用户管理</span></a></li></ol></li></ol></li></ol>
+		
+		</div>
+		
+		<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h4 id="MariaDB"><a href="#MariaDB" class="headerlink" title="MariaDB"></a>MariaDB</h4><p><a target="_blank" rel="noopener" href="https://mariadb.com/kb/en/yum/">https://mariadb.com/kb/en/yum/</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/yum.repos.d/MariaDB.repo</span><br><span class="line"></span><br><span class="line">[mariadb]</span><br><span class="line">name = MariaDB-10.3</span><br><span class="line">baseurl=http://142.4.219.197/10.3/centos7-amd64</span><br><span class="line"># alternative: baseurl=http://archive.mariadb.org/mariadb-10.3.14/yum/centos7-amd64</span><br><span class="line">gpgkey=https://yum.mariadb.org/RPM-GPG-KEY-MariaDB</span><br><span class="line">gpgcheck=0</span><br><span class="line"></span><br><span class="line">yum install MariaDB-server</span><br><span class="line"></span><br><span class="line">sudo mysql_secure_installation</span><br><span class="line"></span><br><span class="line">service  mariadb  start </span><br><span class="line"></span><br><span class="line">systemctl start mariadb #启动服务</span><br><span class="line">systemctl enable mariadb #设置开机启动</span><br><span class="line">systemctl restart mariadb #重新启动</span><br><span class="line">systemctl stop mariadb.service #停止MariaDB</span><br></pre></td></tr></table></figure>
+
+<h4 id="mysql"><a href="#mysql" class="headerlink" title="mysql"></a>mysql</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">yum install mysql-server</span><br><span class="line"></span><br><span class="line">sudo rpm -ivh mysql-community-common-5.7.38-1.el7.x86_64.rpm </span><br><span class="line">sudo rpm -ivh mysql-community-libs-5.7.38-1.el7.x86_64.rpm</span><br><span class="line">sudo rpm -ivh mysql-community-client-5.7.38-1.el7.x86_64.rpm </span><br><span class="line">sudo rpm -ivh mysql-community-server-5.7.38-1.el7.x86_64.rpm </span><br><span class="line"></span><br><span class="line">sudo systemctl enable mysqld</span><br><span class="line">sudo service mysqld start</span><br><span class="line">sudo grep &#x27;temporary password&#x27; /var/log/mysqld.log</span><br><span class="line"></span><br><span class="line">mysql  -uroot -p</span><br><span class="line">ALTER USER &#x27;root&#x27;@&#x27;localhost&#x27; IDENTIFIED BY &#x27;root&#x27;;</span><br><span class="line"></span><br><span class="line">mysql&gt;create user ds@localhost identified by &#x27;123&#x27;;</span><br><span class="line">mysql&gt;grant all on *.* to ds@localhost identified by &#x27;123&#x27;;</span><br><span class="line">mysql&gt;grant all privileges on *.* to ds@&#x27;%&#x27; ;</span><br><span class="line">mysql&gt;grant select on *.* to ds@&#x27;hostname&#x27; identified by &#x27;123&#x27; with grant option;</span><br><span class="line">MariaDB [mysql]&gt; select host,user,password from mysql.user;</span><br><span class="line"></span><br><span class="line">mysql&gt;flush privileges;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># ubuntu - mysql8</span><br><span class="line">sudo apt install mysql-server</span><br><span class="line">sudo cat /etc/mysql/debian.cnf #密码</span><br><span class="line">mysql -u  debian-sys-maint -p</span><br><span class="line">use mysql;</span><br><span class="line">ALTER USER &#x27;root&#x27;@&#x27;localhost&#x27; IDENTIFIED WITH caching_sha2_password BY &#x27;123456&#x27;;</span><br><span class="line">FLUSH PRIVILEGES;</span><br><span class="line"></span><br><span class="line">sudo vi /etc/mysql/my.cnf</span><br><span class="line"></span><br><span class="line">[mysqld]</span><br><span class="line">bind-address=0.0.0.0</span><br></pre></td></tr></table></figure>
+
+<p>Public Key Retrieval is not allowed解决方法：</p>
+<ol>
+<li>ALTER USER ‘root‘@’%’ IDENTIFIED WITH mysql_native_password BY ‘root’;</li>
+<li>连接url增加参数 ?allowPublicKeyRetrieval=true</li>
+</ol>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/river2005/p/6813618.html">https://www.cnblogs.com/river2005/p/6813618.html</a></p>
+<h4 id="主主互备配置"><a href="#主主互备配置" class="headerlink" title="主主互备配置"></a>主主互备配置</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/my.cnf   /etc/my.cnf.d/mariadb-server.cnf</span><br><span class="line"></span><br><span class="line">server-id = 1           </span><br><span class="line">auto-increment-offset = 1    </span><br><span class="line">auto-increment-increment = 2  </span><br><span class="line">log-bin = mysql-bin     </span><br><span class="line">sync_binlog = 1</span><br><span class="line">binlog_checksum = none</span><br><span class="line">binlog_format = mixed </span><br><span class="line">slave-skip-errors = all</span><br><span class="line"></span><br><span class="line">server-id = 2        </span><br><span class="line">auto-increment-offset = 2    </span><br><span class="line">auto-increment-increment = 2    </span><br><span class="line">log-bin = mysql-bin    </span><br><span class="line">sync_binlog = 1</span><br><span class="line">binlog_checksum = none</span><br><span class="line">binlog_format = mixed </span><br><span class="line">slave-skip-errors = all</span><br><span class="line"></span><br><span class="line">#保存配置文件并重启mysql</span><br><span class="line">service mariadb restart</span><br><span class="line">sudo service mysqld restart</span><br><span class="line"></span><br><span class="line">#用mysql控制台登录并授权从库可以读取主库的二进制日志</span><br><span class="line">mysql -u root -p</span><br><span class="line">mysql&gt;grant replication slave,replication client on *.* to root@&#x27;192.168.56.108&#x27; identified by &quot;root&quot;;</span><br><span class="line">mysql&gt;flush privileges;</span><br><span class="line"></span><br><span class="line">#用mysql控制台登录并授权从库可以读取主库的二进制日志</span><br><span class="line">mysql -u root -p</span><br><span class="line">mysql&gt;grant replication slave,replication client on *.* to root@&#x27;192.168.56.109&#x27; identified by &quot;root&quot;;</span><br><span class="line"></span><br><span class="line">mysql&gt;flush privileges;</span><br><span class="line"></span><br><span class="line">#查看下log bin日志和pos值位置，并记录File 和Position的值</span><br><span class="line">mysql&gt; show master status;</span><br><span class="line"></span><br><span class="line">change  master to master_host=&#x27;192.168.56.108&#x27;,master_user=&#x27;root&#x27;,master_password=&#x27;root&#x27;,master_log_file=&#x27;mysql-bin.000001&#x27;,master_log_pos=373;   </span><br><span class="line">start slave;</span><br><span class="line">show slave status\G;</span><br><span class="line">             Slave_IO_Running: Yes</span><br><span class="line">            Slave_SQL_Running: Yes</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">change  master to master_host=&#x27;192.168.56.109&#x27;,master_user=&#x27;root&#x27;,master_password=&#x27;root&#x27;,master_log_file=&#x27;mysql-bin.000001&#x27;,master_log_pos=373;   </span><br><span class="line">start slave;</span><br><span class="line">show slave status\G;</span><br><span class="line">             Slave_IO_Running: Yes</span><br><span class="line">            Slave_SQL_Running: Yes</span><br><span class="line"></span><br><span class="line">#stop slave;</span><br><span class="line">#flush logs;</span><br><span class="line"></span><br><span class="line">====</span><br><span class="line">create database test;</span><br><span class="line"></span><br><span class="line">use test;</span><br><span class="line"></span><br><span class="line">CREATE TABLE IF NOT EXISTS `runoob_tbl`(</span><br><span class="line">`runoob_id` INT UNSIGNED AUTO_INCREMENT,</span><br><span class="line">`runoob_title` VARCHAR(100) NOT NULL,</span><br><span class="line">`runoob_author` VARCHAR(40) NOT NULL,</span><br><span class="line">`submission_date` DATE,</span><br><span class="line">PRIMARY KEY ( `runoob_id` )</span><br><span class="line">)ENGINE=InnoDB DEFAULT CHARSET=utf8;</span><br><span class="line"></span><br><span class="line">show tables;</span><br><span class="line"></span><br><span class="line">INSERT INTO runoob_tbl</span><br><span class="line">(runoob_title, runoob_author, submission_date)</span><br><span class="line">VALUES</span><br><span class="line">(&quot;学习 PHP&quot;, &quot;菜鸟教程&quot;, NOW());</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">INSERT INTO runoob_tbl</span><br><span class="line">(runoob_title, runoob_author, submission_date)</span><br><span class="line">VALUES</span><br><span class="line">(&quot;JAVA 教程&quot;, &quot;RUNOOB.COM&quot;, &#x27;2016-05-06&#x27;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">select * from runoob_tbl;</span><br><span class="line"></span><br><span class="line">drop table runoob_tbl;</span><br><span class="line">drop database test;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="导出数据"><a href="#导出数据" class="headerlink" title="导出数据"></a>导出数据</h3><p>mysql -u root -h 10.3.4.194  -p -e “select * from dolphinscheduler.t_ds_user;” &gt; userinfo.log</p>
+<h3 id="执行命令"><a href="#执行命令" class="headerlink" title="执行命令"></a>执行命令</h3><p>mysql -u root -h 10.3.4.194  -p -e “drop database dolphinscheduler;”</p>
+<h3 id="备份数据库"><a href="#备份数据库" class="headerlink" title="备份数据库"></a>备份数据库</h3><p>mysqldump -h10.3.4.194 -P3306 -uroot  -p –databases dolphinscheduler  &gt; dolphinscheduler.sql;</p>
+<h3 id="恢复数据库"><a href="#恢复数据库" class="headerlink" title="恢复数据库"></a>恢复数据库</h3><p>mysql -u root -h 10.3.4.194  -p &lt; dolphinscheduler.sql</p>
+<h3 id="用户管理"><a href="#用户管理" class="headerlink" title="用户管理"></a>用户管理</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">user</span> <span class="string">&#x27;admin&#x27;</span>@<span class="string">&#x27;localhost&#x27;</span> IDENTIFIED <span class="keyword">BY</span> <span class="string">&#x27;Admin123!&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">GRANT</span>  <span class="keyword">ALL</span> PRIVILEGES  <span class="keyword">ON</span> <span class="operator">*</span>.<span class="operator">*</span> <span class="keyword">TO</span> <span class="string">&#x27;admin&#x27;</span>@<span class="string">&#x27;localhost&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">USER</span> <span class="string">&#x27;demo&#x27;</span>@<span class="string">&#x27;localhost&#x27;</span> ACCOUNT UNLOCK;</span><br><span class="line"></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">USER</span> <span class="string">&#x27;backup_user&#x27;</span>@<span class="string">&#x27;%&#x27;</span> ACCOUNT LOCK;</span><br><span class="line"></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">USER</span> <span class="string">&#x27;root&#x27;</span>@<span class="string">&#x27;%&#x27;</span> IDENTIFIED <span class="keyword">BY</span> <span class="string">&#x27;vs jw&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">USER</span> <span class="string">&#x27;root&#x27;</span>@<span class="string">&#x27;%&#x27;</span>;</span><br></pre></td></tr></table></figure>  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://kevinjmh.github.io/2024/01/09/CheatSheet/database/mysql/" data-title="Manhua" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2024/01/09/CheatSheet/database/kyuubi/" title="">
+  <strong>上一篇：</strong><br/>
+  <span>
+  (no title)</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2024/01/09/CheatSheet/database/ranger/"  title="">
+ <strong>下一篇：</strong><br/> 
+ <span>(no title)
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github Card</p>
+<div class="github-card" data-github="kevinjmh" data-width="220" data-height="119" data-theme="medium">
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+  </div>
+
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Application/" title="Application">Application<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/BigData/" title="BigData">BigData<sup>7</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/CheatSheet/" title="CheatSheet">CheatSheet<sup>21</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Info/" title="Info">Info<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/慢话/" title="慢话">慢话<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/carbondata/" title="carbondata">carbondata<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/project/" title="project">project<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/rdma/" title="rdma">rdma<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/software/" title="software">software<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/recommendation/" title="recommendation">recommendation<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/docker/" title="docker">docker<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/markdown/" title="markdown">markdown<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/carbon/" title="carbon">carbon<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/spark/" title="spark">spark<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/hadoop/" title="hadoop">hadoop<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://www.cnblogs.com/manhua" target="_blank" title="cnBlogs">cnBlogs</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m Manhua Jiang. <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/443181876" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/kevinjmh" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		<a href="https://twitter.com/jiangmanhua" target="_blank" class="icon-twitter" title="twitter"></a>
+		
+		
+		<a href="https://www.facebook.com/jiangmanhua" target="_blank" class="icon-facebook" title="facebook"></a>
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2024 
+		
+		<a href="/about" target="_blank" title="Manhua">Manhua</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+        getSize();
+        if (myWidth >= 1024) {
+          c.click();
+        }
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

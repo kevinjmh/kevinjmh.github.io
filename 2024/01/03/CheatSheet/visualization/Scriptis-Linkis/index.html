@@ -1,0 +1,568 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Scriptis-Linkis | Manhua</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Manhua">
+    
+
+    
+    <meta name="description" content="Scriptis是基于Linkis开发的数据分析工具 Linkis定位： 计算存储引擎中间件 启动用户会默认作为管理员权限Linkis支持指定提交、执行的用户linkis主要进程服务会通过sudo -u $&amp;#123;linkis-user&amp;#125; 切换到对应用户下，然后执行对应的引擎启动命令，所以引擎linkis-engine进程归属的用户是任务的执行者（因此部署用户需要有sudo权限，而且">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Scriptis-Linkis">
+<meta property="og:url" content="http://kevinjmh.github.io/2024/01/03/CheatSheet/visualization/Scriptis-Linkis/index.html">
+<meta property="og:site_name" content="Manhua">
+<meta property="og:description" content="Scriptis是基于Linkis开发的数据分析工具 Linkis定位： 计算存储引擎中间件 启动用户会默认作为管理员权限Linkis支持指定提交、执行的用户linkis主要进程服务会通过sudo -u $&amp;#123;linkis-user&amp;#125; 切换到对应用户下，然后执行对应的引擎启动命令，所以引擎linkis-engine进程归属的用户是任务的执行者（因此部署用户需要有sudo权限，而且">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-01-03T15:22:52.000Z">
+<meta property="article:modified_time" content="2024-01-09T08:09:48.467Z">
+<meta property="article:author" content="Manhua">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:creator" content="@jiangmanhua">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Manhua" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="Manhua" title="Manhua"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Manhua">Manhua</a></h1>
+				<h2 class="blog-motto">Never Say Die</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页 | Home</a></li>
+					
+						<li><a href="/archives">归档 | Archives</a></li>
+					
+						<li><a href="/about">简介 | About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:kevinjmh.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2024/01/03/CheatSheet/visualization/Scriptis-Linkis/" title="Scriptis-Linkis" itemprop="url">Scriptis-Linkis</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Manhua" target="_blank" itemprop="author">Manhua</a>
+		
+  <p class="article-time">
+    <time datetime="2024-01-03T15:22:52.000Z" itemprop="datePublished"> Published 2024-01-03</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Linkis"><span class="toc-number">1.</span> <span class="toc-text">Linkis</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD"><span class="toc-number">1.1.</span> <span class="toc-text">下载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">1.2.</span> <span class="toc-text">安装</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Linkis-Web"><span class="toc-number">2.</span> <span class="toc-text">Linkis Web</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85"><span class="toc-number">2.0.1.</span> <span class="toc-text">离线安装</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Scriptis"><span class="toc-number">3.</span> <span class="toc-text">Scriptis</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%95%E6%93%8E%E9%83%A8%E7%BD%B2"><span class="toc-number">4.</span> <span class="toc-text">引擎部署</span></a></li></ol>
+		
+		</div>
+		
+		<p>Scriptis是基于Linkis开发的数据分析工具</p>
+<h1 id="Linkis"><a href="#Linkis" class="headerlink" title="Linkis"></a>Linkis</h1><p>定位： 计算存储引擎中间件</p>
+<p>启动用户会默认作为管理员权限<br>Linkis支持指定提交、执行的用户<br>linkis主要进程服务会通过<code>sudo -u $&#123;linkis-user&#125;</code> 切换到对应用户下，然后执行对应的引擎启动命令，所以引擎<code>linkis-engine</code>进程归属的用户是任务的执行者（因此部署用户需要有sudo权限，而且是免密的）。</p>
+<h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p><a target="_blank" rel="noopener" href="https://linkis.apache.org/zh-CN/download/main/">版本列表 | Apache Linkis</a></p>
+<p>配置项</p>
+<ul>
+<li>元数据库：默认mysql <code>deploy-config/linkis-env.sh</code></li>
+<li>数据库连接信息： <code>deploy-config/db.sh</code><ul>
+<li>CREATE DATABASE linkis DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;</li>
+<li>create user linkis@’%’ identified by ‘Linkis@24’;</li>
+<li>GRANT ALL PRIVILEGES ON linkis.* TO ‘linkis‘@’%’;</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">MYSQL_HOST=</span><br><span class="line">MYSQL_PORT=3306</span><br><span class="line">MYSQL_DB=linkis</span><br><span class="line">MYSQL_USER=linkis</span><br><span class="line">MYSQL_PASSWORD=Linkis@24</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">deployUser=hadoop</span><br><span class="line">dbType=mysql</span><br><span class="line"></span><br><span class="line"># 指定用户使用的目录路径，一般用于存储用户的脚本文件和日志文件等，是用户的工作空间。</span><br><span class="line">WORKSPACE_USER_ROOT_PATH=file:///data/soft/linkis/workspace</span><br><span class="line"></span><br><span class="line"># 结果集日志等文件路径，用于存储Job的结果集文件  </span><br><span class="line">HDFS_USER_ROOT_PATH=hdfs:///spark/linkis </span><br><span class="line">  </span><br><span class="line"># 存放执行引擎的工作路径，需要部署用户有写权限的本地目录   </span><br><span class="line">ENGINECONN_ROOT_PATH=/data/soft/linkis/engine_runtime</span><br><span class="line"></span><br><span class="line">#可以通过访问http://xx.xx.xx.xx:8088/ws/v1/cluster/scheduler 接口确认是否可以正常访问</span><br><span class="line">YARN_RESTFUL_URL=http://10.27.48.7:8088</span><br><span class="line"></span><br><span class="line">#HADOOP  </span><br><span class="line">HADOOP_HOME=/data/soft/hadoop</span><br><span class="line">HADOOP_CONF_DIR=/data/soft/hadoop/etc/hadoop</span><br><span class="line"></span><br><span class="line">#Hive</span><br><span class="line">#HIVE_HOME=/appcom/Install/hive</span><br><span class="line">#HIVE_CONF_DIR=/appcom/config/hive-config</span><br><span class="line"></span><br><span class="line">#Spark</span><br><span class="line">SPARK_HOME=/data/soft/spark</span><br><span class="line">SPARK_CONF_DIR=/data/soft/spark/conf</span><br><span class="line"></span><br><span class="line">## java application default jvm memory</span><br><span class="line">export SERVER_HEAP_SIZE=&quot;1024M&quot;</span><br><span class="line"></span><br><span class="line">##The decompression directory and the installation directory need to be inconsistent</span><br><span class="line">LINKIS_HOME=/data/soft/linkis</span><br><span class="line">SPARK_VERSION=3.3.1 # update bin/checkEnv.sh if failed</span><br><span class="line">MYSQL_CONNECT_JAVA_PATH=/data/soft/spark/jars/mysql-connector-java-5.1.47.jar</span><br></pre></td></tr></table></figure>
+
+<p>cp mysql-connector-java-8.0.28.jar  ${LINKIS_HOME}/lib/linkis-spring-cloud-services/linkis-mg-gateway/<br>cp mysql-connector-java-8.0.28.jar  ${LINKIS_HOME}/lib/linkis-commons/public-module/</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><pre><code>sh bin/install.sh
+sh sbin/linkis-start-all.sh
+sh sbin/linkis-daemon.sh start ps-publicservice
+</code></pre>
+<p>访问eureka服务页面（<a href="http://eurekaip:20303），">http://eurekaip:20303），</a> 默认会启动6个 Linkis 微服务</p>
+<h1 id="Linkis-Web"><a href="#Linkis-Web" class="headerlink" title="Linkis Web"></a>Linkis Web</h1><p>web端是使用nginx作为静态资源服务器的，访问请求流程是: <br><code>Linkis管理台请求-&gt;nginx ip:port-&gt;linkis-gateway ip:port-&gt; 其他服务</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">tar -xvf apache-linkis-x.x.x-web-bin.tar.gz</span><br><span class="line"></span><br><span class="line">===== config.sh =====</span><br><span class="line">#访问管理台的端口</span><br><span class="line">linkis_port=&quot;8188&quot;</span><br><span class="line"></span><br><span class="line">#linkis-mg-gateway服务地址</span><br><span class="line">linkis_url=&quot;http://localhost:9020&quot;</span><br><span class="line"></span><br><span class="line">===== 执行部署脚本 =====</span><br><span class="line"># nginx 需要sudo权限进行安装  </span><br><span class="line">sudo sh install.sh</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="离线安装"><a href="#离线安装" class="headerlink" title="离线安装"></a>离线安装</h3><p>默认走yum，离线需下载nginx的rpm包安装</p>
+<p><a target="_blank" rel="noopener" href="http://mirror.centos.org/centos/7/os/x86_64/Packages/pcre2-10.23-2.el7.x86_64.rpm">http://mirror.centos.org/centos/7/os/x86_64/Packages/pcre2-10.23-2.el7.x86_64.rpm</a><br><a target="_blank" rel="noopener" href="http://nginx.org/packages/centos/7/x86_64/RPMS/nginx-1.24.0-1.el7.ngx.x86_64.rpm">http://nginx.org/packages/centos/7/x86_64/RPMS/nginx-1.24.0-1.el7.ngx.x86_64.rpm</a><br>sudo rpm -Uvh nginx-1.24.0-1.el7.ngx.x86_64.rpm<br>sudo rpm -ivh pcre2-10.23-2.el7.x86_64.rpm</p>
+<p>安装后，linkis的nginx配置文件默认是 在<code>/etc/nginx/conf.d/linkis.conf</code> <br>nginx的日志文件在 <code>/var/log/nginx/access.log</code> 和<code>/var/log/nginx/error.log</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd /etc/nginx/conf.d</span><br><span class="line">mv default.conf default.conf.bak</span><br><span class="line"></span><br><span class="line">vi /etc/nginx/nginx.conf # 修改启动用户、线程数等</span><br></pre></td></tr></table></figure>
+
+<p>如果需要修改端口或则静态资源目录等，请修改<code>/etc/nginx/conf.d/linkis.conf</code> 文件后执行 <code>sudo nginx -s reload</code> 命令</p>
+<p>管理命令  systemctl restart nginx</p>
+<p>浏览器登陆 <code>http://xx.xx.xx.xx:8188/#/login</code> 用户名/密码在<code>&#123;LINKIS_HOME&#125;/conf/linkis-mg-gateway.properties</code>中查看<br>[hadoop/a43d90a3e]</p>
+<h1 id="Scriptis"><a href="#Scriptis" class="headerlink" title="Scriptis"></a>Scriptis</h1><p>下载后端包，修改nginx配置</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> location /scriptis &#123; </span><br><span class="line">     alias     /data/soft/scriptis-web/dist/ ;</span><br><span class="line">     index     index.html ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>登陆Linkis网址 <a target="_blank" rel="noopener" href="http://10.27.48.3:8188/">http://10.27.48.3:8188/</a> 成功后, 修改URL到 <a target="_blank" rel="noopener" href="http://10.27.48.3:8188/scriptis">http://10.27.48.3:8188/scriptis</a></p>
+<p>体验不好用，引擎对接配置不明确，spark无法执行，shell执行缓慢</p>
+<h1 id="引擎部署"><a href="#引擎部署" class="headerlink" title="引擎部署"></a>引擎部署</h1><p>放弃使用。整体感觉是后端人员开发各种微服务，显得架构臃肿。</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://kevinjmh.github.io/2024/01/03/CheatSheet/visualization/Scriptis-Linkis/" data-title="Scriptis-Linkis | Manhua" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2024/01/09/CheatSheet/coding/selenium/" title="">
+  <strong>上一篇：</strong><br/>
+  <span>
+  (no title)</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2023/12/13/Doc/raft/"  title="raft">
+ <strong>下一篇：</strong><br/> 
+ <span>raft
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github Card</p>
+<div class="github-card" data-github="kevinjmh" data-width="220" data-height="119" data-theme="medium">
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+  </div>
+
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Application/" title="Application">Application<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/BigData/" title="BigData">BigData<sup>7</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/CheatSheet/" title="CheatSheet">CheatSheet<sup>21</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Info/" title="Info">Info<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/慢话/" title="慢话">慢话<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/carbondata/" title="carbondata">carbondata<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/project/" title="project">project<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/rdma/" title="rdma">rdma<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/software/" title="software">software<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/recommendation/" title="recommendation">recommendation<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/docker/" title="docker">docker<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/markdown/" title="markdown">markdown<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/carbon/" title="carbon">carbon<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/spark/" title="spark">spark<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/hadoop/" title="hadoop">hadoop<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://www.cnblogs.com/manhua" target="_blank" title="cnBlogs">cnBlogs</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m Manhua Jiang. <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/443181876" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/kevinjmh" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		<a href="https://twitter.com/jiangmanhua" target="_blank" class="icon-twitter" title="twitter"></a>
+		
+		
+		<a href="https://www.facebook.com/jiangmanhua" target="_blank" class="icon-facebook" title="facebook"></a>
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2024 
+		
+		<a href="/about" target="_blank" title="Manhua">Manhua</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+        getSize();
+        if (myWidth >= 1024) {
+          c.click();
+        }
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
