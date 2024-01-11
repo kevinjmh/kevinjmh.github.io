@@ -81,15 +81,21 @@
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/2024/01/09/CheatSheet/seatunnel/" title="" itemprop="url">
+    <a href="/2024/01/11/Doc/carbon/other_tools/" title="" itemprop="url">
   
     <h1 itemprop="name"></h1>
     
      
-           <p itemprop="description" >install123export version=&amp;quot;2.3.3&amp;quot;wget &amp;quot;https://archive.apache.org/dist/incubator/seatunnel/$&amp;#123;version&amp;#125;/apache-seatunn</p>
+           <p itemprop="description" >小数据量对比
+alluxio - 适合异地多机房，网络带宽足够大，机器学习这种数据短期重复使用的
+ignite - 小数据量，本地计算
+IQ
+presto
+carbondata
+FromcarbonToSpark尽量上位原理 不讲细节。 不提carbon，但是讲其中的相关内容？+</p>
         
     
-    <time datetime="2024-01-09T08:09:48.467Z" itemprop="datePublished">2024-01-09</time>
+    <time datetime="2024-01-11T03:45:56.742Z" itemprop="datePublished">2024-01-11</time>
   </a>
 </section>
 
@@ -101,17 +107,18 @@
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/2024/01/09/Doc/JIT/" title="" itemprop="url">
+    <a href="/2024/01/11/Doc/spark/spark/" title="" itemprop="url">
   
     <h1 itemprop="name"></h1>
     
      
-           <p itemprop="description" >JIT的动机基于“二八定律”，20%的热点代码占据了程序80%的执行时间
-即使开启了JIT，也少不了代码编译和字节码解释的过程。JIT处理的是热点代码（hotspot code，或叫热门代码）。
-热点代码就是频繁执行的代码块，比如循环里面的代码。JIT有一套逻辑判断是否热点代码。</p>
+           <p itemprop="description" >多counter性能问题 - whole stage codegen，生成的代码长度超过JIT
+开窗counter - spark context 外包一层
+任务调度本地性
+任务数量</p>
         
     
-    <time datetime="2024-01-09T08:09:48.467Z" itemprop="datePublished">2024-01-09</time>
+    <time datetime="2024-01-11T03:45:56.742Z" itemprop="datePublished">2024-01-11</time>
   </a>
 </section>
 
@@ -123,18 +130,17 @@
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/2024/01/09/CheatSheet/database/kyuubi/" title="" itemprop="url">
+    <a href="/2024/01/11/Solution/database/dataTable/" title="" itemprop="url">
   
     <h1 itemprop="name"></h1>
     
      
-           <p itemprop="description" >解决多租户的共享查询问题，作为多个查询引擎的统一入口
-HA通过zk实现
-存在的意义 - 对比 SparkThriftServer
-权限：STS全局只有一个SparkContext，尽管SQL下发来自不同用户，但实际都是使用启动STS的用户身份执行（proxy-user也只是一个身</p>
+           <p itemprop="description" >dim补数时使用历史版本表名增加时间信息 / 增加含时间信息的分区， 通过函数根据时间获取对应的表/分区，默认返回最新版本
+以下为表名增加时间信息的示例
+1234567891011121314151617181920212223242526def getChannelTable(</p>
         
     
-    <time datetime="2024-01-09T08:09:48.467Z" itemprop="datePublished">2024-01-09</time>
+    <time datetime="2024-01-11T03:45:56.742Z" itemprop="datePublished">2024-01-11</time>
   </a>
 </section>
 
@@ -146,16 +152,15 @@ HA通过zk实现
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/2024/01/09/CheatSheet/database/mysql/" title="" itemprop="url">
+    <a href="/2024/01/11/chitchat/management/work/" title="" itemprop="url">
   
     <h1 itemprop="name"></h1>
     
      
-           <p itemprop="description" >安装MariaDBhttps://mariadb.com/kb/en/yum/
-12345678910111213141516171819vi /etc/yum.repos.d/MariaDB.repo[mariadb]name = MariaDB-10.3baseurl=htt</p>
+           <p itemprop="description" >业务挤压时间，忙于应付各种突如其来的需要，无暇优化、做细</p>
         
     
-    <time datetime="2024-01-09T08:09:48.467Z" itemprop="datePublished">2024-01-09</time>
+    <time datetime="2024-01-11T03:45:56.742Z" itemprop="datePublished">2024-01-11</time>
   </a>
 </section>
 
@@ -167,15 +172,17 @@ HA通过zk实现
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/2024/01/09/CheatSheet/database/ranger/" title="" itemprop="url">
+    <a href="/2024/01/11/CheatSheet/scheduler/dolphinscheduler/metaTables/" title="" itemprop="url">
   
     <h1 itemprop="name"></h1>
     
      
-           <p itemprop="description" >https://blog.cloudera.com/sentry-to-ranger-a-concise-guide/</p>
+           <p itemprop="description" >各表各字段https://dolphinscheduler.apache.org/zh-cn/docs/latest/user_doc/metadata-1.3.html
+数据库 dolphinscheduler
+表名    表信息t_ds_access_token    访问d</p>
         
     
-    <time datetime="2024-01-09T08:09:48.467Z" itemprop="datePublished">2024-01-09</time>
+    <time datetime="2024-01-11T03:45:56.742Z" itemprop="datePublished">2024-01-11</time>
   </a>
 </section>
 
@@ -187,17 +194,17 @@ HA通过zk实现
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/2024/01/09/CheatSheet/database/synchronization/" title="" itemprop="url">
+    <a href="/2024/01/11/CheatSheet/scheduler/dolphinscheduler/readme/" title="" itemprop="url">
   
     <h1 itemprop="name"></h1>
     
      
-           <p itemprop="description" >数据库同步JDBC默认情况下都是单线程，速度慢；可优化为并行，但过大的并行会对数据源库造成压力；
-Datax对Oracle支持通过对splitPk进行sample查询后，根据网络限制计算得到的分片任务数，计算得各个任务的上下界作为where条件来并行
-Seatunel目前从源码看</p>
+           <p itemprop="description" >参数$[yyyyMMdd-1]
+日期不允许参数将年月日拆分并t-1时只对天-1，必须对年月日都进行-1操作
+会出现跨月时出错。20230401执行20230431</p>
         
     
-    <time datetime="2024-01-09T08:09:48.467Z" itemprop="datePublished">2024-01-09</time>
+    <time datetime="2024-01-11T03:45:56.742Z" itemprop="datePublished">2024-01-11</time>
   </a>
 </section>
 
@@ -209,17 +216,18 @@ Seatunel目前从源码看</p>
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/2024/01/09/CheatSheet/mq/kafka/" title="" itemprop="url">
+    <a href="/2024/01/11/Doc/spark/code/core/api/" title="" itemprop="url">
   
     <h1 itemprop="name"></h1>
     
      
-           <p itemprop="description" >Kafka 2.8.0，移除了对Zookeeper的依赖，通过KRaft进行自己的集群管理Kafka 3.3.1 Mark KRaft as Production Ready
-Raft协议是当今最流行的分布式协调算法，Etcd、Consul等系统的基础，就来自于此。
-总结一下其实</p>
+           <p itemprop="description" >api.java该包用于java编程时
+JavaDoubleRDD将scala Double 转java Double
+注意一行代码：import java.lang.&amp;#123;Double =&amp;gt; JDouble&amp;#125;scala语法起了个类的别名
+而java也有类似</p>
         
     
-    <time datetime="2024-01-09T08:09:48.467Z" itemprop="datePublished">2024-01-09</time>
+    <time datetime="2024-01-11T03:45:56.742Z" itemprop="datePublished">2024-01-11</time>
   </a>
 </section>
 
@@ -231,17 +239,15 @@ Raft协议是当今最流行的分布式协调算法，Etcd、Consul等系统的
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/2024/01/09/CheatSheet/os/Ubuntu/" title="" itemprop="url">
+    <a href="/2024/01/11/Doc/spark/code/core/protobuf-storetypes/" title="" itemprop="url">
   
     <h1 itemprop="name"></h1>
     
      
-           <p itemprop="description" >下载-镜像地址http://mirrors.ustc.edu.cn/ubuntu-releases/
-http://mirrors.163.com/ubuntu-releases/
-zsync镜像更新假设目前已有镜像文件trusty-desktop-amd64.iso，要更新到u</p>
+           <p itemprop="description" >信息传递数据结构</p>
         
     
-    <time datetime="2024-01-09T08:09:48.467Z" itemprop="datePublished">2024-01-09</time>
+    <time datetime="2024-01-11T03:45:56.742Z" itemprop="datePublished">2024-01-11</time>
   </a>
 </section>
 
@@ -253,16 +259,17 @@ zsync镜像更新假设目前已有镜像文件trusty-desktop-amd64.iso，要更
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/2024/01/09/CheatSheet/os/iptables/" title="" itemprop="url">
+    <a href="/2024/01/11/CheatSheet/coding/java/" title="" itemprop="url">
   
     <h1 itemprop="name"></h1>
     
      
-           <p itemprop="description" >目前Linux系统的防火墙类型主要有两种：分别是iptables和firewalld，他们不是真正的防火墙，是指用来定义防火墙规则功能的”防火墙管理工具/程序”，将定义好的规则交由内核中的netfilter即网络过滤器来读取，从而真正实现防火墙功能。
-在配置防火墙时，不建议两种配</p>
+           <p itemprop="description" >run jar主类必须是在cp第一个包中，支持*匹配
+更新jar包内class文件jar uvf hadoop-common-2.8.3-lg.jar org/apache/hadoop/fs/FileUtil.class
+IllegalArgumentException at </p>
         
     
-    <time datetime="2024-01-09T08:09:48.467Z" itemprop="datePublished">2024-01-09</time>
+    <time datetime="2024-01-11T03:45:56.738Z" itemprop="datePublished">2024-01-11</time>
   </a>
 </section>
 
@@ -274,18 +281,17 @@ zsync镜像更新假设目前已有镜像文件trusty-desktop-amd64.iso，要更
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/2024/01/09/CheatSheet/os/profile/" title="" itemprop="url">
+    <a href="/2024/01/11/CheatSheet/coding/mvn/" title="" itemprop="url">
   
     <h1 itemprop="name"></h1>
     
      
-           <p itemprop="description" >/etc/profile登录时执行并从/etc/profile.d目录的配置文件中搜集shell的设置
-/etc/bashrc打开新的shell时
-~/.profile当用户登录时,该文件仅仅执行一次!默认情况下,他设置一些环境变量,执行用户的.bashrc文件.
-~/.bash</p>
+           <p itemprop="description" >https://developer.aliyun.com/mvn/search
+setting文件//修改maven配置 可解决 org.pentaho:pentaho-aggdesigner-algorithm:pom:5.1.5-jhyde的问题
+12345678910111</p>
         
     
-    <time datetime="2024-01-09T08:09:48.467Z" itemprop="datePublished">2024-01-09</time>
+    <time datetime="2024-01-11T03:45:56.738Z" itemprop="datePublished">2024-01-11</time>
   </a>
 </section>
 
@@ -296,7 +302,7 @@ zsync镜像更新假设目前已有镜像文件trusty-desktop-amd64.iso，要更
 
 
   <nav id="page-nav" class="clearfix unexpand">
-    <a class="extend prev" rel="prev" href="/">&lt;span&gt;&lt;&#x2F;span&gt;Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/3/">Next&lt;span&gt;&lt;&#x2F;span&gt;</a>
+    <a class="extend prev" rel="prev" href="/">&lt;span&gt;&lt;&#x2F;span&gt;Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/3/">Next&lt;span&gt;&lt;&#x2F;span&gt;</a>
   </nav>
 
 </div>

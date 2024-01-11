@@ -19,7 +19,7 @@
 <meta property="og:description" content="提取数据为csv1insert overwrite directory &amp;#x27;&#x2F;tmp&#x2F;blog&amp;#x27; row format delimited fields terminated by &amp;#x27;,&amp;#x27;  STORED AS TEXTFILE select * from tbl where  concat(year,month,day) &#x3D; &amp;#x27;20210721&amp;#">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-01-25T14:11:43.000Z">
-<meta property="article:modified_time" content="2024-01-09T08:09:48.467Z">
+<meta property="article:modified_time" content="2024-01-11T03:45:56.738Z">
 <meta property="article:author" content="Manhua">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:creator" content="@jiangmanhua">
@@ -100,19 +100,13 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%90%E5%8F%96%E6%95%B0%E6%8D%AE%E4%B8%BAcsv"><span class="toc-number">1.</span> <span class="toc-text">提取数据为csv</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%83%E6%95%B0%E6%8D%AE%E7%9A%84%E4%BF%AE%E6%94%B9"><span class="toc-number">2.</span> <span class="toc-text">元数据的修改</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E6%96%87%E4%BB%B6schema"><span class="toc-number">3.</span> <span class="toc-text">查看文件schema</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hive%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AF%86%E7%A0%81%E5%8A%A0%E5%AF%86"><span class="toc-number">4.</span> <span class="toc-text">hive连接数据库密码加密</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E5%AF%86%E7%A0%81%E6%96%87%E4%BB%B6"><span class="toc-number">4.1.</span> <span class="toc-text">创建密码文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E5%AE%9E%E6%96%BD"><span class="toc-number">4.2.</span> <span class="toc-text">配置实施</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E5%8C%BA%E4%BF%AE%E5%A4%8D"><span class="toc-number">5.</span> <span class="toc-text">分区修复</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E6%B3%A8%E9%87%8A"><span class="toc-number">6.</span> <span class="toc-text">修改注释</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A2%9E%E5%8A%A0%E5%88%97"><span class="toc-number">7.</span> <span class="toc-text">增加列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E6%89%80%E6%9C%89%E6%95%B0%E6%8D%AE%E5%BA%93%E8%A1%A8"><span class="toc-number">8.</span> <span class="toc-text">获取所有数据库表</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%90%E5%8F%96%E6%95%B0%E6%8D%AE%E4%B8%BAcsv"><span class="toc-number">1.</span> <span class="toc-text">提取数据为csv</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E6%96%87%E4%BB%B6schema"><span class="toc-number">2.</span> <span class="toc-text">查看文件schema</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hive%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AF%86%E7%A0%81%E5%8A%A0%E5%AF%86"><span class="toc-number">3.</span> <span class="toc-text">hive连接数据库密码加密</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E5%AF%86%E7%A0%81%E6%96%87%E4%BB%B6"><span class="toc-number">3.1.</span> <span class="toc-text">创建密码文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E5%AE%9E%E6%96%BD"><span class="toc-number">3.2.</span> <span class="toc-text">配置实施</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E5%8C%BA%E4%BF%AE%E5%A4%8D"><span class="toc-number">4.</span> <span class="toc-text">分区修复</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E6%B3%A8%E9%87%8A"><span class="toc-number">5.</span> <span class="toc-text">修改注释</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A2%9E%E5%8A%A0%E5%88%97"><span class="toc-number">6.</span> <span class="toc-text">增加列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E6%89%80%E6%9C%89%E6%95%B0%E6%8D%AE%E5%BA%93%E8%A1%A8"><span class="toc-number">7.</span> <span class="toc-text">获取所有数据库表</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%83%E6%95%B0%E6%8D%AE"><span class="toc-number"></span> <span class="toc-text">元数据</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%83%E6%95%B0%E6%8D%AE%E7%9A%84%E4%BF%AE%E6%94%B9"><span class="toc-number">1.</span> <span class="toc-text">元数据的修改</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Beeline"><span class="toc-number"></span> <span class="toc-text">Beeline</span></a>
 		
 		</div>
 		
 		<h2 id="提取数据为csv"><a href="#提取数据为csv" class="headerlink" title="提取数据为csv"></a>提取数据为csv</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> overwrite directory <span class="string">&#x27;/tmp/blog&#x27;</span> <span class="type">row</span> format delimited fields terminated <span class="keyword">by</span> <span class="string">&#x27;,&#x27;</span>  STORED <span class="keyword">AS</span> TEXTFILE <span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> tbl <span class="keyword">where</span>  concat(<span class="keyword">year</span>,<span class="keyword">month</span>,<span class="keyword">day</span>) <span class="operator">=</span> <span class="string">&#x27;20210721&#x27;</span> <span class="keyword">and</span> phoneNumber<span class="operator">=</span><span class="string">&#x27;xx&#x27;</span> <span class="keyword">and</span> platform<span class="operator">=</span><span class="string">&#x27;android&#x27;</span>;</span><br></pre></td></tr></table></figure>
 
 <p>修改存储路径<br>alter table <code>dim</code>.<code>tb_hcy_number_segment</code> set location ‘hdfs://hcycluster2/hive/warehouse/dim.db/tb_hcy_number_segment’</p>
-<h2 id="元数据的修改"><a href="#元数据的修改" class="headerlink" title="元数据的修改"></a>元数据的修改</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/haozhugogo/article/details/73274832">https://blog.csdn.net/haozhugogo/article/details/73274832</a></p>
-<p>–get DB_ID TBL_ID SD_ID<br>select * from tbls  where TBL_NAME=’t1’;</p>
-<p>–DB_LOCATION_URI<br>select * from dbs where DB_ID = 41;</p>
-<p>–spark.sql.sources.schema  -&gt; spark创建表的字段大小写导致hive读出为null.<br>– spark中实现依赖 set spark.sql.caseSensitive=false;<br>select * from  table_params  where TBL_ID =89239;</p>
-<p>–get CDS<br>select * from sds where SD_ID=245768;</p>
-<p>–COLUMN_NAME TYPE_NAME<br>select * from columns_v2 where CD_ID =90196;</p>
 <h2 id="查看文件schema"><a href="#查看文件schema" class="headerlink" title="查看文件schema"></a>查看文件schema</h2><p> hive –orcfiledump  [hdfs file path]</p>
 <h2 id="hive连接数据库密码加密"><a href="#hive连接数据库密码加密" class="headerlink" title="hive连接数据库密码加密"></a>hive连接数据库密码加密</h2><h3 id="创建密码文件"><a href="#创建密码文件" class="headerlink" title="创建密码文件"></a>创建密码文件</h3><p>hadoop credential create javax.jdo.option.ConnectionPassword<br>[hdfs文件] -provider /tmp/hive.jceks<br>[hdfs文件] -provider jceks://hdfs/hive/hive.jceks<br>[local文件] -provider jceks://file//tmp/hive.jceks<br>[可选显式输入密码] -value AAA</p>
 <h3 id="配置实施"><a href="#配置实施" class="headerlink" title="配置实施"></a>配置实施</h3><p>删除配置项 <code>javax.jdo.option.ConnectionPassword</code><br>增加配置</p>
@@ -124,6 +118,142 @@
 <h2 id="获取所有数据库表"><a href="#获取所有数据库表" class="headerlink" title="获取所有数据库表"></a>获取所有数据库表</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">val dbs = spark.sql(&quot;show databases&quot;).collect().map(_.getString(0))</span><br><span class="line">spark.sql(&quot;create table tmp.dbtbl_test(namespace string, tablename string) row format delimited fields terminated by &#x27;,&#x27;  STORED AS TEXTFILE &quot;)</span><br><span class="line">dbs.foreach(r=&gt;&#123;spark.sql(s&quot;show tables in $r &quot;).select(&quot;namespace&quot;,&quot;tablename&quot;).write.insertInto(&quot;tmp.dbtbl_test&quot;) &#125;)</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 表目录修改日期</span><br><span class="line">hdfs dfs -ls -t  /hive/warehouse/*.db |grep &#x27;^d&#x27; |awk &#x27;&#123; print $8 &quot; &quot;  $6 &#125;&#x27; &gt;&gt; rawinfo</span><br><span class="line">sed &#x27;s/\/hive\/warehouse\///&#x27; rawinfo |sed &#x27;s/\.db\// /&#x27; | sort -n -k 1 -k 2 -t &#x27; &#x27; &gt; sorted_info</span><br><span class="line"># 表目录大小</span><br><span class="line">hdfs dfs -dus  /hive/warehouse/*.db/* |awk &#x27;&#123; print $2 &quot; &quot; $1&#125;&#x27; | sed &#x27;s/\/hive\/warehouse\///&#x27; |sed &#x27;s/\.db\// /&#x27;  &gt;sizeinfo</span><br></pre></td></tr></table></figure>
+
+<h1 id="元数据"><a href="#元数据" class="headerlink" title="元数据"></a>元数据</h1><ul>
+<li>DBS<ul>
+<li>DB_ID</li>
+<li>DESC</li>
+<li><em><strong>DB_LOCATION_URI</strong></em></li>
+<li><em><strong>NAME</strong></em></li>
+<li>OWNER_NAME</li>
+<li>OWNER_TYPE</li>
+</ul>
+</li>
+<li>DATABASE_PARAMS 对应建表WITH DBPROPERTIES参数<ul>
+<li>DB_ID</li>
+<li>PARAM_KEY</li>
+<li>PARAM_VALUE</li>
+</ul>
+</li>
+<li>DB_PRIVS</li>
+<li>TBLS<ul>
+<li>TBL_ID</li>
+<li>CREATE_TIME</li>
+<li>DB_ID</li>
+<li>LAST_ACCESS_TIME - 何时更新？目前观测spark不更新，值均为0</li>
+<li>OWNER</li>
+<li>RETENTION 保留字段</li>
+<li>IS_REWRITE_ENABLED</li>
+<li>SD_ID 序列号配置信息，对应SDS表</li>
+<li><em><strong>TBL_NAME</strong></em></li>
+<li>TBL_TYPE</li>
+<li>VIEW_EXPENDED_TEXT</li>
+<li>VIEW_ORIGINAL_TEXT</li>
+</ul>
+</li>
+<li>TABLE_PARAMS 对应建表tbl_properties参数<ul>
+<li>TBL_ID</li>
+<li>PARAM_KEY</li>
+<li>PARAM_VALUE</li>
+</ul>
+</li>
+<li>TBL_PRIVS</li>
+<li>PARTITIONS 所有分区信息<ul>
+<li>PART_ID</li>
+<li>CREATE_TIME</li>
+<li>LAST_ACCESS_TIME</li>
+<li><em><strong>PART_NAME</strong></em></li>
+<li>SD_ID</li>
+<li>TBL_ID</li>
+</ul>
+</li>
+<li>PARTITION_KEYS 分区配置<ul>
+<li>TBL_ID</li>
+<li>PKEY_COMMENT</li>
+<li>PKEY_NAME</li>
+<li>PKEY_TYPE</li>
+<li>INTEGER_IDX</li>
+</ul>
+</li>
+<li>PARTITION_KEY_VALS 所有分区信息，分区列拆成行<ul>
+<li>PART_ID</li>
+<li>PART_KEY_VAL</li>
+<li>INTEGER_IDX</li>
+</ul>
+</li>
+<li>PARTITION_PARAMS<ul>
+<li>PART_ID</li>
+<li>PARAM_KEY: numFiles/totalSize/transient_lastDdlTime</li>
+<li>PARAM_VALUE</li>
+</ul>
+</li>
+<li>SDS 表级存储相关信息<ul>
+<li>SD_ID</li>
+<li>CD_ID</li>
+<li><strong>INPUT_FORMAT</strong></li>
+<li>IS_COMPRESSED</li>
+<li>IS_STOREDASSUBDIRECTORIES</li>
+<li>LOCATIOIN</li>
+<li>NUM_BUCKETS</li>
+<li><strong>OUTPUT_FORMAT</strong></li>
+<li>SERDE_ID</li>
+</ul>
+</li>
+<li>SD_PARAMS 对应WITH SERDEPROPERTIES<ul>
+<li>SD_ID</li>
+<li>PARAM_KEY</li>
+<li>PARAM_VALUE</li>
+</ul>
+</li>
+<li>SERDES<ul>
+<li>SERDE_ID</li>
+<li>NAME</li>
+<li>SLIB 类名</li>
+</ul>
+</li>
+<li>SERDE_PARAMS<ul>
+<li>SERDE_ID</li>
+<li>PARAM_KEY: path/serialization.format/field.delim</li>
+<li>PARAM_VALUE</li>
+</ul>
+</li>
+<li>CDS<ul>
+<li>CD_ID</li>
+</ul>
+</li>
+<li>COLUMNS_V2 <ul>
+<li>CD_ID</li>
+<li>COMMENT</li>
+<li><strong>COLUMN_NAME</strong></li>
+<li><strong>TYPE_NAME</strong></li>
+<li>INTEGER_IDX</li>
+</ul>
+</li>
+<li>FUNCS<ul>
+<li>FUNC_ID</li>
+<li><em><strong>CLASS_NAME</strong></em></li>
+<li>CREATE_TIME</li>
+<li><em><strong>DB_ID</strong></em></li>
+<li><em><strong>FUNC_NAME</strong></em></li>
+</ul>
+</li>
+<li>FUNC_RU<ul>
+<li>FUNC_ID</li>
+<li>RESOURCE_TYPE</li>
+<li><em><strong>RESOURCE_URI</strong></em></li>
+<li>INTEGER_IDX</li>
+</ul>
+</li>
+</ul>
+<h2 id="元数据的修改"><a href="#元数据的修改" class="headerlink" title="元数据的修改"></a>元数据的修改</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/haozhugogo/article/details/73274832">https://blog.csdn.net/haozhugogo/article/details/73274832</a></p>
+<p>–get DB_ID TBL_ID SD_ID<br>select * from tbls  where TBL_NAME=’t1’;</p>
+<p>–DB_LOCATION_URI<br>select * from dbs where DB_ID = 41;</p>
+<p>–spark.sql.sources.schema  -&gt; spark创建表的字段大小写导致hive读出为null.<br>– spark中实现依赖 set spark.sql.caseSensitive=false;<br>select * from  table_params  where TBL_ID =89239;</p>
+<p>–get CDS<br>select * from sds where SD_ID=245768;</p>
+<p>–COLUMN_NAME TYPE_NAME<br>select * from columns_v2 where CD_ID =90196;</p>
+<h1 id="Beeline"><a href="#Beeline" class="headerlink" title="Beeline"></a>Beeline</h1><p>!set fetchsize 200</p>
+<p>!addlocaldriverjar  Add driver jar file in the beeline client side.<br>!addlocaldrivername Add driver name that needs to be supported in the beeline   client side.<br>!all                Execute the specified SQL against all the current connections</p>
+<p>!batch              Start or execute a batch of statements<br>!brief              Set verbose mode off<br>!call               Execute a callable statement<br>!close              Close the current connection to the database<br>!closeall           Close all current open connections<br>!commit             Commit the current transaction (if autocommit is off)<br>!connect            Open a new connection to the database.<br>!go                 Select the current connection<br>!help               Print a summary of command usage<br>!history            Display the command history<br>!list               List the current connections<br>!metadata           Obtain metadata information<br>!nullemptystring    Set to true to get historic behavior of printing null as<br>                    empty string. Default is false.<br>!outputformat       Set the output format for displaying results<br>                    (table,vertical,csv2,dsv,tsv2,xmlattrs,xmlelements, and<br>                    deprecated formats(csv, tsv))<br>!reconnect          Reconnect to the database<br>!record             Record all output to the specified file<br>!rehash             Fetch table and column names for command completion<br>!run                Run a script from the specified file<br>!save               Save the current variabes and aliases<br>!scan               Scan for installed JDBC drivers<br>!script             Start saving a script to a file<br>!set                Set a beeline variable<br>!sh                 Execute a shell command<br>!sql                Execute a SQL command<br>!tables             List all the tables in the database<br>!typeinfo           Display the type map for the current connection<br>!verbose            Set verbose mode on</p>
   
 	</div>
 		<footer class="article-footer clearfix">
