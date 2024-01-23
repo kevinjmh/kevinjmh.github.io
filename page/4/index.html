@@ -81,17 +81,17 @@
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/2024/01/11/CheatSheet/profile/performance/" title="" itemprop="url">
+    <a href="/2024/01/23/CheatSheet/coding/selenium/" title="" itemprop="url">
   
     <h1 itemprop="name"></h1>
     
      
-           <p itemprop="description" >nmonnmonhttps://nmon.sourceforge.net/pmwiki.php?n=Site.Download
-nmon analyserhttps://nmon.sourceforge.net/pmwiki.php?n=Site.Nmon-Analyser
-ht</p>
+           <p itemprop="description" >installpip install selenium
+https://www.selenium.dev/documentation/webdriver/getting_started/install_drivers/
+play12345678910111213141516171</p>
         
     
-    <time datetime="2024-01-11T03:45:56.738Z" itemprop="datePublished">2024-01-11</time>
+    <time datetime="2024-01-23T00:46:37.144Z" itemprop="datePublished">2024-01-23</time>
   </a>
 </section>
 
@@ -103,19 +103,18 @@ ht</p>
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/2024/01/11/CheatSheet/profile/prometheus/" title="" itemprop="url">
+    <a href="/2024/01/23/CheatSheet/database/kyuubi/" title="" itemprop="url">
   
     <h1 itemprop="name"></h1>
     
      
-           <p itemprop="description" >Prometheus collects and stores its metrics as time series data
-Components
-
-Prometheus server:  scrapes and stores time series data 单文件
-alert</p>
+           <p itemprop="description" >解决多租户的共享查询问题，作为多个查询引擎的统一入口
+HA通过zk实现
+存在的意义 - 对比 SparkThriftServer
+权限：STS全局只有一个SparkContext，尽管SQL下发来自不同用户，但实际都是使用启动STS的用户身份执行（proxy-user也只是一个身</p>
         
     
-    <time datetime="2024-01-11T03:45:56.738Z" itemprop="datePublished">2024-01-11</time>
+    <time datetime="2024-01-23T00:46:37.144Z" itemprop="datePublished">2024-01-23</time>
   </a>
 </section>
 
@@ -127,17 +126,16 @@ alert</p>
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/2024/01/11/CheatSheet/scheduler/airflow/" title="" itemprop="url">
+    <a href="/2024/01/23/CheatSheet/database/mysql/" title="" itemprop="url">
   
     <h1 itemprop="name"></h1>
     
      
-           <p itemprop="description" >语言：Python特色：Workflows as code
-上述两点结合，可以有动态流程
-UI比较复杂</p>
+           <p itemprop="description" >安装MariaDBhttps://mariadb.com/kb/en/yum/
+12345678910111213141516171819vi /etc/yum.repos.d/MariaDB.repo[mariadb]name = MariaDB-10.3baseurl=htt</p>
         
     
-    <time datetime="2024-01-11T03:45:56.738Z" itemprop="datePublished">2024-01-11</time>
+    <time datetime="2024-01-23T00:46:37.144Z" itemprop="datePublished">2024-01-23</time>
   </a>
 </section>
 
@@ -149,7 +147,71 @@ UI比较复杂</p>
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/2024/01/11/CheatSheet/computing/spark/scheduler/" title="" itemprop="url">
+    <a href="/2024/01/23/CheatSheet/database/ranger/" title="" itemprop="url">
+  
+    <h1 itemprop="name"></h1>
+    
+     
+           <p itemprop="description" >https://blog.cloudera.com/sentry-to-ranger-a-concise-guide/</p>
+        
+    
+    <time datetime="2024-01-23T00:46:37.144Z" itemprop="datePublished">2024-01-23</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/2024/01/23/CheatSheet/database/synchronization/" title="" itemprop="url">
+  
+    <h1 itemprop="name"></h1>
+    
+     
+           <p itemprop="description" >数据库同步JDBC默认情况下都是单线程，速度慢；可优化为并行，但过大的并行会对数据源库造成压力；
+Datax对Oracle支持通过对splitPk进行sample查询后，根据网络限制计算得到的分片任务数，计算得各个任务的上下界作为where条件来并行
+Seatunel目前从源码看</p>
+        
+    
+    <time datetime="2024-01-23T00:46:37.144Z" itemprop="datePublished">2024-01-23</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/2024/01/23/CheatSheet/mq/kafka/" title="" itemprop="url">
+  
+    <h1 itemprop="name"></h1>
+    
+     
+           <p itemprop="description" >Kafka 2.8.0，移除了对Zookeeper的依赖，通过KRaft进行自己的集群管理Kafka 3.3.1 Mark KRaft as Production Ready
+Raft协议是当今最流行的分布式协调算法，Etcd、Consul等系统的基础，就来自于此。
+总结一下其实</p>
+        
+    
+    <time datetime="2024-01-23T00:46:37.144Z" itemprop="datePublished">2024-01-23</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/2024/01/23/CheatSheet/computing/spark/scheduler/" title="" itemprop="url">
   
     <h1 itemprop="name"></h1>
     
@@ -160,7 +222,7 @@ Job（作业）：由Action算子触发生成的由一个或多个Stage组成的
 Stage（</p>
         
     
-    <time datetime="2024-01-11T03:45:56.738Z" itemprop="datePublished">2024-01-11</time>
+    <time datetime="2024-01-23T00:46:37.144Z" itemprop="datePublished">2024-01-23</time>
   </a>
 </section>
 
@@ -172,7 +234,7 @@ Stage（</p>
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/2024/01/11/CheatSheet/computing/spark/手机尾号hugeJoin/" title="" itemprop="url">
+    <a href="/2024/01/23/CheatSheet/computing/spark/手机尾号hugeJoin/" title="" itemprop="url">
   
     <h1 itemprop="name"></h1>
     
@@ -181,50 +243,7 @@ Stage（</p>
 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525</p>
         
     
-    <time datetime="2024-01-11T03:45:56.738Z" itemprop="datePublished">2024-01-11</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2024/01/11/CheatSheet/os/soft/vsftp/" title="" itemprop="url">
-  
-    <h1 itemprop="name"></h1>
-    
-     
-           <p itemprop="description" >installsudo apt install vsftpdsudo apt install db5.3-util
-configvirtual users1.添加虚拟用户名和密码，一行用户名，一行密码，以此类推。奇数行为用户名，偶数行为密码。vi ~/vftpuser.txt
-1</p>
-        
-    
-    <time datetime="2024-01-11T03:45:56.738Z" itemprop="datePublished">2024-01-11</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2024/01/11/CheatSheet/scheduler/dolphinscheduler/AlertServer/" title="" itemprop="url">
-  
-    <h1 itemprop="name"></h1>
-    
-     
-           <p itemprop="description" >启动new SpringApplicationBuilder(AlertServer.class).run(args);
-Spring 是用于创建企业应用的流行 Java 应用框架。Spring Boot 是 Spring 框架的演进，可帮助您轻松创建独立的，生产级的基于 Spr</p>
-        
-    
-    <time datetime="2024-01-11T03:45:56.738Z" itemprop="datePublished">2024-01-11</time>
+    <time datetime="2024-01-23T00:46:37.144Z" itemprop="datePublished">2024-01-23</time>
   </a>
 </section>
 
@@ -268,28 +287,6 @@ Linkis定位： 计算存储引擎中间件
         
     
     <time datetime="2023-12-13T15:15:08.000Z" itemprop="datePublished">2023-12-13</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2023/02/27/chitchat/Bigdata/" title="你有我也有 反正是第一" itemprop="url">
-  
-    <h1 itemprop="name">你有我也有 反正是第一</h1>
-    
-     
-           <p itemprop="description" >背景集群HDFS机器硬盘故障，运维请求更换RAID卡，更换后合作方称无法启动Namenode，报错类似如下：
-
-Safe mode is ON. The reported blocks 3 needs additional 2 blocks to reach the thresh</p>
-        
-    
-    <time datetime="2023-02-27T10:15:10.000Z" itemprop="datePublished">2023-02-27</time>
   </a>
 </section>
 
