@@ -11,15 +11,15 @@
     
 
     
-    <meta name="description" content="run jar主类必须是在cp第一个包中，支持*匹配 更新jar包内class文件jar uvf hadoop-common-2.8.3-lg.jar org&#x2F;apache&#x2F;hadoop&#x2F;fs&#x2F;FileUtil.class IllegalArgumentException at java.nio.CharBuffer.allocate(CharBuffer.java:334)原因： 单行数据过大">
+    <meta name="description" content="run jar主类必须是在cp第一个包中，支持*匹配 更新jar包内class文件jar uvf hadoop-common-2.8.3-lg.jar org&#x2F;apache&#x2F;hadoop&#x2F;fs&#x2F;FileUtil.class jar: 包是Java中所特有一种压缩文档   -u 添加文件到jar包中   -v 生成详细的报造，并输出至标准设备   -f 指定jar包的文件名   [jar文件]  j">
 <meta property="og:type" content="article">
 <meta property="og:title" content="java">
 <meta property="og:url" content="http://kevinjmh.github.io/2024/01/23/CheatSheet/coding/java/index.html">
 <meta property="og:site_name" content="Manhua">
-<meta property="og:description" content="run jar主类必须是在cp第一个包中，支持*匹配 更新jar包内class文件jar uvf hadoop-common-2.8.3-lg.jar org&#x2F;apache&#x2F;hadoop&#x2F;fs&#x2F;FileUtil.class IllegalArgumentException at java.nio.CharBuffer.allocate(CharBuffer.java:334)原因： 单行数据过大">
+<meta property="og:description" content="run jar主类必须是在cp第一个包中，支持*匹配 更新jar包内class文件jar uvf hadoop-common-2.8.3-lg.jar org&#x2F;apache&#x2F;hadoop&#x2F;fs&#x2F;FileUtil.class jar: 包是Java中所特有一种压缩文档   -u 添加文件到jar包中   -v 生成详细的报造，并输出至标准设备   -f 指定jar包的文件名   [jar文件]  j">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-01-23T02:00:38.000Z">
-<meta property="article:modified_time" content="2024-02-02T03:28:22.438Z">
+<meta property="article:modified_time" content="2024-03-05T08:40:25.613Z">
 <meta property="article:author" content="Manhua">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:creator" content="@jiangmanhua">
@@ -106,6 +106,7 @@
 		
 		<h1 id="run-jar"><a href="#run-jar" class="headerlink" title="run jar"></a>run jar</h1><p>主类必须是在cp第一个包中，支持<code>*</code>匹配</p>
 <h1 id="更新jar包内class文件"><a href="#更新jar包内class文件" class="headerlink" title="更新jar包内class文件"></a>更新jar包内class文件</h1><p>jar uvf hadoop-common-2.8.3-lg.jar org/apache/hadoop/fs/FileUtil.class</p>
+<p>jar: 包是Java中所特有一种压缩文档<br>   -u 添加文件到jar包中<br>   -v 生成详细的报造，并输出至标准设备<br>   -f 指定jar包的文件名<br>   [jar文件]  jar包的路径<br>   [欲替换的class(注意,需同样的目录)] class文件目录，必须与jar中目录一样</p>
 <h1 id="IllegalArgumentException-at-java-nio-CharBuffer-allocate-CharBuffer-java-334"><a href="#IllegalArgumentException-at-java-nio-CharBuffer-allocate-CharBuffer-java-334" class="headerlink" title="IllegalArgumentException at java.nio.CharBuffer.allocate(CharBuffer.java:334)"></a>IllegalArgumentException at java.nio.CharBuffer.allocate(CharBuffer.java:334)</h1><p>原因： 单行数据过大</p>
 <p>问题复现：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// spark-shell + 本地，触发上述报错，获得文件和行号</span><br><span class="line">new org.apache.hadoop.io.Text(x)</span><br><span class="line">// 定位数据</span><br><span class="line">less +4828553 -N 2021090100_nda_0.txt</span><br><span class="line">// 过滤数据</span><br><span class="line">awk &#x27;&#123; if (length($0)&lt;10000) print $0&#125;&#x27; 2021090100_nda_0.txt &gt; filter_nda</span><br></pre></td></tr></table></figure>
