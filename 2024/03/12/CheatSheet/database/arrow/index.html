@@ -1,0 +1,561 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Manhua</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Manhua">
+    
+
+    
+    <meta name="description" content="相关概念包括ValueVector、Field、Schema、VectorSchemaRoot以及Table 1234567891011&lt;dependency&gt;    &lt;groupId&gt;org.apache.arrow&lt;&#x2F;groupId&gt;    &lt;artifactId&gt;arrow-memory-netty&lt;&#x2F;artifactId&gt;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Manhua">
+<meta property="og:url" content="http://kevinjmh.github.io/2024/03/12/CheatSheet/database/arrow/index.html">
+<meta property="og:site_name" content="Manhua">
+<meta property="og:description" content="相关概念包括ValueVector、Field、Schema、VectorSchemaRoot以及Table 1234567891011&lt;dependency&gt;    &lt;groupId&gt;org.apache.arrow&lt;&#x2F;groupId&gt;    &lt;artifactId&gt;arrow-memory-netty&lt;&#x2F;artifactId&gt;">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-03-12T09:12:19.551Z">
+<meta property="article:modified_time" content="2024-03-12T09:12:19.551Z">
+<meta property="article:author" content="Manhua">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:creator" content="@jiangmanhua">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Manhua" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="Manhua" title="Manhua"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Manhua">Manhua</a></h1>
+				<h2 class="blog-motto">Never Say Die</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页 | Home</a></li>
+					
+						<li><a href="/archives">归档 | Archives</a></li>
+					
+						<li><a href="/about">简介 | About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:kevinjmh.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2024/03/12/CheatSheet/database/arrow/" title="" itemprop="url"></a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Manhua" target="_blank" itemprop="author">Manhua</a>
+		
+  <p class="article-time">
+    <time datetime="2024-03-12T09:12:19.551Z" itemprop="datePublished"> Published 2024-03-12</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#ValueVector"><span class="toc-number">1.</span> <span class="toc-text">ValueVector</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Field"><span class="toc-number">2.</span> <span class="toc-text">Field</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Schema"><span class="toc-number">3.</span> <span class="toc-text">Schema</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#VectorSchemaRoot"><span class="toc-number">4.</span> <span class="toc-text">VectorSchemaRoot</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IPC"><span class="toc-number">5.</span> <span class="toc-text">IPC</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Write"><span class="toc-number">5.1.</span> <span class="toc-text">Write</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Read"><span class="toc-number">5.2.</span> <span class="toc-text">Read</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Table-experimental"><span class="toc-number">6.</span> <span class="toc-text">Table (experimental)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Dataset"><span class="toc-number">7.</span> <span class="toc-text">Dataset</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#substrait-Acero"><span class="toc-number">8.</span> <span class="toc-text">substrait&#x2F;Acero</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C"><span class="toc-number"></span> <span class="toc-text">其他数据操作</span></a>
+		
+		</div>
+		
+		<p>相关概念包括<code>ValueVector</code>、<code>Field</code>、<code>Schema</code>、<code>VectorSchemaRoot</code>以及<code>Table</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.apache.arrow&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;arrow-memory-netty&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;$&#123;arrow.version&#125;&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.apache.arrow&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;arrow-vector&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;$&#123;arrow.version&#125;&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="ValueVector"><a href="#ValueVector" class="headerlink" title="ValueVector"></a>ValueVector</h3><p><strong>ValueVector</strong>代表一列相同类型的值，每个<code>ValueVector</code>实例代表一个字段，其中包含了该字段的所有值。Apache Arrow提供了各种各样的<code>ValueVector</code>的子类，用来表示各种类型的数据，比如<code>IntVector</code>用于表示整数，<code>VarCharVector</code>用于表示字符串等。类似的，还有<code>BigIntVector、Float4Vector、Float8Vector、DateDayVector、ListVector、MapVector、StructVector</code>等等</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">BufferAllocator allocator = new RootAllocator();</span><br><span class="line">IntVector ageVector = new IntVector(&quot;age&quot;, allocator);</span><br><span class="line">VarCharVector nameVector = new VarCharVector(&quot;name&quot;, allocator);</span><br><span class="line"></span><br><span class="line">ageVector.allocateNew(3);</span><br><span class="line">ageVector.set(0,1);</span><br><span class="line">ageVector.setNull(1);</span><br><span class="line">ageVector.set(2,2);</span><br><span class="line">ageVector.setValueCount(3);</span><br><span class="line">System.out.println(&quot;Vector created in memory: &quot; + ageVector);</span><br></pre></td></tr></table></figure>
+
+<h3 id="Field"><a href="#Field" class="headerlink" title="Field"></a>Field</h3><p><strong>Field</strong>表示某一列的元数据，包括列名、列类型、是否允许为null，以及一个元数据映射。每个<code>Field</code>对象都与一个<code>ValueVector</code>对象对应，<code>Field</code>对象描述了<code>ValueVector</code>的元数据信息。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Field age = new Field(&quot;age&quot;,</span><br><span class="line">    FieldType.nullable(new ArrowType.Int(32, true)),</span><br><span class="line">    /*children*/null</span><br><span class="line">);</span><br><span class="line">Field name = new Field(&quot;name&quot;,</span><br><span class="line">    FieldType.nullable(new ArrowType.Utf8()),</span><br><span class="line">    /*children*/null</span><br><span class="line">);</span><br><span class="line">System.out.println(&quot;Field created: &quot; + name + &quot;, Metadata: &quot; + name.getMetadata());</span><br></pre></td></tr></table></figure>
+
+<h3 id="Schema"><a href="#Schema" class="headerlink" title="Schema"></a>Schema</h3><p><strong>Schema</strong>是一系列<code>Field</code>的组合，它描述了表格的结构，也可以包含一个元数据映射。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;String, String&gt; metadata = new HashMap&lt;&gt;();</span><br><span class="line">metadata.put(&quot;K1&quot;, &quot;V1&quot;);</span><br><span class="line">metadata.put(&quot;K2&quot;, &quot;V2&quot;);</span><br><span class="line">Schema schema = new Schema(asList(age, name), /*metadata*/ null);</span><br><span class="line">System.out.println(&quot;Schema created: &quot; + schema);</span><br></pre></td></tr></table></figure>
+
+<h3 id="VectorSchemaRoot"><a href="#VectorSchemaRoot" class="headerlink" title="VectorSchemaRoot"></a>VectorSchemaRoot</h3><p><strong>VectorSchemaRoot</strong>是由<code>ValueVectors</code>和<code>Schema</code>组合的关键抽象，它可以表示完整的表格数据。你可以理解为行存储中的<code>List&lt;Record&gt;</code>。</p>
+<p>下面是一个创建<code>VectorSchemaRoot</code>的例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">try(</span><br><span class="line">    BufferAllocator allocator = new RootAllocator();</span><br><span class="line">    VectorSchemaRoot root = VectorSchemaRoot.create(schema, allocator);</span><br><span class="line">    IntVector ageVector = (IntVector) root.getVector(&quot;age&quot;);</span><br><span class="line">    VarCharVector nameVector = (VarCharVector) root.getVector(&quot;name&quot;);</span><br><span class="line">)&#123;</span><br><span class="line">    ageVector.allocateNew(3);</span><br><span class="line">    ageVector.set(0, 10);</span><br><span class="line">    ageVector.set(1, 20);</span><br><span class="line">    ageVector.set(2, 30);</span><br><span class="line">    nameVector.allocateNew(3);</span><br><span class="line">    nameVector.set(0, &quot;Dave&quot;.getBytes(StandardCharsets.UTF_8));</span><br><span class="line">    nameVector.set(1, &quot;Peter&quot;.getBytes(StandardCharsets.UTF_8));</span><br><span class="line">    nameVector.set(2, &quot;Mary&quot;.getBytes(StandardCharsets.UTF_8));</span><br><span class="line">    root.setRowCount(3);</span><br><span class="line">    System.out.println(&quot;VectorSchemaRoot created: \n&quot; + root.contentToTSVString());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 已经创建vector的可以这样创建</span><br><span class="line">List&lt;Field&gt; fields = Arrays.asList(ageVector.getField(), nameVector.getField());</span><br><span class="line">List&lt;FieldVector&gt; vectors = Arrays.asList(ageVector, nameVector);</span><br><span class="line">VectorSchemaRoot root = new VectorSchemaRoot(fields, vectors);</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">VectorSchemaRoot created:</span><br><span class="line">age     name</span><br><span class="line">10      Dave</span><br><span class="line">20      Peter</span><br><span class="line">30      Mary</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="IPC"><a href="#IPC" class="headerlink" title="IPC"></a>IPC</h3><h4 id="Write"><a href="#Write" class="headerlink" title="Write"></a>Write</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">File file = new File(&quot;random_access_file.arrow&quot;);</span><br><span class="line">    try (</span><br><span class="line">        FileOutputStream fileOutputStream = new FileOutputStream(file);</span><br><span class="line">        ArrowFileWriter writer = new ArrowFileWriter(root, /*provider*/ null, fileOutputStream.getChannel());</span><br><span class="line">    ) &#123;</span><br><span class="line">        writer.start();</span><br><span class="line">        writer.writeBatch();</span><br><span class="line">        writer.end();</span><br><span class="line">        System.out.println(&quot;Record batches written: &quot; + writer.getRecordBlocks().size()</span><br><span class="line">                + &quot;. Number of rows written: &quot; + root.getRowCount());</span><br><span class="line">    &#125; catch (IOException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Read"><a href="#Read" class="headerlink" title="Read"></a>Read</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">import org.apache.arrow.memory.BufferAllocator;</span><br><span class="line">import org.apache.arrow.memory.RootAllocator;</span><br><span class="line">import org.apache.arrow.vector.ipc.ArrowFileReader;</span><br><span class="line">import org.apache.arrow.vector.ipc.message.ArrowBlock;</span><br><span class="line">import org.apache.arrow.vector.VectorSchemaRoot;</span><br><span class="line">import java.io.File;</span><br><span class="line">import java.io.FileInputStream;</span><br><span class="line">import java.io.IOException;</span><br><span class="line"></span><br><span class="line">try(</span><br><span class="line">    BufferAllocator allocator = new RootAllocator(Long.MAX_VALUE);</span><br><span class="line">    FileInputStream fileInputStream = new FileInputStream(new File(&quot;random_access_file.arrow&quot;));</span><br><span class="line">    ArrowFileReader reader = new ArrowFileReader(fileInputStream.getChannel(), allocator);</span><br><span class="line">)&#123;</span><br><span class="line">    System.out.println(&quot;Record batches in file: &quot; + reader.getRecordBlocks().size());</span><br><span class="line">    for (ArrowBlock arrowBlock : reader.getRecordBlocks()) &#123;</span><br><span class="line">        reader.loadRecordBatch(arrowBlock);</span><br><span class="line">        VectorSchemaRoot root = reader.getVectorSchemaRoot();</span><br><span class="line">        System.out.println(&quot;VectorSchemaRoot read: \n&quot; + root.contentToTSVString());</span><br><span class="line">    &#125;</span><br><span class="line">&#125; catch (IOException e) &#123;</span><br><span class="line">    e.printStackTrace();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Table-experimental"><a href="#Table-experimental" class="headerlink" title="Table (experimental)"></a>Table (experimental)</h3><p>就像Immutable且不支持批处理的VectorSchemaRoot，可以通过API将VectorSchemaRoot的数据转移到一个Table中（注意是转移而非复制）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Table t = new Table(someVectorSchemaRoot);</span><br><span class="line">VectorSchemaRoot root = myTable.toVectorSchemaRoot();</span><br></pre></td></tr></table></figure>
+
+<p>Table API 提供了一种以行为中心，基于列的方式处理内存中的大规模数据的高效方式。当你需要在 JVM 环境中处理大规模数据，并且希望能够高效地利用现代硬件的能力时，Table API 是一个非常好的选择。如果有必要（项目用到），后面可能单开一文总结下。</p>
+<h3 id="Dataset"><a href="#Dataset" class="headerlink" title="Dataset"></a>Dataset</h3><p>Dataset is an universal layer in Apache Arrow for querying data in different formats or in different partitioning strategies.</p>
+<p>Currently supported file formats are:</p>
+<ul>
+<li>Apache Arrow (<code>.arrow</code>)</li>
+<li>Apache ORC (<code>.orc</code>)    </li>
+<li>Apache Parquet (<code>.parquet</code>)    </li>
+<li>Comma-Separated Values (<code>.csv</code>)    </li>
+<li>Line-delimited JSON Values (<code>.json</code>)</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.apache.arrow&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;arrow-dataset&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;15.0.0&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> arrow;  </span><br><span class="line">  </span><br><span class="line"><span class="keyword">import</span> org.apache.arrow.dataset.file.*;  </span><br><span class="line"><span class="keyword">import</span> org.apache.arrow.dataset.jni.DirectReservationListener;  </span><br><span class="line"><span class="keyword">import</span> org.apache.arrow.dataset.jni.NativeMemoryPool;  </span><br><span class="line"><span class="keyword">import</span> org.apache.arrow.dataset.scanner.*;  </span><br><span class="line"><span class="keyword">import</span> org.apache.arrow.dataset.scanner.Scanner;  </span><br><span class="line"><span class="keyword">import</span> org.apache.arrow.dataset.source.*;  </span><br><span class="line"><span class="keyword">import</span> org.apache.arrow.memory.*;  </span><br><span class="line"><span class="keyword">import</span> org.apache.arrow.util.AutoCloseables;  </span><br><span class="line"><span class="keyword">import</span> org.apache.arrow.vector.*;  </span><br><span class="line"><span class="keyword">import</span> org.apache.arrow.vector.ipc.ArrowReader;  </span><br><span class="line"><span class="keyword">import</span> org.apache.arrow.vector.ipc.message.*;  </span><br><span class="line"><span class="keyword">import</span> org.apache.arrow.vector.types.pojo.Schema;  </span><br><span class="line">  </span><br><span class="line"><span class="keyword">import</span> java.io.File;  </span><br><span class="line"><span class="keyword">import</span> java.net.URI;  </span><br><span class="line"><span class="keyword">import</span> java.net.URISyntaxException;  </span><br><span class="line"><span class="keyword">import</span> java.util.*;  </span><br><span class="line">  </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DatasetRead</span> </span>&#123;  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> URISyntaxException </span>&#123;  </span><br><span class="line">        <span class="comment">// read data from file /opt/example.parquet  </span></span><br><span class="line"><span class="comment">//        String uri = &quot;file:///C:/Users/Manhua/IdeaProjects/spark-test/0__70006c85_2644_4f02_894b_0cfbffba0541.orc&quot;;  </span></span><br><span class="line">        String uri = <span class="string">&quot;file:///C:/Users/Manhua/IdeaProjects/spark-test/1.csv&quot;</span>;  </span><br><span class="line">        System.out.println(<span class="keyword">new</span> File(<span class="keyword">new</span> URI(uri)).length());  </span><br><span class="line"><span class="comment">//        ScanOptions options = new ScanOptions(/*batchSize*/ 1, Optional.of(new String[] &#123;&quot;id&quot;, &quot;user_id&quot;&#125;));  </span></span><br><span class="line">        ScanOptions options = <span class="keyword">new</span> ScanOptions(<span class="comment">/*batchSize*/</span> <span class="number">1</span>);  </span><br><span class="line">        <span class="keyword">try</span> (  </span><br><span class="line">                BufferAllocator allocator = <span class="keyword">new</span> RootAllocator(Long.MAX_VALUE);  </span><br><span class="line">                DatasetFactory datasetFactory = <span class="keyword">new</span> FileSystemDatasetFactory(  </span><br><span class="line">                        allocator, NativeMemoryPool.getDefault(),  </span><br><span class="line">                        FileFormat.CSV, uri);  </span><br><span class="line">                Dataset dataset = datasetFactory.finish();  </span><br><span class="line">                Scanner scanner = dataset.newScan(options);  </span><br><span class="line">                ArrowReader reader = scanner.scanBatches()  </span><br><span class="line">        ) &#123;  </span><br><span class="line">            Schema schema = scanner.schema();  </span><br><span class="line"><span class="comment">//            Schema schema = datasetFactory.inspect();  </span></span><br><span class="line">            System.out.println(schema.toJson());  </span><br><span class="line">  </span><br><span class="line"><span class="comment">//            List&lt;ArrowRecordBatch&gt; batches = new ArrayList&lt;&gt;();  </span></span><br><span class="line">            <span class="keyword">while</span> (reader.loadNextBatch()) &#123;  </span><br><span class="line">                <span class="keyword">try</span> (VectorSchemaRoot root = reader.getVectorSchemaRoot()) &#123;  </span><br><span class="line">                    System.out.print(root.contentToTSVString());  </span><br><span class="line">                &#125;  </span><br><span class="line">            &#125;  </span><br><span class="line">  </span><br><span class="line">            <span class="comment">// do something with read record batches, for example:  </span></span><br><span class="line"><span class="comment">//            analyzeArrowData(batches);  </span></span><br><span class="line">  </span><br><span class="line">            <span class="comment">// finished the analysis of the data, close all resources:  </span></span><br><span class="line"><span class="comment">//            AutoCloseables.close(batches);  </span></span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;  </span><br><span class="line">            e.printStackTrace();  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="substrait-Acero"><a href="#substrait-Acero" class="headerlink" title="substrait/Acero"></a>substrait/Acero</h3><p>使用SQL方式处理数据</p>
+<h1 id="其他数据操作"><a href="#其他数据操作" class="headerlink" title="其他数据操作"></a>其他数据操作</h1><p><a target="_blank" rel="noopener" href="https://arrow.apache.org/cookbook/java/data.html">Data manipulation — Apache Arrow Java Cookbook documentation</a></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://kevinjmh.github.io/2024/03/12/CheatSheet/database/arrow/" data-title="Manhua" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2024/03/12/CheatSheet/database/mermaid画图/"  title="">
+ <strong>下一篇：</strong><br/> 
+ <span>(no title)
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github Card</p>
+<div class="github-card" data-github="kevinjmh" data-width="220" data-height="119" data-theme="medium">
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+  </div>
+
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Application/" title="Application">Application<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/BigData/" title="BigData">BigData<sup>7</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/CheatSheet/" title="CheatSheet">CheatSheet<sup>21</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Info/" title="Info">Info<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/慢话/" title="慢话">慢话<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/carbondata/" title="carbondata">carbondata<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/project/" title="project">project<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/rdma/" title="rdma">rdma<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/software/" title="software">software<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/recommendation/" title="recommendation">recommendation<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/docker/" title="docker">docker<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/markdown/" title="markdown">markdown<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/carbon/" title="carbon">carbon<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/spark/" title="spark">spark<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/hadoop/" title="hadoop">hadoop<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://www.cnblogs.com/manhua" target="_blank" title="cnBlogs">cnBlogs</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m Manhua Jiang. <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/443181876" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/kevinjmh" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		<a href="https://twitter.com/jiangmanhua" target="_blank" class="icon-twitter" title="twitter"></a>
+		
+		
+		<a href="https://www.facebook.com/jiangmanhua" target="_blank" class="icon-facebook" title="facebook"></a>
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2024 
+		
+		<a href="/about" target="_blank" title="Manhua">Manhua</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+        getSize();
+        if (myWidth >= 1024) {
+          c.click();
+        }
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
