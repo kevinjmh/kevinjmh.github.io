@@ -19,7 +19,7 @@
 <meta property="og:description" content="解决的问题： 一致性用途：Fault Tolerant 在部分节点宕机后仍能正常服务 按照论文所述，原生的Paxos算法使用了一种点对点（peer-to-peer）的方式，所有节点地位是平等的。在理想情况下，算法的目的是制定一个决策，这对于简化的模型比较有意义。但在工业界很少会有系统会使用这种方式，当有一系列的决策需要被制定的时候，先选出一个leader节点然后让它去协调所有的决策，这样算法会更加">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-12-13T07:15:08.000Z">
-<meta property="article:modified_time" content="2024-03-12T09:12:19.555Z">
+<meta property="article:modified_time" content="2024-04-18T07:29:03.923Z">
 <meta property="article:author" content="Manhua">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:creator" content="@jiangmanhua">
@@ -37,7 +37,7 @@
     
 <link rel="stylesheet" href="/css/style.css">
 
-<meta name="generator" content="Hexo 6.0.0"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <header>
@@ -118,7 +118,7 @@
 <h3 id="投票"><a href="#投票" class="headerlink" title="投票"></a>投票</h3><p>启动时，每个节点针对每个term只能投出一张票，并且按照先到先得的原则。这个规则确保只有一个candidate会成为leader。</p>
 <p>已经有数据后，为保证被选为新leader的节点拥有所有已提交的log entry，candidate在发送RequestVoteRPC时，会带上自己的最后一条日志记录的term_id和index，其他节点收到消息时，如果发现自己的日志比RPC请求中携带的更新，拒绝投票。日志比较的原则是，如果本地的最后一条log entry的term id更大，则更新，如果term id一样大，则日志更多的更大(index更大)。</p>
 <p>投票后term+1</p>
-<h3 id="投票结果"><a href="#投票结果" class="headerlink" title="投票结果"></a>投票结果</h3><p>1.选举成功（Step: receives votes from majority of servers）<br>当candicate从整个集群的大多数（N/2+1）节点获得了针对同一term的选票时，它就赢得了这次选举，立刻将自己的身份转变为leader并开始向其它节点发送心跳来维持自己的权威。</p>
+<h3 id="投票结果"><a href="#投票结果" class="headerlink" title="投票结果"></a>投票结果</h3><p>1.选举成功（Step: receives votes from majority of servers）<br>当candicate从整个集群的大多数（N&#x2F;2+1）节点获得了针对同一term的选票时，它就赢得了这次选举，立刻将自己的身份转变为leader并开始向其它节点发送心跳来维持自己的权威。</p>
 <p>2.选举失败（Step: discovers current leader or new term）<br>当candicate在等待投票回复的时候，可能会突然收到其它自称是leader的节点发送的心跳包，如果这个心跳包里携带的term ≥ candidate当前的term，那么candidate会承认这个leader，并将身份切回follower。这说明其它节点已经成功赢得了选举，我们只需立刻跟随即可。但如果心跳包中的term比自己小，candidate会拒绝这次请求并保持选举状态。</p>
 <p>3.选举超时（Step: times out, new election）<br>如果有多个follower同时成为candidate，选票是可能被瓜分的，如果没有任何一个candidate能得到大多数节点的支持，那么每一个candidate都会超时。此时candidate需要增加自己的term，然后发起新一轮选举。如果这里不做一些特殊处理，选票可能会一直被瓜分，导致选不出leader来。这里的“特殊处理”指的就是前文所述的随机化选举超时时间。</p>
 <h2 id="Log-Replication-选主以后"><a href="#Log-Replication-选主以后" class="headerlink" title="Log Replication - 选主以后"></a>Log Replication - 选主以后</h2><h3 id="正常情况"><a href="#正常情况" class="headerlink" title="正常情况"></a>正常情况</h3><p>当Leader接受客户端发来的请求，每个请求包含一条需要被replicated state machines执行的命令。leader会把它作为一个log entry append到日志中，然后给其它的server发AppendEntriesRPC请求。</p>
@@ -248,6 +248,10 @@
 			
 		
 			
+				<li><a href="/tags/hadoop/" title="hadoop">hadoop<sup>1</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/docker/" title="docker">docker<sup>1</sup></a></li>
 			
 		
@@ -261,10 +265,6 @@
 		
 			
 				<li><a href="/tags/spark/" title="spark">spark<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/hadoop/" title="hadoop">hadoop<sup>1</sup></a></li>
 			
 		
 		</ul>

@@ -19,7 +19,7 @@
 <meta property="og:description" content="dolphinschedulerSite  Is：分布式 工作流 调度平台，带DAG可视化 For：复杂任务依赖   去中心化（动态主，zk选）   DolphinScheduler本身不依赖Hadoop、Hive、Spark,仅是会调用他们的Client，用于对应任务的提交 基于cron表达式调度 quartz 分布式调度器 调度情况报表t_ds_process_instance关键字段  na">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-01-20T06:11:43.000Z">
-<meta property="article:modified_time" content="2024-03-12T09:12:19.555Z">
+<meta property="article:modified_time" content="2024-04-18T07:29:03.919Z">
 <meta property="article:author" content="Manhua">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:creator" content="@jiangmanhua">
@@ -37,7 +37,7 @@
     
 <link rel="stylesheet" href="/css/style.css">
 
-<meta name="generator" content="Hexo 6.0.0"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <header>
@@ -136,9 +136,9 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">cd /data/soft</span><br><span class="line">rm dolphinscheduler</span><br><span class="line"></span><br><span class="line">hdfs dfs -get /ds201.tgz</span><br><span class="line">tar xf ds201.tgz</span><br><span class="line">rm ds201.tgz</span><br><span class="line"></span><br><span class="line">ln -s dolphinscheduler-2.0.1 dolphinscheduler</span><br><span class="line">chmod 755 -R dolphinscheduler-2.0.1</span><br><span class="line">[改start/stop]</span><br></pre></td></tr></table></figure>
 
 
-<h2 id="告警配置"><a href="#告警配置" class="headerlink" title="告警配置"></a>告警配置</h2><p>{“path”:”/data/soft/dolphinscheduler/script/alert-script.sh”<br>,”userParams”:”19802021823”,”type”:”SHELL”}</p>
-<p>配置样例增加<br>#registry.namespace=dolphinscheduler</p>
-<p>curl -s “<a target="_blank" rel="noopener" href="http://10.3.4.191:8321/sms/getReport?content=message&amp;mobilesStr=19802021823&quot;">http://10.3.4.191:8321/sms/getReport?content=message&amp;mobilesStr=19802021823&quot;</a></p>
+<h2 id="告警配置"><a href="#告警配置" class="headerlink" title="告警配置"></a>告警配置</h2><p>{“path”:”&#x2F;data&#x2F;soft&#x2F;dolphinscheduler&#x2F;script&#x2F;alert-script.sh”<br>,”userParams”:”19802021823”,”type”:”SHELL”}</p>
+<p>配置样例增加<br>#registry.namespace&#x3D;dolphinscheduler</p>
+<p>curl -s “<a target="_blank" rel="noopener" href="http://10.3.4.191:8321/sms/getReport?content=message&mobilesStr=19802021823">http://10.3.4.191:8321/sms/getReport?content=message&amp;mobilesStr=19802021823</a>“</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">while getopts t:c:p: opts; do</span><br><span class="line">    case $opts in</span><br><span class="line">        t) t=$OPTARG ;;</span><br><span class="line">        c) c=$OPTARG ;;</span><br><span class="line">        p) p=$OPTARG ;;</span><br><span class="line">        ?) ;;</span><br><span class="line">    esac</span><br><span class="line">done</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># Write your specific logic here</span><br><span class="line"></span><br><span class="line"># Set the exit code according to your execution result, and alert needs to use it to judge the status of this alarm result</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if  [ &quot;$t&quot; = &quot;error msg title&quot; ]</span><br><span class="line">   then</span><br><span class="line">     exit 12</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line">echo &#x27;&#x27;</span><br><span class="line">echo &#x27;  title=&#x27;$t</span><br><span class="line">echo &#x27;  content=&#x27;$c </span><br><span class="line">echo &#x27;  mobilesStr=&#x27;$p</span><br><span class="line"></span><br><span class="line">#title=`echo $t  |tr -d &#x27;\n&#x27; |od -An -tx1|tr &#x27; &#x27; %| tr -d &#x27;\n&#x27;`</span><br><span class="line">#content=`echo $c |tr -d &#x27;&quot;&#x27; |tr -d &#x27;\n&#x27; |od -An -tx1|tr &#x27; &#x27; %| tr -d &#x27;\n&#x27; `</span><br><span class="line">#msg=$title&#x27;-&#x27;$content</span><br><span class="line">#msgout=$&#123;msg:0:250&#125;</span><br><span class="line"></span><br><span class="line">msgout=`java -cp /data/soft/dolphinscheduler/script/spark-test-1.0-SNAPSHOT.jar ds.GetAlertMsg &quot;$&#123;t&#125;&quot; &quot;$&#123;c&#125;&quot;`</span><br><span class="line"></span><br><span class="line">echo &#x27;&gt;&gt;&gt; http://xxx:8321/sms/getReport?content=&#x27;$msgout&#x27;&amp;mobilesStr=&#x27;$p</span><br><span class="line"></span><br><span class="line">curl -s &#x27;http://xxx:8321/sms/getReport?content=&#x27;$msgout&#x27;&amp;mobilesStr=&#x27;$p</span><br><span class="line"></span><br><span class="line">exit 0</span><br><span class="line">exit 0</span><br></pre></td></tr></table></figure>
 
 <h2 id="部署配置项2-0-1"><a href="#部署配置项2-0-1" class="headerlink" title="部署配置项2.0.1"></a>部署配置项2.0.1</h2><p>复制mysql jar包到lib</p>
@@ -152,30 +152,30 @@
 <p>common.property</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">data.basedir.path=/tmp/dolphinscheduler</span><br><span class="line">resource.storage.type=HDFS</span><br><span class="line">resource.upload.path=/dolphinscheduler</span><br><span class="line">hdfs.root.user=hadoop</span><br><span class="line">fs.defaultFS=hdfs://localhost:9000</span><br><span class="line">resource.manager.httpaddress.port=8088</span><br><span class="line"></span><br><span class="line">yarn.resourcemanager.ha.rm.ids=</span><br><span class="line">yarn.application.status.address</span><br><span class="line">yarn.job.history.status.address</span><br><span class="line"></span><br><span class="line">sudo.enable=false</span><br></pre></td></tr></table></figure>
 <p>registry.properties<br> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">配置zk服务器地址和路径</span><br></pre></td></tr></table></figure></p>
-<h1 id="部署用户权限问题"><a href="#部署用户权限问题" class="headerlink" title="部署用户权限问题"></a>部署用户权限问题</h1><p>1.创建部署用户，该部署用户必须要有sudo免密权限/etc/sudoers -&gt; 使得可以用租户身份执行任务</p>
-<p>2.修改部署用户的~/.bashrc添加umask 022 -&gt; 使得相关文件可以被租户访问，否则任务无法执行</p>
+<h1 id="部署用户权限问题"><a href="#部署用户权限问题" class="headerlink" title="部署用户权限问题"></a>部署用户权限问题</h1><p>1.创建部署用户，该部署用户必须要有sudo免密权限&#x2F;etc&#x2F;sudoers -&gt; 使得可以用租户身份执行任务</p>
+<p>2.修改部署用户的~&#x2F;.bashrc添加umask 022 -&gt; 使得相关文件可以被租户访问，否则任务无法执行</p>
 <p>sudo su dolphinscheduler</p>
-<p>vi ~/.bashrc</p>
-<p>3.解压安装包后修改./bin/dolphinscheduler-daemon.sh再此添加umask 022 -&gt; 该脚本source了/etc/profile,需要覆盖配置项</p>
-<p>4.conf/env/dolphinscheduler_env.sh 需要对租户可读</p>
+<p>vi ~&#x2F;.bashrc</p>
+<p>3.解压安装包后修改.&#x2F;bin&#x2F;dolphinscheduler-daemon.sh再此添加umask 022 -&gt; 该脚本source了&#x2F;etc&#x2F;profile,需要覆盖配置项</p>
+<p>4.conf&#x2F;env&#x2F;dolphinscheduler_env.sh 需要对租户可读</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">[INFO] 2021-05-18 15:52:46.655  - [taskAppId=TASK-2-2-2]:[129] -  -&gt; hadoop is not in the sudoers file.  This incident will be reported.</span><br><span class="line"></span><br><span class="line">[INFO] 2021-05-19 09:25:40.521  - [taskAppId=TASK-2-4-5]:[129] -  -&gt; root is not in the sudoers file.  This incident will be reported.</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>任务执行服务是以 sudo -u {linux-user} 切换不同linux用户的方式来实现多租户运行作业，所以部署用户需要有 sudo 权限，而且是免密的。</p>
 <p>sudo权限  <a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/5rRWMoT0DLMcOdDl-mrsRQ">https://mp.weixin.qq.com/s/5rRWMoT0DLMcOdDl-mrsRQ</a></p>
 <p>可以通过以下方式限制可切换到的用户，比如可以设置为只能切到hadoop用户来执行任务</p>
-<p>echo ‘dolphinscheduler  ALL=(userA,userB,userC)  NOPASSWD:ALL’ &gt;&gt; /etc/sudoers</p>
+<p>echo ‘dolphinscheduler  ALL&#x3D;(userA,userB,userC)  NOPASSWD:ALL’ &gt;&gt; &#x2F;etc&#x2F;sudoers</p>
 <p>注意：后续增加租户的时候则要同步修改此处配置</p>
 <p>通配符和取消命令</p>
-<p>eg:papi ALL=/usr/sbin/<em>,/sbin/</em>,!/usr/sbin/fdisk</p>
+<p>eg:papi ALL&#x3D;&#x2F;usr&#x2F;sbin&#x2F;<em>,&#x2F;sbin&#x2F;</em>,!&#x2F;usr&#x2F;sbin&#x2F;fdisk</p>
 <p>租户对应的是Linux的用户，用于worker提交作业所使用的用户。如果linux没有这个用户，worker会在执行脚本的时候创建这个用户。</p>
 <p>租户编码：租户编码是Linux上的用户，唯一，不能重复</p>
 <p>在任务执行时,可以将任务分配给指定worker分组，最终由该组中的worker节点执行该任务</p>
-<h1 id="一键部署分析"><a href="#一键部署分析" class="headerlink" title="一键部署分析"></a>一键部署分析</h1><p>读入./conf/config/install_config.conf<br>修改配置<br>远程复制<br>修改权限</p>
-<h1 id="数据库升级分析"><a href="#数据库升级分析" class="headerlink" title="数据库升级分析"></a>数据库升级分析</h1><p>修改schema/data<br>./sql/sql/upgrade/2.0.1_schema/mysql/<br>进入mysql，source SQL脚本文件</p>
-<p>升级版本号<br>update t_ds_version set version = 2.0.1</p>
-<p>修改./conf/config/install_config.conf</p>
-<h1 id="手动部署"><a href="#手动部署" class="headerlink" title="手动部署"></a>手动部署</h1><p>1.解压。部署目录 参考其他软件目录：/data</p>
-<p>chown dolphinscheduler apache-dolphinscheduler-1.3.6-bin.tar.gz<br>tar -zxvf apache-dolphinscheduler-1.3.6-bin.tar.gz -C /data/<br>sudo chown -R dolphinscheduler:dolphinscheduler dolphinscheduler<br>sudo chmod 755 -R  dolphinscheduler</p>
+<h1 id="一键部署分析"><a href="#一键部署分析" class="headerlink" title="一键部署分析"></a>一键部署分析</h1><p>读入.&#x2F;conf&#x2F;config&#x2F;install_config.conf<br>修改配置<br>远程复制<br>修改权限</p>
+<h1 id="数据库升级分析"><a href="#数据库升级分析" class="headerlink" title="数据库升级分析"></a>数据库升级分析</h1><p>修改schema&#x2F;data<br>.&#x2F;sql&#x2F;sql&#x2F;upgrade&#x2F;2.0.1_schema&#x2F;mysql&#x2F;<br>进入mysql，source SQL脚本文件</p>
+<p>升级版本号<br>update t_ds_version set version &#x3D; 2.0.1</p>
+<p>修改.&#x2F;conf&#x2F;config&#x2F;install_config.conf</p>
+<h1 id="手动部署"><a href="#手动部署" class="headerlink" title="手动部署"></a>手动部署</h1><p>1.解压。部署目录 参考其他软件目录：&#x2F;data</p>
+<p>chown dolphinscheduler apache-dolphinscheduler-1.3.6-bin.tar.gz<br>tar -zxvf apache-dolphinscheduler-1.3.6-bin.tar.gz -C &#x2F;data&#x2F;<br>sudo chown -R dolphinscheduler:dolphinscheduler dolphinscheduler<br>sudo chmod 755 -R  dolphinscheduler</p>
 <p>2.上传mysql-connector-java到DolphinScheduler的lib目录</p>
 <p>3.初始化mysql表（建表、配权限、导数据）</p>
 <p>Server version: 5.7.30 MySQL Community Server (GPL)</p>
@@ -188,15 +188,15 @@
 <p><code>sh script/create-dolphinscheduler.sh</code>执行 script 目录下的创建表及导入基础数据脚本</p>
 <p>4.修改运行参数，添加各调用组件路径</p>
 <p>(可以先全部注释掉)</p>
-<p>conf/env/dolphinscheduler_env.sh</p>
-<p> &gt; export PYTHON_HOME=/usr/bin/python</p>
+<p>conf&#x2F;env&#x2F;dolphinscheduler_env.sh</p>
+<p> &gt; export PYTHON_HOME&#x3D;&#x2F;usr&#x2F;bin&#x2F;python</p>
 <p> #this is fixed after 1.3.6. now need to set python binary path</p>
 <p>5.由于没有ssh，需按照install.sh手动执行部署</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">https://www.yiibai.com/zookeeper/zookeeper_installation.html</span><br><span class="line"></span><br><span class="line">https://cloud.tencent.com/developer/article/1458839</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">修改conf/common.properties</span><br><span class="line"></span><br><span class="line">data.basedir.path=/tmp/dolphinscheduler</span><br><span class="line"></span><br><span class="line">resource.storage.type=HDFS</span><br><span class="line"></span><br><span class="line">resource.upload.path=/dolphinscheduler</span><br><span class="line"></span><br><span class="line">hdfs.root.user=hadoop</span><br><span class="line"></span><br><span class="line">fs.defaultFS=hdfs://LGJF-ZYC6-HCY-SVR553:9000</span><br><span class="line"></span><br><span class="line">yarn.resourcemanager.ha.rm.ids=</span><br><span class="line"></span><br><span class="line">yarn.application.status.address=http://10.17.41.126:8088/ws/v1/cluster/apps/%s</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">集群配置其他须知：</span><br><span class="line"></span><br><span class="line">#NameNode启用了HA的话，还需要将hadoop的配置文件core-site.xml和hdfs-site.xml放到安装路径的conf目录下</span><br><span class="line"></span><br><span class="line"># 如果ResourceManager是HA，则配置为ResourceManager节点的主备ip或者hostname,比如&quot;192.168.xx.xx,192.168.xx.xx&quot;;</span><br><span class="line"></span><br><span class="line"># 如果是单ResourceManager请配置yarnHaIps=&quot;&quot;即可</span><br><span class="line"></span><br><span class="line">yarn.resourcemanager.ha.rm.ids=&quot;192.168.xx.xx,192.168.xx.xx&quot;</span><br><span class="line"></span><br><span class="line">yarn.resourcemanager.ha.rm.ids=&quot;&quot;</span><br><span class="line"></span><br><span class="line"># 如果是单ResourceManager，请配置真实的ResourceManager主机名或者ip.否则保持默认值即可：yarn.application.status.address=http://10.17.41.126:8088/ws/v1/cluster/apps/%s</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">由于191集群有访问验证,当前通过白名单对集群服务器免密，需要配置如下参数：</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p>yarn.resourcemanager.ha.rm.ids=10.3.4.191,10.17.41.21</p>
-<p>yarn.application.status.address=<a target="_blank" rel="noopener" href="http://ds1:8089/ws/v1/cluster/apps/%s">http://ds1:8089/ws/v1/cluster/apps/%s</a></p>
-<p>resource.manager.httpaddress.port=8089</p>
+<p>yarn.resourcemanager.ha.rm.ids&#x3D;10.3.4.191,10.17.41.21</p>
+<p>yarn.application.status.address&#x3D;<a target="_blank" rel="noopener" href="http://ds1:8089/ws/v1/cluster/apps/%s">http://ds1:8089/ws/v1/cluster/apps/%s</a></p>
+<p>resource.manager.httpaddress.port&#x3D;8089</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">测试命令`curl http://10.3.4.191:8089/ws/v1/cluster/apps/application_1622165044791_10946`</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">修改conf/zookeeper.properties</span><br><span class="line"></span><br><span class="line">zookeeper.quorum=localhost:2181</span><br><span class="line"></span><br><span class="line">zookeeper.dolphinscheduler.root=/dolphinscheduler</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">修改conf/alert.properties [目前跳过]</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">修改conf/worker.properties [目前跳过，使用默认组]</span><br><span class="line"></span><br><span class="line">目录bin conf lib script sql ui下，该节点对应的组</span><br><span class="line"></span><br><span class="line">worker.groups=default</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>拷贝到其他服务器</p>
@@ -237,13 +237,13 @@
 </li>
 <li><p>前 N 天：$[yyyyMMdd-N]</p>
 </li>
-<li><p>后 N 小时：$[HHmmss+N/24]</p>
+<li><p>后 N 小时：$[HHmmss+N&#x2F;24]</p>
 </li>
-<li><p>前 N 小时：$[HHmmss-N/24]</p>
+<li><p>前 N 小时：$[HHmmss-N&#x2F;24]</p>
 </li>
-<li><p>后 N 分钟：$[HHmmss+N/24/60]</p>
+<li><p>后 N 分钟：$[HHmmss+N&#x2F;24&#x2F;60]</p>
 </li>
-<li><p>前 N 分钟：$[HHmmss-N/24/60]</p>
+<li><p>前 N 分钟：$[HHmmss-N&#x2F;24&#x2F;60]</p>
 </li>
 </ul>
 <p>${system.biz.date} : 日常调度实例定时的定时时间前一天，格式为 yyyyMMdd，补数据时，该日期 +1</p>
@@ -253,7 +253,7 @@
 <p>比如azkaban中的$(new(“org.joda.time.DateTime”).minusDays(1).toString(“yyyy-MM-dd”))可以$[yyyy-MM-dd-1]</p>
 <h1 id="指定绑定的ip"><a href="#指定绑定的ip" class="headerlink" title="指定绑定的ip"></a>指定绑定的ip</h1><p>common.properties</p>
 <blockquote>
-<p>dolphin.scheduler.network.interface.preferred=网卡显示名称</p>
+<p>dolphin.scheduler.network.interface.preferred&#x3D;网卡显示名称</p>
 </blockquote>
 <h1 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h1><h2 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h2><p>org.apache.dolphinscheduler.server.master.MasterServer</p>
 <h2 id="MasterServer"><a href="#MasterServer" class="headerlink" title="MasterServer"></a>MasterServer</h2><p>主要成员<br>ZKMasterClient</p>
@@ -275,7 +275,7 @@
 </ul>
 </li>
 <li>runProcess<ul>
-<li>循环至finish/stop</li>
+<li>循环至finish&#x2F;stop</li>
 <li>超时检测</li>
 <li>遍历运行节点MasterTaskExecThread[提交到DB并循环检测状态]，检测task在worker结束后处理任务状态和队列</li>
 <li>提交新任务submitStandByTask</li>
@@ -296,7 +296,7 @@
 <li>TaskKillResponseProcessor</li>
 </ul>
 <h2 id="WorkerServer"><a href="#WorkerServer" class="headerlink" title="WorkerServer"></a>WorkerServer</h2><p>TaskExecuteProcessor</p>
-<h2 id="HDFS上的user目录"><a href="#HDFS上的user目录" class="headerlink" title="HDFS上的user目录"></a>HDFS上的user目录</h2><p>HDFS路径：/dolphinscheduler/hadoop/home</p>
+<h2 id="HDFS上的user目录"><a href="#HDFS上的user目录" class="headerlink" title="HDFS上的user目录"></a>HDFS上的user目录</h2><p>HDFS路径：&#x2F;dolphinscheduler&#x2F;hadoop&#x2F;home</p>
 <p>源码相关函数：getHdfsUserDir</p>
 <p>问题：该目录只用在创建用户、更新用户和删除用户，没有实质作用</p>
 <h2 id="api变量参数启动任务"><a href="#api变量参数启动任务" class="headerlink" title="api变量参数启动任务"></a>api变量参数启动任务</h2><p>变量替换脚本写法如下，msg变量调用使用：”‘“变量”‘“</p>
@@ -334,10 +334,10 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2022/01/20/CheatSheet/storage/hdfs/" title="hdfs">
+ <a href="/2022/01/20/CheatSheet/visualization/metabase/" title="metabase">
   <strong>上一篇：</strong><br/>
   <span>
-  hdfs</span>
+  metabase</span>
 </a>
 </div>
 
@@ -426,6 +426,10 @@
 			
 		
 			
+				<li><a href="/tags/hadoop/" title="hadoop">hadoop<sup>1</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/docker/" title="docker">docker<sup>1</sup></a></li>
 			
 		
@@ -439,10 +443,6 @@
 		
 			
 				<li><a href="/tags/spark/" title="spark">spark<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/hadoop/" title="hadoop">hadoop<sup>1</sup></a></li>
 			
 		
 		</ul>

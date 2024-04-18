@@ -11,15 +11,15 @@
     
 
     
-    <meta name="description" content="Scriptis是基于Linkis开发的数据分析工具 Linkis定位： 计算存储引擎中间件 启动用户会默认作为管理员权限Linkis支持指定提交、执行的用户linkis主要进程服务会通过sudo -u $&amp;#123;linkis-user&amp;#125; 切换到对应用户下，然后执行对应的引擎启动命令，所以引擎linkis-engine进程归属的用户是任务的执行者（因此部署用户需要有sudo权限，而且">
+    <meta name="description" content="Scriptis是基于Linkis开发的数据分析工具 Linkis定位： 计算存储引擎中间件 启动用户会默认作为管理员权限Linkis支持指定提交、执行的用户linkis主要进程服务会通过sudo -u $&#123;linkis-user&#125; 切换到对应用户下，然后执行对应的引擎启动命令，所以引擎linkis-engine进程归属的用户是任务的执行者（因此部署用户需要有sudo权限，而且">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Scriptis-Linkis">
 <meta property="og:url" content="http://kevinjmh.github.io/2024/01/03/CheatSheet/visualization/Scriptis-Linkis/index.html">
 <meta property="og:site_name" content="Manhua">
-<meta property="og:description" content="Scriptis是基于Linkis开发的数据分析工具 Linkis定位： 计算存储引擎中间件 启动用户会默认作为管理员权限Linkis支持指定提交、执行的用户linkis主要进程服务会通过sudo -u $&amp;#123;linkis-user&amp;#125; 切换到对应用户下，然后执行对应的引擎启动命令，所以引擎linkis-engine进程归属的用户是任务的执行者（因此部署用户需要有sudo权限，而且">
+<meta property="og:description" content="Scriptis是基于Linkis开发的数据分析工具 Linkis定位： 计算存储引擎中间件 启动用户会默认作为管理员权限Linkis支持指定提交、执行的用户linkis主要进程服务会通过sudo -u $&#123;linkis-user&#125; 切换到对应用户下，然后执行对应的引擎启动命令，所以引擎linkis-engine进程归属的用户是任务的执行者（因此部署用户需要有sudo权限，而且">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-01-03T07:22:52.000Z">
-<meta property="article:modified_time" content="2024-03-12T09:12:19.555Z">
+<meta property="article:modified_time" content="2024-04-18T07:29:03.919Z">
 <meta property="article:author" content="Manhua">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:creator" content="@jiangmanhua">
@@ -37,7 +37,7 @@
     
 <link rel="stylesheet" href="/css/style.css">
 
-<meta name="generator" content="Hexo 6.0.0"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <header>
@@ -122,7 +122,7 @@
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">deployUser=hadoop</span><br><span class="line">dbType=mysql</span><br><span class="line"></span><br><span class="line"># 指定用户使用的目录路径，一般用于存储用户的脚本文件和日志文件等，是用户的工作空间。</span><br><span class="line">WORKSPACE_USER_ROOT_PATH=file:///data/soft/linkis/workspace</span><br><span class="line"></span><br><span class="line"># 结果集日志等文件路径，用于存储Job的结果集文件  </span><br><span class="line">HDFS_USER_ROOT_PATH=hdfs:///spark/linkis </span><br><span class="line">  </span><br><span class="line"># 存放执行引擎的工作路径，需要部署用户有写权限的本地目录   </span><br><span class="line">ENGINECONN_ROOT_PATH=/data/soft/linkis/engine_runtime</span><br><span class="line"></span><br><span class="line">#可以通过访问http://xx.xx.xx.xx:8088/ws/v1/cluster/scheduler 接口确认是否可以正常访问</span><br><span class="line">YARN_RESTFUL_URL=http://10.27.48.7:8088</span><br><span class="line"></span><br><span class="line">#HADOOP  </span><br><span class="line">HADOOP_HOME=/data/soft/hadoop</span><br><span class="line">HADOOP_CONF_DIR=/data/soft/hadoop/etc/hadoop</span><br><span class="line"></span><br><span class="line">#Hive</span><br><span class="line">#HIVE_HOME=/appcom/Install/hive</span><br><span class="line">#HIVE_CONF_DIR=/appcom/config/hive-config</span><br><span class="line"></span><br><span class="line">#Spark</span><br><span class="line">SPARK_HOME=/data/soft/spark</span><br><span class="line">SPARK_CONF_DIR=/data/soft/spark/conf</span><br><span class="line"></span><br><span class="line">## java application default jvm memory</span><br><span class="line">export SERVER_HEAP_SIZE=&quot;1024M&quot;</span><br><span class="line"></span><br><span class="line">##The decompression directory and the installation directory need to be inconsistent</span><br><span class="line">LINKIS_HOME=/data/soft/linkis</span><br><span class="line">SPARK_VERSION=3.3.1 # update bin/checkEnv.sh if failed</span><br><span class="line">MYSQL_CONNECT_JAVA_PATH=/data/soft/spark/jars/mysql-connector-java-5.1.47.jar</span><br></pre></td></tr></table></figure>
 
-<p>cp mysql-connector-java-8.0.28.jar  ${LINKIS_HOME}/lib/linkis-spring-cloud-services/linkis-mg-gateway/<br>cp mysql-connector-java-8.0.28.jar  ${LINKIS_HOME}/lib/linkis-commons/public-module/</p>
+<p>cp mysql-connector-java-8.0.28.jar  ${LINKIS_HOME}&#x2F;lib&#x2F;linkis-spring-cloud-services&#x2F;linkis-mg-gateway&#x2F;<br>cp mysql-connector-java-8.0.28.jar  ${LINKIS_HOME}&#x2F;lib&#x2F;linkis-commons&#x2F;public-module&#x2F;</p>
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><pre><code>sh bin/install.sh
 sh sbin/linkis-start-all.sh
 sh sbin/linkis-daemon.sh start ps-publicservice
@@ -137,7 +137,7 @@ sh sbin/linkis-daemon.sh start ps-publicservice
 
 <p>如果需要修改端口或则静态资源目录等，请修改<code>/etc/nginx/conf.d/linkis.conf</code> 文件后执行 <code>sudo nginx -s reload</code> 命令</p>
 <p>管理命令  systemctl restart nginx</p>
-<p>浏览器登陆 <code>http://xx.xx.xx.xx:8188/#/login</code> 用户名/密码在<code>&#123;LINKIS_HOME&#125;/conf/linkis-mg-gateway.properties</code>中查看<br>[hadoop/a43d90a3e]</p>
+<p>浏览器登陆 <code>http://xx.xx.xx.xx:8188/#/login</code> 用户名&#x2F;密码在<code>&#123;LINKIS_HOME&#125;/conf/linkis-mg-gateway.properties</code>中查看<br>[hadoop&#x2F;a43d90a3e]</p>
 <h1 id="Scriptis"><a href="#Scriptis" class="headerlink" title="Scriptis"></a>Scriptis</h1><p>下载后端包，修改nginx配置</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> location /scriptis &#123; </span><br><span class="line">     alias     /data/soft/scriptis-web/dist/ ;</span><br><span class="line">     index     index.html ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -262,6 +262,10 @@ sh sbin/linkis-daemon.sh start ps-publicservice
 			
 		
 			
+				<li><a href="/tags/hadoop/" title="hadoop">hadoop<sup>1</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/docker/" title="docker">docker<sup>1</sup></a></li>
 			
 		
@@ -275,10 +279,6 @@ sh sbin/linkis-daemon.sh start ps-publicservice
 		
 			
 				<li><a href="/tags/spark/" title="spark">spark<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/hadoop/" title="hadoop">hadoop<sup>1</sup></a></li>
 			
 		
 		</ul>

@@ -19,7 +19,7 @@
 <meta property="og:description" content="bloom filter-属于datamap  空间换时间 先介绍minmax， 当数据比较离散时，导致minmax效果不大 当数据比较集中时， 某列不是sort column时 参数配置是个比较困难的问题对比    32k 超长字符串  carbon设计问题，原本用short存储字符长度，只为兼容，在spark里的表示都是string use an integer instead of shor">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-01-23T02:03:00.000Z">
-<meta property="article:modified_time" content="2024-03-12T09:12:19.555Z">
+<meta property="article:modified_time" content="2024-04-18T07:29:03.923Z">
 <meta property="article:author" content="Manhua">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:creator" content="@jiangmanhua">
@@ -37,7 +37,7 @@
     
 <link rel="stylesheet" href="/css/style.css">
 
-<meta name="generator" content="Hexo 6.0.0"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <header>
@@ -122,7 +122,7 @@
 <li>相似问题：snappy压缩时<code>byte[]</code>长度为int也会受到限制</li>
 </ul>
 <p>zstd等压缩配置</p>
-<p>SearchMode for basic filter query：适用于在资源紧张时进行简单查询 select from where limit<br>Currently, tasks could be jammed subjected to available core number if query generates many tasks. For basic filter query(with limited result rows), we could add a new strategy to assign only one task with multiple splits each node and scan all the splits in parallel(get the result immediately and instead of using iterator)<br>重点修改在CarbonScanRDD的parallelism指定为0（最后noOfTasksPerNode变成1）<br><a target="_blank" rel="noopener" href="https://github.com/apache/carbondata/pull/2123">[CARBONDATA-2297] Support SEARCH_MODE for basic filter query by kevinjmh · Pull Request #2123 · apache/carbondata (github.com)</a><br><a target="_blank" rel="noopener" href="https://issues.apache.org/jira/browse/CARBONDATA-2297">[CARBONDATA-2297] Support SEARCH_MODE for basic filter query - ASF JIRA (apache.org)</a></p>
+<p>SearchMode for basic filter query：适用于在资源紧张时进行简单查询 select from where limit<br>Currently, tasks could be jammed subjected to available core number if query generates many tasks. For basic filter query(with limited result rows), we could add a new strategy to assign only one task with multiple splits each node and scan all the splits in parallel(get the result immediately and instead of using iterator)<br>重点修改在CarbonScanRDD的parallelism指定为0（最后noOfTasksPerNode变成1）<br><a target="_blank" rel="noopener" href="https://github.com/apache/carbondata/pull/2123">[CARBONDATA-2297] Support SEARCH_MODE for basic filter query by kevinjmh · Pull Request #2123 · apache&#x2F;carbondata (github.com)</a><br><a target="_blank" rel="noopener" href="https://issues.apache.org/jira/browse/CARBONDATA-2297">[CARBONDATA-2297] Support SEARCH_MODE for basic filter query - ASF JIRA (apache.org)</a></p>
 <p>堆排优化 - 通过反射操作PriorityQueue的siftDown<br>What will be done when poll item from priority queue currently is:</p>
 <ol>
 <li>remove first item.</li>
@@ -247,6 +247,10 @@
 			
 		
 			
+				<li><a href="/tags/hadoop/" title="hadoop">hadoop<sup>1</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/docker/" title="docker">docker<sup>1</sup></a></li>
 			
 		
@@ -260,10 +264,6 @@
 		
 			
 				<li><a href="/tags/spark/" title="spark">spark<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/hadoop/" title="hadoop">hadoop<sup>1</sup></a></li>
 			
 		
 		</ul>

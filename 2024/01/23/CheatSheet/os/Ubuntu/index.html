@@ -19,7 +19,7 @@
 <meta property="og:description" content="下载-镜像地址http:&#x2F;&#x2F;mirrors.ustc.edu.cn&#x2F;ubuntu-releases&#x2F; http:&#x2F;&#x2F;mirrors.163.com&#x2F;ubuntu-releases&#x2F; zsync镜像更新假设目前已有镜像文件trusty-desktop-amd64.iso，要更新到ubuntu-14.04-desktop-i386.iso sudo apt-get install zsync zsyn">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-01-23T02:01:51.000Z">
-<meta property="article:modified_time" content="2024-03-12T09:12:19.551Z">
+<meta property="article:modified_time" content="2024-04-18T07:29:03.915Z">
 <meta property="article:author" content="Manhua">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:creator" content="@jiangmanhua">
@@ -37,7 +37,7 @@
     
 <link rel="stylesheet" href="/css/style.css">
 
-<meta name="generator" content="Hexo 6.0.0"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <header>
@@ -111,13 +111,13 @@
 zsync -i trusty-desktop-amd64.iso http://mirrors.ustc.edu.cn/ubuntu-releases/14.04/ubuntu-14.04-desktop-i386.iso.zsync
 </code></pre>
 <blockquote>
-<p>Read trusty-desktop-amd64.iso. Target 35.3% complete. 实验证明这都能省下1/3的流量]</p>
+<p>Read trusty-desktop-amd64.iso. Target 35.3% complete. 实验证明这都能省下1&#x2F;3的流量]</p>
 </blockquote>
 <p>最好更新后进行镜像的md5校验<code>md5sum ubuntu-14.04-desktop-i386.iso</code></p>
 <h3 id="命令行升级Ubuntu"><a href="#命令行升级Ubuntu" class="headerlink" title="命令行升级Ubuntu"></a>命令行升级Ubuntu</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get upgrade</span><br><span class="line">sudo apt-get dist-upgrade</span><br><span class="line">sudo apt-get install update-manager-core</span><br><span class="line">sudo do-release-upgrade</span><br></pre></td></tr></table></figure>
 
 
-<h3 id="替换软件更新源"><a href="#替换软件更新源" class="headerlink" title="替换软件更新源"></a>替换软件更新源</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">确认原来的软件源地址</span></span><br><span class="line">less /etc/apt/sources.list</span><br><span class="line"><span class="meta">#</span><span class="bash"> 备份</span></span><br><span class="line">sudo cp /etc/apt/sources.list /etc/apt/sources.list.old</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash">假设archive.ubuntu.com替换为mirrors.ustc.edu.cn</span></span><br><span class="line"><span class="meta">#</span><span class="bash">sed在本文内修改</span></span><br><span class="line">sed -i &#x27;s/archive.ubuntu.com/mirrors.ustc.edu.cn/&#x27;   /etc/apt/sources.list  </span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash">使用vi修改</span></span><br><span class="line">sudo vi /etc/apt/sources.list</span><br><span class="line">:1,$s/archive.ubuntu.com/mirrors.ustc.edu.cn/g</span><br><span class="line"></span><br><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure>
+<h3 id="替换软件更新源"><a href="#替换软件更新源" class="headerlink" title="替换软件更新源"></a>替换软件更新源</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">确认原来的软件源地址</span></span><br><span class="line">less /etc/apt/sources.list</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">备份</span></span><br><span class="line">sudo cp /etc/apt/sources.list /etc/apt/sources.list.old</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">假设archive.ubuntu.com替换为mirrors.ustc.edu.cn</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">sed在本文内修改</span></span><br><span class="line">sed -i &#x27;s/archive.ubuntu.com/mirrors.ustc.edu.cn/&#x27;   /etc/apt/sources.list  </span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">使用vi修改</span></span><br><span class="line">sudo vi /etc/apt/sources.list</span><br><span class="line">:1,$s/archive.ubuntu.com/mirrors.ustc.edu.cn/g</span><br><span class="line"></span><br><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure>
 
 <h3 id="ubuntu-use-YUM"><a href="#ubuntu-use-YUM" class="headerlink" title="ubuntu use YUM"></a>ubuntu use YUM</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install build-essential</span><br><span class="line">sudo apt-get install yum</span><br></pre></td></tr></table></figure>
 
@@ -239,6 +239,10 @@ zsync -i trusty-desktop-amd64.iso http://mirrors.ustc.edu.cn/ubuntu-releases/14.
 			
 		
 			
+				<li><a href="/tags/hadoop/" title="hadoop">hadoop<sup>1</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/docker/" title="docker">docker<sup>1</sup></a></li>
 			
 		
@@ -252,10 +256,6 @@ zsync -i trusty-desktop-amd64.iso http://mirrors.ustc.edu.cn/ubuntu-releases/14.
 		
 			
 				<li><a href="/tags/spark/" title="spark">spark<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/hadoop/" title="hadoop">hadoop<sup>1</sup></a></li>
 			
 		
 		</ul>

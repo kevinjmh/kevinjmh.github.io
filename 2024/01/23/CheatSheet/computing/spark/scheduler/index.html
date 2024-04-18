@@ -19,7 +19,7 @@
 <meta property="og:description" content="node Application：用户编写的Spark应用程序，由一个或多个Job组成。提交到Spark之后，Spark会为- Application分配资源，将程序进行转换并执行。 Job（作业）：由Action算子触发生成的由一个或多个Stage组成的计算作业。 Stage（调度阶段）：每个Job会根据RDD的宽依赖被切分为多个Stage，每个Stage都包含一个TaskSet。 TaskSe">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-01-23T02:01:06.000Z">
-<meta property="article:modified_time" content="2024-03-12T09:12:19.551Z">
+<meta property="article:modified_time" content="2024-04-18T07:29:03.915Z">
 <meta property="article:author" content="Manhua">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:creator" content="@jiangmanhua">
@@ -37,7 +37,7 @@
     
 <link rel="stylesheet" href="/css/style.css">
 
-<meta name="generator" content="Hexo 6.0.0"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <header>
@@ -114,7 +114,7 @@
 <h1 id="Spark任务调度模块"><a href="#Spark任务调度模块" class="headerlink" title="Spark任务调度模块"></a>Spark任务调度模块</h1><p>DAGScheduler和TaskScheduler</p>
 <h2 id="DAGScheduler"><a href="#DAGScheduler" class="headerlink" title="DAGScheduler"></a>DAGScheduler</h2><p>DAGScheduler：主要负责分析用户提交的应用，并根据计算任务的依赖关系建立DAG，然后将DAG划分为不同的Stage，并以TaskSet的形式把Stage提交给TaskScheduler。其中每个Stage由可以并发执行的一组Task构成，这些Task的执行逻辑完全相同，只是作用于不同的数据。</p>
 <h2 id="TaskScheduler"><a href="#TaskScheduler" class="headerlink" title="TaskScheduler"></a>TaskScheduler</h2><p>TaskScheduler：负责Application中不同job之间的调度，将TaskSet提交给Worker执行并返回结果，在Task执行失败时启动重试机制，并且为执行速度慢的Task启动备份的任务。</p>
-<p>val rootPool: Pool = new Pool(“”, schedulingMode, 0, 0)</p>
+<p>val rootPool: Pool &#x3D; new Pool(“”, schedulingMode, 0, 0)</p>
 <p>FIFO时，</p>
 <ul>
 <li>rootPool<ul>
@@ -128,7 +128,7 @@
 <li>customPool0</li>
 <li>customPool1</li>
 <li>default(如果没有自定义覆盖，则使用以下配置)<ul>
-<li>FIFO,minshare=0,weight=1</li>
+<li>FIFO,minshare&#x3D;0,weight&#x3D;1</li>
 </ul>
 </li>
 </ul>
@@ -138,19 +138,19 @@
 <p>Pools管理多个TaskSetManager</p>
 <p>Pool:</p>
 <ul>
-<li>priority = 0</li>
-<li>stageId = -1</li>
-<li>name = default(default)</li>
-<li>weight = 1(default)</li>
-<li>minShare = 0(default)  (as a number of CPU cores) </li>
+<li>priority &#x3D; 0</li>
+<li>stageId &#x3D; -1</li>
+<li>name &#x3D; default(default)</li>
+<li>weight &#x3D; 1(default)</li>
+<li>minShare &#x3D; 0(default)  (as a number of CPU cores)</li>
 </ul>
 <p>TaskSetManager:</p>
 <ul>
-<li>priority = jobID</li>
-<li>stageId = stageId</li>
-<li>name = <code>TaskSet_&lt;stageId&gt;.&lt;stageAttemptId&gt;</code></li>
-<li>weight = 1  </li>
-<li>minShare = 0</li>
+<li>priority &#x3D; jobID</li>
+<li>stageId &#x3D; stageId</li>
+<li>name &#x3D; <code>TaskSet_&lt;stageId&gt;.&lt;stageAttemptId&gt;</code></li>
+<li>weight &#x3D; 1  </li>
+<li>minShare &#x3D; 0</li>
 </ul>
 <h2 id="FIFO：FIFOSchedulingAlgorithm-才有pool"><a href="#FIFO：FIFOSchedulingAlgorithm-才有pool" class="headerlink" title="FIFO：FIFOSchedulingAlgorithm (才有pool)"></a>FIFO：FIFOSchedulingAlgorithm (才有pool)</h2><p>先进先出调度模式（默认）。FIFO调度会根据StageID和JobID的大小来调度，数值较小的任务优先被调度。FIFO调度方式存在一个缺点：当遇到一个耗时较长的任务时，后续任务必须等待这个耗时任务执行完成才能得到可用的计算资源。</p>
 <ol>
@@ -160,14 +160,14 @@
 <h2 id="FAIR：FairSchedulingAlgorithm"><a href="#FAIR：FairSchedulingAlgorithm" class="headerlink" title="FAIR：FairSchedulingAlgorithm"></a>FAIR：FairSchedulingAlgorithm</h2><p>公平调度模式。FAIR模式下每个计算任务具有相等的优先级，Spark以轮询的方式为每个任务分配计算资源。FAIR不像FIFO那样必须等待前面耗时任务完成后后续任务才能执行。在FAIR模式下，无论是耗时短任务还是耗时长任务、无论是先提交的任务还是后提交的任务都可以公平的获得资源执行，这样就提高了耗时短的任务的响应时间。FAIR比FIFO更加灵活，FAIR模式为用户提供了一个调度池的概念，用户可以将重要的计算任务放入一个调度池Pool中，通过设置该调度池的权重来使该调度池中的计算任务获得较高的优先级。</p>
 <ol>
 <li>任一方A运行的任务数＜minShare时，且另一方运行的任务≥minShare时，A优先</li>
-<li>双方运行的任务数＜minShare时，计算比较值(任务数/minShare)，小的优先</li>
-<li>双方运行的任务数≥ minShare时，计算比较值(任务数/weight)，小的优先</li>
+<li>双方运行的任务数＜minShare时，计算比较值(任务数&#x2F;minShare)，小的优先</li>
+<li>双方运行的任务数≥ minShare时，计算比较值(任务数&#x2F;weight)，小的优先</li>
 <li>若比较值相同，则比较调度对象名称字符串，小的优先</li>
 </ol>
-<p>sh start-thriftserver.sh –master yarn –deploy-mode client –conf spark.scheduler.allocation.file=”file:///data/soft/spark/conf/fairscheduler_test.xml”</p>
-<figure class="highlight xml"><figcaption><span>fairscheduler_test.xml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">allocations</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">pool</span> <span class="attr">name</span>=<span class="string">&quot;default&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">schedulingMode</span>&gt;</span>FAIR<span class="tag">&lt;/<span class="name">schedulingMode</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">weight</span>&gt;</span>3<span class="tag">&lt;/<span class="name">weight</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">minShare</span>&gt;</span>5<span class="tag">&lt;/<span class="name">minShare</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">pool</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">pool</span> <span class="attr">name</span>=<span class="string">&quot;quick&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">schedulingMode</span>&gt;</span>FIFO<span class="tag">&lt;/<span class="name">schedulingMode</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">weight</span>&gt;</span>1<span class="tag">&lt;/<span class="name">weight</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">minShare</span>&gt;</span>5<span class="tag">&lt;/<span class="name">minShare</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">pool</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">allocations</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>sh start-thriftserver.sh –master yarn –deploy-mode client –conf spark.scheduler.allocation.file&#x3D;”file:&#x2F;&#x2F;&#x2F;data&#x2F;soft&#x2F;spark&#x2F;conf&#x2F;fairscheduler_test.xml”</p>
+<figure class="highlight xml"><figcaption><span>fairscheduler_test.xml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span>?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">allocations</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">pool</span> <span class="attr">name</span>=<span class="string">&quot;default&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">schedulingMode</span>&gt;</span>FAIR<span class="tag">&lt;/<span class="name">schedulingMode</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">weight</span>&gt;</span>3<span class="tag">&lt;/<span class="name">weight</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">minShare</span>&gt;</span>5<span class="tag">&lt;/<span class="name">minShare</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">pool</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">pool</span> <span class="attr">name</span>=<span class="string">&quot;quick&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">schedulingMode</span>&gt;</span>FIFO<span class="tag">&lt;/<span class="name">schedulingMode</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">weight</span>&gt;</span>1<span class="tag">&lt;/<span class="name">weight</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">minShare</span>&gt;</span>5<span class="tag">&lt;/<span class="name">minShare</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">pool</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">allocations</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<p>SET spark.sql.thriftserver.scheduler.pool=quick;</p>
+<p>SET spark.sql.thriftserver.scheduler.pool&#x3D;quick;</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -286,6 +286,10 @@
 			
 		
 			
+				<li><a href="/tags/hadoop/" title="hadoop">hadoop<sup>1</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/docker/" title="docker">docker<sup>1</sup></a></li>
 			
 		
@@ -299,10 +303,6 @@
 		
 			
 				<li><a href="/tags/spark/" title="spark">spark<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/hadoop/" title="hadoop">hadoop<sup>1</sup></a></li>
 			
 		
 		</ul>

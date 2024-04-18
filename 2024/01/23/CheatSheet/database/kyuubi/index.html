@@ -19,7 +19,7 @@
 <meta property="og:description" content="解决多租户的共享查询问题，作为多个查询引擎的统一入口 HA通过zk实现 存在的意义 - 对比 SparkThriftServer 权限：STS全局只有一个SparkContext，尽管SQL下发来自不同用户，但实际都是使用启动STS的用户身份执行（proxy-user也只是一个身份），难以对资源和权限做控制 单点：单点故障率高  Kyuubi从整体上可以分为用户层、服务发现层、Kyuubi Ser">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-01-23T02:01:19.000Z">
-<meta property="article:modified_time" content="2024-03-12T09:12:19.551Z">
+<meta property="article:modified_time" content="2024-04-18T07:29:03.915Z">
 <meta property="article:author" content="Manhua">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:creator" content="@jiangmanhua">
@@ -37,7 +37,7 @@
     
 <link rel="stylesheet" href="/css/style.css">
 
-<meta name="generator" content="Hexo 6.0.0"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <header>
@@ -121,13 +121,13 @@
 <ol>
 <li><p>Kyuubi系统管理员在大数据集群中启动了3个KyuubiServer实例和1个Zookeeper集群，其中3个KyuubiServer实例的连接信息分别为10.2.10.1:10009、10.2.10.1:10010和10.2.10.2:1009；</p>
 </li>
-<li><p>用户xpleaf通过beeline终端的方式连接了其中一个KyuubiServer实例；<br>./beeline -u ‘jdbc:hive2://10.2.10.1:10009’ -n xpleaf<br>在这里我们假设用户xpleaf事先已经通过管理员告知的方式知道了该KyuubiServer实例的连接信息。</p>
+<li><p>用户xpleaf通过beeline终端的方式连接了其中一个KyuubiServer实例；<br>  .&#x2F;beeline -u ‘jdbc:hive2:&#x2F;&#x2F;10.2.10.1:10009’ -n xpleaf<br>  在这里我们假设用户xpleaf事先已经通过管理员告知的方式知道了该KyuubiServer实例的连接信息。</p>
 </li>
 <li><p>KyuubiServer_instance1接收到xpleaf的连接请求，会为该用户创建session会话，同时会去Zookeeper上检查是否已经存在xpleaf所属的SparkSQLEngine实例；<br> 3.1 如果已经存在，则获取其连接信息；<br>  3.2 如果不存在，则通过spark-submit的方式提交一个Spark应用，启动一个SparkSQLEngine实例；</p>
 </li>
 <li><p>KyuubiServer_instance1在Zookeeper上没有找到xpleaf所属的SparkSQLEngine实例信息，其通过spark-submit的方式启动了一个SparkSQLEngine实例；</p>
 </li>
-<li><p>属于xpleaf用户的新的SparkSQLEngine_instance1实例在10.2.10.1节点上进行启动，并且监听的52463端口，启动后，其向Zookeeper注册自己的连接信息/kyuubi_USER/xpleaf/instance1_10.2.10.1:52463；</p>
+<li><p>属于xpleaf用户的新的SparkSQLEngine_instance1实例在10.2.10.1节点上进行启动，并且监听的52463端口，启动后，其向Zookeeper注册自己的连接信息&#x2F;kyuubi_USER&#x2F;xpleaf&#x2F;instance1_10.2.10.1:52463；</p>
 </li>
 <li><p>KyuubiServer_instance1在检测到SparkSQLEngine_instance1启动成功后，会向其发送创建session会话的连接请求；</p>
 </li>
@@ -136,7 +136,7 @@
 <li><p>用户启动beeleine完成并成功创建会话，接着用户执行SQL查询；</p>
 </li>
 </ol>
-<p>  jdbc:hive2://10.2.10.1:10009&gt; select * from teacher;</p>
+<p>  jdbc:hive2:&#x2F;&#x2F;10.2.10.1:10009&gt; select * from teacher;</p>
 <ol start="9">
 <li><p>KyuubiServer_instance1接收到xpleaf的执行SQL查询的请求，会先检查是否存在xpleaf所属的SparkSQLEngine实例；</p>
 </li>
@@ -155,7 +155,7 @@
 <p>Kyuubi在整体Server端和Client端以及其实现功能的设计上，是十分清晰的。</p>
 <h1 id="Install"><a href="#Install" class="headerlink" title="Install"></a>Install</h1><p><a target="_blank" rel="noopener" href="http://mirrors.ustc.edu.cn/">http://mirrors.ustc.edu.cn/</a></p>
 <h1 id="Setup"><a href="#Setup" class="headerlink" title="Setup"></a>Setup</h1><p>配置JAVA_HOME，SPARK_HOME 到<code>conf/kyuubi-env.sh</code>。还支持Flink、Trino</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">cp conf/kyuubi-env.sh.template conf/kyuubi-env.sh</span><br><span class="line">echo &#x27;export JAVA_HOME=/data/java&#x27; &gt;&gt; conf/kyuubi-env.sh</span><br><span class="line">echo &#x27;export SPARK_HOME=/data/spark&#x27; &gt;&gt; conf/kyuubi-env.sh</span><br><span class="line">echo &#x27;export HADOOP_CONF_DIR=/data/hadoop/etc/hadoop&#x27; &gt;&gt; conf/kyuubi-env.sh</span><br><span class="line">export HADOOP_HOME=/data/soft/hadoop</span><br><span class="line"></span><br><span class="line">cp conf/kyuubi-defaults.conf.template conf/kyuubi-defaults.conf</span><br><span class="line">spark.master=yarn</span><br><span class="line">spark.sql.adaptive.enabled=true</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">cp conf/kyuubi-env.sh.template conf/kyuubi-env.sh</span><br><span class="line">echo &#x27;export JAVA_HOME=/data/java&#x27; &gt;&gt; conf/kyuubi-env.sh</span><br><span class="line">echo &#x27;export SPARK_HOME=/data/spark&#x27; &gt;&gt; conf/kyuubi-env.sh</span><br><span class="line">echo &#x27;export HADOOP_HOME=/data/hadoop&#x27; &gt;&gt; conf/kyuubi-env.sh</span><br><span class="line">echo &#x27;export HADOOP_CONF_DIR=/data/hadoop/etc/hadoop&#x27; &gt;&gt; conf/kyuubi-env.sh</span><br><span class="line"></span><br><span class="line">cp conf/kyuubi-defaults.conf.template conf/kyuubi-defaults.conf</span><br><span class="line">spark.master=yarn</span><br><span class="line">spark.sql.adaptive.enabled=true</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">bin/kyuubi run # 前台运行</span><br><span class="line">bin/kyuubi start</span><br><span class="line">bin/kyuubi stop</span><br><span class="line"></span><br><span class="line">bin/beeline -u &#x27;jdbc:hive2://[HOST]:10009/&#x27; -n apache</span><br><span class="line"></span><br><span class="line">WebUI： http://[HOST]:10099/</span><br></pre></td></tr></table></figure>
 <p>从日志可以获得访问kyuubi server的端口为<br><code>Starting and exposing JDBC connection at: jdbc:hive2://a51-dg-hcy-bi-cal-005:10009/</code></p>
@@ -166,8 +166,8 @@
 
 <h3 id="kyuubi-ctl"><a href="#kyuubi-ctl" class="headerlink" title="kyuubi-ctl"></a>kyuubi-ctl</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> bin/kyuubi-ctl list server -zk 10.17.41.130:2181</span><br><span class="line">               Zookeeper service nodes              </span><br><span class="line">╔═══════════╤═══════════════════╤═══════╤═════════╗</span><br><span class="line">║ Namespace │ Host              │ Port  │ Version ║</span><br><span class="line">╠═══════════╪═══════════════════╪═══════╪═════════╣</span><br><span class="line">║ /kyuubi   │ lg-hcybi-6967-130 │ 10009 │ 1.8.0   ║</span><br><span class="line">╚═══════════╧═══════════════════╧═══════╧═════════╝</span><br><span class="line"> bin/kyuubi-ctl list engine -u apache -zk 10.17.41.130:2181</span><br><span class="line"> </span><br></pre></td></tr></table></figure>
 
-<h3 id="唤起引擎"><a href="#唤起引擎" class="headerlink" title="唤起引擎"></a>唤起引擎</h3><p>[问题： 这里怎么定义使用什么引擎、引擎配置参数、用户到组的映射配置]</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">./bin/beeline -u &quot;jdbc:hive2://a51-dg-hcy-bi-cal-005:10009/;\</span><br><span class="line">spark.yarn.queue=default;\</span><br><span class="line">spark.master=yarn;\</span><br><span class="line">spark.dynamicAllocation.enabled=true;\</span><br><span class="line">spark.dynamicAllocation.maxExecutors=50;\</span><br><span class="line">spark.shuffle.service.enabled=true;\</span><br><span class="line">spark.executor.cores=3;\</span><br><span class="line">spark.executor.memory=6g&quot; -n someone</span><br></pre></td></tr></table></figure>
+<h3 id="唤起引擎"><a href="#唤起引擎" class="headerlink" title="唤起引擎"></a>唤起引擎</h3><p>[问题： 这里怎么定义使用什么引擎、引擎配置参数、用户到组的映射配置]<br>在引擎A已启动的情况下，修改连接参数(包括spark&#x2F;kyuubi的参数)不会启动新的引擎，因为kyuubi是按照用户从zk获取查询引擎连接</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">./bin/beeline -u &quot;jdbc:hive2://a51-dg-hcy-bi-cal-005:10009/;\</span><br><span class="line">spark.yarn.queue=default;\</span><br><span class="line">spark.master=yarn;\</span><br><span class="line">spark.dynamicAllocation.enabled=true;\</span><br><span class="line">spark.dynamicAllocation.maxExecutors=50;\</span><br><span class="line">spark.shuffle.service.enabled=true;\</span><br><span class="line">spark.executor.instances=5;\</span><br><span class="line">spark.executor.cores=4;\</span><br><span class="line">spark.executor.memory=6g;</span><br><span class="line">kyuubi.engine.share.level=CONNECTION;&quot; -n someone</span><br></pre></td></tr></table></figure>
 
 <p>连接后会提交主类为<code>org.apache.kyuubi.engine.spark.SparkSQLEngine</code>的任务</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">2023-10-25 15:07:37.563 INFO org.apache.kyuubi.engine.EngineRef: Launching engine:</span><br><span class="line">/data/soft/spark-3.3.1-bin-hadoop2/bin/spark-submit \</span><br><span class="line">	--class org.apache.kyuubi.engine.spark.SparkSQLEngine \</span><br><span class="line">	--conf spark.hive.server2.thrift.resultset.default.fetch.size=1000 \</span><br><span class="line">	--conf spark.kyuubi.client.ipAddress=10.27.48.3 \</span><br><span class="line">	--conf spark.kyuubi.client.version=1.7.1 \</span><br><span class="line">	--conf spark.kyuubi.engine.submit.time=1698217657450 \</span><br><span class="line">	--conf spark.kyuubi.ha.addresses=a51-dg-hcy-bi-cal-005:2181 \</span><br><span class="line">	--conf spark.kyuubi.ha.engine.ref.id=cd5f0546-ebc1-4736-96c7-4bfea78e7053 \</span><br><span class="line">	--conf spark.kyuubi.ha.namespace=/kyuubi_1.7.1_USER_SPARK_SQL/anonymous/default \</span><br><span class="line">	--conf spark.kyuubi.ha.zookeeper.auth.type=NONE \</span><br><span class="line">	--conf spark.kyuubi.server.ipAddress=10.27.48.3 \</span><br><span class="line">	--conf spark.kyuubi.session.connection.url=a51-dg-hcy-bi-cal-005:10009 \</span><br><span class="line">	--conf spark.kyuubi.session.real.user=anonymous \</span><br><span class="line">	--conf spark.app.name=kyuubi_USER_SPARK_SQL_anonymous_default_cd5f0546-ebc1-4736-96c7-4bfea78e7053 \</span><br><span class="line">	--conf spark.kubernetes.driver.label.kyuubi-unique-tag=cd5f0546-ebc1-4736-96c7-4bfea78e7053 \</span><br><span class="line">	--conf spark.yarn.tags=KYUUBI,cd5f0546-ebc1-4736-96c7-4bfea78e7053 \</span><br><span class="line">	--proxy-user anonymous /data/soft/apache-kyuubi-1.7.1-bin/externals/engines/spark/kyuubi-spark-sql-engine_2.12-1.7.1.jar</span><br><span class="line">23/10/25 15:08:09 INFO SparkSQLEngine: </span><br><span class="line">   Spark application name: kyuubi_USER_SPARK_SQL_anonymous_default_cd5f0546-ebc1-4736-96c7-4bfea78e7053</span><br><span class="line">          application ID:  local-1698217666816</span><br><span class="line">          application tags: KYUUBI,cd5f0546-ebc1-4736-96c7-4bfea78e7053</span><br><span class="line">          application web UI: http://a51-dg-hcy-bi-cal-005:46498</span><br><span class="line">          master: local[*]</span><br><span class="line">          version: 3.3.1</span><br><span class="line">          driver: [cpu: 1, mem: 1g]</span><br><span class="line">          executor: [cpu: 2, mem: 1g, maxNum: 2]</span><br><span class="line">    Start time: Wed Oct 25 15:07:44 CST 2023</span><br><span class="line">    </span><br><span class="line">    User: anonymous (shared mode: USER)</span><br><span class="line">    State: STARTED</span><br><span class="line">   </span><br></pre></td></tr></table></figure>
@@ -183,7 +183,7 @@
 <h3 id="常用配置"><a href="#常用配置" class="headerlink" title="常用配置"></a>常用配置</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">spark.master        yarn</span><br><span class="line">spark.serializer    org.apache.spark.serializer.KryoSerializer</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
-<h3 id="是否启动新的engine"><a href="#是否启动新的engine" class="headerlink" title="是否启动新的engine"></a>是否启动新的engine</h3><p><code>org.apache.kyuubi.engine.EngineRef#getOrCreate</code><br>根据engineSpace从zk判断，参考前面打印的zk目录信息。<br>因此每个用户/组/server 都固定一个配置，subdomain默认为default，通过配置多个subdomain来获得多个不同的engine，可以用来轮询/随机等支持HA</p>
+<h3 id="是否启动新的engine"><a href="#是否启动新的engine" class="headerlink" title="是否启动新的engine"></a>是否启动新的engine</h3><p><code>org.apache.kyuubi.engine.EngineRef#getOrCreate</code><br>根据engineSpace从zk判断，参考前面打印的zk目录信息。<br>因此每个用户&#x2F;组&#x2F;server 都固定一个配置，subdomain默认为default，通过配置多个subdomain来获得多个不同的engine，可以用来轮询&#x2F;随机等支持HA</p>
 <p>实际启动engine的代码在<code>org.apache.kyuubi.engine.spark.SparkSQLEngine$#startEngine</code>，也就是打印出来的spark-submit命令</p>
 <p>是否新的session<br><code>org.apache.kyuubi.engine.spark.session.SparkSQLSessionManager#getOrNewSparkSession</code></p>
 <p>判断输入为userName和shareLevel<br> SparkSession.newSession : has separate SQLConf, registered temporary views and UDFs, but shared <code>SparkContext</code> and table cache</p>
@@ -192,9 +192,13 @@
 <li>kyuubi-defaults.conf， 优先级更高</li>
 <li>JDBC URL，优先级最高 ,例如：<code>jdbc:hive2://localhost:10009/default;#kyuubi.engine.type=FLINK_SQL;parallelism.default=2;taskmanager.memory.process.size=5g</code></li>
 <li>session模式<code>bin/beeline -u &#39;jdbc:hive2://localhost:10009/;#kyuubi.engine.type=FLINK_SQL;yarn.application.id=application_1679304354185_0001;execution.target=yarn-session&#39; -n xcchen</code></li>
-<li>application模式 <code>bin/beeline -u &#39;jdbc:hive2://localhost:10009/;#kyuubi.engine.type=FLINK_SQL;flink.execution.target=yarn-application&#39; -n xcchen</code><br>`</li>
-<li>Set命令修改动态参数<h2 id="用户级默认配置"><a href="#用户级默认配置" class="headerlink" title="用户级默认配置"></a>用户级默认配置</h2>优先级高于kyuubi-defaults.conf(重启server生效)，低于JDBC URL. 配置格式为 <code>___&#123;username&#125;___.&#123;config key&#125;</code><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># For system defaults</span><br><span class="line">spark.master=local</span><br><span class="line">spark.sql.adaptive.enabled=true</span><br><span class="line">spark.driver.memory=2G</span><br><span class="line">spark.executor.instances=1</span><br><span class="line">spark.executor.cores=3</span><br><span class="line"># For a user named apache</span><br><span class="line">___apache___.spark.executor.instances=3</span><br><span class="line">___apache___.spark.executor.cores=5</span><br><span class="line">___apache___.spark.executor.memory=4g</span><br><span class="line"># For a user named bob</span><br><span class="line">___bob___.spark.master=spark://master:7077</span><br><span class="line">___bob___.spark.executor.memory=8g</span><br></pre></td></tr></table></figure></li>
+<li>application模式 <code>bin/beeline -u &#39;jdbc:hive2://localhost:10009/;#kyuubi.engine.type=FLINK_SQL;flink.execution.target=yarn-application&#39; -n xcchen</code><br>&#96;</li>
+<li>Set命令修改动态参数</li>
 </ul>
+<h2 id="用户级默认配置"><a href="#用户级默认配置" class="headerlink" title="用户级默认配置"></a>用户级默认配置</h2><p>优先级高于kyuubi-defaults.conf(重启server生效)，低于JDBC URL. 配置格式为 <code>___&#123;username&#125;___.&#123;config key&#125;</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># For system defaults</span><br><span class="line">spark.master=local</span><br><span class="line">spark.sql.adaptive.enabled=true</span><br><span class="line">spark.driver.memory=2G</span><br><span class="line">spark.executor.instances=1</span><br><span class="line">spark.executor.cores=3</span><br><span class="line"># For a user named apache</span><br><span class="line">___apache___.spark.executor.instances=3</span><br><span class="line">___apache___.spark.executor.cores=5</span><br><span class="line">___apache___.spark.executor.memory=4g</span><br><span class="line"># For a user named bob</span><br><span class="line">___bob___.spark.master=spark://master:7077</span><br><span class="line">___bob___.spark.executor.memory=8g</span><br></pre></td></tr></table></figure>
+
+
 <p>刷新配置参数</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin/kyuubi-admin refresh config userDefaultsConf --hostUrl http://10.17.41.130:10099</span><br></pre></td></tr></table></figure>
 
@@ -205,9 +209,9 @@
 <li><code>&lt;host1&gt;:&lt;port1&gt;,&lt;host2&gt;:&lt;port2&gt;</code> is a server instance or a comma separated list of server instances to connect to (if dynamic service discovery is enabled). If empty, the embedded server will be used.</li>
 <li><em><code>dbName</code></em> is the name of the initial database.</li>
 <li><code>&lt;file&gt;</code> is the path of init script file executed automatically after connection. </li>
-<li><em><code>sess_var_list</code></em> is a semicolon separated list of key=value pairs of session variables (e.g., <code>user=foo;password=bar</code>).</li>
-<li><em><code>hive_conf_list</code></em> is a semicolon separated list of key=value pairs of Hive configuration variables for this session</li>
-<li><em><code>hive_var_list</code></em> is a semicolon separated list of key=value pairs of Hive variables for this session.</li>
+<li><em><code>sess_var_list</code></em> is a semicolon separated list of key&#x3D;value pairs of session variables (e.g., <code>user=foo;password=bar</code>).</li>
+<li><em><code>hive_conf_list</code></em> is a semicolon separated list of key&#x3D;value pairs of Hive configuration variables for this session</li>
+<li><em><code>hive_var_list</code></em> is a semicolon separated list of key&#x3D;value pairs of Hive variables for this session.</li>
 </ul>
 <p>Special characters in <em><code>sess_var_list, hive_conf_list, hive_var_list</code></em> parameter values should be encoded with URL encoding if needed.</p>
 <h1 id="Conf"><a href="#Conf" class="headerlink" title="Conf"></a>Conf</h1><h2 id="kyuubi-defaults-conf"><a href="#kyuubi-defaults-conf" class="headerlink" title="kyuubi-defaults.conf"></a>kyuubi-defaults.conf</h2><p><code>kyuubi.frontend.bind.host</code><br><code>kyuubi.engine.share.level</code><br><code>kyuubi.session.engine.spark.max.lifetime</code></p>
@@ -217,7 +221,7 @@
 
 <h1 id="管理命令"><a href="#管理命令" class="headerlink" title="管理命令"></a>管理命令</h1><p> &gt; specify the zookeeper address(<code>--zk-quorum</code>) and namespace(<code>--namespace</code>), version(<code>--version</code>) parameters to query a specific kyuubi server cluster.</p>
 <p><code>bin/kyuubi-ctl --help</code></p>
-<p>bin/kyuubi-ctl list server  -zk  a51-dg-hcy-bi-cal-005:10009<br>bin/kyuubi-ctl list server  -zk  a51-dg-hcy-bi-cal-003:2181<br>bin/kyuubi-ctl list engine  -u anonymous<br>bin/kyuubi-ctl delete engine -s a51-dg-hcy-bi-cal-004 -p 39008  -u anonymous </p>
+<p>bin&#x2F;kyuubi-ctl list server  -zk  a51-dg-hcy-bi-cal-005:10009<br>bin&#x2F;kyuubi-ctl list server  -zk  a51-dg-hcy-bi-cal-003:2181<br>bin&#x2F;kyuubi-ctl list engine  -u anonymous<br>bin&#x2F;kyuubi-ctl delete engine -s a51-dg-hcy-bi-cal-004 -p 39008  -u anonymous </p>
 <h1 id="引擎共用类型"><a href="#引擎共用类型" class="headerlink" title="引擎共用类型"></a>引擎共用类型</h1><p>推断：所以是根据url信息 将engine保存到zk，后续再重复使用？那么判断可复用的条件是？url可能顺序不一样？</p>
 <h2 id="Connection"><a href="#Connection" class="headerlink" title="Connection"></a>Connection</h2><p>One engine per session</p>
 <p>适用于大查询。连接断开后引擎就关闭</p>
@@ -225,11 +229,11 @@
 <p>按用户隔离，同一登录用户的多个连接都使用同一个引擎。通过配置项<code>kyuubi.engine.single.spark.session</code>决定多个连接是否共用一个SparkSession使得临时表等信息是共用的</p>
 <p>使用不同用户连接服务端，启动查询时会启动新的STS</p>
 <p>连接断开后引擎等待超时后才关闭</p>
-<h2 id="Group"><a href="#Group" class="headerlink" title="Group"></a>Group</h2><p>One engine per primary group<br>[[_posts/CheatSheet/storage/hdfs#GroupMapping配置|GroupMapping配置]]<br>Group级别的查询默认为组名身份执行，如果想用连接的用户身份执行需要通过<code>SparkContext.getLocalProperty(&quot;kyuubi.session.user&quot;) </code>发送给类似Ranger等安全服务</p>
+<h2 id="Group"><a href="#Group" class="headerlink" title="Group"></a>Group</h2><p>One engine per primary group<br>[[_posts&#x2F;CheatSheet&#x2F;storage&#x2F;hdfs#GroupMapping配置|GroupMapping配置]]<br>Group级别的查询默认为组名身份执行，如果想用连接的用户身份执行需要通过<code>SparkContext.getLocalProperty(&quot;kyuubi.session.user&quot;) </code>发送给类似Ranger等安全服务</p>
 <p>小查询，或者对人员限制资源使用</p>
 <h2 id="Server"><a href="#Server" class="headerlink" title="Server"></a>Server</h2><p>One engine per cluster</p>
 <p>这种就与Spark Thrift Server类似，执行身份为启动server的用户</p>
-<h2 id="subdomain"><a href="#subdomain" class="headerlink" title="subdomain"></a>subdomain</h2><p>User/Group/Server级别下，每个层次都可以通过subdomain配置多个engine，然后在jdbc连接url上配置参数<code>kyuubi.engine.share.level.subdomain</code>指定即可</p>
+<h2 id="subdomain"><a href="#subdomain" class="headerlink" title="subdomain"></a>subdomain</h2><p>User&#x2F;Group&#x2F;Server级别下，每个层次都可以通过subdomain配置多个engine，然后在jdbc连接url上配置参数<code>kyuubi.engine.share.level.subdomain</code>指定即可</p>
 <h2 id="配置方式"><a href="#配置方式" class="headerlink" title="配置方式"></a>配置方式</h2><p><code>kyuubi.engine.share.level</code></p>
 <h1 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h1><h2 id="大结果集增量收集-kyuubi-operation-incremental-collect"><a href="#大结果集增量收集-kyuubi-operation-incremental-collect" class="headerlink" title="大结果集增量收集 kyuubi.operation.incremental.collect"></a>大结果集增量收集 kyuubi.operation.incremental.collect</h2><p>change from <code>collect</code> to <code>toLocalIterator</code>.</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">使用方式1：set命令</span><br><span class="line">set kyuubi.operation.incremental.collect=true;</span><br><span class="line"></span><br><span class="line">使用方式2：JDBC URL（必须配incremental=true，否则结果集会拉到beeline客户端造成oom）</span><br><span class="line">beeline -u &#x27;jdbc:hive2://kyuubi:10009/?spark.driver.maxResultSize=8g;spark.driver.memory=12g#kyuubi.engine.share.level=CONNECTION;kyuubi.operation.incremental.collect=true&#x27; \</span><br><span class="line">    --incremental=true \</span><br><span class="line">    -f big_result_query.sql</span><br></pre></td></tr></table></figure>
@@ -352,6 +356,10 @@
 			
 		
 			
+				<li><a href="/tags/hadoop/" title="hadoop">hadoop<sup>1</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/docker/" title="docker">docker<sup>1</sup></a></li>
 			
 		
@@ -365,10 +373,6 @@
 		
 			
 				<li><a href="/tags/spark/" title="spark">spark<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/hadoop/" title="hadoop">hadoop<sup>1</sup></a></li>
 			
 		
 		</ul>

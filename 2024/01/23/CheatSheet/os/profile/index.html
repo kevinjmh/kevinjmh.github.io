@@ -11,15 +11,15 @@
     
 
     
-    <meta name="description" content="&#x2F;etc&#x2F;profile登录时执行并从&#x2F;etc&#x2F;profile.d目录的配置文件中搜集shell的设置 &#x2F;etc&#x2F;bashrc打开新的shell时 ~&#x2F;.profile当用户登录时,该文件仅仅执行一次!默认情况下,他设置一些环境变量,执行用户的.bashrc文件. ~&#x2F;.bashrc登录&#x2F;打开新的shell时 ~&#x2F;.bash_logout退出bash shell时 下面是在本机的几个例子：  图形">
+    <meta name="description" content="&#x2F;etc&#x2F;profile登录时执行并从&#x2F;etc&#x2F;profile.d目录的配置文件中搜集shell的设置 &#x2F;etc&#x2F;bashrc打开新的shell时 ~&#x2F;.profile当用户登录时,该文件仅仅执行一次!默认情况下,他设置一些环境变量,执行用户的.bashrc文件. ~&#x2F;.bashrc登录&#x2F;打开新的shell时">
 <meta property="og:type" content="article">
 <meta property="og:title" content="profile">
 <meta property="og:url" content="http://kevinjmh.github.io/2024/01/23/CheatSheet/os/profile/index.html">
 <meta property="og:site_name" content="Manhua">
-<meta property="og:description" content="&#x2F;etc&#x2F;profile登录时执行并从&#x2F;etc&#x2F;profile.d目录的配置文件中搜集shell的设置 &#x2F;etc&#x2F;bashrc打开新的shell时 ~&#x2F;.profile当用户登录时,该文件仅仅执行一次!默认情况下,他设置一些环境变量,执行用户的.bashrc文件. ~&#x2F;.bashrc登录&#x2F;打开新的shell时 ~&#x2F;.bash_logout退出bash shell时 下面是在本机的几个例子：  图形">
+<meta property="og:description" content="&#x2F;etc&#x2F;profile登录时执行并从&#x2F;etc&#x2F;profile.d目录的配置文件中搜集shell的设置 &#x2F;etc&#x2F;bashrc打开新的shell时 ~&#x2F;.profile当用户登录时,该文件仅仅执行一次!默认情况下,他设置一些环境变量,执行用户的.bashrc文件. ~&#x2F;.bashrc登录&#x2F;打开新的shell时">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-01-23T02:01:46.000Z">
-<meta property="article:modified_time" content="2024-03-12T09:12:19.551Z">
+<meta property="article:modified_time" content="2024-04-18T07:29:03.919Z">
 <meta property="article:author" content="Manhua">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:creator" content="@jiangmanhua">
@@ -37,7 +37,7 @@
     
 <link rel="stylesheet" href="/css/style.css">
 
-<meta name="generator" content="Hexo 6.0.0"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <header>
@@ -104,30 +104,30 @@
 		
 		</div>
 		
-		<h1 id="etc-profile"><a href="#etc-profile" class="headerlink" title="/etc/profile"></a>/etc/profile</h1><p>登录时执行<br>并从/etc/profile.d目录的配置文件中搜集shell的设置</p>
-<h1 id="etc-bashrc"><a href="#etc-bashrc" class="headerlink" title="/etc/bashrc"></a>/etc/bashrc</h1><p>打开新的shell时</p>
-<h1 id="profile"><a href="#profile" class="headerlink" title="~/.profile"></a>~/.profile</h1><p>当用户登录时,该文件仅仅执行一次!<br>默认情况下,他设置一些环境变量,执行用户的.bashrc文件.</p>
-<h1 id="bashrc"><a href="#bashrc" class="headerlink" title="~/.bashrc"></a>~/.bashrc</h1><p>登录/打开新的shell时</p>
-<h1 id="bash-logout"><a href="#bash-logout" class="headerlink" title="~/.bash_logout"></a>~/.bash_logout</h1><p>退出bash shell时</p>
+		<h1 id="etc-profile"><a href="#etc-profile" class="headerlink" title="&#x2F;etc&#x2F;profile"></a>&#x2F;etc&#x2F;profile</h1><p>登录时执行<br>并从&#x2F;etc&#x2F;profile.d目录的配置文件中搜集shell的设置</p>
+<h1 id="etc-bashrc"><a href="#etc-bashrc" class="headerlink" title="&#x2F;etc&#x2F;bashrc"></a>&#x2F;etc&#x2F;bashrc</h1><p>打开新的shell时</p>
+<h1 id="profile"><a href="#profile" class="headerlink" title="~&#x2F;.profile"></a>~&#x2F;.profile</h1><p>当用户登录时,该文件仅仅执行一次!<br>默认情况下,他设置一些环境变量,执行用户的.bashrc文件.</p>
+<h1 id="bashrc"><a href="#bashrc" class="headerlink" title="~&#x2F;.bashrc"></a>~&#x2F;.bashrc</h1><p>登录&#x2F;打开新的shell时</p>
+<h1 id="bash-logout"><a href="#bash-logout" class="headerlink" title="~&#x2F;.bash_logout"></a>~&#x2F;.bash_logout</h1><p>退出bash shell时</p>
 <p>下面是在本机的几个例子：</p>
 <ol>
-<li><p>图形模式登录时，顺序读取：/etc/profile和~/.profile</p>
+<li><p>图形模式登录时，顺序读取：&#x2F;etc&#x2F;profile和~&#x2F;.profile</p>
 </li>
-<li><p>图形模式登录后，打开终端时，顺序读取：/etc/bash.bashrc和~/.bashrc</p>
+<li><p>图形模式登录后，打开终端时，顺序读取：&#x2F;etc&#x2F;bash.bashrc和~&#x2F;.bashrc</p>
 </li>
-<li><p>文本模式登录时，顺序读取：/etc/bash.bashrc，/etc/profile和~/.bash_profile</p>
+<li><p>文本模式登录时，顺序读取：&#x2F;etc&#x2F;bash.bashrc，&#x2F;etc&#x2F;profile和~&#x2F;.bash_profile</p>
 </li>
 <li><p>从其它用户su到该用户，则分两种情况：</p>
 </li>
 </ol>
-<p>   （1）如果带-l参数（或-参数，–login参数），如：su -l username，则bash是lonin的，它将顺序读取以下配置文件：/etc/bash.bashrc，/etc/profile和~/.bash_profile。</p>
-<p>   （2）如果没有带-l参数，则bash是non-login的，它将顺序读取：/etc/bash.bashrc和~/.bashrc</p>
+<p>   （1）如果带-l参数（或-参数，–login参数），如：su -l username，则bash是lonin的，它将顺序读取以下配置文件：&#x2F;etc&#x2F;bash.bashrc，&#x2F;etc&#x2F;profile和~&#x2F;.bash_profile。</p>
+<p>   （2）如果没有带-l参数，则bash是non-login的，它将顺序读取：&#x2F;etc&#x2F;bash.bashrc和~&#x2F;.bashrc</p>
 <ol start="5">
-<li><p>注销时，或退出su登录的用户，如果是login方式，那么bash会读取：~/.bash_logout</p>
+<li><p>注销时，或退出su登录的用户，如果是login方式，那么bash会读取：~&#x2F;.bash_logout</p>
 </li>
-<li><p>执行自定义的shell文件时，若使用“bash -l a.sh”的方式，则bash会读取行：/etc/profile和~/.bash_profile，若使用其它方式，如：bash a.sh， ./a.sh，sh a.sh（这个不属于bash shell），则不会读取上面的任何文件。</p>
+<li><p>执行自定义的shell文件时，若使用“bash -l a.sh”的方式，则bash会读取行：&#x2F;etc&#x2F;profile和~&#x2F;.bash_profile，若使用其它方式，如：bash a.sh， .&#x2F;a.sh，sh a.sh（这个不属于bash shell），则不会读取上面的任何文件。</p>
 </li>
-<li><p>上面的例子凡是读取到<del>/.bash_profile的，若该文件不存在，则读取</del>/.bash_login，若前两者不存在，读取~/.profile。</p>
+<li><p>上面的例子凡是读取到<del>&#x2F;.bash_profile的，若该文件不存在，则读取</del>&#x2F;.bash_login，若前两者不存在，读取~&#x2F;.profile。</p>
 </li>
 </ol>
 <p>bashrc用于非交互式non-loginshell，而profile用于交互式login shell。</p>
@@ -249,6 +249,10 @@
 			
 		
 			
+				<li><a href="/tags/hadoop/" title="hadoop">hadoop<sup>1</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/docker/" title="docker">docker<sup>1</sup></a></li>
 			
 		
@@ -262,10 +266,6 @@
 		
 			
 				<li><a href="/tags/spark/" title="spark">spark<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/hadoop/" title="hadoop">hadoop<sup>1</sup></a></li>
 			
 		
 		</ul>

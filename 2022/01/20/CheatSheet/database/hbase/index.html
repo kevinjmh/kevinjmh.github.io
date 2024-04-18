@@ -11,15 +11,15 @@
     
 
     
-    <meta name="description" content="create ‘UserActiveDate’, {NAME&#x3D;&gt;’lastActive’, VERSIONS&#x3D;&gt;3, MIN_VERSIONS &#x3D;&gt; 1, TTL&#x3D;&gt;15552000, COMPRESSION &#x3D;&gt; ‘SNAPPY’}, {NUMREGIONS &#x3D;&gt; 20, SPLITALGO &#x3D;&gt; ‘DecimalStringSplit’}– 保留最新一">
+    <meta name="description" content="create ‘UserActiveDate’, {NAME&#x3D;&gt;’lastActive’, VERSIONS&#x3D;&gt;3, MIN_VERSIONS &#x3D;&gt; 1, TTL&#x3D;&gt;15552000, COMPRESSION &#x3D;&gt; ‘SNAPPY’}, {NUMREGIONS &#x3D;&gt; 20, SPLITALGO &amp;#x3">
 <meta property="og:type" content="article">
 <meta property="og:title" content="hbase">
 <meta property="og:url" content="http://kevinjmh.github.io/2022/01/20/CheatSheet/database/hbase/index.html">
 <meta property="og:site_name" content="Manhua">
-<meta property="og:description" content="create ‘UserActiveDate’, {NAME&#x3D;&gt;’lastActive’, VERSIONS&#x3D;&gt;3, MIN_VERSIONS &#x3D;&gt; 1, TTL&#x3D;&gt;15552000, COMPRESSION &#x3D;&gt; ‘SNAPPY’}, {NUMREGIONS &#x3D;&gt; 20, SPLITALGO &#x3D;&gt; ‘DecimalStringSplit’}– 保留最新一">
+<meta property="og:description" content="create ‘UserActiveDate’, {NAME&#x3D;&gt;’lastActive’, VERSIONS&#x3D;&gt;3, MIN_VERSIONS &#x3D;&gt; 1, TTL&#x3D;&gt;15552000, COMPRESSION &#x3D;&gt; ‘SNAPPY’}, {NUMREGIONS &#x3D;&gt; 20, SPLITALGO &amp;#x3">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-01-20T06:11:43.000Z">
-<meta property="article:modified_time" content="2024-03-12T09:12:19.551Z">
+<meta property="article:modified_time" content="2024-04-18T07:29:03.915Z">
 <meta property="article:author" content="Manhua">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:creator" content="@jiangmanhua">
@@ -37,7 +37,7 @@
     
 <link rel="stylesheet" href="/css/style.css">
 
-<meta name="generator" content="Hexo 6.0.0"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <header>
@@ -104,7 +104,7 @@
 		
 		</div>
 		
-		<p>create ‘UserActiveDate’, {NAME=&gt;’lastActive’, VERSIONS=&gt;3, MIN_VERSIONS =&gt; 1, TTL=&gt;15552000, COMPRESSION =&gt; ‘SNAPPY’}, {NUMREGIONS =&gt; 20, SPLITALGO =&gt; ‘DecimalStringSplit’}<br>– 保留最新一个状态.  TTL设置后即使有MIN_VERSIONS，spark查询仍然为空 ==&gt; 数据少是没落盘文件导致  未flush</p>
+		<p>create ‘UserActiveDate’, {NAME&#x3D;&gt;’lastActive’, VERSIONS&#x3D;&gt;3, MIN_VERSIONS &#x3D;&gt; 1, TTL&#x3D;&gt;15552000, COMPRESSION &#x3D;&gt; ‘SNAPPY’}, {NUMREGIONS &#x3D;&gt; 20, SPLITALGO &#x3D;&gt; ‘DecimalStringSplit’}<br>– 保留最新一个状态.  TTL设置后即使有MIN_VERSIONS，spark查询仍然为空 &#x3D;&#x3D;&gt; 数据少是没落盘文件导致  未flush</p>
 <p>hbase org.apache.hadoop.hbase.mapreduce.RowCounter <tablename></p>
   
 	</div>
@@ -229,6 +229,10 @@
 			
 		
 			
+				<li><a href="/tags/hadoop/" title="hadoop">hadoop<sup>1</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/docker/" title="docker">docker<sup>1</sup></a></li>
 			
 		
@@ -242,10 +246,6 @@
 		
 			
 				<li><a href="/tags/spark/" title="spark">spark<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/hadoop/" title="hadoop">hadoop<sup>1</sup></a></li>
 			
 		
 		</ul>

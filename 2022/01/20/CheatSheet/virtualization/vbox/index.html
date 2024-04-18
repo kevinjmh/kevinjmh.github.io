@@ -11,15 +11,15 @@
     
 
     
-    <meta name="description" content="编译环境1 new vm(vbox)同时连通本机和外网-(两张网卡nat + hostonly) install: jdk,maven https:&#x2F;&#x2F;maven.apache.org&#x2F;download.cgi set maven mirror:  只有一张网卡工作时 修改配置后重启 123456789cat &#x2F;etc&#x2F;netplan&#x2F;00-installer-config.yaml# This">
+    <meta name="description" content="编译环境1 new vm(vbox)同时连通本机和外网-(两张网卡nat + hostonly) install: jdk,maven https:&#x2F;&#x2F;maven.apache.org&#x2F;download.cgi set maven mirror:  只有一张网卡工作时 修改配置后应用变更  ifconfig -a    sudo netplan apply root@kali:# ifconfig">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vm">
 <meta property="og:url" content="http://kevinjmh.github.io/2022/01/20/CheatSheet/virtualization/vbox/index.html">
 <meta property="og:site_name" content="Manhua">
-<meta property="og:description" content="编译环境1 new vm(vbox)同时连通本机和外网-(两张网卡nat + hostonly) install: jdk,maven https:&#x2F;&#x2F;maven.apache.org&#x2F;download.cgi set maven mirror:  只有一张网卡工作时 修改配置后重启 123456789cat &#x2F;etc&#x2F;netplan&#x2F;00-installer-config.yaml# This">
+<meta property="og:description" content="编译环境1 new vm(vbox)同时连通本机和外网-(两张网卡nat + hostonly) install: jdk,maven https:&#x2F;&#x2F;maven.apache.org&#x2F;download.cgi set maven mirror:  只有一张网卡工作时 修改配置后应用变更  ifconfig -a    sudo netplan apply root@kali:# ifconfig">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-01-20T06:11:43.000Z">
-<meta property="article:modified_time" content="2024-03-12T09:12:19.555Z">
+<meta property="article:modified_time" content="2024-04-18T07:29:03.919Z">
 <meta property="article:author" content="Manhua">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:creator" content="@jiangmanhua">
@@ -37,7 +37,7 @@
     
 <link rel="stylesheet" href="/css/style.css">
 
-<meta name="generator" content="Hexo 6.0.0"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <header>
@@ -109,7 +109,12 @@
 <li>install: jdk,maven <a target="_blank" rel="noopener" href="https://maven.apache.org/download.cgi">https://maven.apache.org/download.cgi</a></li>
 <li>set maven mirror:</li>
 </ul>
-<p>只有一张网卡工作时 修改配置后重启</p>
+<p>只有一张网卡工作时 修改配置后应用变更</p>
+<ul>
+<li><code>ifconfig -a</code>   </li>
+<li><code>sudo netplan apply</code></li>
+<li>root@kali:<del># ifconfig enp0s17 up  &#x2F;&#x2F;启用网卡<br>  root@kali:</del># ifconfig -a &#x2F;&#x2F;查看IP<br>  root@kali:~# dhclient enp0s17  &#x2F;&#x2F; 分配IP</li>
+</ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/netplan/00-installer-config.yaml</span><br><span class="line"># This is the network config written by &#x27;subiquity&#x27;</span><br><span class="line">network:</span><br><span class="line">ethernets:</span><br><span class="line">enp0s3:</span><br><span class="line">dhcp4: true</span><br><span class="line">enp0s8:</span><br><span class="line">dhcp4: true</span><br><span class="line">version: 2</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;mirror&gt;</span><br><span class="line">    &lt;id&gt;aliyunmaven&lt;/id&gt;</span><br><span class="line">    &lt;mirrorOf&gt;*&lt;/mirrorOf&gt;</span><br><span class="line">    &lt;name&gt;阿里云公共仓库&lt;/name&gt;</span><br><span class="line">    &lt;url&gt;https://maven.aliyun.com/repository/public&lt;/url&gt;</span><br><span class="line">&lt;/mirror&gt;</span><br></pre></td></tr></table></figure>
@@ -117,15 +122,15 @@
 <h1 id="编译环境2"><a href="#编译环境2" class="headerlink" title="编译环境2"></a>编译环境2</h1><ul>
 <li>安装<a target="_blank" rel="noopener" href="https://multipass.run/">multipass</a></li>
 <li>挂载目录<ul>
-<li>multipass set local.privileged-mounts=true</li>
-<li>multipass exec primary mkdir /mnt/e</li>
-<li>multipass mount E:\ primary:/mnt/e</li>
+<li>multipass set local.privileged-mounts&#x3D;true</li>
+<li>multipass exec primary mkdir &#x2F;mnt&#x2F;e</li>
+<li>multipass mount E:\ primary:&#x2F;mnt&#x2F;e</li>
 </ul>
 </li>
 <li>修改系统更新源<ul>
-<li>sudo cp -a /etc/apt/sources.list /etc/apt/sources.list.bak</li>
-<li>sudo sed -i “s@http://.*archive.ubuntu.com@<a target="_blank" rel="noopener" href="http://repo.huaweicloud.com@g&quot;/">http://repo.huaweicloud.com@g&quot;</a> /etc/apt/sources.list</li>
-<li>sudo sed -i “s@http://.*security.ubuntu.com@<a target="_blank" rel="noopener" href="http://repo.huaweicloud.com@g&quot;/">http://repo.huaweicloud.com@g&quot;</a> /etc/apt/sources.list</li>
+<li>sudo cp -a &#x2F;etc&#x2F;apt&#x2F;sources.list &#x2F;etc&#x2F;apt&#x2F;sources.list.bak</li>
+<li>sudo sed -i “s@http:&#x2F;&#x2F;.*archive.ubuntu.com@<a target="_blank" rel="noopener" href="http://repo.huaweicloud.com@g/">http://repo.huaweicloud.com@g</a>“ &#x2F;etc&#x2F;apt&#x2F;sources.list</li>
+<li>sudo sed -i “s@http:&#x2F;&#x2F;.*security.ubuntu.com@<a target="_blank" rel="noopener" href="http://repo.huaweicloud.com@g/">http://repo.huaweicloud.com@g</a>“ &#x2F;etc&#x2F;apt&#x2F;sources.list</li>
 </ul>
 </li>
 <li>安装mvn<ul>
@@ -148,13 +153,13 @@
 <h1 id="编译操作"><a href="#编译操作" class="headerlink" title="编译操作"></a>编译操作</h1><ul>
 <li>git clone<ul>
 <li>git clone -b 分支名  仓库地址</li>
-<li>git clone -b TAG –depth=1 仓库地址</li>
-<li>git clone -b rel/release-2.8.5 –depth=1 <a target="_blank" rel="noopener" href="https://gitee.com/apache/hadoop.git">https://gitee.com/apache/hadoop.git</a></li>
+<li>git clone -b TAG –depth&#x3D;1 仓库地址</li>
+<li>git clone -b rel&#x2F;release-2.8.5 –depth&#x3D;1 <a target="_blank" rel="noopener" href="https://gitee.com/apache/hadoop.git">https://gitee.com/apache/hadoop.git</a></li>
 </ul>
 </li>
-<li>mvn </li>
+<li>mvn</li>
 </ul>
-<h1 id="Vagrant-with-VirtualBox-vmware-hyper-v-also-supported"><a href="#Vagrant-with-VirtualBox-vmware-hyper-v-also-supported" class="headerlink" title="Vagrant with VirtualBox (vmware/hyper-v also supported)"></a>Vagrant with VirtualBox (vmware/hyper-v also supported)</h1><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/259833884">https://zhuanlan.zhihu.com/p/259833884</a></p>
+<h1 id="Vagrant-with-VirtualBox-vmware-hyper-v-also-supported"><a href="#Vagrant-with-VirtualBox-vmware-hyper-v-also-supported" class="headerlink" title="Vagrant with VirtualBox (vmware&#x2F;hyper-v also supported)"></a>Vagrant with VirtualBox (vmware&#x2F;hyper-v also supported)</h1><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/259833884">https://zhuanlan.zhihu.com/p/259833884</a></p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -278,6 +283,10 @@
 			
 		
 			
+				<li><a href="/tags/hadoop/" title="hadoop">hadoop<sup>1</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/docker/" title="docker">docker<sup>1</sup></a></li>
 			
 		
@@ -291,10 +300,6 @@
 		
 			
 				<li><a href="/tags/spark/" title="spark">spark<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/hadoop/" title="hadoop">hadoop<sup>1</sup></a></li>
 			
 		
 		</ul>
