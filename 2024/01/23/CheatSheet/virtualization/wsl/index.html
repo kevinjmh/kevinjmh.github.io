@@ -19,7 +19,7 @@
 <meta property="og:description" content="InitEnv安装12wsl --list --onlinewsl --install Ubuntu-22.04  通过迁移 更改WSL存储目录12345678wsl -l --all -vwsl --shutdownwsl --export Ubuntu E:\runtime\wsl-ubuntu.tarwsl --unregister Ubuntuwsl --import Ubuntu E:\">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-01-23T02:02:31.000Z">
-<meta property="article:modified_time" content="2024-04-18T07:34:36.011Z">
+<meta property="article:modified_time" content="2024-05-07T02:22:35.951Z">
 <meta property="article:author" content="Manhua">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:creator" content="@jiangmanhua">
@@ -37,7 +37,7 @@
     
 <link rel="stylesheet" href="/css/style.css">
 
-<meta name="generator" content="Hexo 7.1.1"></head>
+<meta name="generator" content="Hexo 7.2.0"></head>
 
   <body>
     <header>
@@ -108,7 +108,10 @@
 
 <h2 id="通过迁移-更改WSL存储目录"><a href="#通过迁移-更改WSL存储目录" class="headerlink" title="通过迁移 更改WSL存储目录"></a>通过迁移 更改WSL存储目录</h2><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">wsl -l --all -v</span><br><span class="line">wsl --shutdown</span><br><span class="line">wsl --export Ubuntu E:\runtime\wsl-ubuntu.tar</span><br><span class="line">wsl --unregister Ubuntu</span><br><span class="line"></span><br><span class="line">wsl --import Ubuntu E:\runtime\wsl-ubuntu\ E:\runtime\wsl-ubuntu.tar --version <span class="number">2</span></span><br><span class="line">wsl --setdefault Ubuntu</span><br><span class="line">Ubuntu config --default-user manhua</span><br></pre></td></tr></table></figure>
 
-<h2 id="修改dns"><a href="#修改dns" class="headerlink" title="修改dns"></a>修改dns</h2><p>&#x2F;etc&#x2F;resolv.conf 修改为8.8.8.8，默认是宿主机，无法下载软件</p>
+<h2 id="修改dns"><a href="#修改dns" class="headerlink" title="修改dns"></a>修改dns</h2><p>默认是宿主机，无法下载软件</p>
+<p>先修改wsl配置 以免每次启动时覆盖（需要重启）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[network] </span><br><span class="line">generateResolvConf = false</span><br></pre></td></tr></table></figure>
+<p>然后修改DNS服务器<br>echo “nameserver 223.5.5.5” &gt;  &#x2F;etc&#x2F;resolv.conf</p>
 <h2 id="修改repo"><a href="#修改repo" class="headerlink" title="修改repo"></a>修改repo</h2><p>cat &#x2F;etc&#x2F;lsb-release<br>[[Ubuntu#替换软件更新源]]</p>
 <h1 id="BaseDevEnv"><a href="#BaseDevEnv" class="headerlink" title="BaseDevEnv"></a>BaseDevEnv</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install net-tools</span><br><span class="line">sudo apt install openssh-server</span><br><span class="line"></span><br><span class="line">sudo chown manhua /opt</span><br><span class="line">mkdir -p /opt/soft</span><br><span class="line">tar -xf /mnt/e/pkg/jdk-8u202-linux-x64.tar.gz -C /opt/soft/</span><br><span class="line">ln -s jdk1.8.0_202/ jdk</span><br><span class="line">tar -xf /mnt/e/pkg/apache-maven-3.8.8-bin.tar.gz -C /opt/soft/</span><br><span class="line">ln -s apache-maven-3.8.8/ maven</span><br><span class="line"></span><br><span class="line">vi /etc/profile</span><br><span class="line"></span><br><span class="line">#sudo apt install openjdk-8-jre-headless</span><br><span class="line">#sudo apt install maven</span><br><span class="line">#sudo apt install mysql-server</span><br><span class="line"></span><br><span class="line">service ssh start</span><br></pre></td></tr></table></figure>
 

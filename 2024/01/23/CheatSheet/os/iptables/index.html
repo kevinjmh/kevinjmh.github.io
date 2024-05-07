@@ -19,7 +19,7 @@
 <meta property="og:description" content="目前Linux系统的防火墙类型主要有两种：分别是iptables和firewalld，他们不是真正的防火墙，是指用来定义防火墙规则功能的”防火墙管理工具&#x2F;程序”，将定义好的规则交由内核中的netfilter即网络过滤器来读取，从而真正实现防火墙功能。 在配置防火墙时，不建议两种配置方法结合使用（建议只使用其中的一种）  iptables-静态防火墙 早期的Linux系统中默认使用的是ip">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-01-23T02:01:42.000Z">
-<meta property="article:modified_time" content="2024-04-18T07:34:36.007Z">
+<meta property="article:modified_time" content="2024-05-07T02:22:35.947Z">
 <meta property="article:author" content="Manhua">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:creator" content="@jiangmanhua">
@@ -37,7 +37,7 @@
     
 <link rel="stylesheet" href="/css/style.css">
 
-<meta name="generator" content="Hexo 7.1.1"></head>
+<meta name="generator" content="Hexo 7.2.0"></head>
 
   <body>
     <header>
@@ -187,7 +187,7 @@
 
 <h2 id="数据传输：BDOC-邮箱-北方-萝岗"><a href="#数据传输：BDOC-邮箱-北方-萝岗" class="headerlink" title="数据传输：BDOC-邮箱-北方-萝岗"></a>数据传输：BDOC-邮箱-北方-萝岗</h2><p>iptables -N hdfs<br>iptables -A INPUT -p tcp  -m multiport –dport 9000,50010 -j hdfs<br>iptables -A hdfs  -p tcp  -m iprange –src-range 10.3.16.118-10.3.16.126   -j ACCEPT<br>iptables -A hdfs  -p tcp  -m iprange –src-range 10.3.60.121-10.3.60.130  -j ACCEPT<br>iptables -A hdfs  -p tcp  -m iprange –src-range 10.33.21.190-10.33.21.194  -j ACCEPT<br>iptables -A hdfs  -p tcp  -m iprange –src-range 10.17.41.127-10.17.41.133  -j ACCEPT<br>iptables -A hdfs  -p tcp  -m iprange –src-range 10.17.41.18-10.17.41.26  -j ACCEPT<br>iptables -A hdfs  -p tcp  -m iprange –src-range 10.3.4.141-10.3.4.145  -j ACCEPT<br>iptables -A hdfs  -p tcp  -m iprange –src-range 10.3.4.191-10.3.4.195  -j ACCEPT<br>iptables -A hdfs  -p tcp  -s 10.3.4.48  -j ACCEPT</p>
 <h2 id="optional-部分机器"><a href="#optional-部分机器" class="headerlink" title="(optional-部分机器)"></a>(optional-部分机器)</h2><p>iptables -A INPUT -p tcp -m tcp –dport 10003 -s 10.3.4.192,10.3.4.194,10.27.48.1,10.27.48.2 -j ACCEPT -m comment –comment  “user-center”</p>
-<h1 id="端口转发"><a href="#端口转发" class="headerlink" title="端口转发"></a>端口转发</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">sysctl -w net.ipv4.ip_forward=1 # less  /etc/sysctl.conf</span><br><span class="line"></span><br><span class="line">sudo iptables -t nat -I PREROUTING -p tcp --dport 8848 -j DNAT --to-destination 36.xxxx:32222  </span><br><span class="line"></span><br><span class="line">sudo iptables -t nat -I POSTROUTING -p tcp -d 36.xxxx --dport 32222 -j MASQUERADE</span><br><span class="line"></span><br><span class="line">sudo iptables -I FORWARD -p tcp -d 36.xxxx --dport 32222 -j ACCEPT</span><br><span class="line"></span><br><span class="line">    iptables -t nat -nL PREROUTING --line-number</span><br><span class="line">    iptables -t nat -nL POSTROUTING --line-number</span><br><span class="line">    iptables -t filter -nL FORWARD</span><br></pre></td></tr></table></figure>
+<h1 id="端口转发"><a href="#端口转发" class="headerlink" title="端口转发"></a>端口转发</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">sysctl -w net.ipv4.ip_forward=1 </span><br><span class="line"># less  /etc/sysctl.conf</span><br><span class="line">#net.ipv4.ip_forward=1</span><br><span class="line"></span><br><span class="line">sudo iptables -t nat -I PREROUTING -p tcp -s 10.3.(允许的ip)--dport 8848 -j DNAT --to-destination 36.xxxx:32222  </span><br><span class="line"></span><br><span class="line">sudo iptables -t nat -I POSTROUTING -p tcp -d 36.xxxx --dport 32222 -j MASQUERADE</span><br><span class="line"></span><br><span class="line">#sudo iptables -I FORWARD -p tcp -d 36.xxxx --dport 32222 -j ACCEPT</span><br><span class="line"></span><br><span class="line">#iptables -A INPUT -m iprange --src-range  10.27.48.1-10.27.48.43  -j ACCEPT</span><br><span class="line">#iptables -A INPUT -p tcp -m multiport --dports 8848 -j DROP</span><br><span class="line"></span><br><span class="line">    iptables -t nat -nL PREROUTING --line-number</span><br><span class="line">    iptables -t nat -nL POSTROUTING --line-number</span><br><span class="line">    iptables -t filter -nL FORWARD</span><br></pre></td></tr></table></figure>
 
 
 <h1 id="Firewalld"><a href="#Firewalld" class="headerlink" title="Firewalld"></a>Firewalld</h1><p>frewalld是服务名称，firewall-cmd和firewall-config是配置工具名称</p>
