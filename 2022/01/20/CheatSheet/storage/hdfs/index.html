@@ -19,7 +19,7 @@
 <meta property="og:description" content="shell直接写文件12dfs dfs -appendToFile - HDFSfile# 按ctrl+C结束写入   部署3.x12export JAVA_HOME&#x3D;&#x2F;opt&#x2F;soft&#x2F;jdkexport HADOOP_PID_DIR&#x3D;$&#123;HADOOP_HOME&#125;  1234&lt;property&gt;    &lt;name&gt;fs.defaultFS&lt;&#x2F;na">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-01-20T06:11:43.000Z">
-<meta property="article:modified_time" content="2024-05-07T02:22:35.951Z">
+<meta property="article:modified_time" content="2024-05-27T01:20:15.127Z">
 <meta property="article:author" content="Manhua">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:creator" content="@jiangmanhua">
@@ -189,7 +189,7 @@
 <h1 id="查看文件并排序"><a href="#查看文件并排序" class="headerlink" title="查看文件并排序"></a>查看文件并排序</h1><p>按统计大小排序<br>hdfs dfs -dus -h &#x2F;hive&#x2F;warehouse&#x2F;orc_db&#x2F;*  |sed ‘s&#x2F; &#x2F;&#x2F;‘| sort -h</p>
 <p>按日期排序<br>hdfs dfs -ls -t &#x2F;hive&#x2F;warehouse&#x2F;orc_db</p>
 <h1 id="修改副本数"><a href="#修改副本数" class="headerlink" title="修改副本数"></a>修改副本数</h1><p>（部分节点无法访问时 临时增加副本提供访问能力）</p>
-<p>hdfs dfs -setrep 4 &#x2F;hive&#x2F;…</p>
+<p>hdfs dfs -setrep 4 &#x2F;hive&#x2F;…<br>hadoop dfs -D dfs.replication&#x3D;2 -put abc.txt &#x2F;tmp</p>
 <h1 id="distcp"><a href="#distcp" class="headerlink" title="distcp"></a>distcp</h1><h2 id="指定队列"><a href="#指定队列" class="headerlink" title="指定队列"></a>指定队列</h2><p>hadoop distcp -Dmapred.job.queue.name&#x3D;root.default …<br>hadoop distcp -Dmapreduce.job.queuename …</p>
 <h2 id="对拷sftp"><a href="#对拷sftp" class="headerlink" title="对拷sftp"></a>对拷sftp</h2><p>sftpRemote&#x3D;”&#x2F;xxx”<br>sftp_user&#x3D;”xxx”<br>sftp_pw&#x3D;’xxx’  ##服务器密码<br>sftp_ip&#x3D;””<br>sftp_port&#x3D;””</p>
 <p>hadoop distcp -D fs.sftp.impl&#x3D;org.apache.hadoop.fs.sftp.SFTPFileSystem hdfs:&#x2F;&#x2F;&#x2F;hive&#x2F;warehouse&#x2F;ads.db&#x2F;user_label_iop&#x2F;tp&#x3D;202309  sftp:&#x2F;&#x2F;${sftp_user}:${sftp_pw}@${sftp_ip}:${sftp_port}${sftpRemote}&#x2F;tpftp&#x3D;202309</p>

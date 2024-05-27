@@ -11,15 +11,15 @@
     
 
     
-    <meta name="description" content="Hello Worldclickhouse start clickhouse-client 概念主键primary keys： not unique, determines how the data is sorted &#x3D;&gt; 理解为carbondata的sort columns Every 8,192 rows or 10MB of data (referred to as the">
+    <meta name="description" content="启动clickhouse start clickhouse-client docker12docker pull clickhouse&#x2F;clickhouse-server:22.8.14.53docker run -di --name&#x3D;clickhouse-server -p 8123:8123 clickhouse&#x2F;clickhouse-server:22.8.14.53    概念数据类型枚举">
 <meta property="og:type" content="article">
 <meta property="og:title" content="clickhouse">
 <meta property="og:url" content="http://kevinjmh.github.io/2022/05/10/CheatSheet/database/clickhouse/index.html">
 <meta property="og:site_name" content="Manhua">
-<meta property="og:description" content="Hello Worldclickhouse start clickhouse-client 概念主键primary keys： not unique, determines how the data is sorted &#x3D;&gt; 理解为carbondata的sort columns Every 8,192 rows or 10MB of data (referred to as the">
+<meta property="og:description" content="启动clickhouse start clickhouse-client docker12docker pull clickhouse&#x2F;clickhouse-server:22.8.14.53docker run -di --name&#x3D;clickhouse-server -p 8123:8123 clickhouse&#x2F;clickhouse-server:22.8.14.53    概念数据类型枚举">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-05-10T04:11:43.000Z">
-<meta property="article:modified_time" content="2024-05-07T02:22:35.947Z">
+<meta property="article:modified_time" content="2024-05-27T01:20:15.127Z">
 <meta property="article:author" content="Manhua">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:creator" content="@jiangmanhua">
@@ -100,13 +100,109 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Hello-World"><span class="toc-number">1.</span> <span class="toc-text">Hello World</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5"><span class="toc-number">2.</span> <span class="toc-text">概念</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BB%E9%94%AE"><span class="toc-number">2.1.</span> <span class="toc-text">主键</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8E%9F%E7%90%86"><span class="toc-number">3.</span> <span class="toc-text">原理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%88%86%E5%B8%83"><span class="toc-number">4.</span> <span class="toc-text">数据分布</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B"><span class="toc-number">4.1.</span> <span class="toc-text">加载过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%8B%E7%BC%A9%E5%9D%97"><span class="toc-number">4.2.</span> <span class="toc-text">压缩块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F-%E5%89%AF%E6%9C%AC"><span class="toc-number">4.3.</span> <span class="toc-text">分布式  副本</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#kafka%E6%8E%A5%E5%85%A5ck"><span class="toc-number">5.</span> <span class="toc-text">kafka接入ck</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9B%B4%E6%96%B0kafka%E9%85%8D%E7%BD%AE"><span class="toc-number">5.1.</span> <span class="toc-text">更新kafka配置</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#spark%E8%BF%9E%E6%8E%A5clickhouse"><span class="toc-number">6.</span> <span class="toc-text">spark连接clickhouse</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#housepower"><span class="toc-number">6.1.</span> <span class="toc-text">housepower</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#jdbc"><span class="toc-number">6.2.</span> <span class="toc-text">jdbc</span></a></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8"><span class="toc-number">1.</span> <span class="toc-text">启动</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#docker"><span class="toc-number">1.1.</span> <span class="toc-text">docker</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5"><span class="toc-number">2.</span> <span class="toc-text">概念</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">2.1.</span> <span class="toc-text">数据类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93Engine"><span class="toc-number">2.2.</span> <span class="toc-text">数据库Engine</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%A8Engine"><span class="toc-number">2.3.</span> <span class="toc-text">表Engine</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0"><span class="toc-number">2.4.</span> <span class="toc-text">函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Projection%E5%8A%A0%E9%80%9F%E6%9F%A5%E8%AF%A2-%EF%BC%88%E7%B1%BB%E4%BC%BCMV%EF%BC%89"><span class="toc-number">2.5.</span> <span class="toc-text">Projection加速查询 （类似MV）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E8%A1%A8"><span class="toc-number">2.6.</span> <span class="toc-text">分布式表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F%E6%93%8D%E4%BD%9C"><span class="toc-number">2.7.</span> <span class="toc-text">数据格式操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BB%E9%94%AE"><span class="toc-number">2.8.</span> <span class="toc-text">主键</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8E%9F%E7%90%86"><span class="toc-number">3.</span> <span class="toc-text">原理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%88%86%E5%B8%83"><span class="toc-number">4.</span> <span class="toc-text">数据分布</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B"><span class="toc-number">4.1.</span> <span class="toc-text">加载过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%8B%E7%BC%A9%E5%9D%97"><span class="toc-number">4.2.</span> <span class="toc-text">压缩块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F-%E5%89%AF%E6%9C%AC"><span class="toc-number">4.3.</span> <span class="toc-text">分布式  副本</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#kafka%E6%8E%A5%E5%85%A5ck"><span class="toc-number">5.</span> <span class="toc-text">kafka接入ck</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9B%B4%E6%96%B0kafka%E9%85%8D%E7%BD%AE"><span class="toc-number">5.1.</span> <span class="toc-text">更新kafka配置</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#spark%E8%BF%9E%E6%8E%A5clickhouse"><span class="toc-number">6.</span> <span class="toc-text">spark连接clickhouse</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#housepower"><span class="toc-number">6.1.</span> <span class="toc-text">housepower</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#jdbc"><span class="toc-number">6.2.</span> <span class="toc-text">jdbc</span></a></li></ol></li></ol>
 		
 		</div>
 		
-		<h1 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World"></a>Hello World</h1><p>clickhouse start</p>
+		<h1 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h1><p>clickhouse start</p>
 <p>clickhouse-client</p>
-<h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><h2 id="主键"><a href="#主键" class="headerlink" title="主键"></a>主键</h2><p>primary keys： not unique, determines how the data is sorted &#x3D;&gt; 理解为carbondata的sort columns</p>
+<h2 id="docker"><a href="#docker" class="headerlink" title="docker"></a>docker</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker pull clickhouse/clickhouse-server:22.8.14.53</span><br><span class="line">docker run -di --name=clickhouse-server -p 8123:8123 clickhouse/clickhouse-server:22.8.14.53</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><p>枚举值<br>低基数string</p>
+<h2 id="数据库Engine"><a href="#数据库Engine" class="headerlink" title="数据库Engine"></a>数据库Engine</h2><ul>
+<li>Atomic(默认)<ul>
+<li>数据存储在目录：<code>/clickhouse_path/store/xxx/UUID/</code></li>
+<li>特别命令：exchange tables t1 and t2</li>
+</ul>
+</li>
+<li>Replicated(整库复制)<ul>
+<li>基于Atomic，将DDL日志写入ZooKeeper并在给定数据库的所有副本上执行的元数据复制。</li>
+</ul>
+</li>
+<li>Lazy<ul>
+<li>只在内存中保存上次访问后<code>expiration_time_in_seconds</code>秒，常用于Log</li>
+</ul>
+</li>
+<li>SQLite(映射访问)</li>
+<li>MySQL(映射访问)</li>
+<li>MaterializeMySQL(副本)<ul>
+<li>ClickHouse服务器作为MySQL副本工作，创建ClickHouse数据库，包含MySQL中所有的表，以及这些表中的所有数据。它读取binlog并执行DDL和DML查询。</li>
+</ul>
+</li>
+<li>PostgreSQL(映射访问)</li>
+<li>MaterializePostgreSQL(副本)<ul>
+<li>ClickHouse服务器作为PostgreSQL副本工作。</li>
+</ul>
+</li>
+</ul>
+<h2 id="表Engine"><a href="#表Engine" class="headerlink" title="表Engine"></a>表Engine</h2><ul>
+<li>MergeTree(使用replicated引擎)<ul>
+<li>MergeTree<ul>
+<li>快速插入，后台合并</li>
+<li>主键 或 <code>order by</code>排序</li>
+<li>支持分区&#x2F;副本&#x2F;采样<code>sample by</code>&#x2F;TTL</li>
+</ul>
+</li>
+<li>ReplacingMergeTree<ul>
+<li>删除排序键值相同的重复项</li>
+</ul>
+</li>
+<li>SummingMergeTree<ul>
+<li>ClickHouse可能不会完整的汇总所有行，会按片段把所有具有相同主键的行合并为一行，以至于不同的数据片段中会包含具有相同主键的行，即单个汇总片段将会是不完整的。</li>
+</ul>
+</li>
+<li>AggregatingMergeTree<ul>
+<li>插入数据，需使用带有 -State- 聚合函数</li>
+</ul>
+</li>
+<li>CollapsingMergeTree</li>
+<li>VersionedCollapsingMergeTree</li>
+<li>GraphiteMergeTree<ul>
+<li>时序数据</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>日志(适合小表≤100w)<ul>
+<li>TinyLog</li>
+<li>StripeLog</li>
+<li>Log</li>
+</ul>
+</li>
+<li>集成<ul>
+<li>Kafka</li>
+<li>MySQL</li>
+<li>ODBC</li>
+<li>JDBC</li>
+<li>HDFS</li>
+</ul>
+</li>
+<li>其他<ul>
+<li>Distributed</li>
+<li>MaterializedView</li>
+<li>Dictionary</li>
+<li>Merge</li>
+<li>File</li>
+<li>Null</li>
+<li>Set</li>
+<li>Join</li>
+<li>URL</li>
+<li>View</li>
+<li>Memory</li>
+<li>Buffer</li>
+</ul>
+</li>
+</ul>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><p>bar(price, 0, 1000000, 80 )</p>
+<h2 id="Projection加速查询-（类似MV）"><a href="#Projection加速查询-（类似MV）" class="headerlink" title="Projection加速查询 （类似MV）"></a>Projection加速查询 （类似MV）</h2><p>允许我们通过存储任意格式的预先聚合的数据来提高查询速度。在执行时，如果 ClickHouse 认为 Projection 可以提高查询的性能，它将使用 Projection（何时使用由 ClickHouse 决定）。</p>
+<h2 id="分布式表"><a href="#分布式表" class="headerlink" title="分布式表"></a>分布式表</h2><p>实际上是一种view（像HDFS联邦），映射到ClickHouse集群的本地表。 从分布式表中执行<strong>SELECT</strong>查询会使用集群所有分片的资源。 您可以为多个集群指定configs，并创建多个分布式表，为不同的集群提供视图。</p>
+<p>ClickHouse负责所有副本的数据一致性，并在失败后自动运行恢复过程。建议将ZooKeeper集群部署在单独的服务器上（其中没有其他进程，包括运行的ClickHouse）</p>
+<h2 id="数据格式操作"><a href="#数据格式操作" class="headerlink" title="数据格式操作"></a>数据格式操作</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># CSV</span></span><br><span class="line">$ clickhouse-client --format_csv_delimiter=<span class="string">&quot;|&quot;</span> --query=<span class="string">&quot;INSERT INTO test.csv FORMAT CSV&quot;</span> &lt; data.csv</span><br><span class="line"></span><br><span class="line"><span class="comment"># Parquet</span></span><br><span class="line">$ <span class="built_in">cat</span> &#123;filename&#125; | clickhouse-client --query=<span class="string">&quot;INSERT INTO &#123;some_table&#125; FORMAT Parquet&quot;</span></span><br><span class="line">$ clickhouse-client --query=<span class="string">&quot;SELECT * FROM &#123;some_table&#125; FORMAT Parquet&quot;</span> &gt; &#123;some_file.pq&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># ORC</span></span><br><span class="line">$ <span class="built_in">cat</span> filename.orc | clickhouse-client --query=<span class="string">&quot;INSERT INTO some_table FORMAT ORC&quot;</span></span><br><span class="line">$ clickhouse-client --query=<span class="string">&quot;SELECT * FROM &#123;some_table&#125; FORMAT ORC&quot;</span> &gt; &#123;filename.orc&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="主键"><a href="#主键" class="headerlink" title="主键"></a>主键</h2><p>primary keys： not unique, determines how the data is sorted &#x3D;&gt; 理解为carbondata的sort columns</p>
 <p>Every 8,192 rows or 10MB of data (referred to as the index granularity) creates an entry in the primary key index file. This granularity concept creates a sparse index that can easily fit in memory, and the granules represent a stripe of the smallest amount of column data that gets processed during SELECT queries.</p>
 <p>The primary key can be defined using the PRIMARY KEY parameter.<br>If you define a table without a PRIMARY KEY specified, then the key becomes the tuple specified in the ORDER BY clause.<br>If you specify both a PRIMARY KEY and an ORDER BY, the primary key must be a subset of the sort order.</p>
 <h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><p>OLAP毫秒级</p>
