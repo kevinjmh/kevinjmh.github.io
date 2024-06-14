@@ -4,22 +4,22 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>vsftp | Manhua</title>
+    <title>Manhua</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Manhua">
     
 
     
-    <meta name="description" content="installsudo apt install vsftpdsudo apt install db5.3-util configvirtual users1.添加虚拟用户名和密码，一行用户名，一行密码，以此类推。奇数行为用户名，偶数行为密码。vi ~&#x2F;vftpuser.txt 1234ftp1123456ftp21234567  2.使用db_load命令生成虚拟用户口令认证文件db5.">
+    <meta name="description" content="各个输入按号码尾号分区后关联，在输入数据已知分布均匀的情况可以比hash更有效避免倾斜 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182p">
 <meta property="og:type" content="article">
-<meta property="og:title" content="vsftp">
-<meta property="og:url" content="http://kevinjmh.github.io/2024/01/23/CheatSheet/os/soft/vsftp/index.html">
+<meta property="og:title" content="Manhua">
+<meta property="og:url" content="http://kevinjmh.github.io/2024/06/14/CheatSheet/computing/spark/%E6%89%8B%E6%9C%BA%E5%B0%BE%E5%8F%B7hugeJoin/index.html">
 <meta property="og:site_name" content="Manhua">
-<meta property="og:description" content="installsudo apt install vsftpdsudo apt install db5.3-util configvirtual users1.添加虚拟用户名和密码，一行用户名，一行密码，以此类推。奇数行为用户名，偶数行为密码。vi ~&#x2F;vftpuser.txt 1234ftp1123456ftp21234567  2.使用db_load命令生成虚拟用户口令认证文件db5.">
+<meta property="og:description" content="各个输入按号码尾号分区后关联，在输入数据已知分布均匀的情况可以比hash更有效避免倾斜 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182p">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-01-23T02:01:39.000Z">
-<meta property="article:modified_time" content="2024-05-27T01:20:15.127Z">
+<meta property="article:published_time" content="2024-06-14T09:09:57.639Z">
+<meta property="article:modified_time" content="2024-06-14T09:09:57.639Z">
 <meta property="article:author" content="Manhua">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:creator" content="@jiangmanhua">
@@ -84,14 +84,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2024/01/23/CheatSheet/os/soft/vsftp/" title="vsftp" itemprop="url">vsftp</a>
+      <a href="/2024/06/14/CheatSheet/computing/spark/手机尾号hugeJoin/" title="" itemprop="url"></a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="Manhua" target="_blank" itemprop="author">Manhua</a>
 		
   <p class="article-time">
-    <time datetime="2024-01-23T02:01:39.000Z" itemprop="datePublished"> Published 2024-01-23</time>
+    <time datetime="2024-06-14T09:09:57.639Z" itemprop="datePublished"> Published 2024-06-14</time>
     
   </p>
 </header>
@@ -100,27 +100,12 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#install"><span class="toc-number">1.</span> <span class="toc-text">install</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#config"><span class="toc-number">2.</span> <span class="toc-text">config</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#virtual-users"><span class="toc-number">2.1.</span> <span class="toc-text">virtual users</span></a></li></ol></li></ol>
+			
 		
 		</div>
 		
-		<h2 id="install"><a href="#install" class="headerlink" title="install"></a>install</h2><p>sudo apt install vsftpd<br>sudo apt install db5.3-util</p>
-<h2 id="config"><a href="#config" class="headerlink" title="config"></a>config</h2><h3 id="virtual-users"><a href="#virtual-users" class="headerlink" title="virtual users"></a>virtual users</h3><p>1.添加虚拟用户名和密码，一行用户名，一行密码，以此类推。奇数行为用户名，偶数行为密码。<br>vi ~&#x2F;vftpuser.txt</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ftp1</span><br><span class="line">123456</span><br><span class="line">ftp2</span><br><span class="line">1234567</span><br></pre></td></tr></table></figure>
-
-<p>2.使用db_load命令生成虚拟用户口令认证文件<br>db5.3_load -T -t hash -f ~&#x2F;vftpuser.txt vftpuser.db</p>
-<p>3.编辑vsftpd的PAM认证文件<br>&#x2F;etc&#x2F;pam.d&#x2F;vsftpd<br>注释掉原有的规则<br>auth required  pam_userdb.so db&#x3D;&#x2F;home&#x2F;admin&#x2F;vftpuser<br>account required pam_userdb.so db&#x3D;&#x2F;home&#x2F;admin&#x2F;vftpuser</p>
-<p>4.建立本地映射用户并设置宿主目录权限<br>useradd -d &#x2F;home&#x2F;vftpuser -s &#x2F;sbin&#x2F;nologin vftpuser<br>sudo mkdir -p &#x2F;home&#x2F;vftpuser&#x2F;data<br>sudo chmod 755 &#x2F;home&#x2F;vftpuser      #调整权限以允许浏览目录，目录归属于root<br>sudo chmod 555 &#x2F;home&#x2F;vftpuser&#x2F;data #chroot_local_user为真时要求虚拟根目录不能写权限</p>
-<p>5.设置虚拟用户配置项<br>vi &#x2F;etc&#x2F;vsftpd.conf</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#以下这些是关于Vsftpd虚拟用户支持的重要配置项目。默认Vsftpd.conf中不包含这些设定项目，需要自己手动添加配置</span><br><span class="line">guest_enable=YES</span><br><span class="line">#设定启用虚拟用户功能。</span><br><span class="line">guest_username=vftpuser</span><br><span class="line">#指定虚拟用户的宿主用户。</span><br><span class="line">user_config_dir=/home/vftpuser/vconf</span><br><span class="line">#设定虚拟用户个人Vsftp的配置文件存放路径。这个被指定的目录里将存放每个Vsftp虚拟用户个性的配置文件，这些配置文件名必须和虚拟用户名相同。</span><br><span class="line">chroot_local_user=YES</span><br><span class="line"># 限制用户离开指定的根目录</span><br></pre></td></tr></table></figure>
-
-<p>6.设置虚拟用户个性配置<br>vi &#x2F;home&#x2F;vftpuser&#x2F;vconf&#x2F;ftp1</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">anon_upload_enable=YES</span><br><span class="line">anon_mkdir_write_enable=YES</span><br><span class="line">virtual_use_local_privs=YES</span><br><span class="line">local_root=/home/vftpuser/data</span><br></pre></td></tr></table></figure>
-<p>touch &#x2F;home&#x2F;vftpuser&#x2F;vconf&#x2F;ftp2 #空文件，用户只读</p>
-<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/ssrs-wanghao/articles/13751408.html">https://www.cnblogs.com/ssrs-wanghao/articles/13751408.html</a></p>
-<p>7.重启服务<br>service vsftpd restart</p>
-<p>8.连接<br>ftp <a href="mailto:&#102;&#x74;&#x70;&#x31;&#x40;&#49;&#57;&#x32;&#46;&#49;&#54;&#56;&#46;&#x31;&#51;&#55;&#46;&#49;&#x31;&#49;">&#102;&#x74;&#x70;&#x31;&#x40;&#49;&#57;&#x32;&#46;&#49;&#54;&#56;&#46;&#x31;&#51;&#55;&#46;&#49;&#x31;&#49;</a></p>
-  
+		<p>各个输入按号码尾号分区后关联，在输入数据已知分布均匀的情况可以比hash更有效避免倾斜</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> ads_labels</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.apache.spark.<span class="type">Partitioner</span></span><br><span class="line"><span class="keyword">import</span> org.apache.spark.sql.<span class="type">SparkSession</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.sql.<span class="type">Date</span></span><br><span class="line"><span class="keyword">import</span> java.text.<span class="type">SimpleDateFormat</span></span><br><span class="line"><span class="keyword">import</span> java.util</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">object</span> <span class="title">wp05_part</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="class"><span class="keyword">class</span> <span class="title">CustomPartitioner</span>(<span class="params"></span>) <span class="keyword">extends</span> <span class="title">Partitioner</span> </span>&#123;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">def</span> <span class="title">numPartitions</span></span>: <span class="type">Int</span> = <span class="number">10</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">def</span> <span class="title">getPartition</span></span>(key: <span class="type">Any</span>): <span class="type">Int</span> = &#123;</span><br><span class="line">      key.toString.substring(key.toString.length - <span class="number">1</span>).toInt</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">main</span></span>(args: <span class="type">Array</span>[<span class="type">String</span>]): <span class="type">Unit</span> = &#123;</span><br><span class="line">    <span class="keyword">val</span> spark = <span class="type">SparkSession</span>.builder</span><br><span class="line">      .enableHiveSupport()</span><br><span class="line">      .getOrCreate()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">val</span> dateStr = args(<span class="number">0</span>) </span><br><span class="line"></span><br><span class="line">    <span class="keyword">val</span> phonePartitioner = <span class="keyword">new</span> <span class="type">CustomPartitioner</span>()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">import</span> spark.implicits._</span><br><span class="line">    <span class="keyword">val</span> d1=spark.sql(</span><br><span class="line">      <span class="string">s&quot;&quot;</span><span class="string">&quot;</span></span><br><span class="line"><span class="string">         |select distinct phone, id, parent_id</span></span><br><span class="line"><span class="string">         |from t1</span></span><br><span class="line"><span class="string">         |where ...</span></span><br><span class="line"><span class="string">         |&quot;</span><span class="string">&quot;&quot;</span>.stripMargin)</span><br><span class="line">      .groupByKey(_.getAs[<span class="type">String</span>](<span class="string">&quot;phone&quot;</span>))</span><br><span class="line">      .mapGroups((phone, rows) =&gt; &#123;</span><br><span class="line">        ...</span><br><span class="line">        (phone, ...)</span><br><span class="line">      &#125;).rdd.keyBy(_._1).partitionBy(phonePartitioner)</span><br><span class="line">      .map(_._2)</span><br><span class="line">      .toDF(<span class="string">&quot;msisdn&quot;</span>, <span class="string">&quot;wp0503&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">val</span> d2=spark.sql(</span><br><span class="line">      <span class="string">s&quot;&quot;</span><span class="string">&quot;</span></span><br><span class="line"><span class="string">         |select msisdn,...</span></span><br><span class="line"><span class="string">         |from t2</span></span><br><span class="line"><span class="string">         |group by msisdn</span></span><br><span class="line"><span class="string">         |&quot;</span><span class="string">&quot;&quot;</span>.stripMargin)</span><br><span class="line">      .rdd.keyBy(_.getString(<span class="number">0</span>)).partitionBy(phonePartitioner)</span><br><span class="line">      .map(r =&gt; &#123; (r._2.getString(<span class="number">0</span>), r._2.getDate(<span class="number">1</span>), r._2.getDate(<span class="number">2</span>))&#125;)</span><br><span class="line">      .toDF(<span class="string">&quot;msisdn&quot;</span>,...)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">val</span> d3=spark.sql(</span><br><span class="line">      <span class="string">s&quot;&quot;</span><span class="string">&quot;</span></span><br><span class="line"><span class="string">         |select servnumber as msisdn,...</span></span><br><span class="line"><span class="string">         |from t3</span></span><br><span class="line"><span class="string">         |where ...</span></span><br><span class="line"><span class="string">         |group by servnumber</span></span><br><span class="line"><span class="string">         |&quot;</span><span class="string">&quot;&quot;</span>.stripMargin)</span><br><span class="line">      .rdd.keyBy(_.getString(<span class="number">0</span>)).partitionBy(phonePartitioner)</span><br><span class="line">      .map(r =&gt; &#123;</span><br><span class="line">        (r._2.getString(<span class="number">0</span>), r._2.getDate(<span class="number">1</span>), r._2.getDate(<span class="number">2</span>), r._2.getInt(<span class="number">3</span>))</span><br><span class="line">      &#125;)</span><br><span class="line">      .toDF(<span class="string">&quot;msisdn&quot;</span>, ...)</span><br><span class="line"></span><br><span class="line">    d2.join(d1, <span class="type">Seq</span>(<span class="string">&quot;msisdn&quot;</span>), <span class="string">&quot;outer&quot;</span>)</span><br><span class="line">      .join(d3, <span class="type">Seq</span>(<span class="string">&quot;msisdn&quot;</span>), <span class="string">&quot;outer&quot;</span>)</span><br><span class="line">      .toDF()</span><br><span class="line">      .createOrReplaceTempView(<span class="string">&quot;result&quot;</span>)</span><br><span class="line"></span><br><span class="line">    spark.sql(</span><br><span class="line">      <span class="string">s&quot;&quot;</span><span class="string">&quot;</span></span><br><span class="line"><span class="string">         |insert overwrite table R1 partition (dtime=&#x27;test$&#123;dateStr&#125;&#x27;)</span></span><br><span class="line"><span class="string">         |select msisdn,...</span></span><br><span class="line"><span class="string">         |from result</span></span><br><span class="line"><span class="string">         |&quot;</span><span class="string">&quot;&quot;</span>.stripMargin)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
@@ -132,7 +117,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://kevinjmh.github.io/2024/01/23/CheatSheet/os/soft/vsftp/" data-title="vsftp | Manhua" data-tsina="" class="share clearfix">
+	  <div data-url="http://kevinjmh.github.io/2024/06/14/CheatSheet/computing/spark/%E6%89%8B%E6%9C%BA%E5%B0%BE%E5%8F%B7hugeJoin/" data-title="Manhua" data-tsina="" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -146,18 +131,18 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2024/01/23/CheatSheet/os/iptables/" title="iptables">
+ <a href="/2024/06/14/CheatSheet/database/mermaid画图/" title="">
   <strong>上一篇：</strong><br/>
   <span>
-  iptables</span>
+  (no title)</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/2024/01/23/CheatSheet/mq/kafka/"  title="kafka">
+<a href="/2024/02/28/CheatSheet/database/Oceanbase/"  title="Oceanbase">
  <strong>下一篇：</strong><br/> 
- <span>kafka
+ <span>Oceanbase
 </span>
 </a>
 </div>
