@@ -19,7 +19,7 @@
 <meta property="og:description" content="run jar主类必须是在cp第一个包中，支持*匹配 更新jar包内class文件jar uvf hadoop-common-2.8.3-lg.jar org&#x2F;apache&#x2F;hadoop&#x2F;fs&#x2F;FileUtil.class jar: 包是Java中所特有一种压缩文档   -u 添加文件到jar包中   -v 生成详细的报造，并输出至标准设备   -f 指定j">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-01-23T02:00:38.000Z">
-<meta property="article:modified_time" content="2024-06-14T09:09:57.639Z">
+<meta property="article:modified_time" content="2024-07-10T07:00:06.543Z">
 <meta property="article:author" content="Manhua">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:creator" content="@jiangmanhua">
@@ -37,7 +37,7 @@
     
 <link rel="stylesheet" href="/css/style.css">
 
-<meta name="generator" content="Hexo 7.2.0"></head>
+<meta name="generator" content="Hexo 7.3.0"></head>
 
   <body>
     <header>
@@ -126,7 +126,7 @@
 <h1 id="jshell连接DB"><a href="#jshell连接DB" class="headerlink" title="jshell连接DB"></a>jshell连接DB</h1><p>还需要加载jar包：</p>
 <ul>
 <li>jshell –class-path myOwnClassPath</li>
-<li>&#x2F;env –class-path &#x2F;data&#x2F;soft&#x2F;zeppelin&#x2F;local-repo&#x2F;jdbc&#x2F;hive-jdbc-uber-2.6.5.0-292.jar</li>
+<li>&#x2F;env –class-path &#x2F;data&#x2F;soft&#x2F;zeppelin&#x2F;local-repo&#x2F;jdbc&#x2F;hive-jdbc-2.3.10-standalone.jar</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.sql.Connection;</span><br><span class="line"><span class="keyword">import</span> java.sql.DriverManager;</span><br><span class="line"><span class="keyword">import</span> java.sql.SQLException;</span><br><span class="line"><span class="keyword">import</span> java.sql.DatabaseMetaData;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">DBConnectionDemo</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">// JDBC连接URL  	</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">url</span> <span class="operator">=</span> <span class="string">&quot;jdbc:hive://localhost:3306/mydatabase&quot;</span>;</span><br><span class="line">        <span class="type">String</span> <span class="variable">u</span> <span class="operator">=</span> <span class="string">&quot;root&quot;</span>;</span><br><span class="line">        <span class="type">String</span> <span class="variable">pw</span> <span class="operator">=</span> <span class="string">&quot;password&quot;</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Class.forName(<span class="string">&quot;org.apache.hive.jdbc.HiveDriver&quot;</span>);</span><br><span class="line">            <span class="comment">// 创建数据库连接</span></span><br><span class="line">            <span class="type">Connection</span> <span class="variable">connection</span> <span class="operator">=</span> DriverManager.getConnection(url, u, pw);</span><br><span class="line">            <span class="comment">// 在此处执行数据库操作</span></span><br><span class="line">            <span class="type">DatabaseMetaData</span> <span class="variable">meta</span> <span class="operator">=</span> connection.getMetaData();</span><br><span class="line">            meta.getDriverName();<span class="comment">//zeppelin自动补全功能需要读取到jar包中MANIFEST.MF的Implementation-Title: Hive JDBC字段</span></span><br><span class="line">            </span><br><span class="line">            <span class="comment">// 关闭连接</span></span><br><span class="line">            connection.close();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
