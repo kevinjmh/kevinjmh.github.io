@@ -1,0 +1,563 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Manhua</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Manhua">
+    
+
+    
+    <meta name="description" content="langchain+ollama 本地文档常用模型：  SBert  ollama加载模型在线[src] https:&#x2F;&#x2F;ollama.com&#x2F;libraryollama run gemma:2b 离线1、创建模型配置文件创建模型配置文件，比如: Modelfile 这个文件名，文件内容指定需要加载的具体模型文件如下： 1FROM .&#x2F;Meta-Llama-3-8B-Instruct-Q6_K.g">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Manhua">
+<meta property="og:url" content="http://kevinjmh.github.io/2024/12/27/CheatSheet/ai/RAG/index.html">
+<meta property="og:site_name" content="Manhua">
+<meta property="og:description" content="langchain+ollama 本地文档常用模型：  SBert  ollama加载模型在线[src] https:&#x2F;&#x2F;ollama.com&#x2F;libraryollama run gemma:2b 离线1、创建模型配置文件创建模型配置文件，比如: Modelfile 这个文件名，文件内容指定需要加载的具体模型文件如下： 1FROM .&#x2F;Meta-Llama-3-8B-Instruct-Q6_K.g">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-12-27T07:24:40.825Z">
+<meta property="article:modified_time" content="2024-12-27T07:24:40.825Z">
+<meta property="article:author" content="Manhua">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:creator" content="@jiangmanhua">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Manhua" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="Manhua" title="Manhua"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Manhua">Manhua</a></h1>
+				<h2 class="blog-motto">Never Say Die</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页 | Home</a></li>
+					
+						<li><a href="/archives">归档 | Archives</a></li>
+					
+						<li><a href="/about">简介 | About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:kevinjmh.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2024/12/27/CheatSheet/ai/RAG/" title="" itemprop="url"></a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Manhua" target="_blank" itemprop="author">Manhua</a>
+		
+  <p class="article-time">
+    <time datetime="2024-12-27T07:24:40.825Z" itemprop="datePublished"> Published 2024-12-27</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#ollama%E5%8A%A0%E8%BD%BD%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.</span> <span class="toc-text">ollama加载模型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8%E7%BA%BF"><span class="toc-number">1.1.</span> <span class="toc-text">在线</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A6%BB%E7%BA%BF"><span class="toc-number">1.2.</span> <span class="toc-text">离线</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E3%80%81%E5%88%9B%E5%BB%BA%E6%A8%A1%E5%9E%8B%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-number">1.2.0.1.</span> <span class="toc-text">1、创建模型配置文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%E3%80%81%E6%9E%84%E5%BB%BA%E5%AF%B9%E5%BA%94%E7%9A%84Ollama%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.2.0.2.</span> <span class="toc-text">2、构建对应的Ollama模型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3%E3%80%81%E4%BD%BF%E7%94%A8%E8%BF%99%E4%B8%AA%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.2.0.3.</span> <span class="toc-text">3、使用这个模型</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#langchain"><span class="toc-number">2.</span> <span class="toc-text">langchain</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#load-document"><span class="toc-number">2.1.</span> <span class="toc-text">load document</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#csv"><span class="toc-number">2.1.1.</span> <span class="toc-text">csv</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#load-html"><span class="toc-number">2.1.2.</span> <span class="toc-text">load html</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#load-pdf-pymupdf"><span class="toc-number">2.1.3.</span> <span class="toc-text">load pdf - pymupdf</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF"><span class="toc-number">3.</span> <span class="toc-text">前端</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#C-S"><span class="toc-number">3.1.</span> <span class="toc-text">C&#x2F;S</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#B-S"><span class="toc-number">3.2.</span> <span class="toc-text">B&#x2F;S</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<p>langchain+ollama</p>
+<p>本地文档常用模型：</p>
+<ul>
+<li>SBert</li>
+</ul>
+<h1 id="ollama加载模型"><a href="#ollama加载模型" class="headerlink" title="ollama加载模型"></a>ollama加载模型</h1><h2 id="在线"><a href="#在线" class="headerlink" title="在线"></a>在线</h2><p>[src] <a target="_blank" rel="noopener" href="https://ollama.com/library">https://ollama.com/library</a><br><code>ollama run gemma:2b</code></p>
+<h2 id="离线"><a href="#离线" class="headerlink" title="离线"></a>离线</h2><h4 id="1、创建模型配置文件"><a href="#1、创建模型配置文件" class="headerlink" title="1、创建模型配置文件"></a>1、创建模型配置文件</h4><p>创建模型配置文件，比如: <code>Modelfile</code> 这个文件名，文件内容指定需要加载的具体模型文件如下：</p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FROM ./Meta-Llama-3-8B-Instruct-Q6_K.gguf</span><br></pre></td></tr></table></figure>
+
+<h4 id="2、构建对应的Ollama模型"><a href="#2、构建对应的Ollama模型" class="headerlink" title="2、构建对应的Ollama模型"></a>2、构建对应的Ollama模型</h4><p>我们使用以下命令构建 Ollama 模型：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ollama create lm3 -f ./Modelfile</span><br></pre></td></tr></table></figure>
+
+<p>其中 <code>lm3</code> 是我们准备在Ollama中使用该模型的别名。</p>
+<p>这个命令的参数解释如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ollama create choose-a-model-name -f &lt;location of the file e.g. ./Modelfile&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="3、使用这个模型"><a href="#3、使用这个模型" class="headerlink" title="3、使用这个模型"></a>3、使用这个模型</h4><p>现在我们就可以使用了，由于是无内容审核的模型，我们可以发挥自己的想象：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ollama run lm3 <span class="string">&quot;请写一个幽默笑话&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="langchain"><a href="#langchain" class="headerlink" title="langchain"></a>langchain</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line">pip install langchain</span><br><span class="line">pip install langchain_community</span><br><span class="line">pip install langchain-chroma</span><br><span class="line">pip show langchain</span><br><span class="line"></span><br><span class="line"><span class="comment">#!/usr/bin/env python  </span></span><br><span class="line"><span class="comment"># coding=utf-8  </span></span><br><span class="line"><span class="keyword">from</span> langchain_core.documents <span class="keyword">import</span> Document  </span><br><span class="line">  </span><br><span class="line">documents = [  </span><br><span class="line">    Document(  </span><br><span class="line">        page_content=<span class="string">&quot;Dogs are great companions, known for their loyalty and friendliness.&quot;</span>,  </span><br><span class="line">        metadata=&#123;<span class="string">&quot;source&quot;</span>: <span class="string">&quot;mammal-pets-doc&quot;</span>&#125;,  </span><br><span class="line">    ),  </span><br><span class="line">    Document(  </span><br><span class="line">        page_content=<span class="string">&quot;Cats are independent pets that often enjoy their own space.&quot;</span>,  </span><br><span class="line">        metadata=&#123;<span class="string">&quot;source&quot;</span>: <span class="string">&quot;mammal-pets-doc&quot;</span>&#125;,  </span><br><span class="line">    ),  </span><br><span class="line">    Document(  </span><br><span class="line">        page_content=<span class="string">&quot;Goldfish are popular pets for beginners, requiring relatively simple care.&quot;</span>,  </span><br><span class="line">        metadata=&#123;<span class="string">&quot;source&quot;</span>: <span class="string">&quot;fish-pets-doc&quot;</span>&#125;,  </span><br><span class="line">    ),  </span><br><span class="line">    Document(  </span><br><span class="line">        page_content=<span class="string">&quot;Parrots are intelligent birds capable of mimicking human speech.&quot;</span>,  </span><br><span class="line">        metadata=&#123;<span class="string">&quot;source&quot;</span>: <span class="string">&quot;bird-pets-doc&quot;</span>&#125;,  </span><br><span class="line">    ),  </span><br><span class="line">    Document(  </span><br><span class="line">        page_content=<span class="string">&quot;Rabbits are social animals that need plenty of space to hop around.&quot;</span>,  </span><br><span class="line">        metadata=&#123;<span class="string">&quot;source&quot;</span>: <span class="string">&quot;mammal-pets-doc&quot;</span>&#125;,  </span><br><span class="line">    ),  </span><br><span class="line">]  </span><br><span class="line">  </span><br><span class="line"><span class="comment"># 使用文档创建向量数据库  </span></span><br><span class="line"><span class="keyword">from</span> langchain_chroma <span class="keyword">import</span> Chroma  </span><br><span class="line"><span class="keyword">from</span> langchain_community.embeddings <span class="keyword">import</span> OllamaEmbeddings  </span><br><span class="line">oembed = OllamaEmbeddings(base_url=<span class="string">&quot;http://localhost:11434&quot;</span>, model=<span class="string">&quot;nomic-embed-text&quot;</span>)  </span><br><span class="line">vectorstore = Chroma.from_documents(documents, embedding=oembed)  </span><br><span class="line"><span class="comment"># vectorstore.similarity_search(&quot;cat&quot;)  </span></span><br><span class="line">  </span><br><span class="line"><span class="comment"># 测试查询文档  </span></span><br><span class="line"><span class="comment"># from langchain_core.runnables import RunnableLambda  </span></span><br><span class="line"><span class="comment"># docs = vectorstore.similarity_search(question)  </span></span><br><span class="line"><span class="comment"># retriever = RunnableLambda(vectorstore.similarity_search).bind(k=1)  # select top result  </span></span><br><span class="line"><span class="comment"># retriever.batch([&quot;cat&quot;, &quot;shark&quot;])  </span></span><br><span class="line">  </span><br><span class="line">retriever = vectorstore.as_retriever(  </span><br><span class="line">    search_type=<span class="string">&quot;similarity&quot;</span>,  </span><br><span class="line">    search_kwargs=&#123;<span class="string">&quot;k&quot;</span>: <span class="number">1</span>&#125;,  </span><br><span class="line">)  </span><br><span class="line">  </span><br><span class="line"><span class="comment"># 检索问答链  </span></span><br><span class="line"><span class="comment"># 先基于问题的嵌入找到最相关的文档块，然后将这些文档块作为上下文，结合问题一起提交给ollama模型，以获取更加准确的答案  </span></span><br><span class="line"><span class="keyword">from</span> langchain_core.prompts <span class="keyword">import</span> ChatPromptTemplate  </span><br><span class="line"><span class="keyword">from</span> langchain_core.runnables <span class="keyword">import</span> RunnablePassthrough  </span><br><span class="line"><span class="keyword">from</span> langchain_community.llms <span class="keyword">import</span> Ollama  </span><br><span class="line">message = <span class="string">&quot;&quot;&quot;  </span></span><br><span class="line"><span class="string">Answer this question using the provided context only.  </span></span><br><span class="line"><span class="string">  </span></span><br><span class="line"><span class="string">&#123;question&#125;  </span></span><br><span class="line"><span class="string">  </span></span><br><span class="line"><span class="string">Context:  </span></span><br><span class="line"><span class="string">&#123;context&#125;  </span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span>  </span><br><span class="line">prompt = ChatPromptTemplate.from_messages([(<span class="string">&quot;human&quot;</span>, message)])  </span><br><span class="line">llm = Ollama(model=<span class="string">&quot;lm3&quot;</span>)  </span><br><span class="line">rag_chain = &#123;<span class="string">&quot;context&quot;</span>: retriever, <span class="string">&quot;question&quot;</span>: RunnablePassthrough()&#125; | prompt | llm  </span><br><span class="line">response = rag_chain.invoke(<span class="string">&quot;tell me about cats&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+
+<p>LangChain中的基本Embedding类公开两种方法：</p>
+<ul>
+<li><code>embed_documents</code>：适用于多个文档</li>
+<li><code>embed_query</code>：适用于单个文档</li>
+</ul>
+<h2 id="load-document"><a href="#load-document" class="headerlink" title="load document"></a>load document</h2><h3 id="csv"><a href="#csv" class="headerlink" title="csv"></a>csv</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">from langchain_community.document_loaders.csv_loader import CSVLoader</span><br><span class="line"></span><br><span class="line">file_path = (</span><br><span class="line">    &quot;../../../docs/integrations/document_loaders/example_data/mlb_teams_2012.csv&quot;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">loader = CSVLoader(file_path=file_path)</span><br><span class="line">data = loader.load()</span><br><span class="line"></span><br><span class="line">for record in data[:2]:</span><br><span class="line">    print(record)</span><br></pre></td></tr></table></figure>
+
+<h3 id="load-html"><a href="#load-html" class="headerlink" title="load html"></a>load html</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">pip install bs4 # 处理Web文档加载</span><br><span class="line"></span><br><span class="line"># 使用Loader加载文档《奥德赛》  </span><br><span class="line">from langchain_community.document_loaders import WebBaseLoader  </span><br><span class="line">odyssey_url = &quot;https://www.gutenberg.org/files/1727/1727-h/1727-h.htm&quot;  </span><br><span class="line">loader = WebBaseLoader(odyssey_url)  </span><br><span class="line">data = loader.load()  </span><br><span class="line">  </span><br><span class="line"># 分割文档Document  </span><br><span class="line">from langchain_text_splitters import RecursiveCharacterTextSplitter  </span><br><span class="line">text_splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=0)  </span><br><span class="line">all_splits = text_splitter.split_documents(data)</span><br></pre></td></tr></table></figure>
+
+<h3 id="load-pdf-pymupdf"><a href="#load-pdf-pymupdf" class="headerlink" title="load pdf - pymupdf"></a>load pdf - pymupdf</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> langchain.document_loaders <span class="keyword">import</span> PyMuPDFLoader</span><br><span class="line"></span><br><span class="line"><span class="comment"># This will load the PDF file</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">load_pdf_data</span>(<span class="params">file_path</span>):</span><br><span class="line">    <span class="comment"># Creating a PyMuPDFLoader object with file_path</span></span><br><span class="line">    loader = PyMuPDFLoader(file_path=file_path)</span><br><span class="line"> </span><br><span class="line">    <span class="comment"># loading the PDF file</span></span><br><span class="line">    docs = loader.load()</span><br><span class="line"> </span><br><span class="line">    <span class="comment"># returning the loaded document</span></span><br><span class="line">    <span class="keyword">return</span> docs</span><br><span class="line"></span><br><span class="line"><span class="comment"># Responsible for splitting the documents into several chunks</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">split_docs</span>(<span class="params">documents, chunk_size=<span class="number">1000</span>, chunk_overlap=<span class="number">20</span></span>):</span><br><span class="line"> </span><br><span class="line">    <span class="comment"># Initializing the RecursiveCharacterTextSplitter with</span></span><br><span class="line">    <span class="comment"># chunk_size and chunk_overlap</span></span><br><span class="line">    text_splitter = RecursiveCharacterTextSplitter(</span><br><span class="line">        chunk_size=chunk_size,</span><br><span class="line">        chunk_overlap=chunk_overlap</span><br><span class="line">    )</span><br><span class="line"> </span><br><span class="line">    <span class="comment"># Splitting the documents into chunks</span></span><br><span class="line">    chunks = text_splitter.split_documents(documents=documents)</span><br><span class="line"> </span><br><span class="line">    <span class="comment"># returning the document chunks</span></span><br><span class="line">    <span class="keyword">return</span> chunks</span><br><span class="line"></span><br><span class="line"><span class="comment"># function for loading the embedding model</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">load_embedding_model</span>(<span class="params">model_path, normalize_embedding=<span class="literal">True</span></span>):</span><br><span class="line">    <span class="keyword">return</span> OllamaEmbeddings(base_url=<span class="string">&quot;http://localhost:11434&quot;</span>, model=<span class="string">&quot;nomic-embed-text&quot;</span>)</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="comment"># Function for creating embeddings using FAISS</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">create_embeddings</span>(<span class="params">chunks, embedding_model, storing_path=<span class="string">&quot;vectorstore&quot;</span></span>):</span><br><span class="line">    <span class="comment"># Creating the embeddings using FAISS</span></span><br><span class="line">    vectorstore = Chroma.from_documents(chunks, embedding_model)</span><br><span class="line"> </span><br><span class="line">    <span class="comment"># Saving the model in current directory</span></span><br><span class="line">    vectorstore.save_local(storing_path)</span><br><span class="line"> </span><br><span class="line">    <span class="comment"># returning the vectorstore</span></span><br><span class="line">    <span class="keyword">return</span> vectorstore</span><br><span class="line"></span><br><span class="line">prompt = <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">### System:</span></span><br><span class="line"><span class="string">You are an AI Assistant that follows instructions extreamly well. \</span></span><br><span class="line"><span class="string">Help as much as you can.</span></span><br><span class="line"><span class="string">### User:</span></span><br><span class="line"><span class="string">&#123;prompt&#125;</span></span><br><span class="line"><span class="string">### Response:</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">template = <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">### System:</span></span><br><span class="line"><span class="string">You are an respectful and honest assistant. You have to answer the user&#x27;s \</span></span><br><span class="line"><span class="string">questions using only the context provided to you. If you don&#x27;t know the answer, \</span></span><br><span class="line"><span class="string">just say you don&#x27;t know. Don&#x27;t try to make up an answer.</span></span><br><span class="line"><span class="string">### Context:</span></span><br><span class="line"><span class="string">&#123;context&#125;</span></span><br><span class="line"><span class="string">### User:</span></span><br><span class="line"><span class="string">&#123;question&#125;</span></span><br><span class="line"><span class="string">### Response:</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Creating the chain for Question Answering</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">load_qa_chain</span>(<span class="params">retriever, llm, prompt</span>):</span><br><span class="line">    <span class="keyword">return</span> RetrievalQA.from_chain_type(</span><br><span class="line">        llm=llm,</span><br><span class="line">        retriever=retriever, <span class="comment"># here we are using the vectorstore as a retriever</span></span><br><span class="line">        chain_type=<span class="string">&quot;stuff&quot;</span>,</span><br><span class="line">        return_source_documents=<span class="literal">True</span>, <span class="comment"># including source documents in output</span></span><br><span class="line">        chain_type_kwargs=&#123;<span class="string">&#x27;prompt&#x27;</span>: prompt&#125; <span class="comment"># customizing the prompt</span></span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line"><span class="comment"># Prettifying the response</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_response</span>(<span class="params">query, chain</span>):</span><br><span class="line">    <span class="comment"># Getting response from chain</span></span><br><span class="line">    response = chain(&#123;<span class="string">&#x27;query&#x27;</span>: query&#125;)</span><br><span class="line"> </span><br><span class="line">    <span class="comment"># Wrapping the text for better output in Jupyter Notebook</span></span><br><span class="line">    wrapped_text = textwrap.fill(response[<span class="string">&#x27;result&#x27;</span>], width=<span class="number">100</span>)</span><br><span class="line">    <span class="built_in">print</span>(wrapped_text)</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> lang_funcs <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> langchain.llms <span class="keyword">import</span> Ollama</span><br><span class="line"><span class="keyword">from</span> langchain <span class="keyword">import</span> PromptTemplate</span><br><span class="line"></span><br><span class="line"><span class="comment"># Loading orca-mini from Ollama</span></span><br><span class="line">llm = Ollama(model=<span class="string">&quot;orca-mini&quot;</span>, temperature=<span class="number">0</span>)</span><br><span class="line"> </span><br><span class="line"><span class="comment"># Loading the Embedding Model</span></span><br><span class="line">embed = load_embedding_model(model_path=<span class="string">&quot;all-MiniLM-L6-v2&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># loading and splitting the documents</span></span><br><span class="line">docs = load_pdf_data(file_path=<span class="string">&quot;data/ml_book.pdf&quot;</span>)</span><br><span class="line">documents = split_docs(documents=docs)</span><br><span class="line"> </span><br><span class="line"><span class="comment"># creating vectorstore</span></span><br><span class="line">vectorstore = create_embeddings(documents, embed)</span><br><span class="line"> </span><br><span class="line"><span class="comment"># converting vectorstore to a retriever</span></span><br><span class="line">retriever = vectorstore.as_retriever()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Creating the prompt from the template which we created before</span></span><br><span class="line">prompt = PromptTemplate.from_template(template)</span><br><span class="line"> </span><br><span class="line"><span class="comment"># Creating the chain</span></span><br><span class="line">chain = load_qa_chain(retriever, llm, prompt)</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;get_response(<span class="string">&quot;What is random forest?&quot;</span>, chain)</span><br></pre></td></tr></table></figure>
+
+<h1 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h1><h2 id="C-S"><a href="#C-S" class="headerlink" title="C&#x2F;S"></a>C&#x2F;S</h2><p>AnythingLLM<br>GPT4All</p>
+<h2 id="B-S"><a href="#B-S" class="headerlink" title="B&#x2F;S"></a>B&#x2F;S</h2><p><a target="_blank" rel="noopener" href="https://github.com/open-webui/open-webui">open-webui&#x2F;open-webui: User-friendly WebUI for LLMs (Formerly Ollama WebUI) (github.com)</a></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://kevinjmh.github.io/2024/12/27/CheatSheet/ai/RAG/" data-title="Manhua" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2024/12/27/CheatSheet/os/yum/" title="">
+  <strong>上一篇：</strong><br/>
+  <span>
+  (no title)</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2024/12/27/CheatSheet/coding/git/"  title="">
+ <strong>下一篇：</strong><br/> 
+ <span>(no title)
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github Card</p>
+<div class="github-card" data-github="kevinjmh" data-width="220" data-height="119" data-theme="medium">
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+  </div>
+
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Application/" title="Application">Application<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/BigData/" title="BigData">BigData<sup>7</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/CheatSheet/" title="CheatSheet">CheatSheet<sup>21</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Info/" title="Info">Info<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/慢话/" title="慢话">慢话<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/carbondata/" title="carbondata">carbondata<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/project/" title="project">project<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/rdma/" title="rdma">rdma<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/software/" title="software">software<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/recommendation/" title="recommendation">recommendation<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/hadoop/" title="hadoop">hadoop<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/docker/" title="docker">docker<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/markdown/" title="markdown">markdown<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/carbon/" title="carbon">carbon<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/spark/" title="spark">spark<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://www.cnblogs.com/manhua" target="_blank" title="cnBlogs">cnBlogs</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m Manhua Jiang. <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/443181876" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/kevinjmh" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		<a href="https://twitter.com/jiangmanhua" target="_blank" class="icon-twitter" title="twitter"></a>
+		
+		
+		<a href="https://www.facebook.com/jiangmanhua" target="_blank" class="icon-facebook" title="facebook"></a>
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2024 
+		
+		<a href="/about" target="_blank" title="Manhua">Manhua</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+        getSize();
+        if (myWidth >= 1024) {
+          c.click();
+        }
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
