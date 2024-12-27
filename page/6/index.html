@@ -81,6 +81,94 @@
   
 <section class="post" itemscope itemprop="blogitem">
   
+    <a href="/2024/01/23/CheatSheet/database/kyuubi/" title="kyuubi" itemprop="url">
+  
+    <h1 itemprop="name">kyuubi</h1>
+    
+     
+           <p itemprop="description" >解决多租户的共享查询问题，作为多个查询引擎的统一入口
+HA通过zk实现
+存在的意义 - 对比 SparkThriftServer
+权限：STS全局只有一个SparkContext，尽管SQL下发来自不同用户，但实际都是使用启动STS的用户身份执行（proxy-user也只是一个身</p>
+        
+    
+    <time datetime="2024-01-23T02:01:19.000Z" itemprop="datePublished">2024-01-23</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/2024/01/23/CheatSheet/computing/spark/scheduler/" title="scheduler" itemprop="url">
+  
+    <h1 itemprop="name">scheduler</h1>
+    
+     
+           <p itemprop="description" >node
+Application：用户编写的Spark应用程序，由一个或多个Job组成。提交到Spark之后，Spark会为- Application分配资源，将程序进行转换并执行。
+Job（作业）：由Action算子触发生成的由一个或多个Stage组成的计算作业。
+Stage（</p>
+        
+    
+    <time datetime="2024-01-23T02:01:06.000Z" itemprop="datePublished">2024-01-23</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/2024/01/23/CheatSheet/coding/selenium/" title="selenium" itemprop="url">
+  
+    <h1 itemprop="name">selenium</h1>
+    
+     
+           <p itemprop="description" >installpip install selenium
+https://www.selenium.dev/documentation/webdriver/getting_started/install_drivers/
+play12345678910111213141516171</p>
+        
+    
+    <time datetime="2024-01-23T02:00:53.000Z" itemprop="datePublished">2024-01-23</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/2024/01/23/CheatSheet/coding/pandas/" title="pandas" itemprop="url">
+  
+    <h1 itemprop="name">pandas</h1>
+    
+     
+           <p itemprop="description" >Miniforge&amp;#x2F;micromamba1234567https://micro.mamba.pm/api/micromamba/win-64/latest micromamba.tar.bz2pip install jupyterjupyter notebookjup</p>
+        
+    
+    <time datetime="2024-01-23T02:00:47.000Z" itemprop="datePublished">2024-01-23</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
     <a href="/2024/01/23/CheatSheet/coding/mvn/" title="mvn" itemprop="url">
   
     <h1 itemprop="name">mvn</h1>
@@ -211,105 +299,6 @@ Safe mode is ON. The reported blocks 3 needs additional 2 blocks to reach the th
 
 
 
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2022/05/30/CheatSheet/database/Iceberg/" title="iceberg" itemprop="url">
-  
-    <h1 itemprop="name">iceberg</h1>
-    
-     
-           <p itemprop="description" >用途场景：
-
-schema演进：
-增删改列，重新排序，只修改元数据而不动数据文件
-内部使用唯一ID代替列
-
-
-隐式分区：
-无须显式指定分区列作为条件
-若分区来自某字段转换，两个字段均可生效分区过滤
-时间格式自动转换
-不通过目录划分分区
-
-
-分区演进：只修改元数据，旧数据不变（新分</p>
-        
-    
-    <time datetime="2022-05-30T06:11:43.000Z" itemprop="datePublished">2022-05-30</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2022/05/26/CheatSheet/database/delta/" title="Delta Lake" itemprop="url">
-  
-    <h1 itemprop="name">Delta Lake</h1>
-    
-     
-           <p itemprop="description" >https://docs.delta.io/1.2.1/delta-utility.html
-ReleaseDelta Lake 2.0.x  - for spark 3.2
-Delta Lake 2.1&amp;#x2F;2.x  - for spark 3.3
-入口sql123456</p>
-        
-    
-    <time datetime="2022-05-26T06:11:43.000Z" itemprop="datePublished">2022-05-26</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2022/05/10/CheatSheet/database/clickhouse/" title="clickhouse" itemprop="url">
-  
-    <h1 itemprop="name">clickhouse</h1>
-    
-     
-           <p itemprop="description" >启动默认绑定端口9000 与hdfs冲突，修改tcp_port默认配置文件/etc/clickhouse-server/config.xml自定义配置文件目录 /etc/clickhouse-server/config.d/
-clickhouse startclickhouse </p>
-        
-    
-    <time datetime="2022-05-10T04:11:43.000Z" itemprop="datePublished">2022-05-10</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2022/03/30/CheatSheet/visualization/zeppelin/" title="zeppelin" itemprop="url">
-  
-    <h1 itemprop="name">zeppelin</h1>
-    
-     
-           <p itemprop="description" >https://zeppelin.apache.org/download.html
-cp conf&amp;#x2F;zeppelin-site.xml.template conf&amp;#x2F;zeppelin-site.xmlvi conf&amp;#x2F;zeppelin-site.xml修</p>
-        
-    
-    <time datetime="2022-03-30T06:11:43.000Z" itemprop="datePublished">2022-03-30</time>
-  </a>
-</section>
-
-
-
-
-
-
 
   <nav id="page-nav" class="clearfix unexpand">
     <a class="extend prev" rel="prev" href="/page/5/">&lt;span&gt;&lt;&#x2F;span&gt;Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/7/">Next&lt;span&gt;&lt;&#x2F;span&gt;</a>
@@ -338,7 +327,11 @@ cp conf&amp;#x2F;zeppelin-site.xml.template conf&amp;#x2F;zeppelin-site.xmlvi co
 		<ul>
 		
 		  
-			<li><a href="/categories/Application/" title="Application">Application<sup>3</sup></a></li>
+			<li><a href="/categories/CheatSheet/AI/" title="AI">AI<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Application/" title="Application">Application<sup>2</sup></a></li>
 		  
 		
 		  
@@ -346,11 +339,27 @@ cp conf&amp;#x2F;zeppelin-site.xml.template conf&amp;#x2F;zeppelin-site.xmlvi co
 		  
 		
 		  
-			<li><a href="/categories/CheatSheet/" title="CheatSheet">CheatSheet<sup>21</sup></a></li>
+			<li><a href="/categories/CheatSheet/" title="CheatSheet">CheatSheet<sup>25</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/CheatSheet/Computing/" title="Computing">Computing<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/CheatSheet/Database/" title="Database">Database<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/CheatSheet/Development/" title="Development">Development<sup>1</sup></a></li>
 		  
 		
 		  
 			<li><a href="/categories/Info/" title="Info">Info<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/CheatSheet/Infrastructure/" title="Infrastructure">Infrastructure<sup>1</sup></a></li>
 		  
 		
 		  
@@ -367,11 +376,23 @@ cp conf&amp;#x2F;zeppelin-site.xml.template conf&amp;#x2F;zeppelin-site.xmlvi co
 		<ul class="clearfix">
 		
 			
+				<li><a href="/tags/BigData/" title="BigData">BigData<sup>4</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/carbondata/" title="carbondata">carbondata<sup>4</sup></a></li>
 			
 		
 			
 				<li><a href="/tags/project/" title="project">project<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Hadoop/" title="Hadoop">Hadoop<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Database/" title="Database">Database<sup>2</sup></a></li>
 			
 		
 			
@@ -387,23 +408,51 @@ cp conf&amp;#x2F;zeppelin-site.xml.template conf&amp;#x2F;zeppelin-site.xmlvi co
 			
 		
 			
-				<li><a href="/tags/hadoop/" title="hadoop">hadoop<sup>1</sup></a></li>
+				<li><a href="/tags/RAG/" title="RAG">RAG<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/docker/" title="docker">docker<sup>1</sup></a></li>
+				<li><a href="/tags/LLM/" title="LLM">LLM<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/markdown/" title="markdown">markdown<sup>1</sup></a></li>
+				<li><a href="/tags/Langchain/" title="Langchain">Langchain<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/carbon/" title="carbon">carbon<sup>1</sup></a></li>
+				<li><a href="/tags/Ollama/" title="Ollama">Ollama<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/spark/" title="spark">spark<sup>1</sup></a></li>
+				<li><a href="/tags/Cluster/" title="Cluster">Cluster<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/HDFS/" title="HDFS">HDFS<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Infrastructure/" title="Infrastructure">Infrastructure<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Git/" title="Git">Git<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Version-Control/" title="Version Control">Version Control<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Development/" title="Development">Development<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Flink/" title="Flink">Flink<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Stream-Processing/" title="Stream Processing">Stream Processing<sup>1</sup></a></li>
 			
 		
 		</ul>

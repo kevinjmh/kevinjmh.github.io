@@ -1,0 +1,659 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Flink CheatSheet | Manhua</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Manhua">
+    
+
+    
+    <meta name="description" content="flinkFlink applications code -&gt; JobGraph -&gt; JobManager -&gt; TaskManagers 环境  ExecutionEnvironment StreamExecutionEnvironment TableEnvironment  并行度env.setParallelism(3) 数据源  env.fromSequence(fro">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Flink CheatSheet">
+<meta property="og:url" content="http://kevinjmh.github.io/2024/03/19/CheatSheet/computing/flink/index.html">
+<meta property="og:site_name" content="Manhua">
+<meta property="og:description" content="flinkFlink applications code -&gt; JobGraph -&gt; JobManager -&gt; TaskManagers 环境  ExecutionEnvironment StreamExecutionEnvironment TableEnvironment  并行度env.setParallelism(3) 数据源  env.fromSequence(fro">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-03-19T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-12-27T07:38:46.141Z">
+<meta property="article:author" content="Manhua">
+<meta property="article:tag" content="Flink">
+<meta property="article:tag" content="Stream Processing">
+<meta property="article:tag" content="BigData">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:creator" content="@jiangmanhua">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Manhua" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="Manhua" title="Manhua"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Manhua">Manhua</a></h1>
+				<h2 class="blog-motto">Never Say Die</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页 | Home</a></li>
+					
+						<li><a href="/archives">归档 | Archives</a></li>
+					
+						<li><a href="/about">简介 | About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:kevinjmh.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2024/03/19/CheatSheet/computing/flink/" title="Flink CheatSheet" itemprop="url">Flink CheatSheet</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Manhua" target="_blank" itemprop="author">Manhua</a>
+		
+  <p class="article-time">
+    <time datetime="2024-03-19T16:00:00.000Z" itemprop="datePublished"> Published 2024-03-19</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#flink"><span class="toc-number">1.</span> <span class="toc-text">flink</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#install-check-case"><span class="toc-number">2.</span> <span class="toc-text">install check case</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Application-Mode"><span class="toc-number">2.1.</span> <span class="toc-text">Application Mode</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Session-Mode"><span class="toc-number">2.2.</span> <span class="toc-text">Session Mode</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AB%AF%E5%8F%A3%E9%98%B2%E6%8A%A4"><span class="toc-number">3.</span> <span class="toc-text">端口防护</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#demo"><span class="toc-number">4.</span> <span class="toc-text">demo</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#read"><span class="toc-number">5.</span> <span class="toc-text">read</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#txt"><span class="toc-number">5.1.</span> <span class="toc-text">txt</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#csv"><span class="toc-number">5.2.</span> <span class="toc-text">csv</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#kafka"><span class="toc-number">5.3.</span> <span class="toc-text">kafka</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<h1 id="flink"><a href="#flink" class="headerlink" title="flink"></a>flink</h1><p>Flink applications code -&gt; JobGraph -&gt; JobManager -&gt; TaskManagers</p>
+<p><em>环境</em></p>
+<ul>
+<li>ExecutionEnvironment</li>
+<li>StreamExecutionEnvironment</li>
+<li>TableEnvironment</li>
+</ul>
+<p><em>并行度</em><br>env.setParallelism(3)</p>
+<p><em>数据源</em></p>
+<ul>
+<li>env.fromSequence(from, to)</li>
+<li>env.fromElements(elements: _*) &#x2F;&#x2F; 添加数组作为数据输入源</li>
+<li>env.fromCollection(Seq&#x2F;Iterator) &#x2F;&#x2F; 添加List集合作为数据输入源</li>
+<li>env.fromParallelCollection(SplittableIterator) &#x2F;&#x2F; 添加List集合作为数据输入源</li>
+<li>env.socketTextStream(hostname:Ip地址, port:端口, delimiter:分隔符, maxRetry:最大重试次数) &#x2F;&#x2F; 添加Socket作为数据输入源</li>
+<li>env.readTextFile(“path”) &#x2F;&#x2F; 添加文件源</li>
+<li>env.readFile(fileInputFormat, path)</li>
+<li>env.readFile(fileInputFormat, path, watchType, interval, pathFilter)</li>
+<li>env.addSource 自定义source</li>
+</ul>
+<p>转Dataset&#x2F;DataStream</p>
+<p><em>处理</em><br>process<br>keyby</p>
+<p><em>输出-sink</em><br><code>Only streams with sinks added will be executed once the StreamExecutionEnvironment.execute(...) method is called.</code></p>
+<ul>
+<li>print() &#x2F; printToErr()  [实际为addSink(PrintSinkFunction)]在标准输出&#x2F;标准错误流上print每个元素的toString()值。还可以选择在输出之前增加prefix(msg)来帮助区分不同的打印调用。如果并行度大于1，输出还将加上生成输出的任务的标识符。</li>
+<li>writeAsText() &#x2F; TextOutputFormat 以字符串的形式逐行写入元素。字符串是通过调用每个元素的toString()方法获得的。</li>
+<li>writeAsCsv() &#x2F; CsvOutputFormat 将元组写入以逗号分隔的value文件。行和字段分隔符是可配置的。每个字段的值来自对象的toString()方法。</li>
+<li>writeUsingOutputFormat() &#x2F; FileOutputFormat： 方法和基类自定义文件输出，支持自定义对象到字节的转换。</li>
+<li>writeToSocket  根据SerializationSchema将元素写入Socket。</li>
+<li>addSink 自定义sink函数, Kafka</li>
+</ul>
+<p><em>执行</em><br>env.execute(“name”)</p>
+<h1 id="install-check-case"><a href="#install-check-case" class="headerlink" title="install check case"></a>install check case</h1><h2 id="Application-Mode"><a href="#Application-Mode" class="headerlink" title="Application Mode"></a>Application Mode</h2><p><code>./bin/flink run-application -t yarn-application ./examples/streaming/TopSpeedWindowing.jar</code><br><code>yarn application -kill &lt;ApplicationId&gt;</code></p>
+<h2 id="Session-Mode"><a href="#Session-Mode" class="headerlink" title="Session Mode"></a>Session Mode</h2><p><code>./bin/yarn-session.sh</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">./bin/flink run -t yarn-session \</span><br><span class="line">  -Dyarn.application.id=application_XXXX_YY \</span><br><span class="line">  ./examples/streaming/TopSpeedWindowing.jar</span><br></pre></td></tr></table></figure>
+
+<h1 id="端口防护"><a href="#端口防护" class="headerlink" title="端口防护"></a>端口防护</h1><p>限定绑定的端口范围 然后做防火墙策略</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rest.bind-port=4060-4069</span><br></pre></td></tr></table></figure>
+<p>防火墙策略</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DROP       tcp  --  0.0.0.0/0            0.0.0.0/0            tcp dpts:4040:4069</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="demo"><a href="#demo" class="headerlink" title="demo"></a>demo</h1><figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.apache.flink.streaming.api.scala.<span class="type">StreamExecutionEnvironment</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">object</span> <span class="title">S</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">main</span></span>(args: <span class="type">Array</span>[<span class="type">String</span>]): <span class="type">Unit</span> = &#123;</span><br><span class="line">    <span class="keyword">val</span> env = <span class="type">StreamExecutionEnvironment</span>.createLocalEnvironmentWithWebUI()</span><br><span class="line">    env.socketTextStream(<span class="string">&quot;172.25.172.132&quot;</span>, <span class="number">7777</span>).print()</span><br><span class="line">    env.execute(<span class="string">&quot;Window Stream WordCount&quot;</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>maven</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- https://mvnrepository.com/artifact/org.apache.flink/flink-scala --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.flink<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>flink-scala_2.12<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.17.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">scope</span>&gt;</span>provided<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- https://mvnrepository.com/artifact/org.apache.flink/flink-streaming-scala --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.flink<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>flink-streaming-scala_2.12<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.17.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">scope</span>&gt;</span>provided<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- https://mvnrepository.com/artifact/org.apache.flink/flink-clients --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.flink<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>flink-clients<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.17.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">scope</span>&gt;</span>provided<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.flink<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>flink-runtime-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.17.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">scope</span>&gt;</span>provided<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc -lk 7777</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="read"><a href="#read" class="headerlink" title="read"></a>read</h1><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/0d4cb05d6971">https://www.jianshu.com/p/0d4cb05d6971</a></p>
+<h2 id="txt"><a href="#txt" class="headerlink" title="txt"></a>txt</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">val env = ExecutionEnvironment.getExecutionEnvironment</span><br><span class="line">    env.readTextFile(&quot;C:\\Users\\Manhua\\IdeaProjects\\spark-test\\burpoint_action_mapping_android.csv&quot;)</span><br><span class="line">      .map(row =&gt; &#123;</span><br><span class="line">        row.split(&quot;,&quot;)(0).length.toInt</span><br><span class="line">      &#125;).reduce(_+_)</span><br><span class="line">      .print()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>有修改时，整个文件&#x2F;目录读取</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> env = <span class="type">StreamExecutionEnvironment</span>.createLocalEnvironmentWithWebUI()  </span><br><span class="line">env.readFile(<span class="keyword">new</span> <span class="type">TextInputFormat</span>(<span class="literal">null</span>), <span class="string">&quot;./testdata&quot;</span>,  </span><br><span class="line">  <span class="type">FileProcessingMode</span>.<span class="type">PROCESS_CONTINUOUSLY</span>,<span class="number">10000</span>).print()  </span><br><span class="line">env.execute()</span><br></pre></td></tr></table></figure>
+
+<h2 id="csv"><a href="#csv" class="headerlink" title="csv"></a>csv</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">val env = ExecutionEnvironment.getExecutionEnvironment</span><br><span class="line">val a=env.readCsvFile(&quot;C:\\Users\\Manhua\\IdeaProjects\\spark-test\\burpoint_action_mapping_android.csv&quot;)</span><br><span class="line">          .types(classOf[String], classOf[String], classOf[String], classOf[String], classOf[String], classOf[String], classOf[String], classOf[String], classOf[String], classOf[String], classOf[String], classOf[String], classOf[String], classOf[String], classOf[String], classOf[String])</span><br><span class="line"></span><br><span class="line">        a.map(row =&gt; &#123;</span><br><span class="line">            row.f2 //.length.toInt</span><br><span class="line">             &#125;).print() </span><br><span class="line">        println(&quot;x&quot;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="kafka"><a href="#kafka" class="headerlink" title="kafka"></a>kafka</h2><figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> ks = <span class="type">KafkaSource</span>.builder[<span class="type">String</span>]()  </span><br><span class="line">  .setBootstrapServers(<span class="string">&quot;localhost:9092&quot;</span>)  </span><br><span class="line">  .setTopics(<span class="string">&quot;quickstart-events&quot;</span>)  </span><br><span class="line">  .setGroupId(<span class="string">&quot;s&quot;</span>)  </span><br><span class="line">  .setDeserializer(<span class="type">KafkaRecordDeserializationSchema</span>.valueOnly(classOf[<span class="type">StringDeserializer</span>]))  </span><br><span class="line">  .build()  </span><br><span class="line"><span class="keyword">val</span> env = <span class="type">StreamExecutionEnvironment</span>.getExecutionEnvironment()  </span><br><span class="line">env.fromSource[<span class="type">String</span>](ks,<span class="type">WatermarkStrategy</span>.noWatermarks[<span class="type">String</span>](), <span class="string">&quot;Kafka Source&quot;</span>).print()  </span><br><span class="line">env.execute()</span><br></pre></td></tr></table></figure>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/CheatSheet/">CheatSheet</a>►<a class="article-category-link" href="/categories/CheatSheet/Computing/">Computing</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Flink/">Flink</a><a href="/tags/Stream-Processing/">Stream Processing</a><a href="/tags/BigData/">BigData</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://kevinjmh.github.io/2024/03/19/CheatSheet/computing/flink/" data-title="Flink CheatSheet | Manhua" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2024/03/19/CheatSheet/coding/git/" title="Git CheatSheet">
+  <strong>上一篇：</strong><br/>
+  <span>
+  Git CheatSheet</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2024/03/19/CheatSheet/computing/yarn/"  title="YARN CheatSheet">
+ <strong>下一篇：</strong><br/> 
+ <span>YARN CheatSheet
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github Card</p>
+<div class="github-card" data-github="kevinjmh" data-width="220" data-height="119" data-theme="medium">
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+  </div>
+
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/CheatSheet/AI/" title="AI">AI<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Application/" title="Application">Application<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/BigData/" title="BigData">BigData<sup>7</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/CheatSheet/" title="CheatSheet">CheatSheet<sup>25</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/CheatSheet/Computing/" title="Computing">Computing<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/CheatSheet/Database/" title="Database">Database<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/CheatSheet/Development/" title="Development">Development<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Info/" title="Info">Info<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/CheatSheet/Infrastructure/" title="Infrastructure">Infrastructure<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/慢话/" title="慢话">慢话<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/BigData/" title="BigData">BigData<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/carbondata/" title="carbondata">carbondata<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/project/" title="project">project<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Hadoop/" title="Hadoop">Hadoop<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Database/" title="Database">Database<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/rdma/" title="rdma">rdma<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/software/" title="software">software<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/recommendation/" title="recommendation">recommendation<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/RAG/" title="RAG">RAG<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/LLM/" title="LLM">LLM<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Langchain/" title="Langchain">Langchain<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Ollama/" title="Ollama">Ollama<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Cluster/" title="Cluster">Cluster<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/HDFS/" title="HDFS">HDFS<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Infrastructure/" title="Infrastructure">Infrastructure<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Git/" title="Git">Git<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Version-Control/" title="Version Control">Version Control<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Development/" title="Development">Development<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Flink/" title="Flink">Flink<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Stream-Processing/" title="Stream Processing">Stream Processing<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://www.cnblogs.com/manhua" target="_blank" title="cnBlogs">cnBlogs</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m Manhua Jiang. <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/443181876" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/kevinjmh" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		<a href="https://twitter.com/jiangmanhua" target="_blank" class="icon-twitter" title="twitter"></a>
+		
+		
+		<a href="https://www.facebook.com/jiangmanhua" target="_blank" class="icon-facebook" title="facebook"></a>
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2024 
+		
+		<a href="/about" target="_blank" title="Manhua">Manhua</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+        getSize();
+        if (myWidth >= 1024) {
+          c.click();
+        }
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
