@@ -81,29 +81,6 @@
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/2024/01/23/CheatSheet/database/kyuubi/" title="kyuubi" itemprop="url">
-  
-    <h1 itemprop="name">kyuubi</h1>
-    
-     
-           <p itemprop="description" >解决多租户的共享查询问题，作为多个查询引擎的统一入口
-HA通过zk实现
-存在的意义 - 对比 SparkThriftServer
-权限：STS全局只有一个SparkContext，尽管SQL下发来自不同用户，但实际都是使用启动STS的用户身份执行（proxy-user也只是一个身</p>
-        
-    
-    <time datetime="2024-01-23T02:01:19.000Z" itemprop="datePublished">2024-01-23</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
     <a href="/2024/01/23/CheatSheet/computing/spark/scheduler/" title="scheduler" itemprop="url">
   
     <h1 itemprop="name">scheduler</h1>
@@ -291,6 +268,40 @@ Safe mode is ON. The reported blocks 3 needs additional 2 blocks to reach the th
         
     
     <time datetime="2023-02-27T02:15:10.000Z" itemprop="datePublished">2023-02-27</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/2022/05/30/CheatSheet/database/Iceberg/" title="iceberg" itemprop="url">
+  
+    <h1 itemprop="name">iceberg</h1>
+    
+     
+           <p itemprop="description" >用途场景：
+
+schema演进：
+增删改列，重新排序，只修改元数据而不动数据文件
+内部使用唯一ID代替列
+
+
+隐式分区：
+无须显式指定分区列作为条件
+若分区来自某字段转换，两个字段均可生效分区过滤
+时间格式自动转换
+不通过目录划分分区
+
+
+分区演进：只修改元数据，旧数据不变（新分</p>
+        
+    
+    <time datetime="2022-05-30T06:11:43.000Z" itemprop="datePublished">2022-05-30</time>
   </a>
 </section>
 

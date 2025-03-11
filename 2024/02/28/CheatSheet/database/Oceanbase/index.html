@@ -19,7 +19,7 @@
 <meta property="og:description" content="JDBC连接Maven Repository: com.oceanbase » oceanbase-client (mvnrepository.com) 引入oceanbase-client-1.1.10.jar到spark的jars目录，使用Beeline连接!connnect jdbc:oceanbase:&#x2F;&#x2F;ip:2883&#x2F;DB 用户名格式有：用户名@租户名#集群名、集群名:租户名:用户名、">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-02-28T06:53:27.000Z">
-<meta property="article:modified_time" content="2025-01-10T07:32:09.831Z">
+<meta property="article:modified_time" content="2025-03-11T08:08:57.863Z">
 <meta property="article:author" content="Manhua">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:creator" content="@jiangmanhua">
@@ -100,13 +100,15 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#JDBC%E8%BF%9E%E6%8E%A5"><span class="toc-number">1.</span> <span class="toc-text">JDBC连接</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#JDBC%E8%BF%9E%E6%8E%A5"><span class="toc-number">1.</span> <span class="toc-text">JDBC连接</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#obdumper"><span class="toc-number">2.</span> <span class="toc-text">obdumper</span></a></li></ol>
 		
 		</div>
 		
 		<h1 id="JDBC连接"><a href="#JDBC连接" class="headerlink" title="JDBC连接"></a>JDBC连接</h1><p><a target="_blank" rel="noopener" href="https://mvnrepository.com/artifact/com.oceanbase/oceanbase-client">Maven Repository: com.oceanbase » oceanbase-client (mvnrepository.com)</a></p>
 <p>引入<code>oceanbase-client-1.1.10.jar</code>到spark的jars目录，使用Beeline连接<br><code>!connnect jdbc:oceanbase://ip:2883/DB</code></p>
 <p>用户名格式有：<code>用户名@租户名#集群名</code>、<code>集群名:租户名:用户名</code>、<code>集群名-租户名-用户名</code> 、<code>集群名.租户名.用户名</code></p>
+<h1 id="obdumper"><a href="#obdumper" class="headerlink" title="obdumper"></a>obdumper</h1><p>–compress –compression-algo snappy </p>
+<p><a target="_blank" rel="noopener" href="https://www.oceanbase.com/docs/common-oceanbase-dumper-loader-1000000001189488">https://www.oceanbase.com/docs/common-oceanbase-dumper-loader-1000000001189488</a></p>
   
 	</div>
 		<footer class="article-footer clearfix">
