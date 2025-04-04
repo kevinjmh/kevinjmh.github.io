@@ -1,0 +1,563 @@
+
+<!DOCTYPE html>
+<html lang="en" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>hive - Manhua</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Obsidian,"> 
+    <meta name="description" content="Personal site,提取数据为csv1insert overwrite directory &amp;#x27;/tmp/blog&amp;#x27; row format delimited fields terminated by,"> 
+    <meta name="author" content="Manhua"> 
+    <link rel="alternative" href="atom.xml" title="Manhua" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1429596_nzgqgvnmkjb.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.7.2/animate.min.css">
+
+    
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/codemirror.min.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/theme/dracula.css">
+
+    
+<link rel="stylesheet" href="/css/obsidian.css">
+
+    
+<link rel="stylesheet" href="/css/ball-atom.min.css">
+
+    
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+
+    
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body class="loading">
+    <div class="loader">
+        <div class="la-ball-atom la-2x">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <span id="config-title" style="display:none">Manhua</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div class="scrollbar gradient-bg-rev"></div>
+<div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <div class="navigation animated fadeIn fast delay-1s">
+        <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="http://kevinjmh.github.io">
+        <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
+        <h3 class="subtitle">hive</h3>
+        <div class="social">
+            <!--        <div class="like-icon">-->
+            <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+            <!--        </div>-->
+            <div>
+                <div class="share">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="section">
+        <div class=article-header-wrapper>
+    <div class="article-header">
+        <div class="article-cover animated fadeIn" style="
+            animation-delay: 600ms;
+            animation-duration: 1.2s;
+            background-image: 
+                radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+                url('/img/cover.jpg') ">
+        </div>
+        <div class="else">
+            <p class="animated fadeInDown">
+                
+                <a href="/categories/CheatSheet"><b>「
+                    </b>CHEATSHEET<b> 」</b></a>
+                
+                January 25, 2022
+            </p>
+            <h3 class="post-title animated fadeInDown"><a href="/2022/01/25/CheatSheet/database/hive/" title="hive" class="">hive</a>
+            </h3>
+            
+            <p class="post-count animated fadeInDown">
+                
+                <span>
+                    <b class="iconfont icon-text2"></b> <i>Words count</i>
+                    17k
+                </span>
+                
+                
+                <span>
+                    <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
+                    16 mins.
+                </span>
+                
+                
+                
+                <span id="busuanzi_container_page_pv">
+                    <b class="iconfont icon-read"></b> <i>Read count</i>
+                    <span id="busuanzi_value_page_pv">0</span>
+                </span>
+                
+            </p>
+            
+            
+        </div>
+    </div>
+</div>
+
+<div class="screen-gradient-after">
+    <div class="screen-gradient-content">
+        <div class="screen-gradient-content-inside">
+            <div class="bold-underline-links screen-gradient-sponsor">
+                <p>
+                    <span class="animated fadeIn delay-1s"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="article">
+    <div class='main'>
+        <div class="content markdown animated fadeIn">
+            <h2 id="提取数据为csv"><a href="#提取数据为csv" class="headerlink" title="提取数据为csv"></a>提取数据为csv</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> overwrite directory <span class="string">&#x27;/tmp/blog&#x27;</span> <span class="type">row</span> format delimited fields terminated <span class="keyword">by</span> <span class="string">&#x27;,&#x27;</span>  STORED <span class="keyword">AS</span> TEXTFILE <span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> tbl <span class="keyword">where</span>  concat(<span class="keyword">year</span>,<span class="keyword">month</span>,<span class="keyword">day</span>) <span class="operator">=</span> <span class="string">&#x27;20210721&#x27;</span> <span class="keyword">and</span> phoneNumber<span class="operator">=</span><span class="string">&#x27;xx&#x27;</span> <span class="keyword">and</span> platform<span class="operator">=</span><span class="string">&#x27;android&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>修改存储路径<br>alter table <code>dim</code>.<code>tb_hcy_number_segment</code> set location ‘hdfs:&#x2F;&#x2F;hcycluster2&#x2F;hive&#x2F;warehouse&#x2F;dim.db&#x2F;tb_hcy_number_segment’</p>
+<h2 id="查看文件schema"><a href="#查看文件schema" class="headerlink" title="查看文件schema"></a>查看文件schema</h2><p> hive –orcfiledump  [hdfs file path]</p>
+<h2 id="hive连接数据库密码加密"><a href="#hive连接数据库密码加密" class="headerlink" title="hive连接数据库密码加密"></a>hive连接数据库密码加密</h2><h3 id="创建密码文件"><a href="#创建密码文件" class="headerlink" title="创建密码文件"></a>创建密码文件</h3><p>hadoop credential create javax.jdo.option.ConnectionPassword<br>[hdfs文件] -provider &#x2F;tmp&#x2F;hive.jceks<br>[hdfs文件] -provider jceks:&#x2F;&#x2F;hdfs&#x2F;hive&#x2F;hive.jceks<br>[local文件] -provider jceks:&#x2F;&#x2F;file&#x2F;&#x2F;tmp&#x2F;hive.jceks<br>[可选显式输入密码] -value AAA</p>
+<h3 id="配置实施"><a href="#配置实施" class="headerlink" title="配置实施"></a>配置实施</h3><p>删除配置项 <code>javax.jdo.option.ConnectionPassword</code><br>增加配置</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;hadoop.security.credential.provider.path&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;jceks://hdfs/hive/hive.jceks&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="分区修复"><a href="#分区修复" class="headerlink" title="分区修复"></a>分区修复</h2><p>hdfs直接删除分区文件，hive里分区仍存在，需要 <code>ALTER TABLE table_name DROP [IF EXISTS] PARTITION partition_spec[, PARTITION partition_spec, ...]</code><br>批量修复可以使用以下命令：<br><code>MSCK [REPAIR] TABLE table_name [ADD/DROP/SYNC PARTITIONS];</code><br>默认是add操作，hdfs有，meta无的，添加元数据；<br>drop操作是hdfs无，meta有的，删除元数据；<br>sync操作是 add+drop</p>
+<h2 id="修改注释"><a href="#修改注释" class="headerlink" title="修改注释"></a>修改注释</h2><p><code>alter table ads.whitelist_extraction ALTER COLUMN platform comment &#39;1:营销投放白名单,2:139邮箱侧勾选协议用户,3:各端勾选协议用户,4:配置中心&#39;</code></p>
+<h2 id="增加列"><a href="#增加列" class="headerlink" title="增加列"></a>增加列</h2><p>ALTER TABLE ods.burpoint_active_log_d ADD COLUMNS (clouddevice string);</p>
+<h2 id="获取所有数据库表"><a href="#获取所有数据库表" class="headerlink" title="获取所有数据库表"></a>获取所有数据库表</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">val dbs = spark.sql(&quot;show databases&quot;).collect().map(_.getString(0))</span><br><span class="line">spark.sql(&quot;create table tmp.dbtbl_test(namespace string, tablename string) row format delimited fields terminated by &#x27;,&#x27;  STORED AS TEXTFILE &quot;)</span><br><span class="line">dbs.foreach(r=&gt;&#123;spark.sql(s&quot;show tables in $r &quot;).select(&quot;namespace&quot;,&quot;tablename&quot;).write.insertInto(&quot;tmp.dbtbl_test&quot;) &#125;)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 表目录修改日期</span><br><span class="line">hdfs dfs -ls -t  /hive/warehouse/*.db |grep &#x27;^d&#x27; |awk &#x27;&#123; print $8 &quot; &quot;  $6 &#125;&#x27; &gt;&gt; rawinfo</span><br><span class="line">sed &#x27;s/\/hive\/warehouse\///&#x27; rawinfo |sed &#x27;s/\.db\// /&#x27; | sort -n -k 1 -k 2 -t &#x27; &#x27; &gt; sorted_info</span><br><span class="line"># 表目录大小</span><br><span class="line">hdfs dfs -dus  /hive/warehouse/*.db/* |awk &#x27;&#123; print $2 &quot; &quot; $1&#125;&#x27; | sed &#x27;s/\/hive\/warehouse\///&#x27; |sed &#x27;s/\.db\// /&#x27;  &gt;sizeinfo</span><br></pre></td></tr></table></figure>
+
+<h1 id="元数据"><a href="#元数据" class="headerlink" title="元数据"></a>元数据</h1><ul>
+<li>DBS<ul>
+<li>DB_ID</li>
+<li>DESC</li>
+<li><em><strong>DB_LOCATION_URI</strong></em></li>
+<li><em><strong>NAME</strong></em></li>
+<li>OWNER_NAME</li>
+<li>OWNER_TYPE</li>
+</ul>
+</li>
+<li>DATABASE_PARAMS 对应建表WITH DBPROPERTIES参数<ul>
+<li>DB_ID</li>
+<li>PARAM_KEY</li>
+<li>PARAM_VALUE</li>
+</ul>
+</li>
+<li>DB_PRIVS</li>
+<li>TBLS<ul>
+<li>TBL_ID</li>
+<li>CREATE_TIME</li>
+<li>DB_ID</li>
+<li>LAST_ACCESS_TIME - 何时更新？目前观测spark不更新，值均为0</li>
+<li>OWNER</li>
+<li>RETENTION 保留字段</li>
+<li>IS_REWRITE_ENABLED</li>
+<li>SD_ID 序列号配置信息，对应SDS表</li>
+<li><em><strong>TBL_NAME</strong></em></li>
+<li>TBL_TYPE</li>
+<li>VIEW_EXPENDED_TEXT</li>
+<li>VIEW_ORIGINAL_TEXT</li>
+</ul>
+</li>
+<li>TABLE_PARAMS 对应建表tbl_properties参数<ul>
+<li>TBL_ID</li>
+<li>PARAM_KEY</li>
+<li>PARAM_VALUE</li>
+</ul>
+</li>
+<li>TBL_PRIVS</li>
+<li>PARTITIONS 所有分区信息<ul>
+<li>PART_ID</li>
+<li>CREATE_TIME</li>
+<li>LAST_ACCESS_TIME</li>
+<li><em><strong>PART_NAME</strong></em></li>
+<li>SD_ID</li>
+<li>TBL_ID</li>
+</ul>
+</li>
+<li>PARTITION_KEYS 分区配置<ul>
+<li>TBL_ID</li>
+<li>PKEY_COMMENT</li>
+<li>PKEY_NAME</li>
+<li>PKEY_TYPE</li>
+<li>INTEGER_IDX</li>
+</ul>
+</li>
+<li>PARTITION_KEY_VALS 所有分区信息，分区列拆成行<ul>
+<li>PART_ID</li>
+<li>PART_KEY_VAL</li>
+<li>INTEGER_IDX</li>
+</ul>
+</li>
+<li>PARTITION_PARAMS<ul>
+<li>PART_ID</li>
+<li>PARAM_KEY: numFiles&#x2F;totalSize&#x2F;transient_lastDdlTime</li>
+<li>PARAM_VALUE</li>
+</ul>
+</li>
+<li>SDS 表级存储相关信息<ul>
+<li>SD_ID</li>
+<li>CD_ID</li>
+<li><strong>INPUT_FORMAT</strong></li>
+<li>IS_COMPRESSED</li>
+<li>IS_STOREDASSUBDIRECTORIES</li>
+<li>LOCATIOIN</li>
+<li>NUM_BUCKETS</li>
+<li><strong>OUTPUT_FORMAT</strong></li>
+<li>SERDE_ID</li>
+</ul>
+</li>
+<li>SD_PARAMS 对应WITH SERDEPROPERTIES<ul>
+<li>SD_ID</li>
+<li>PARAM_KEY</li>
+<li>PARAM_VALUE</li>
+</ul>
+</li>
+<li>SERDES<ul>
+<li>SERDE_ID</li>
+<li>NAME</li>
+<li>SLIB 类名</li>
+</ul>
+</li>
+<li>SERDE_PARAMS<ul>
+<li>SERDE_ID</li>
+<li>PARAM_KEY: path&#x2F;serialization.format&#x2F;field.delim</li>
+<li>PARAM_VALUE</li>
+</ul>
+</li>
+<li>CDS<ul>
+<li>CD_ID</li>
+</ul>
+</li>
+<li>COLUMNS_V2 <ul>
+<li>CD_ID</li>
+<li>COMMENT</li>
+<li><strong>COLUMN_NAME</strong></li>
+<li><strong>TYPE_NAME</strong></li>
+<li>INTEGER_IDX</li>
+</ul>
+</li>
+<li>FUNCS<ul>
+<li>FUNC_ID</li>
+<li><em><strong>CLASS_NAME</strong></em></li>
+<li>CREATE_TIME</li>
+<li><em><strong>DB_ID</strong></em></li>
+<li><em><strong>FUNC_NAME</strong></em></li>
+</ul>
+</li>
+<li>FUNC_RU<ul>
+<li>FUNC_ID</li>
+<li>RESOURCE_TYPE</li>
+<li><em><strong>RESOURCE_URI</strong></em></li>
+<li>INTEGER_IDX</li>
+</ul>
+</li>
+</ul>
+<h2 id="查看所有表分区情况"><a href="#查看所有表分区情况" class="headerlink" title="查看所有表分区情况"></a>查看所有表分区情况</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">use hive;</span><br><span class="line"></span><br><span class="line">select t.TBL_ID,TBL_NAME,min_part,max_part,part_cnt from</span><br><span class="line">(select TBL_ID,min(part_name) min_part,max(part_name) max_part,count(*) part_cnt from hive.PARTITIONS </span><br><span class="line">group by TBL_ID) t</span><br><span class="line">left join TBLS on TBLS.TBL_ID=t.TBL_ID</span><br><span class="line">where TBLS.DB_ID=4</span><br><span class="line"></span><br><span class="line">left join DBS on DBS.DB_ID=TBLS.DB_ID</span><br></pre></td></tr></table></figure>
+
+<p>删文件后修复分区，会进回收站，删文件时效率低<br><code>MSCK [REPAIR] TABLE table_name [ADD/DROP/SYNC PARTITIONS];</code> </p>
+<p>删分区<br><code>ALTER TABLE table_name DROP PARTITION (partition_spec)[, PARTITION (partition_spec), ...]</code></p>
+<h2 id="元数据的修改"><a href="#元数据的修改" class="headerlink" title="元数据的修改"></a>元数据的修改</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/haozhugogo/article/details/73274832">https://blog.csdn.net/haozhugogo/article/details/73274832</a></p>
+<p>–get DB_ID TBL_ID SD_ID<br>select * from tbls  where TBL_NAME&#x3D;’t1’;</p>
+<p>–DB_LOCATION_URI<br>select * from dbs where DB_ID &#x3D; 41;</p>
+<p>–spark.sql.sources.schema  -&gt; spark创建表的字段大小写导致hive读出为null.<br>– spark中实现依赖 set spark.sql.caseSensitive&#x3D;false;<br>select * from  table_params  where TBL_ID &#x3D;89239;</p>
+<p>–get CDS<br>select * from sds where SD_ID&#x3D;245768;</p>
+<p>–COLUMN_NAME TYPE_NAME<br>select * from columns_v2 where CD_ID &#x3D;90196;</p>
+<h1 id="Beeline"><a href="#Beeline" class="headerlink" title="Beeline"></a>Beeline</h1><p>!set fetchsize 200</p>
+<p>!addlocaldriverjar  Add driver jar file in the beeline client side.<br>!addlocaldrivername Add driver name that needs to be supported in the beeline   client side.<br>!all                Execute the specified SQL against all the current connections</p>
+<p>!batch              Start or execute a batch of statements<br>!brief              Set verbose mode off<br>!call               Execute a callable statement<br>!close              Close the current connection to the database<br>!closeall           Close all current open connections<br>!commit             Commit the current transaction (if autocommit is off)<br>!connect            Open a new connection to the database.<br>!go                 Select the current connection<br>!help               Print a summary of command usage<br>!history            Display the command history<br>!list               List the current connections<br>!metadata           Obtain metadata information<br>!nullemptystring    Set to true to get historic behavior of printing null as<br>                    empty string. Default is false.<br>!outputformat       Set the output format for displaying results<br>                    (table,vertical,csv2,dsv,tsv2,xmlattrs,xmlelements, and<br>                    deprecated formats(csv, tsv))<br>!reconnect          Reconnect to the database<br>!record             Record all output to the specified file<br>!rehash             Fetch table and column names for command completion<br>!run                Run a script from the specified file<br>!save               Save the current variabes and aliases<br>!scan               Scan for installed JDBC drivers<br>!script             Start saving a script to a file<br>!set                Set a beeline variable<br>!sh                 Execute a shell command<br>!sql                Execute a SQL command<br>!tables             List all the tables in the database<br>!typeinfo           Display the type map for the current connection<br>!verbose            Set verbose mode on</p>
+<h1 id="Query"><a href="#Query" class="headerlink" title="Query"></a>Query</h1><h2 id="最大连续登陆天数"><a href="#最大连续登陆天数" class="headerlink" title="最大连续登陆天数"></a>最大连续登陆天数</h2><p>如果登录数据是连续登录的，比如对用户id为1的用户来说，2021-08-01到2021-08-03是连续登录<br>的，那么他们的日期和行号之差就是相等的，为2021-07-31，那么就可以按照用户和他们的登录日期和行号之差来分组，也就得到了哪些天是连续登录的</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> id,</span><br><span class="line">       date_sub(login_rk.login_date, rk) <span class="keyword">as</span> login</span><br><span class="line">       ,<span class="built_in">min</span>(login_date) <span class="keyword">as</span> min_date,</span><br><span class="line">       <span class="built_in">max</span>(login_date) <span class="keyword">as</span> max_date,</span><br><span class="line">       <span class="built_in">count</span>(<span class="number">1</span>)</span><br><span class="line"><span class="keyword">from</span> (</span><br><span class="line">      <span class="keyword">select</span> id,</span><br><span class="line">             login_date,</span><br><span class="line">             <span class="built_in">row_number</span>() <span class="keyword">over</span> (<span class="keyword">partition</span> <span class="keyword">by</span> id <span class="keyword">order</span> <span class="keyword">by</span> login_date <span class="keyword">asc</span>) <span class="keyword">as</span> rk</span><br><span class="line">      <span class="keyword">from</span> login_data</span><br><span class="line">     ) <span class="keyword">as</span> login_rk</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> id,date_sub(login_rk.login_date, rk)</span><br></pre></td></tr></table></figure>
+
+<h3 id="每天的连续登录天数"><a href="#每天的连续登录天数" class="headerlink" title="每天的连续登录天数"></a>每天的连续登录天数</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> login.id,</span><br><span class="line">       login.login_date,</span><br><span class="line">       DATEDIFF(login_date, min_date)<span class="operator">+</span><span class="number">1</span> <span class="keyword">as</span> continue_days</span><br><span class="line"><span class="keyword">FROM</span>(</span><br><span class="line">    <span class="keyword">SELECT</span> id,</span><br><span class="line">           <span class="built_in">MIN</span>(login_date) <span class="keyword">as</span> min_date,</span><br><span class="line">           <span class="built_in">MAX</span>(login_date) <span class="keyword">as</span> max_date</span><br><span class="line">    <span class="keyword">FROM</span> (</span><br><span class="line">          <span class="keyword">SELECT</span> id,</span><br><span class="line">                 login_date,</span><br><span class="line">                 <span class="built_in">ROW_NUMBER</span>() <span class="keyword">OVER</span> (<span class="keyword">PARTITION</span> <span class="keyword">BY</span> id <span class="keyword">ORDER</span> <span class="keyword">BY</span> login_date <span class="keyword">ASC</span>) <span class="keyword">as</span> rk</span><br><span class="line">          <span class="keyword">FROM</span> login_data</span><br><span class="line">         ) <span class="keyword">AS</span> login_rk</span><br><span class="line">    <span class="keyword">GROUP</span> <span class="keyword">BY</span> id,date_sub(login_rk.login_date, rk)</span><br><span class="line">) <span class="keyword">AS</span> max_login_days</span><br><span class="line"><span class="keyword">RIGHT</span> <span class="keyword">JOIN</span> </span><br><span class="line">(</span><br><span class="line"><span class="keyword">SELECT</span> id, login_date <span class="keyword">FROM</span> login_data</span><br><span class="line">) <span class="keyword">AS</span> login </span><br><span class="line"><span class="keyword">on</span> login.id <span class="operator">=</span> max_login_days.id <span class="keyword">and</span> login.login_date <span class="keyword">between</span> max_login_days.min_date <span class="keyword">and</span> max_login_days.max_date </span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> id</span><br></pre></td></tr></table></figure>
+
+<h1 id="Map类型使用"><a href="#Map类型使用" class="headerlink" title="Map类型使用"></a>Map类型使用</h1>
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls"
+                data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+            <ul id="audio-list" style="display:none">
+                
+                
+                <li title='0' data-url='/statics/chengdu.mp3'></li>
+                
+                    
+            </ul>
+            
+                        
+            
+            
+        </div>
+        <div class="sidebar">
+            <div class="box animated fadeInRight">
+                <div class="subbox">
+                    <img src="https://s2.ax1x.com/2019/09/19/nLtSiD.png" height=300 width=300></img>
+                    <p>Manhua</p>
+                    <span>Think like an artist, develop like an artisan</span>
+                    <dl>
+                        
+                            
+                            
+                            
+                        
+                        
+                    </dl>
+                </div>
+                <ul>
+                    <li><a href="/">94 <p>Articles</p></a></li>
+                    <li><a href="/categories">10 <p>Categories</p></a></li>
+                    <li><a href="/tags">29 <p>Tags</p></a></li>
+                </ul>
+            </div>
+            
+            
+            
+            <div class="box sticky animated fadeInRight faster">
+                <div id="toc" class="subbox">
+                    <h4>Contents</h4>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%90%E5%8F%96%E6%95%B0%E6%8D%AE%E4%B8%BAcsv"><span class="toc-number">1.</span> <span class="toc-text">提取数据为csv</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E6%96%87%E4%BB%B6schema"><span class="toc-number">2.</span> <span class="toc-text">查看文件schema</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hive%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AF%86%E7%A0%81%E5%8A%A0%E5%AF%86"><span class="toc-number">3.</span> <span class="toc-text">hive连接数据库密码加密</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E5%AF%86%E7%A0%81%E6%96%87%E4%BB%B6"><span class="toc-number">3.1.</span> <span class="toc-text">创建密码文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E5%AE%9E%E6%96%BD"><span class="toc-number">3.2.</span> <span class="toc-text">配置实施</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E5%8C%BA%E4%BF%AE%E5%A4%8D"><span class="toc-number">4.</span> <span class="toc-text">分区修复</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E6%B3%A8%E9%87%8A"><span class="toc-number">5.</span> <span class="toc-text">修改注释</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A2%9E%E5%8A%A0%E5%88%97"><span class="toc-number">6.</span> <span class="toc-text">增加列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E6%89%80%E6%9C%89%E6%95%B0%E6%8D%AE%E5%BA%93%E8%A1%A8"><span class="toc-number">7.</span> <span class="toc-text">获取所有数据库表</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%83%E6%95%B0%E6%8D%AE"><span class="toc-number"></span> <span class="toc-text">元数据</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E6%89%80%E6%9C%89%E8%A1%A8%E5%88%86%E5%8C%BA%E6%83%85%E5%86%B5"><span class="toc-number">1.</span> <span class="toc-text">查看所有表分区情况</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%83%E6%95%B0%E6%8D%AE%E7%9A%84%E4%BF%AE%E6%94%B9"><span class="toc-number">2.</span> <span class="toc-text">元数据的修改</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Beeline"><span class="toc-number"></span> <span class="toc-text">Beeline</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Query"><span class="toc-number"></span> <span class="toc-text">Query</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E5%A4%A7%E8%BF%9E%E7%BB%AD%E7%99%BB%E9%99%86%E5%A4%A9%E6%95%B0"><span class="toc-number">1.</span> <span class="toc-text">最大连续登陆天数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AF%8F%E5%A4%A9%E7%9A%84%E8%BF%9E%E7%BB%AD%E7%99%BB%E5%BD%95%E5%A4%A9%E6%95%B0"><span class="toc-number">1.1.</span> <span class="toc-text">每天的连续登录天数</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Map%E7%B1%BB%E5%9E%8B%E4%BD%BF%E7%94%A8"><span class="toc-number"></span> <span class="toc-text">Map类型使用</span></a>
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
+    <div id="back-to-top" class="animated fadeIn faster">
+        <div class="flow"></div>
+        <span class="percentage animated fadeIn faster">0%</span>
+        <span class="iconfont icon-top02 animated fadeIn faster"></span>
+    </div>
+</body>
+<footer>
+    <p class="copyright" id="copyright">
+        &copy; 2025
+        <span class="gradient-text">
+            Manhua
+        </span>.
+        Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+        Theme
+        <span class="gradient-text">
+            <a href="https://github.com/TriDiamond/hexo-theme-obsidian" title="Obsidian" target="_blank" rel="noopener">Obsidian</a>
+        </span>
+        <small><a href="https://github.com/TriDiamond/hexo-theme-obsidian/blob/master/CHANGELOG.md" title="v1.4.9.4" target="_blank" rel="noopener">v1.4.9.4</a></small>
+        
+        
+    </p>
+</footer>
+
+<script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script>
+  MathJax.Hub.Config({
+    "HTML-CSS": {
+      preferredFont: "TeX",
+      availableFonts: ["STIX", "TeX"],
+      linebreaks: {
+        automatic: true
+      },
+      EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+      inlineMath: [
+        ["$", "$"],
+        ["\\(", "\\)"]
+      ],
+      processEscapes: true,
+      ignoreClass: "tex2jax_ignore|dno",
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      noUndefined: {
+        attributes: {
+          mathcolor: "red",
+          mathbackground: "#FFEEEE",
+          mathsize: "90%"
+        }
+      },
+      Macros: {
+        href: "{}"
+      }
+    },
+    messageStyle: "none"
+  });
+</script>
+<script>
+  function initialMathJax() {
+    MathJax.Hub.Queue(function () {
+      var all = MathJax.Hub.getAllJax(),
+        i;
+      // console.log(all);
+      for (i = 0; i < all.length; i += 1) {
+        console.log(all[i].SourceElement().parentNode)
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  }
+
+  function reprocessMathJax() {
+    if (typeof MathJax !== 'undefined') {
+      MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+    }
+  }
+</script>
+
+
+ 
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/obsidian.js"></script>
+<script src="/js/jquery.truncate.js"></script>
+<script src="/js/search.js"></script>
+ 
+<script src="//cdn.bootcss.com/typed.js/2.0.10/typed.min.js"></script>
+ 
+<script src="//cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+ 
+<script src="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+
+<script src="https://cdn.bootcss.com/codemirror/5.48.4/codemirror.min.js"></script>
+ 
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/javascript/javascript.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/css/css.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/xml/xml.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/htmlmixed/htmlmixed.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/clike/clike.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/php/php.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/shell/shell.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/python/python.min.js"></script>
+   
+<script src="/js/busuanzi.min.js"></script>
+
+<script>
+  $(document).ready(function () {
+    if ($('span[id^="busuanzi_"]').length) {
+      initialBusuanzi();
+    }
+  });
+</script>
+ 
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/default-skin/default-skin.min.css">
+
+
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+  
+
+<script>
+  function initialTyped() {
+    var typedTextEl = $('.typed-text');
+    if (typedTextEl && typedTextEl.length > 0) {
+      var typed = new Typed('.typed-text', {
+        strings: ['Think like an artist, develop like an artisan', '艺术家思维去思考问题，工匠创造精神去开发'],
+        typeSpeed: 90,
+        loop: true,
+        loopCount: Infinity,
+        backSpeed: 20,
+      });
+    }
+  }
+
+  if ($('.article-header') && $('.article-header').length) {
+    $(document).ready(function () {
+      initialTyped();
+    });
+  }
+</script>
+
+
+
+
+
+
+
+</html>

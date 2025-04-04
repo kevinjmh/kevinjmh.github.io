@@ -1,0 +1,628 @@
+
+<!DOCTYPE html>
+<html lang="en" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>dolphinscheduler - Manhua</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Obsidian,"> 
+    <meta name="description" content="Personal site,dolphinschedulerSite 
+Is：分布式 工作流 调度平台，带DAG可视化
+For：复杂任务依赖  
+去中心化（动态主，zk选）  
+DolphinScheduler本身不依赖Had,"> 
+    <meta name="author" content="Manhua"> 
+    <link rel="alternative" href="atom.xml" title="Manhua" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1429596_nzgqgvnmkjb.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.7.2/animate.min.css">
+
+    
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/codemirror.min.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/theme/dracula.css">
+
+    
+<link rel="stylesheet" href="/css/obsidian.css">
+
+    
+<link rel="stylesheet" href="/css/ball-atom.min.css">
+
+    
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+
+    
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body class="loading">
+    <div class="loader">
+        <div class="la-ball-atom la-2x">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <span id="config-title" style="display:none">Manhua</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div class="scrollbar gradient-bg-rev"></div>
+<div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <div class="navigation animated fadeIn fast delay-1s">
+        <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="http://kevinjmh.github.io">
+        <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
+        <h3 class="subtitle">dolphinscheduler</h3>
+        <div class="social">
+            <!--        <div class="like-icon">-->
+            <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+            <!--        </div>-->
+            <div>
+                <div class="share">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="section">
+        <div class=article-header-wrapper>
+    <div class="article-header">
+        <div class="article-cover animated fadeIn" style="
+            animation-delay: 600ms;
+            animation-duration: 1.2s;
+            background-image: 
+                radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+                url('/img/cover.jpg') ">
+        </div>
+        <div class="else">
+            <p class="animated fadeInDown">
+                
+                <a href="/categories/CheatSheet"><b>「
+                    </b>CHEATSHEET<b> 」</b></a>
+                
+                January 20, 2022
+            </p>
+            <h3 class="post-title animated fadeInDown"><a href="/2022/01/20/CheatSheet/scheduler/dolphinscheduler/dolphinscheduler/" title="dolphinscheduler" class="">dolphinscheduler</a>
+            </h3>
+            
+            <p class="post-count animated fadeInDown">
+                
+                <span>
+                    <b class="iconfont icon-text2"></b> <i>Words count</i>
+                    74k
+                </span>
+                
+                
+                <span>
+                    <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
+                    1:08
+                </span>
+                
+                
+                
+                <span id="busuanzi_container_page_pv">
+                    <b class="iconfont icon-read"></b> <i>Read count</i>
+                    <span id="busuanzi_value_page_pv">0</span>
+                </span>
+                
+            </p>
+            
+            
+        </div>
+    </div>
+</div>
+
+<div class="screen-gradient-after">
+    <div class="screen-gradient-content">
+        <div class="screen-gradient-content-inside">
+            <div class="bold-underline-links screen-gradient-sponsor">
+                <p>
+                    <span class="animated fadeIn delay-1s"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="article">
+    <div class='main'>
+        <div class="content markdown animated fadeIn">
+            <h1 id="dolphinscheduler"><a href="#dolphinscheduler" class="headerlink" title="dolphinscheduler"></a>dolphinscheduler</h1><p><a target="_blank" rel="noopener" href="https://github.com/apache/dolphinscheduler">Site</a> </p>
+<p>Is：分布式 工作流 调度平台，带DAG可视化</p>
+<p>For：复杂任务依赖  </p>
+<p>去中心化（动态主，zk选）  </p>
+<p>DolphinScheduler本身不依赖Hadoop、Hive、Spark,仅是会调用他们的Client，用于对应任务的提交</p>
+<p>基于cron表达式调度</p>
+<p>quartz 分布式调度器</p>
+<h2 id="调度情况报表"><a href="#调度情况报表" class="headerlink" title="调度情况报表"></a>调度情况报表</h2><p>t_ds_process_instance关键字段</p>
+<ul>
+<li>name(流程名+时间戳)</li>
+<li>process_definition_id （可关联得流程名）</li>
+<li>state （流程实例状态：0 提交成功,1 正在运行,2 准备暂停,3 暂停,4 准备停止,5 停止,6 失败,7 成功,8 需要容错,9 kill,10 等待线程,11 等待依赖完成）</li>
+<li>start_time</li>
+<li>end_time</li>
+</ul>
+<p>select<br>from  dolphinscheduler.t_ds_process_instance<br>group by process_definition_id</p>
+<h2 id="日志检查"><a href="#日志检查" class="headerlink" title="日志检查"></a>日志检查</h2><p>页面操作上下线关键字 SchedulerService</p>
+<p><code>grep SchedulerService  dolphinscheduler-api.2021-10-26_14.0.log</code></p>
+<h2 id="升级操作"><a href="#升级操作" class="headerlink" title="升级操作"></a>升级操作</h2><p>停止服务</p>
+<p>数据库升级  create-dolphinscheduler.sh</p>
+<p>解压替换</p>
+<p>OR修改它的部署脚本<br>core-site.xml<br>hdfs-site.xml</p>
+<p>配置等：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">修改</span><br><span class="line">install_config.conf的数据库部分</span><br><span class="line">application-mysql.yaml</span><br><span class="line">registry.properties</span><br><span class="line">common.properties</span><br><span class="line"></span><br><span class="line">保留</span><br><span class="line">start.sh</span><br><span class="line">stop.sh</span><br><span class="line">lib/mysql-connector-java-5.1.47.jar</span><br><span class="line">script/alert-script.sh</span><br><span class="line">script/spark-test-1.0-SNAPSHOT.jar</span><br><span class="line">conf/hdfs-site.xml</span><br><span class="line">conf/core-site.xml</span><br></pre></td></tr></table></figure>
+
+<p>打包分发：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">stop.sh</span><br><span class="line">rm -rf ./pid ./logs</span><br><span class="line"></span><br><span class="line">tar czf ds201.tgz dolphinscheduler-2.0.1</span><br><span class="line">mv ds201.tgz /data/tmp</span><br><span class="line">chmod 755 /data/tmp/ds201.tgz</span><br><span class="line">exit</span><br><span class="line">sudo su hadoop</span><br><span class="line">cd /data/tmp</span><br><span class="line">hdfs dfs -put ds201.tgz /</span><br><span class="line">hdfs dfs -chmod 755 /ds201.tgz</span><br></pre></td></tr></table></figure>
+
+<p>其他节点：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">cd /data/soft</span><br><span class="line">rm dolphinscheduler</span><br><span class="line"></span><br><span class="line">hdfs dfs -get /ds201.tgz</span><br><span class="line">tar xf ds201.tgz</span><br><span class="line">rm ds201.tgz</span><br><span class="line"></span><br><span class="line">ln -s dolphinscheduler-2.0.1 dolphinscheduler</span><br><span class="line">chmod 755 -R dolphinscheduler-2.0.1</span><br><span class="line">[改start/stop]</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="告警配置"><a href="#告警配置" class="headerlink" title="告警配置"></a>告警配置</h2><p>{“path”:”&#x2F;data&#x2F;soft&#x2F;dolphinscheduler&#x2F;script&#x2F;alert-script.sh”<br>,”userParams”:”138xxxxxxx”,”type”:”SHELL”}</p>
+<p>配置样例增加<br>#registry.namespace&#x3D;dolphinscheduler</p>
+<p>curl -s “<a target="_blank" rel="noopener" href="http://10.3.4.191:8321/sms/getReport?content=message&mobilesStr=19802021823">http://10.3.4.191:8321/sms/getReport?content=message&amp;mobilesStr=19802021823</a>“</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">while getopts t:c:p: opts; do</span><br><span class="line">    case $opts in</span><br><span class="line">        t) t=$OPTARG ;;</span><br><span class="line">        c) c=$OPTARG ;;</span><br><span class="line">        p) p=$OPTARG ;;</span><br><span class="line">        ?) ;;</span><br><span class="line">    esac</span><br><span class="line">done</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># Write your specific logic here</span><br><span class="line"></span><br><span class="line"># Set the exit code according to your execution result, and alert needs to use it to judge the status of this alarm result</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if  [ &quot;$t&quot; = &quot;error msg title&quot; ]</span><br><span class="line">   then</span><br><span class="line">     exit 12</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line">echo &#x27;&#x27;</span><br><span class="line">echo &#x27;  title=&#x27;$t</span><br><span class="line">echo &#x27;  content=&#x27;$c </span><br><span class="line">echo &#x27;  mobilesStr=&#x27;$p</span><br><span class="line"></span><br><span class="line">#title=`echo $t  |tr -d &#x27;\n&#x27; |od -An -tx1|tr &#x27; &#x27; %| tr -d &#x27;\n&#x27;`</span><br><span class="line">#content=`echo $c |tr -d &#x27;&quot;&#x27; |tr -d &#x27;\n&#x27; |od -An -tx1|tr &#x27; &#x27; %| tr -d &#x27;\n&#x27; `</span><br><span class="line">#msg=$title&#x27;-&#x27;$content</span><br><span class="line">#msgout=$&#123;msg:0:250&#125;</span><br><span class="line"></span><br><span class="line">msgout=`java -cp /data/soft/dolphinscheduler/script/spark-test-1.0-SNAPSHOT.jar ds.GetAlertMsg &quot;$&#123;t&#125;&quot; &quot;$&#123;c&#125;&quot;`</span><br><span class="line"></span><br><span class="line">echo &#x27;&gt;&gt;&gt; http://xxx:8321/sms/getReport?content=&#x27;$msgout&#x27;&amp;mobilesStr=&#x27;$p</span><br><span class="line"></span><br><span class="line">curl -s &#x27;http://xxx:8321/sms/getReport?content=&#x27;$msgout&#x27;&amp;mobilesStr=&#x27;$p</span><br><span class="line"></span><br><span class="line">exit 0</span><br><span class="line">exit 0</span><br></pre></td></tr></table></figure>
+
+<h2 id="部署配置项2-0-1"><a href="#部署配置项2-0-1" class="headerlink" title="部署配置项2.0.1"></a>部署配置项2.0.1</h2><p>复制mysql jar包到lib</p>
+<p>数据源-installconfig</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">DATABASE_TYPE=mysql</span><br><span class="line">SPRING_DATASOURCE_URL=jdbc:mysql://127.0.0.1:3306/dolphinscheduler</span><br><span class="line">SPRING_DATASOURCE_USERNAME=ds</span><br><span class="line">SPRING_DATASOURCE_PASSWORD=123</span><br></pre></td></tr></table></figure>
+
+<p>连接mysql，创建数据库和用户</p>
+<p>初始化数据库<br><code> ./script/create-dolphinscheduler.sh</code></p>
+<p>application-mysql.yaml 待确认是否需要配置</p>
+<p>copy core-site.xml and hdfs-site.xml to conf dir</p>
+<p>common.property</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">data.basedir.path=/tmp/dolphinscheduler</span><br><span class="line">resource.storage.type=HDFS</span><br><span class="line">resource.upload.path=/dolphinscheduler</span><br><span class="line">hdfs.root.user=hadoop</span><br><span class="line">fs.defaultFS=hdfs://localhost:9000</span><br><span class="line">resource.manager.httpaddress.port=8088</span><br><span class="line"></span><br><span class="line">yarn.resourcemanager.ha.rm.ids=</span><br><span class="line">yarn.application.status.address</span><br><span class="line">yarn.job.history.status.address</span><br><span class="line"></span><br><span class="line">sudo.enable=false</span><br></pre></td></tr></table></figure>
+<p>registry.properties<br> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">配置zk服务器地址和路径</span><br></pre></td></tr></table></figure></p>
+<h1 id="部署用户权限问题"><a href="#部署用户权限问题" class="headerlink" title="部署用户权限问题"></a>部署用户权限问题</h1><p>1.创建部署用户，该部署用户必须要有sudo免密权限&#x2F;etc&#x2F;sudoers -&gt; 使得可以用租户身份执行任务</p>
+<p>2.修改部署用户的~&#x2F;.bashrc添加umask 022 -&gt; 使得相关文件可以被租户访问，否则任务无法执行</p>
+<p>sudo su dolphinscheduler</p>
+<p>vi ~&#x2F;.bashrc</p>
+<p>3.解压安装包后修改.&#x2F;bin&#x2F;dolphinscheduler-daemon.sh再此添加umask 022 -&gt; 该脚本source了&#x2F;etc&#x2F;profile,需要覆盖配置项</p>
+<p>4.conf&#x2F;env&#x2F;dolphinscheduler_env.sh 需要对租户可读</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">[INFO] 2021-05-18 15:52:46.655  - [taskAppId=TASK-2-2-2]:[129] -  -&gt; hadoop is not in the sudoers file.  This incident will be reported.</span><br><span class="line"></span><br><span class="line">[INFO] 2021-05-19 09:25:40.521  - [taskAppId=TASK-2-4-5]:[129] -  -&gt; root is not in the sudoers file.  This incident will be reported.</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>任务执行服务是以 sudo -u {linux-user} 切换不同linux用户的方式来实现多租户运行作业，所以部署用户需要有 sudo 权限，而且是免密的。</p>
+<p>sudo权限  <a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/5rRWMoT0DLMcOdDl-mrsRQ">https://mp.weixin.qq.com/s/5rRWMoT0DLMcOdDl-mrsRQ</a></p>
+<p>可以通过以下方式限制可切换到的用户，比如可以设置为只能切到hadoop用户来执行任务</p>
+<p>echo ‘dolphinscheduler  ALL&#x3D;(userA,userB,userC)  NOPASSWD:ALL’ &gt;&gt; &#x2F;etc&#x2F;sudoers</p>
+<p>注意：后续增加租户的时候则要同步修改此处配置</p>
+<p>通配符和取消命令</p>
+<p>eg:papi ALL&#x3D;&#x2F;usr&#x2F;sbin&#x2F;<em>,&#x2F;sbin&#x2F;</em>,!&#x2F;usr&#x2F;sbin&#x2F;fdisk</p>
+<p>租户对应的是Linux的用户，用于worker提交作业所使用的用户。如果linux没有这个用户，worker会在执行脚本的时候创建这个用户。</p>
+<p>租户编码：租户编码是Linux上的用户，唯一，不能重复</p>
+<p>在任务执行时,可以将任务分配给指定worker分组，最终由该组中的worker节点执行该任务</p>
+<h1 id="一键部署分析"><a href="#一键部署分析" class="headerlink" title="一键部署分析"></a>一键部署分析</h1><p>读入.&#x2F;conf&#x2F;config&#x2F;install_config.conf<br>修改配置<br>远程复制<br>修改权限</p>
+<h1 id="数据库升级分析"><a href="#数据库升级分析" class="headerlink" title="数据库升级分析"></a>数据库升级分析</h1><p>修改schema&#x2F;data<br>.&#x2F;sql&#x2F;sql&#x2F;upgrade&#x2F;2.0.1_schema&#x2F;mysql&#x2F;<br>进入mysql，source SQL脚本文件</p>
+<p>升级版本号<br>update t_ds_version set version &#x3D; 2.0.1</p>
+<p>修改.&#x2F;conf&#x2F;config&#x2F;install_config.conf</p>
+<h1 id="手动部署"><a href="#手动部署" class="headerlink" title="手动部署"></a>手动部署</h1><p>1.解压。部署目录 参考其他软件目录：&#x2F;data</p>
+<p>chown dolphinscheduler apache-dolphinscheduler-1.3.6-bin.tar.gz<br>tar -zxvf apache-dolphinscheduler-1.3.6-bin.tar.gz -C &#x2F;data&#x2F;<br>sudo chown -R dolphinscheduler:dolphinscheduler dolphinscheduler<br>sudo chmod 755 -R  dolphinscheduler</p>
+<p>2.上传mysql-connector-java到DolphinScheduler的lib目录</p>
+<p>3.初始化mysql表（建表、配权限、导数据）</p>
+<p>Server version: 5.7.30 MySQL Community Server (GPL)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">mysql -h192.168.xx.xx -P3306 -uroot -p</span><br><span class="line"></span><br><span class="line">CREATE DATABASE dolphinscheduler DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;</span><br><span class="line"></span><br><span class="line">GRANT ALL PRIVILEGES ON dolphinscheduler.* TO &#x27;dolphinscheduler&#x27;@&#x27;%&#x27; IDENTIFIED BY &#x27;xxx&#x27;;</span><br><span class="line"></span><br><span class="line">GRANT ALL PRIVILEGES ON dolphinscheduler.* TO &#x27;dolphinscheduler&#x27;@&#x27;localhost&#x27; IDENTIFIED BY &#x27;xxx&#x27;;</span><br><span class="line"></span><br><span class="line">flush privileges;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>登录126，切部署用户</p>
+<p><code>vi conf/datasource.properties</code>注释掉 PostgreSQL 相关配置,配置mysql数据库连接相关信息:  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">spring.datasource.driver-class-name=com.mysql.jdbc.Driver</span><br><span class="line"></span><br><span class="line">spring.datasource.url=jdbc:mysql://10.3.4.194:3306/dolphinscheduler?useUnicode=true&amp;characterEncoding=UTF-8</span><br><span class="line"></span><br><span class="line">spring.datasource.username=xxx</span><br><span class="line"></span><br><span class="line">spring.datasource.password=xxx</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><code>sh script/create-dolphinscheduler.sh</code>执行 script 目录下的创建表及导入基础数据脚本</p>
+<p>4.修改运行参数，添加各调用组件路径</p>
+<p>(可以先全部注释掉)</p>
+<p>conf&#x2F;env&#x2F;dolphinscheduler_env.sh</p>
+<p> &gt; export PYTHON_HOME&#x3D;&#x2F;usr&#x2F;bin&#x2F;python</p>
+<p> #this is fixed after 1.3.6. now need to set python binary path</p>
+<p>5.由于没有ssh，需按照install.sh手动执行部署</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">https://www.yiibai.com/zookeeper/zookeeper_installation.html</span><br><span class="line"></span><br><span class="line">https://cloud.tencent.com/developer/article/1458839</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">修改conf/common.properties</span><br><span class="line"></span><br><span class="line">data.basedir.path=/tmp/dolphinscheduler</span><br><span class="line"></span><br><span class="line">resource.storage.type=HDFS</span><br><span class="line"></span><br><span class="line">resource.upload.path=/dolphinscheduler</span><br><span class="line"></span><br><span class="line">hdfs.root.user=hadoop</span><br><span class="line"></span><br><span class="line">fs.defaultFS=hdfs://LGJF-ZYC6-HCY-SVR553:9000</span><br><span class="line"></span><br><span class="line">yarn.resourcemanager.ha.rm.ids=</span><br><span class="line"></span><br><span class="line">yarn.application.status.address=http://10.17.41.126:8088/ws/v1/cluster/apps/%s</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">集群配置其他须知：</span><br><span class="line"></span><br><span class="line">#NameNode启用了HA的话，还需要将hadoop的配置文件core-site.xml和hdfs-site.xml放到安装路径的conf目录下</span><br><span class="line"></span><br><span class="line"># 如果ResourceManager是HA，则配置为ResourceManager节点的主备ip或者hostname,比如&quot;192.168.xx.xx,192.168.xx.xx&quot;;</span><br><span class="line"></span><br><span class="line"># 如果是单ResourceManager请配置yarnHaIps=&quot;&quot;即可</span><br><span class="line"></span><br><span class="line">yarn.resourcemanager.ha.rm.ids=&quot;192.168.xx.xx,192.168.xx.xx&quot;</span><br><span class="line"></span><br><span class="line">yarn.resourcemanager.ha.rm.ids=&quot;&quot;</span><br><span class="line"></span><br><span class="line"># 如果是单ResourceManager，请配置真实的ResourceManager主机名或者ip.否则保持默认值即可：yarn.application.status.address=http://10.17.41.126:8088/ws/v1/cluster/apps/%s</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">由于191集群有访问验证,当前通过白名单对集群服务器免密，需要配置如下参数：</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>yarn.resourcemanager.ha.rm.ids&#x3D;10.3.4.191,10.17.41.21</p>
+<p>yarn.application.status.address&#x3D;<a target="_blank" rel="noopener" href="http://ds1:8089/ws/v1/cluster/apps/%s">http://ds1:8089/ws/v1/cluster/apps/%s</a></p>
+<p>resource.manager.httpaddress.port&#x3D;8089</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">测试命令`curl http://10.3.4.191:8089/ws/v1/cluster/apps/application_1622165044791_10946`</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">修改conf/zookeeper.properties</span><br><span class="line"></span><br><span class="line">zookeeper.quorum=localhost:2181</span><br><span class="line"></span><br><span class="line">zookeeper.dolphinscheduler.root=/dolphinscheduler</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">修改conf/alert.properties [目前跳过]</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">修改conf/worker.properties [目前跳过，使用默认组]</span><br><span class="line"></span><br><span class="line">目录bin conf lib script sql ui下，该节点对应的组</span><br><span class="line"></span><br><span class="line">worker.groups=default</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>拷贝到其他服务器</p>
+<p>dolphin各节点身份是靠worker.properties的group记录</p>
+<p>6.启停命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">sh ./bin/dolphinscheduler-daemon.sh start master-server</span><br><span class="line"></span><br><span class="line">sh ./bin/dolphinscheduler-daemon.sh start worker-server</span><br><span class="line"></span><br><span class="line">sh ./bin/dolphinscheduler-daemon.sh start api-server</span><br><span class="line"></span><br><span class="line">sh ./bin/dolphinscheduler-daemon.sh start logger-server</span><br><span class="line"></span><br><span class="line">sh ./bin/dolphinscheduler-daemon.sh start alert-server</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">sh ./bin/dolphinscheduler-daemon.sh stop master-server</span><br><span class="line"></span><br><span class="line">sh ./bin/dolphinscheduler-daemon.sh stop worker-server</span><br><span class="line"></span><br><span class="line">sh ./bin/dolphinscheduler-daemon.sh stop api-server</span><br><span class="line"></span><br><span class="line">sh ./bin/dolphinscheduler-daemon.sh stop logger-server</span><br><span class="line"></span><br><span class="line">sh ./bin/dolphinscheduler-daemon.sh stop alert-server</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>7.页面访问</p>
+<p><a target="_blank" rel="noopener" href="http://10.17.41.126:12345/dolphinscheduler">http://10.17.41.126:12345/dolphinscheduler</a></p>
+<p>管理员 admin  dolphinscheduler123</p>
+<p>用户  tester  tester123</p>
+<p>sudo su dolphinscheduler</p>
+<p>8.添加worker节点</p>
+<p>配置jdk</p>
+<p>解压安装文件</p>
+<p>复制mysql jar包</p>
+<p>复制配置文件datasource、zookeeper、common、dolphinscheduler_env(按需修正)</p>
+<p>是否worker master是看是否启动对应进程。</p>
+<p>根据start-all启动脚本可知，worker只需要启动worker和logger</p>
+<h1 id="启停"><a href="#启停" class="headerlink" title="启停"></a>启停</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">sh ./bin/dolphinscheduler-daemon.sh stop master-server</span><br><span class="line">sh ./bin/dolphinscheduler-daemon.sh stop worker-server</span><br><span class="line">sh ./bin/dolphinscheduler-daemon.sh stop api-server</span><br><span class="line">sh ./bin/dolphinscheduler-daemon.sh stop logger-server</span><br><span class="line">sh ./bin/dolphinscheduler-daemon.sh stop alert-server</span><br><span class="line"></span><br><span class="line">sh ./bin/dolphinscheduler-daemon.sh start master-server</span><br><span class="line">sh ./bin/dolphinscheduler-daemon.sh start worker-server</span><br><span class="line">sh ./bin/dolphinscheduler-daemon.sh start api-server</span><br><span class="line">sh ./bin/dolphinscheduler-daemon.sh start logger-server</span><br><span class="line">sh ./bin/dolphinscheduler-daemon.sh start alert-server</span><br></pre></td></tr></table></figure>
+
+<h1 id="日期参数配置"><a href="#日期参数配置" class="headerlink" title="日期参数配置"></a>日期参数配置</h1><p>2.0.2  Remove “+1” (days) in complement dates</p>
+<p>其中日期格式支持自定义DateTimeFormatter，如yyyy-MM-dd</p>
+<ul>
+<li>后 N 年：$[add_months(yyyyMMdd,12*N)]</li>
+<li>前 N 年：$[add_months(yyyyMMdd,-12*N)]</li>
+<li>后 N 月：$[add_months(yyyyMMdd,N)]</li>
+<li>前 N 月：$[add_months(yyyyMMdd,-N)]</li>
+<li>后 N 周：$[yyyyMMdd+7*N]</li>
+<li>前 N 周：$[yyyyMMdd-7*N]</li>
+<li>后 N 天：$[yyyyMMdd+N]</li>
+<li>前 N 天：$[yyyyMMdd-N]</li>
+<li>后 N 小时：$[HHmmss+N&#x2F;24]</li>
+<li>前 N 小时：$[HHmmss-N&#x2F;24]</li>
+<li>后 N 分钟：$[HHmmss+N&#x2F;24&#x2F;60]</li>
+<li>前 N 分钟：$[HHmmss-N&#x2F;24&#x2F;60]</li>
+</ul>
+<p>${system.biz.date} : 日常调度实例定时的定时时间前一天，格式为 yyyyMMdd，补数据时，该日期 +1<br>${system.biz.curdate} : 日常调度实例定时的定时时间，格式为 yyyyMMdd，补数据时，该日期 +1</p>
+<p>${system.datetime} : 日常调度实例定时的定时时间，格式为 yyyyMMddHHmmss，补数据时，该日期 +1</p>
+<p>参考调度样例  <a target="_blank" rel="noopener" href="http://10.17.41.126:12345/dolphinscheduler/ui/#/projects/definition/list/14">http://10.17.41.126:12345/dolphinscheduler/ui/#/projects/definition/list/14</a></p>
+<p>比如azkaban中的$(new(“org.joda.time.DateTime”).minusDays(1).toString(“yyyy-MM-dd”))可以$[yyyy-MM-dd-1]</p>
+<h1 id="参数传递"><a href="#参数传递" class="headerlink" title="参数传递"></a>参数传递</h1><p>原理是通过字符串打印出指定模式字符后设置参数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">上游-需配置output：</span><br><span class="line">tmppath=/data/bdoc/ob_data</span><br><span class="line">tmporcpath=$&#123;tmppath&#125;/data/ABLUM_SAAS_PRO/TABLE</span><br><span class="line">echo &#x27;$&#123;setValue(tmp=&#x27;$tmporcpath&#x27;)&#125;&#x27;</span><br><span class="line"></span><br><span class="line">下游</span><br><span class="line">echo $&#123;tmp&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="指定绑定的ip"><a href="#指定绑定的ip" class="headerlink" title="指定绑定的ip"></a>指定绑定的ip</h1><p>common.properties</p>
+<blockquote>
+<p>dolphin.scheduler.network.interface.preferred&#x3D;网卡显示名称</p>
+</blockquote>
+<h1 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h1><h2 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h2><p>org.apache.dolphinscheduler.server.master.MasterServer</p>
+<h2 id="MasterServer"><a href="#MasterServer" class="headerlink" title="MasterServer"></a>MasterServer</h2><p>主要成员<br>ZKMasterClient</p>
+<p>MasterSchedulerService 核心服务</p>
+<ul>
+<li>循环检测主节点的内存和CPU资源。过载或内存过低，跳过调度执行1s</li>
+<li>zk状态正常则开始调度scheduleProcess<ul>
+<li>加锁zk后取command。getOneToRun</li>
+<li>创建ProcessInstance，并启动线程MasterExecThread执行（有最大线程数限制）</li>
+<li>线程创建成功，数据库存储saveProcessInstance、删除command</li>
+</ul>
+</li>
+</ul>
+<p>MasterExecThread#executeProcess</p>
+<ul>
+<li>prepareProcess<ul>
+<li>生成DAG</li>
+<li>初始化任务队列</li>
+</ul>
+</li>
+<li>runProcess<ul>
+<li>循环至finish&#x2F;stop</li>
+<li>超时检测</li>
+<li>遍历运行节点MasterTaskExecThread[提交到DB并循环检测状态]，检测task在worker结束后处理任务状态和队列</li>
+<li>提交新任务submitStandByTask</li>
+<li>更新工作流状态 updateProcessInstanceState</li>
+</ul>
+</li>
+<li>endProcess<ul>
+<li>更新结束时间</li>
+<li>更新元数据库</li>
+<li>成功失败告警</li>
+</ul>
+</li>
+</ul>
+<p>netty注册处理类：</p>
+<ul>
+<li>TaskResponseProcessor</li>
+<li>TaskAckProcessor</li>
+<li>TaskKillResponseProcessor</li>
+</ul>
+<h2 id="WorkerServer"><a href="#WorkerServer" class="headerlink" title="WorkerServer"></a>WorkerServer</h2><p>TaskExecuteProcessor</p>
+<h2 id="HDFS上的user目录"><a href="#HDFS上的user目录" class="headerlink" title="HDFS上的user目录"></a>HDFS上的user目录</h2><p>HDFS路径：&#x2F;dolphinscheduler&#x2F;hadoop&#x2F;home</p>
+<p>源码相关函数：getHdfsUserDir</p>
+<p>问题：该目录只用在创建用户、更新用户和删除用户，没有实质作用</p>
+<h2 id="api变量参数启动任务"><a href="#api变量参数启动任务" class="headerlink" title="api变量参数启动任务"></a>api变量参数启动任务</h2><p>变量替换脚本写法如下，msg变量调用使用：”‘“变量”‘“</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">date=&quot;20231008&quot;</span><br><span class="line">site=&quot;gz&quot;</span><br><span class="line">server=&quot;10.3.68.166&quot;</span><br><span class="line">tablesuffix=1</span><br><span class="line"></span><br><span class="line">curl -i -X POST &quot;http://10.27.48.1:12345/dolphinscheduler/projects/8653695427776/executors/start-process-instance&quot; -H  &quot;Request-Origion:SwaggerBootstrapUi&quot; -H  &quot;accept:*/*&quot; -H  &quot;token:xxx&quot; -H  &quot;Content-Type:application/x-www-form-urlencoded;charset=UTF-8&quot; -d &quot;failureStrategy=END&quot; -d &quot;processDefinitionCode=11174492918720&quot; -d &quot;processInstancePriority=MEDIUM&quot; -d &quot;scheduleTime=  &quot; -d &quot;warningGroupId=100&quot; -d &quot;warningType=NONE&quot; -d &quot;execType=START_PROCESS&quot; -d &quot;runMode=RUN_MODE_SERIAL&quot; -d &#x27;startParams=&#123;&quot;date&quot;:&quot;&#x27;&quot;$&#123;date&#125;&quot;&#x27;&quot;,&quot;server&quot;:&quot;&#x27;&quot;$&#123;server&#125;&quot;&#x27;&quot;,&quot;site&quot;:&quot;&#x27;&quot;$&#123;site&#125;&quot;&#x27;&quot;,&quot;tablesuffix&quot;:&quot;&#x27;&quot;$&#123;tablesuffix&#125;&quot;&#x27;&quot;&#125;&#x27; </span><br><span class="line"></span><br><span class="line">for i in &#123;2..500&#125;; do </span><br><span class="line">tablesuffix=$i</span><br><span class="line">echo $site $tablesuffix</span><br><span class="line">sleep 60; </span><br><span class="line">done</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="查询工作节点"><a href="#查询工作节点" class="headerlink" title="查询工作节点"></a>查询工作节点</h1><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> </span><br><span class="line">    p.name <span class="keyword">AS</span> project_name,p.code,</span><br><span class="line">    pro.name <span class="keyword">AS</span> process_name,pro.code,</span><br><span class="line">    t.name <span class="keyword">AS</span> task_name,t.code</span><br><span class="line"><span class="keyword">FROM</span> (</span><br><span class="line">    <span class="keyword">SELECT</span> </span><br><span class="line">        code,</span><br><span class="line">        name,</span><br><span class="line">        project_code</span><br><span class="line">    <span class="keyword">FROM</span> dolphinscheduler.t_ds_task_definition</span><br><span class="line">    <span class="keyword">WHERE</span> task_params <span class="keyword">LIKE</span> <span class="string">&#x27;%10.17.41.127%&#x27;</span></span><br><span class="line">) t</span><br><span class="line"><span class="keyword">LEFT</span> <span class="keyword">JOIN</span> dolphinscheduler.t_ds_project p </span><br><span class="line">    <span class="keyword">ON</span> p.code <span class="operator">=</span> t.project_code</span><br><span class="line"><span class="keyword">LEFT</span> <span class="keyword">JOIN</span> dolphinscheduler.t_ds_process_definition pro </span><br><span class="line">    <span class="keyword">ON</span> pro.locations <span class="keyword">like</span> concat(<span class="string">&#x27;%&#x27;</span>,t.code,<span class="string">&#x27;%&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="API获得节点状态"><a href="#API获得节点状态" class="headerlink" title="API获得节点状态"></a>API获得节点状态</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">str=$(curl &quot;http://10.17.41.129:12345/dolphinscheduler/monitor/master/list&quot; -H &#x27;token:xxx&#x27;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">返回值</span><br><span class="line">str=&#x27;</span><br><span class="line">&#123;&quot;code&quot;:0,&quot;msg&quot;:&quot;success&quot;,&quot;data&quot;:[&#123;&quot;id&quot;:130615,&quot;host&quot;:&quot;10.17.41.129&quot;,&quot;port&quot;:5678,&quot;zkDirectory&quot;:&quot;/dolphinscheduler/nodes/master/10.17.41.129:5678&quot;,&quot;resInfo&quot;:&quot;&#123;\&quot;cpuUsage\&quot;:0.53,\&quot;loadAverage\&quot;:6.53,\&quot;memoryUsage\&quot;:0.7&#125;&quot;,&quot;createTime&quot;:&quot;2021-06-21T17:38:20.000+0800&quot;,&quot;lastHeartbeatTime&quot;:&quot;2021-07-19T10:49:51.000+0800&quot;&#125;,&#123;&quot;id&quot;:10348,&quot;host&quot;:&quot;10.17.41.130&quot;,&quot;port&quot;:5678,&quot;zkDirectory&quot;:&quot;/dolphinscheduler/nodes/master/10.17.41.130:5678&quot;,&quot;resInfo&quot;:&quot;&#123;\&quot;cpuUsage\&quot;:0.06,\&quot;loadAverage\&quot;:0.76,\&quot;memoryUsage\&quot;:0.48&#125;&quot;,&quot;createTime&quot;:&quot;2021-07-07T17:11:24.000+0800&quot;,&quot;lastHeartbeatTime&quot;:&quot;2021-07-19T10:49:54.000+0800&quot;&#125;]&#125;</span><br><span class="line">&#x27;</span><br><span class="line"></span><br><span class="line">&#123;&quot;code&quot;:0,&quot;msg&quot;:&quot;success&quot;,&quot;data&quot;:[&#123;&quot;id&quot;:125264,&quot;host&quot;:&quot;10.17.41.129&quot;,&quot;port&quot;:1234,&quot;zkDirectories&quot;:[&quot;/dolphinscheduler/nodes/worker/default/10.17.41.129:1234&quot;],&quot;resInfo&quot;:&quot;&#123;\&quot;cpuUsage\&quot;:0.24,\&quot;loadAverage\&quot;:4.08,\&quot;memoryUsage\&quot;:0.74&#125;&quot;,&quot;createTime&quot;:&quot;2021-07-14 14:50:53&quot;,&quot;lastHeartbeatTime&quot;:&quot;2021-07-19 11:22:33&quot;&#125;,&#123;&quot;id&quot;:86514,&quot;host&quot;:&quot;10.3.4.194&quot;,&quot;port&quot;:1234,&quot;zkDirectories&quot;:[&quot;/dolphinscheduler/nodes/worker/default/10.3.4.194:1234&quot;],&quot;resInfo&quot;:&quot;&#123;\&quot;cpuUsage\&quot;:0.05,\&quot;loadAverage\&quot;:1.77,\&quot;memoryUsage\&quot;:0.55&#125;&quot;,&quot;createTime&quot;:&quot;2021-07-14 14:11:30&quot;,&quot;lastHeartbeatTime&quot;:&quot;2021-07-19 11:22:31&quot;&#125;,&#123;&quot;id&quot;:55682,&quot;host&quot;:&quot;10.17.41.130&quot;,&quot;port&quot;:1234,&quot;zkDirectories&quot;:[&quot;/dolphinscheduler/nodes/worker/default/10.17.41.130:1234&quot;],&quot;resInfo&quot;:&quot;&#123;\&quot;cpuUsage\&quot;:0.03,\&quot;loadAverage\&quot;:1.01,\&quot;memoryUsage\&quot;:0.47&#125;&quot;,&quot;createTime&quot;:&quot;2021-07-14 14:51:32&quot;,&quot;lastHeartbeatTime&quot;:&quot;2021-07-19 11:22:33&quot;&#125;,&#123;&quot;id&quot;:53055,&quot;host&quot;:&quot;10.3.4.191&quot;,&quot;port&quot;:1234,&quot;zkDirectories&quot;:[&quot;/dolphinscheduler/nodes/worker/default/10.3.4.191:1234&quot;],&quot;resInfo&quot;:&quot;&#123;\&quot;cpuUsage\&quot;:0.02,\&quot;loadAverage\&quot;:0.18,\&quot;memoryUsage\&quot;:0.42&#125;&quot;,&quot;createTime&quot;:&quot;2021-07-15 16:59:24&quot;,&quot;lastHeartbeatTime&quot;:&quot;2021-07-19 11:22:35&quot;&#125;,&#123;&quot;id&quot;:105568,&quot;host&quot;:&quot;10.17.41.132&quot;,&quot;port&quot;:1234,&quot;zkDirectories&quot;:[&quot;/dolphinscheduler/nodes/worker/default/10.17.41.132:1234&quot;],&quot;resInfo&quot;:&quot;&#123;\&quot;cpuUsage\&quot;:0.44,\&quot;loadAverage\&quot;:8.29,\&quot;memoryUsage\&quot;:0.46&#125;&quot;,&quot;createTime&quot;:&quot;2021-07-19 10:30:21&quot;,&quot;lastHeartbeatTime&quot;:&quot;2021-07-19 11:22:31&quot;&#125;,&#123;&quot;id&quot;:34498,&quot;host&quot;:&quot;10.17.41.133&quot;,&quot;port&quot;:1234,&quot;zkDirectories&quot;:[&quot;/dolphinscheduler/nodes/worker/default/10.17.41.133:1234&quot;],&quot;resInfo&quot;:&quot;&#123;\&quot;cpuUsage\&quot;:0.43,\&quot;loadAverage\&quot;:8.21,\&quot;memoryUsage\&quot;:0.63&#125;&quot;,&quot;createTime&quot;:&quot;2021-07-14 14:52:25&quot;,&quot;lastHeartbeatTime&quot;:&quot;2021-07-19 11:22:36&quot;&#125;,&#123;&quot;id&quot;:9901,&quot;host&quot;:&quot;10.17.41.131&quot;,&quot;port&quot;:1234,&quot;zkDirectories&quot;:[&quot;/dolphinscheduler/nodes/worker/default/10.17.41.131:1234&quot;],&quot;resInfo&quot;:&quot;&#123;\&quot;cpuUsage\&quot;:0.44,\&quot;loadAverage\&quot;:8.3,\&quot;memoryUsage\&quot;:0.61&#125;&quot;,&quot;createTime&quot;:&quot;2021-07-19 10:29:24&quot;,&quot;lastHeartbeatTime&quot;:&quot;2021-07-19 11:22:34&quot;&#125;]&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if [[ $str =~ &#x27;10.17.41.129&#x27; ]]</span><br><span class="line">then</span><br><span class="line">    echo &quot;包含&quot;</span><br><span class="line">else</span><br><span class="line">    echo &quot;不包含&quot;</span><br><span class="line">fi</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="清理历史版本定义"><a href="#清理历史版本定义" class="headerlink" title="清理历史版本定义"></a>清理历史版本定义</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> io</span><br><span class="line"><span class="keyword">import</span> subprocess</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> datetime</span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置信息: ip 端口 token自行修改</span></span><br><span class="line">base_url = <span class="string">&#x27;http://xxx:12345&#x27;</span></span><br><span class="line">token = <span class="string">&#x27;xxx&#x27;</span></span><br><span class="line">keep_version=<span class="number">3</span></span><br><span class="line">payload=&#123;&#125;</span><br><span class="line">headers = &#123;</span><br><span class="line">  <span class="string">&#x27;Connection&#x27;</span>: <span class="string">&#x27;keep-alive&#x27;</span>,</span><br><span class="line">  <span class="string">&#x27;Accept&#x27;</span>: <span class="string">&#x27;application/json, text/plain, */*&#x27;</span>,</span><br><span class="line">  <span class="string">&#x27;language&#x27;</span>: <span class="string">&#x27;zh_CN&#x27;</span>,</span><br><span class="line">  <span class="string">&#x27;token&#x27;</span>:token</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取项目列表</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_project_list</span>():</span><br><span class="line">    url = <span class="string">&quot;&#123;base_url&#125;/dolphinscheduler/projects?pageSize=100&amp;pageNo=1&amp;searchVal=&quot;</span>.<span class="built_in">format</span>(base_url=base_url)</span><br><span class="line">    response = requests.request(<span class="string">&quot;GET&quot;</span>, url, headers=headers, data=payload)</span><br><span class="line">    response_data = json.loads(response.text)</span><br><span class="line">    projects = response_data[<span class="string">&#x27;data&#x27;</span>][<span class="string">&#x27;totalList&#x27;</span>]</span><br><span class="line">    <span class="keyword">for</span> project <span class="keyword">in</span> projects:</span><br><span class="line">      <span class="built_in">print</span>(project[<span class="string">&#x27;name&#x27;</span>], project[<span class="string">&#x27;code&#x27;</span>])</span><br><span class="line">    <span class="keyword">return</span> projects</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取工作定义列表</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_definition_detail</span>(<span class="params">project_code</span>):</span><br><span class="line">    all_dags = []</span><br><span class="line">    pageNo = <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        url = <span class="string">&quot;&#123;base_url&#125;/dolphinscheduler/projects/&#123;project_code&#125;/process-definition?searchVal=&amp;pageSize=50&amp;pageNo=&#123;pageNo&#125;&quot;</span>.<span class="built_in">format</span>(project_code=project_code,pageNo=pageNo,base_url=base_url)</span><br><span class="line">        response = requests.request(<span class="string">&quot;GET&quot;</span>, url, headers=headers, data=payload)</span><br><span class="line">        response_data = json.loads(response.text)</span><br><span class="line">        page_data = response_data[<span class="string">&#x27;data&#x27;</span>][<span class="string">&#x27;totalList&#x27;</span>]</span><br><span class="line">        totalPage = response_data[<span class="string">&#x27;data&#x27;</span>][<span class="string">&#x27;totalPage&#x27;</span>]</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span>(page_data) == <span class="number">0</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;工作定义列表为空,退出循环...&#x27;</span>)</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        all_dags.extend(page_data)</span><br><span class="line">        <span class="keyword">if</span> pageNo &gt;= totalPage:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        pageNo += <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> all_dags</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_version_detail</span>(<span class="params">project_code,dag_code,current_version</span>):</span><br><span class="line">    del_version = []</span><br><span class="line">    pageNo = <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        <span class="comment">#if pageNo &lt;= 1:</span></span><br><span class="line">        <span class="comment">#    print(&#x27;获取工作定义的版本信息列表,pageNo 必须大于1！！！&#x27;)</span></span><br><span class="line">        <span class="comment">#    break</span></span><br><span class="line">        url = <span class="string">&quot;&#123;base_url&#125;/dolphinscheduler/projects/&#123;project_code&#125;/process-definition/&#123;dag_code&#125;/versions?searchVal=&amp;pageSize=20&amp;pageNo=&#123;pageNo&#125;&quot;</span>.<span class="built_in">format</span>(project_code=project_code,dag_code=dag_code,pageNo=pageNo,base_url=base_url)</span><br><span class="line">        response = requests.request(<span class="string">&quot;GET&quot;</span>, url, headers=headers, data=payload)</span><br><span class="line">        response_data = json.loads(response.text)</span><br><span class="line">        page_data = response_data[<span class="string">&#x27;data&#x27;</span>][<span class="string">&#x27;totalList&#x27;</span>]</span><br><span class="line">        totalPage = response_data[<span class="string">&#x27;data&#x27;</span>][<span class="string">&#x27;totalPage&#x27;</span>]</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span>(page_data) == <span class="number">0</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;version列表为空,退出循环...&#x27;</span>)</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">for</span> page <span class="keyword">in</span> page_data:</span><br><span class="line">            version = <span class="built_in">int</span>(page[<span class="string">&#x27;version&#x27;</span>])</span><br><span class="line">            <span class="comment"># 保留近keep_version个版本</span></span><br><span class="line">            <span class="keyword">if</span> version + keep_version &lt;= current_version:</span><br><span class="line">                del_version.append(version)</span><br><span class="line">        <span class="keyword">if</span> pageNo &gt;= totalPage:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        pageNo += <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> del_version</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">delete</span>(<span class="params">project_code,dag_code,version</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;    Now deleting: &#x27;</span>,project_code,dag_code,version)</span><br><span class="line">    url = <span class="string">&quot;&#123;base_url&#125;/dolphinscheduler/projects/&#123;project_code&#125;/process-definition/&#123;dag_code&#125;/versions/&#123;version&#125;&quot;</span>.<span class="built_in">format</span>(project_code=project_code,dag_code=dag_code,version=version,base_url=base_url)</span><br><span class="line">    response = requests.request(<span class="string">&quot;DELETE&quot;</span>, url, headers=headers, data=payload)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;    &#x27;</span> + response.text)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    projects = get_project_list()</span><br><span class="line">    <span class="keyword">for</span> project <span class="keyword">in</span> projects:</span><br><span class="line">       project_code = project[<span class="string">&#x27;code&#x27;</span>]</span><br><span class="line">       <span class="built_in">print</span>(<span class="string">&#x27;Project:&#x27;</span>+ <span class="built_in">str</span>(project_code) + project[<span class="string">&#x27;name&#x27;</span>])</span><br><span class="line">       all_dags = get_definition_detail(project_code)</span><br><span class="line">       <span class="keyword">for</span> dag <span class="keyword">in</span> all_dags:</span><br><span class="line">           dag_code = dag[<span class="string">&#x27;code&#x27;</span>]</span><br><span class="line">           current_version = dag[<span class="string">&#x27;version&#x27;</span>]</span><br><span class="line">           <span class="keyword">if</span> current_version &gt; keep_version:</span><br><span class="line">                <span class="built_in">print</span>(<span class="built_in">str</span>(dag_code)+<span class="string">&#x27; &#x27;</span> + <span class="built_in">str</span>(current_version) + <span class="string">&#x27; &#x27;</span> +dag[<span class="string">&#x27;name&#x27;</span>])</span><br><span class="line">                del_version = get_version_detail(project_code,dag_code,current_version)</span><br><span class="line">                <span class="built_in">print</span>(del_version)</span><br><span class="line">                <span class="keyword">if</span>(<span class="built_in">len</span>(del_version)&gt;<span class="number">0</span>):</span><br><span class="line">                    a=<span class="built_in">input</span>() <span class="comment"># 直接回车则停止</span></span><br><span class="line">                    <span class="keyword">for</span> v <span class="keyword">in</span> del_version:</span><br><span class="line">                        delete(project_code,dag_code,v)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="清理历史工作流"><a href="#清理历史工作流" class="headerlink" title="清理历史工作流"></a>清理历史工作流</h1><p><a target="_blank" rel="noopener" href="http://host:12345/dolphinscheduler/doc.html?language=zh_CN&lang=cn">http://host:12345/dolphinscheduler/doc.html?language=zh_CN&amp;lang=cn</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> io</span><br><span class="line"><span class="keyword">import</span> subprocess</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> datetime</span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置信息: ip 端口 token自行修改</span></span><br><span class="line">base_url = <span class="string">&#x27;http://xxx:12345&#x27;</span></span><br><span class="line">token = <span class="string">&#x27;xxx&#x27;</span></span><br><span class="line">payload=&#123;&#125;</span><br><span class="line">headers = &#123;</span><br><span class="line">  <span class="string">&#x27;Connection&#x27;</span>: <span class="string">&#x27;keep-alive&#x27;</span>,</span><br><span class="line">  <span class="string">&#x27;Accept&#x27;</span>: <span class="string">&#x27;application/json, text/plain, */*&#x27;</span>,</span><br><span class="line">  <span class="string">&#x27;language&#x27;</span>: <span class="string">&#x27;zh_CN&#x27;</span>,</span><br><span class="line">  <span class="string">&#x27;token&#x27;</span>:token</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取项目列表</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_project_list</span>():</span><br><span class="line">    url = <span class="string">&quot;&#123;base_url&#125;/dolphinscheduler/projects?pageSize=100&amp;pageNo=1&amp;searchVal=&quot;</span>.<span class="built_in">format</span>(base_url=base_url)</span><br><span class="line">    response = requests.request(<span class="string">&quot;GET&quot;</span>, url, headers=headers, data=payload)</span><br><span class="line">    response_data = json.loads(response.text)</span><br><span class="line">    projects = response_data[<span class="string">&#x27;data&#x27;</span>][<span class="string">&#x27;totalList&#x27;</span>]</span><br><span class="line">    <span class="keyword">for</span> project <span class="keyword">in</span> projects:</span><br><span class="line">      <span class="built_in">print</span>(project[<span class="string">&#x27;name&#x27;</span>], project[<span class="string">&#x27;code&#x27;</span>])</span><br><span class="line">    <span class="keyword">return</span> projects</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_process_instances</span>(<span class="params">project_code,date_before</span>):</span><br><span class="line">    del_id = []</span><br><span class="line">    pageNo = <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        url = <span class="string">&quot;&#123;base_url&#125;/dolphinscheduler/projects/&#123;project_code&#125;/process-instances?pageSize=200&amp;pageNo=&#123;pageNo&#125;&amp;searchVal=&amp;endDate=&#123;date_before&#125;%2000:00:00&amp;startDate=2022-01-01%2000:00:00&quot;</span>.<span class="built_in">format</span>(    base_url=base_url,project_code=project_code,pageNo=pageNo,date_before=date_before)</span><br><span class="line">        response = requests.request(<span class="string">&quot;GET&quot;</span>, url, headers=headers, data=payload)</span><br><span class="line">        response_data = json.loads(response.text)</span><br><span class="line">        page_data = response_data[<span class="string">&#x27;data&#x27;</span>][<span class="string">&#x27;totalList&#x27;</span>]</span><br><span class="line">        totalPage = response_data[<span class="string">&#x27;data&#x27;</span>][<span class="string">&#x27;totalPage&#x27;</span>]</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span>(page_data) == <span class="number">0</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;列表为空,退出循环...&#x27;</span>)</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">for</span> item <span class="keyword">in</span> page_data:        </span><br><span class="line">            <span class="comment">#print(item[&#x27;endTime&#x27;], item[&#x27;id&#x27;])</span></span><br><span class="line">            del_id.append(<span class="built_in">str</span>(item[<span class="string">&#x27;id&#x27;</span>]))</span><br><span class="line">        <span class="keyword">if</span> pageNo &gt;= totalPage:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        pageNo += <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> del_id</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">delete_process_instances</span>(<span class="params">project_code,<span class="built_in">id</span></span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;    Now deleting: &#x27;</span>,project_code,<span class="built_in">id</span>)</span><br><span class="line">    url = <span class="string">&quot;&#123;base_url&#125;/dolphinscheduler/projects/&#123;project_code&#125;/process-instances/&#123;id&#125;&quot;</span>.<span class="built_in">format</span>(project_code=project_code,<span class="built_in">id</span>=<span class="built_in">id</span>,base_url=base_url)</span><br><span class="line">    response = requests.request(<span class="string">&quot;DELETE&quot;</span>, url, headers=headers, data=payload)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;    &#x27;</span> + response.text)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 手动</span></span><br><span class="line"><span class="comment"># project_code=&#x27;&#x27;</span></span><br><span class="line"><span class="comment"># del_id=get_process_instances(project_code,&#x27;2024-03-01&#x27;)</span></span><br><span class="line"><span class="comment"># print(len(del_id))</span></span><br><span class="line"><span class="comment"># for id in del_id:</span></span><br><span class="line"><span class="comment">#     delete_process_instances(project_code,id)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># batch</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">batch_delete</span>(<span class="params">del_id</span>):</span><br><span class="line">    url = <span class="string">&quot;&#123;base_url&#125;/dolphinscheduler/projects/&#123;project_code&#125;/process-instances/batch-delete&quot;</span>.<span class="built_in">format</span>(project_code=project_code,base_url=base_url)</span><br><span class="line">    response = requests.request(<span class="string">&quot;POST&quot;</span>, url, headers=headers, data=&#123;<span class="string">&#x27;processInstanceIds&#x27;</span>:<span class="string">&quot;,&quot;</span>.join(del_id)&#125;)  <span class="comment"># 逗号分割</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;    &#x27;</span> + response.text)</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    projects = get_project_list()</span><br><span class="line">    <span class="keyword">for</span> project <span class="keyword">in</span> projects:</span><br><span class="line">       project_code = project[<span class="string">&#x27;code&#x27;</span>]</span><br><span class="line">       <span class="built_in">print</span>(<span class="built_in">str</span>(project_code) + project[<span class="string">&#x27;name&#x27;</span>])</span><br><span class="line">       del_id=get_process_instances(project_code,<span class="string">&#x27;2024-01-01&#x27;</span>)</span><br><span class="line">       <span class="built_in">print</span>(<span class="built_in">len</span>(del_id))</span><br><span class="line">       <span class="keyword">if</span>(<span class="built_in">len</span>(del_id)&gt;<span class="number">0</span>):</span><br><span class="line">         a=<span class="built_in">input</span>() <span class="comment"># 直接回车则停止</span></span><br><span class="line">         batch_delete(del_id)</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="3-2-2-部署"><a href="#3-2-2-部署" class="headerlink" title="3.2.2 部署"></a>3.2.2 部署</h1><h2 id="初始化数据库"><a href="#初始化数据库" class="headerlink" title="初始化数据库"></a>初始化数据库</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cp mysql-connector-java-8.0.16.jar alert-server/libs/</span><br><span class="line">cp mysql-connector-java-8.0.16.jar api-server/libs/</span><br><span class="line">cp mysql-connector-java-8.0.16.jar master-server/libs/</span><br><span class="line">cp mysql-connector-java-8.0.16.jar worker-server/libs/</span><br><span class="line">cp mysql-connector-java-8.0.16.jar tools/libs/</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">mysql -uroot -p</span><br><span class="line"></span><br><span class="line">CREATE DATABASE dolphinscheduler DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;</span><br><span class="line"></span><br><span class="line">GRANT ALL PRIVILEGES ON dolphinscheduler.* TO &#x27;&#123;user&#125;&#x27;@&#x27;%&#x27; IDENTIFIED BY &#x27;&#123;password&#125;&#x27;;</span><br><span class="line">GRANT ALL PRIVILEGES ON dolphinscheduler.* TO &#x27;&#123;user&#125;&#x27;@&#x27;localhost&#x27; IDENTIFIED BY &#x27;&#123;password&#125;&#x27;;</span><br><span class="line"></span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">export DATABASE=$&#123;DATABASE:-mysql&#125;</span><br><span class="line">export SPRING_PROFILES_ACTIVE=$&#123;DATABASE&#125;</span><br><span class="line">export SPRING_DATASOURCE_URL=&quot;jdbc:mysql://xxx:3306,xxx:3306/ds?useUnicode=true&amp;characterEncoding=UTF-8&amp;useSSL=false&quot;</span><br><span class="line">export SPRING_DATASOURCE_USERNAME=xx</span><br><span class="line">export SPRING_DATASOURCE_PASSWORD=xx</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#zk</span><br><span class="line">export REGISTRY_TYPE=$&#123;REGISTRY_TYPE:-zookeeper&#125;</span><br><span class="line">export REGISTRY_ZOOKEEPER_CONNECT_STRING=&quot;xx:2181,x:2181&quot;</span><br><span class="line">export REGISTRY_ZOOKEEPER_NAMESPACE=ds</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">resource.storage.type=HDFS</span><br><span class="line">resource.storage.upload.base.path=/dolphinscheduler2</span><br><span class="line">resource.hdfs.root.user=hadoop</span><br><span class="line">resource.hdfs.fs.defaultFS=hdfs://bicluster</span><br><span class="line">## copy core-site.xml and hdfs-site.xml to conf dir</span><br><span class="line">resource.manager.httpaddress.port=8088</span><br><span class="line">yarn.resourcemanager.ha.rm.ids=10.27.48.1,10.27.48.7</span><br><span class="line">sudo.enable=false</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">cp common.properties alert-server/conf/common.properties</span><br><span class="line">cp common.properties api-server/conf/common.properties</span><br><span class="line">cp common.properties master-server/conf/common.properties</span><br><span class="line">cp common.properties standalone-server/conf/common.properties</span><br><span class="line">cp common.properties tools/conf/common.properties</span><br><span class="line">cp common.properties worker-server/conf/common.properties</span><br><span class="line"></span><br><span class="line">cp /data/soft/hadoop/etc/hadoop/hdfs-site.xml alert-server/conf/</span><br><span class="line">cp /data/soft/hadoop/etc/hadoop/hdfs-site.xml api-server/conf/</span><br><span class="line">cp /data/soft/hadoop/etc/hadoop/hdfs-site.xml master-server/conf/</span><br><span class="line">cp /data/soft/hadoop/etc/hadoop/hdfs-site.xml standalone-server/conf/</span><br><span class="line">cp /data/soft/hadoop/etc/hadoop/hdfs-site.xml tools/conf/</span><br><span class="line">cp /data/soft/hadoop/etc/hadoop/hdfs-site.xml worker-server/conf/</span><br><span class="line"></span><br><span class="line">cp /data/soft/hadoop/etc/hadoop/core-site.xml alert-server/conf/</span><br><span class="line">cp /data/soft/hadoop/etc/hadoop/core-site.xml api-server/conf/</span><br><span class="line">cp /data/soft/hadoop/etc/hadoop/core-site.xml master-server/conf/</span><br><span class="line">cp /data/soft/hadoop/etc/hadoop/core-site.xml standalone-server/conf/</span><br><span class="line">cp /data/soft/hadoop/etc/hadoop/core-site.xml tools/conf/</span><br><span class="line">cp /data/soft/hadoop/etc/hadoop/core-site.xml worker-server/conf/</span><br></pre></td></tr></table></figure>
+
+<p>worker</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">worker.tenant-config.auto-create-tenant-enabled = false</span><br><span class="line">worker.tenant-config.default-tenant-enabled = true</span><br></pre></td></tr></table></figure>
+
+<h1 id="1235-trace漏洞"><a href="#1235-trace漏洞" class="headerlink" title="1235 trace漏洞"></a>1235 trace漏洞</h1><p>修改worker的application.yaml</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">server:</span><br><span class="line">  port: -1</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="历史数据表情况"><a href="#历史数据表情况" class="headerlink" title="历史数据表情况"></a>历史数据表情况</h1><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">use dolphinscheduler</span><br><span class="line"><span class="keyword">SELECT</span> </span><br><span class="line">    TABLE_NAME <span class="keyword">AS</span> <span class="string">&#x27;表名&#x27;</span>, </span><br><span class="line">    TABLE_ROWS <span class="keyword">AS</span> <span class="string">&#x27;行数&#x27;</span></span><br><span class="line"><span class="keyword">FROM</span> </span><br><span class="line">    information_schema.TABLES</span><br><span class="line"><span class="keyword">WHERE</span> </span><br><span class="line">    TABLE_SCHEMA <span class="operator">=</span> DATABASE();</span><br></pre></td></tr></table></figure>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls"
+                data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+            <ul id="audio-list" style="display:none">
+                
+                
+                <li title='0' data-url='/statics/chengdu.mp3'></li>
+                
+                    
+            </ul>
+            
+                        
+            
+            
+        </div>
+        <div class="sidebar">
+            <div class="box animated fadeInRight">
+                <div class="subbox">
+                    <img src="https://s2.ax1x.com/2019/09/19/nLtSiD.png" height=300 width=300></img>
+                    <p>Manhua</p>
+                    <span>Think like an artist, develop like an artisan</span>
+                    <dl>
+                        
+                            
+                            
+                            
+                        
+                        
+                    </dl>
+                </div>
+                <ul>
+                    <li><a href="/">94 <p>Articles</p></a></li>
+                    <li><a href="/categories">10 <p>Categories</p></a></li>
+                    <li><a href="/tags">29 <p>Tags</p></a></li>
+                </ul>
+            </div>
+            
+            
+            
+            <div class="box sticky animated fadeInRight faster">
+                <div id="toc" class="subbox">
+                    <h4>Contents</h4>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#dolphinscheduler"><span class="toc-number">1.</span> <span class="toc-text">dolphinscheduler</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B0%83%E5%BA%A6%E6%83%85%E5%86%B5%E6%8A%A5%E8%A1%A8"><span class="toc-number">1.1.</span> <span class="toc-text">调度情况报表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A5%E5%BF%97%E6%A3%80%E6%9F%A5"><span class="toc-number">1.2.</span> <span class="toc-text">日志检查</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%87%E7%BA%A7%E6%93%8D%E4%BD%9C"><span class="toc-number">1.3.</span> <span class="toc-text">升级操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%91%8A%E8%AD%A6%E9%85%8D%E7%BD%AE"><span class="toc-number">1.4.</span> <span class="toc-text">告警配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%83%A8%E7%BD%B2%E9%85%8D%E7%BD%AE%E9%A1%B92-0-1"><span class="toc-number">1.5.</span> <span class="toc-text">部署配置项2.0.1</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%83%A8%E7%BD%B2%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90%E9%97%AE%E9%A2%98"><span class="toc-number">2.</span> <span class="toc-text">部署用户权限问题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E9%94%AE%E9%83%A8%E7%BD%B2%E5%88%86%E6%9E%90"><span class="toc-number">3.</span> <span class="toc-text">一键部署分析</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8D%87%E7%BA%A7%E5%88%86%E6%9E%90"><span class="toc-number">4.</span> <span class="toc-text">数据库升级分析</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%89%8B%E5%8A%A8%E9%83%A8%E7%BD%B2"><span class="toc-number">5.</span> <span class="toc-text">手动部署</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%90%AF%E5%81%9C"><span class="toc-number">6.</span> <span class="toc-text">启停</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%97%A5%E6%9C%9F%E5%8F%82%E6%95%B0%E9%85%8D%E7%BD%AE"><span class="toc-number">7.</span> <span class="toc-text">日期参数配置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92"><span class="toc-number">8.</span> <span class="toc-text">参数传递</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8C%87%E5%AE%9A%E7%BB%91%E5%AE%9A%E7%9A%84ip"><span class="toc-number">9.</span> <span class="toc-text">指定绑定的ip</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%BA%90%E7%A0%81"><span class="toc-number">10.</span> <span class="toc-text">源码</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8"><span class="toc-number">10.1.</span> <span class="toc-text">启动</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MasterServer"><span class="toc-number">10.2.</span> <span class="toc-text">MasterServer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#WorkerServer"><span class="toc-number">10.3.</span> <span class="toc-text">WorkerServer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HDFS%E4%B8%8A%E7%9A%84user%E7%9B%AE%E5%BD%95"><span class="toc-number">10.4.</span> <span class="toc-text">HDFS上的user目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#api%E5%8F%98%E9%87%8F%E5%8F%82%E6%95%B0%E5%90%AF%E5%8A%A8%E4%BB%BB%E5%8A%A1"><span class="toc-number">10.5.</span> <span class="toc-text">api变量参数启动任务</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2%E5%B7%A5%E4%BD%9C%E8%8A%82%E7%82%B9"><span class="toc-number">11.</span> <span class="toc-text">查询工作节点</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#API%E8%8E%B7%E5%BE%97%E8%8A%82%E7%82%B9%E7%8A%B6%E6%80%81"><span class="toc-number">12.</span> <span class="toc-text">API获得节点状态</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B8%85%E7%90%86%E5%8E%86%E5%8F%B2%E7%89%88%E6%9C%AC%E5%AE%9A%E4%B9%89"><span class="toc-number">13.</span> <span class="toc-text">清理历史版本定义</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B8%85%E7%90%86%E5%8E%86%E5%8F%B2%E5%B7%A5%E4%BD%9C%E6%B5%81"><span class="toc-number">14.</span> <span class="toc-text">清理历史工作流</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-2-2-%E9%83%A8%E7%BD%B2"><span class="toc-number">15.</span> <span class="toc-text">3.2.2 部署</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">15.1.</span> <span class="toc-text">初始化数据库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE"><span class="toc-number">15.2.</span> <span class="toc-text">配置</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1235-trace%E6%BC%8F%E6%B4%9E"><span class="toc-number">16.</span> <span class="toc-text">1235 trace漏洞</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8E%86%E5%8F%B2%E6%95%B0%E6%8D%AE%E8%A1%A8%E6%83%85%E5%86%B5"><span class="toc-number">17.</span> <span class="toc-text">历史数据表情况</span></a></li></ol>
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
+    <div id="back-to-top" class="animated fadeIn faster">
+        <div class="flow"></div>
+        <span class="percentage animated fadeIn faster">0%</span>
+        <span class="iconfont icon-top02 animated fadeIn faster"></span>
+    </div>
+</body>
+<footer>
+    <p class="copyright" id="copyright">
+        &copy; 2025
+        <span class="gradient-text">
+            Manhua
+        </span>.
+        Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+        Theme
+        <span class="gradient-text">
+            <a href="https://github.com/TriDiamond/hexo-theme-obsidian" title="Obsidian" target="_blank" rel="noopener">Obsidian</a>
+        </span>
+        <small><a href="https://github.com/TriDiamond/hexo-theme-obsidian/blob/master/CHANGELOG.md" title="v1.4.9.4" target="_blank" rel="noopener">v1.4.9.4</a></small>
+        
+        
+    </p>
+</footer>
+
+<script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script>
+  MathJax.Hub.Config({
+    "HTML-CSS": {
+      preferredFont: "TeX",
+      availableFonts: ["STIX", "TeX"],
+      linebreaks: {
+        automatic: true
+      },
+      EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+      inlineMath: [
+        ["$", "$"],
+        ["\\(", "\\)"]
+      ],
+      processEscapes: true,
+      ignoreClass: "tex2jax_ignore|dno",
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      noUndefined: {
+        attributes: {
+          mathcolor: "red",
+          mathbackground: "#FFEEEE",
+          mathsize: "90%"
+        }
+      },
+      Macros: {
+        href: "{}"
+      }
+    },
+    messageStyle: "none"
+  });
+</script>
+<script>
+  function initialMathJax() {
+    MathJax.Hub.Queue(function () {
+      var all = MathJax.Hub.getAllJax(),
+        i;
+      // console.log(all);
+      for (i = 0; i < all.length; i += 1) {
+        console.log(all[i].SourceElement().parentNode)
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  }
+
+  function reprocessMathJax() {
+    if (typeof MathJax !== 'undefined') {
+      MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+    }
+  }
+</script>
+
+
+ 
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/obsidian.js"></script>
+<script src="/js/jquery.truncate.js"></script>
+<script src="/js/search.js"></script>
+ 
+<script src="//cdn.bootcss.com/typed.js/2.0.10/typed.min.js"></script>
+ 
+<script src="//cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+ 
+<script src="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+
+<script src="https://cdn.bootcss.com/codemirror/5.48.4/codemirror.min.js"></script>
+ 
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/javascript/javascript.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/css/css.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/xml/xml.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/htmlmixed/htmlmixed.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/clike/clike.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/php/php.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/shell/shell.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/python/python.min.js"></script>
+   
+<script src="/js/busuanzi.min.js"></script>
+
+<script>
+  $(document).ready(function () {
+    if ($('span[id^="busuanzi_"]').length) {
+      initialBusuanzi();
+    }
+  });
+</script>
+ 
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/default-skin/default-skin.min.css">
+
+
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+  
+
+<script>
+  function initialTyped() {
+    var typedTextEl = $('.typed-text');
+    if (typedTextEl && typedTextEl.length > 0) {
+      var typed = new Typed('.typed-text', {
+        strings: ['Think like an artist, develop like an artisan', '艺术家思维去思考问题，工匠创造精神去开发'],
+        typeSpeed: 90,
+        loop: true,
+        loopCount: Infinity,
+        backSpeed: 20,
+      });
+    }
+  }
+
+  if ($('.article-header') && $('.article-header').length) {
+    $(document).ready(function () {
+      initialTyped();
+    });
+  }
+</script>
+
+
+
+
+
+
+
+</html>

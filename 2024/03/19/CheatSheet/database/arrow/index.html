@@ -1,0 +1,448 @@
+
+<!DOCTYPE html>
+<html lang="en" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Apache Arrow CheatSheet - Manhua</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Obsidian,"> 
+    <meta name="description" content="Personal site,相关概念包括ValueVector、Field、Schema、VectorSchemaRoot以及Table
+1234567891011&amp;lt;dependency&amp;gt;    &amp;lt;group,"> 
+    <meta name="author" content="Manhua"> 
+    <link rel="alternative" href="atom.xml" title="Manhua" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1429596_nzgqgvnmkjb.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.7.2/animate.min.css">
+
+    
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/codemirror.min.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/theme/dracula.css">
+
+    
+<link rel="stylesheet" href="/css/obsidian.css">
+
+    
+<link rel="stylesheet" href="/css/ball-atom.min.css">
+
+    
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+
+    
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body class="loading">
+    <div class="loader">
+        <div class="la-ball-atom la-2x">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <span id="config-title" style="display:none">Manhua</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div class="scrollbar gradient-bg-rev"></div>
+<div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <div class="navigation animated fadeIn fast delay-1s">
+        <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="http://kevinjmh.github.io">
+        <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
+        <h3 class="subtitle">Apache Arrow CheatSheet</h3>
+        <div class="social">
+            <!--        <div class="like-icon">-->
+            <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+            <!--        </div>-->
+            <div>
+                <div class="share">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="section">
+        <div class=article-header-wrapper>
+    <div class="article-header">
+        <div class="article-cover animated fadeIn" style="
+            animation-delay: 600ms;
+            animation-duration: 1.2s;
+            background-image: 
+                radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+                url('/img/cover.jpg') ">
+        </div>
+        <div class="else">
+            <p class="animated fadeInDown">
+                
+                <a href="/categories/CheatSheet"><b>「
+                    </b>CHEATSHEET<b> 」</b></a>
+                
+                March 19, 2024
+            </p>
+            <h3 class="post-title animated fadeInDown"><a href="/2024/03/19/CheatSheet/database/arrow/" title="Apache Arrow CheatSheet" class="">Apache Arrow CheatSheet</a>
+            </h3>
+            
+            <p class="post-count animated fadeInDown">
+                
+                <span>
+                    <b class="iconfont icon-text2"></b> <i>Words count</i>
+                    24k
+                </span>
+                
+                
+                <span>
+                    <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
+                    22 mins.
+                </span>
+                
+                
+                
+                <span id="busuanzi_container_page_pv">
+                    <b class="iconfont icon-read"></b> <i>Read count</i>
+                    <span id="busuanzi_value_page_pv">0</span>
+                </span>
+                
+            </p>
+            
+            
+            <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Arrow/" rel="tag">Arrow</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/BigData/" rel="tag">BigData</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Database/" rel="tag">Database</a></li></ul>
+            
+        </div>
+    </div>
+</div>
+
+<div class="screen-gradient-after">
+    <div class="screen-gradient-content">
+        <div class="screen-gradient-content-inside">
+            <div class="bold-underline-links screen-gradient-sponsor">
+                <p>
+                    <span class="animated fadeIn delay-1s"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="article">
+    <div class='main'>
+        <div class="content markdown animated fadeIn">
+            <p>相关概念包括<code>ValueVector</code>、<code>Field</code>、<code>Schema</code>、<code>VectorSchemaRoot</code>以及<code>Table</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.apache.arrow&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;arrow-memory-netty&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;$&#123;arrow.version&#125;&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.apache.arrow&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;arrow-vector&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;$&#123;arrow.version&#125;&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="ValueVector"><a href="#ValueVector" class="headerlink" title="ValueVector"></a>ValueVector</h3><p><strong>ValueVector</strong>代表一列相同类型的值，每个<code>ValueVector</code>实例代表一个字段，其中包含了该字段的所有值。Apache Arrow提供了各种各样的<code>ValueVector</code>的子类，用来表示各种类型的数据，比如<code>IntVector</code>用于表示整数，<code>VarCharVector</code>用于表示字符串等。类似的，还有<code>BigIntVector、Float4Vector、Float8Vector、DateDayVector、ListVector、MapVector、StructVector</code>等等</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">BufferAllocator allocator = new RootAllocator();</span><br><span class="line">IntVector ageVector = new IntVector(&quot;age&quot;, allocator);</span><br><span class="line">VarCharVector nameVector = new VarCharVector(&quot;name&quot;, allocator);</span><br><span class="line"></span><br><span class="line">ageVector.allocateNew(3);</span><br><span class="line">ageVector.set(0,1);</span><br><span class="line">ageVector.setNull(1);</span><br><span class="line">ageVector.set(2,2);</span><br><span class="line">ageVector.setValueCount(3);</span><br><span class="line">System.out.println(&quot;Vector created in memory: &quot; + ageVector);</span><br></pre></td></tr></table></figure>
+
+<h3 id="Field"><a href="#Field" class="headerlink" title="Field"></a>Field</h3><p><strong>Field</strong>表示某一列的元数据，包括列名、列类型、是否允许为null，以及一个元数据映射。每个<code>Field</code>对象都与一个<code>ValueVector</code>对象对应，<code>Field</code>对象描述了<code>ValueVector</code>的元数据信息。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Field age = new Field(&quot;age&quot;,</span><br><span class="line">    FieldType.nullable(new ArrowType.Int(32, true)),</span><br><span class="line">    /*children*/null</span><br><span class="line">);</span><br><span class="line">Field name = new Field(&quot;name&quot;,</span><br><span class="line">    FieldType.nullable(new ArrowType.Utf8()),</span><br><span class="line">    /*children*/null</span><br><span class="line">);</span><br><span class="line">System.out.println(&quot;Field created: &quot; + name + &quot;, Metadata: &quot; + name.getMetadata());</span><br></pre></td></tr></table></figure>
+
+<h3 id="Schema"><a href="#Schema" class="headerlink" title="Schema"></a>Schema</h3><p><strong>Schema</strong>是一系列<code>Field</code>的组合，它描述了表格的结构，也可以包含一个元数据映射。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;String, String&gt; metadata = new HashMap&lt;&gt;();</span><br><span class="line">metadata.put(&quot;K1&quot;, &quot;V1&quot;);</span><br><span class="line">metadata.put(&quot;K2&quot;, &quot;V2&quot;);</span><br><span class="line">Schema schema = new Schema(asList(age, name), /*metadata*/ null);</span><br><span class="line">System.out.println(&quot;Schema created: &quot; + schema);</span><br></pre></td></tr></table></figure>
+
+<h3 id="VectorSchemaRoot"><a href="#VectorSchemaRoot" class="headerlink" title="VectorSchemaRoot"></a>VectorSchemaRoot</h3><p><strong>VectorSchemaRoot</strong>是由<code>ValueVectors</code>和<code>Schema</code>组合的关键抽象，它可以表示完整的表格数据。你可以理解为行存储中的<code>List&lt;Record&gt;</code>。</p>
+<p>下面是一个创建<code>VectorSchemaRoot</code>的例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">try(</span><br><span class="line">    BufferAllocator allocator = new RootAllocator();</span><br><span class="line">    VectorSchemaRoot root = VectorSchemaRoot.create(schema, allocator);</span><br><span class="line">    IntVector ageVector = (IntVector) root.getVector(&quot;age&quot;);</span><br><span class="line">    VarCharVector nameVector = (VarCharVector) root.getVector(&quot;name&quot;);</span><br><span class="line">)&#123;</span><br><span class="line">    ageVector.allocateNew(3);</span><br><span class="line">    ageVector.set(0, 10);</span><br><span class="line">    ageVector.set(1, 20);</span><br><span class="line">    ageVector.set(2, 30);</span><br><span class="line">    nameVector.allocateNew(3);</span><br><span class="line">    nameVector.set(0, &quot;Dave&quot;.getBytes(StandardCharsets.UTF_8));</span><br><span class="line">    nameVector.set(1, &quot;Peter&quot;.getBytes(StandardCharsets.UTF_8));</span><br><span class="line">    nameVector.set(2, &quot;Mary&quot;.getBytes(StandardCharsets.UTF_8));</span><br><span class="line">    root.setRowCount(3);</span><br><span class="line">    System.out.println(&quot;VectorSchemaRoot created: \n&quot; + root.contentToTSVString());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 已经创建vector的可以这样创建</span><br><span class="line">List&lt;Field&gt; fields = Arrays.asList(ageVector.getField(), nameVector.getField());</span><br><span class="line">List&lt;FieldVector&gt; vectors = Arrays.asList(ageVector, nameVector);</span><br><span class="line">VectorSchemaRoot root = new VectorSchemaRoot(fields, vectors);</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">VectorSchemaRoot created:</span><br><span class="line">age     name</span><br><span class="line">10      Dave</span><br><span class="line">20      Peter</span><br><span class="line">30      Mary</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="IPC"><a href="#IPC" class="headerlink" title="IPC"></a>IPC</h3><h4 id="Write"><a href="#Write" class="headerlink" title="Write"></a>Write</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">File file = new File(&quot;random_access_file.arrow&quot;);</span><br><span class="line">    try (</span><br><span class="line">        FileOutputStream fileOutputStream = new FileOutputStream(file);</span><br><span class="line">        ArrowFileWriter writer = new ArrowFileWriter(root, /*provider*/ null, fileOutputStream.getChannel());</span><br><span class="line">    ) &#123;</span><br><span class="line">        writer.start();</span><br><span class="line">        writer.writeBatch();</span><br><span class="line">        writer.end();</span><br><span class="line">        System.out.println(&quot;Record batches written: &quot; + writer.getRecordBlocks().size()</span><br><span class="line">                + &quot;. Number of rows written: &quot; + root.getRowCount());</span><br><span class="line">    &#125; catch (IOException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Read"><a href="#Read" class="headerlink" title="Read"></a>Read</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">import org.apache.arrow.memory.BufferAllocator;</span><br><span class="line">import org.apache.arrow.memory.RootAllocator;</span><br><span class="line">import org.apache.arrow.vector.ipc.ArrowFileReader;</span><br><span class="line">import org.apache.arrow.vector.ipc.message.ArrowBlock;</span><br><span class="line">import org.apache.arrow.vector.VectorSchemaRoot;</span><br><span class="line">import java.io.File;</span><br><span class="line">import java.io.FileInputStream;</span><br><span class="line">import java.io.IOException;</span><br><span class="line"></span><br><span class="line">try(</span><br><span class="line">    BufferAllocator allocator = new RootAllocator(Long.MAX_VALUE);</span><br><span class="line">    FileInputStream fileInputStream = new FileInputStream(new File(&quot;random_access_file.arrow&quot;));</span><br><span class="line">    ArrowFileReader reader = new ArrowFileReader(fileInputStream.getChannel(), allocator);</span><br><span class="line">)&#123;</span><br><span class="line">    System.out.println(&quot;Record batches in file: &quot; + reader.getRecordBlocks().size());</span><br><span class="line">    for (ArrowBlock arrowBlock : reader.getRecordBlocks()) &#123;</span><br><span class="line">        reader.loadRecordBatch(arrowBlock);</span><br><span class="line">        VectorSchemaRoot root = reader.getVectorSchemaRoot();</span><br><span class="line">        System.out.println(&quot;VectorSchemaRoot read: \n&quot; + root.contentToTSVString());</span><br><span class="line">    &#125;</span><br><span class="line">&#125; catch (IOException e) &#123;</span><br><span class="line">    e.printStackTrace();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Table-experimental"><a href="#Table-experimental" class="headerlink" title="Table (experimental)"></a>Table (experimental)</h3><p>就像Immutable且不支持批处理的VectorSchemaRoot，可以通过API将VectorSchemaRoot的数据转移到一个Table中（注意是转移而非复制）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Table t = new Table(someVectorSchemaRoot);</span><br><span class="line">VectorSchemaRoot root = myTable.toVectorSchemaRoot();</span><br></pre></td></tr></table></figure>
+
+<p>Table API 提供了一种以行为中心，基于列的方式处理内存中的大规模数据的高效方式。当你需要在 JVM 环境中处理大规模数据，并且希望能够高效地利用现代硬件的能力时，Table API 是一个非常好的选择。如果有必要（项目用到），后面可能单开一文总结下。</p>
+<h3 id="Dataset"><a href="#Dataset" class="headerlink" title="Dataset"></a>Dataset</h3><p>Dataset is an universal layer in Apache Arrow for querying data in different formats or in different partitioning strategies.</p>
+<p>Currently supported file formats are:</p>
+<ul>
+<li>Apache Arrow (<code>.arrow</code>)</li>
+<li>Apache ORC (<code>.orc</code>)    </li>
+<li>Apache Parquet (<code>.parquet</code>)    </li>
+<li>Comma-Separated Values (<code>.csv</code>)    </li>
+<li>Line-delimited JSON Values (<code>.json</code>)</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.apache.arrow&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;arrow-dataset&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;15.0.0&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> arrow;  </span><br><span class="line">  </span><br><span class="line"><span class="keyword">import</span> org.apache.arrow.dataset.file.*;  </span><br><span class="line"><span class="keyword">import</span> org.apache.arrow.dataset.jni.DirectReservationListener;  </span><br><span class="line"><span class="keyword">import</span> org.apache.arrow.dataset.jni.NativeMemoryPool;  </span><br><span class="line"><span class="keyword">import</span> org.apache.arrow.dataset.scanner.*;  </span><br><span class="line"><span class="keyword">import</span> org.apache.arrow.dataset.scanner.Scanner;  </span><br><span class="line"><span class="keyword">import</span> org.apache.arrow.dataset.source.*;  </span><br><span class="line"><span class="keyword">import</span> org.apache.arrow.memory.*;  </span><br><span class="line"><span class="keyword">import</span> org.apache.arrow.util.AutoCloseables;  </span><br><span class="line"><span class="keyword">import</span> org.apache.arrow.vector.*;  </span><br><span class="line"><span class="keyword">import</span> org.apache.arrow.vector.ipc.ArrowReader;  </span><br><span class="line"><span class="keyword">import</span> org.apache.arrow.vector.ipc.message.*;  </span><br><span class="line"><span class="keyword">import</span> org.apache.arrow.vector.types.pojo.Schema;  </span><br><span class="line">  </span><br><span class="line"><span class="keyword">import</span> java.io.File;  </span><br><span class="line"><span class="keyword">import</span> java.net.URI;  </span><br><span class="line"><span class="keyword">import</span> java.net.URISyntaxException;  </span><br><span class="line"><span class="keyword">import</span> java.util.*;  </span><br><span class="line">  </span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">DatasetRead</span> &#123;  </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> URISyntaxException &#123;  </span><br><span class="line">        <span class="comment">// read data from file /opt/example.parquet  </span></span><br><span class="line"><span class="comment">//        String uri = &quot;file:///C:/Users/Manhua/IdeaProjects/spark-test/0__70006c85_2644_4f02_894b_0cfbffba0541.orc&quot;;  </span></span><br><span class="line">        <span class="type">String</span> <span class="variable">uri</span> <span class="operator">=</span> <span class="string">&quot;file:///C:/Users/Manhua/IdeaProjects/spark-test/1.csv&quot;</span>;  </span><br><span class="line">        System.out.println(<span class="keyword">new</span> <span class="title class_">File</span>(<span class="keyword">new</span> <span class="title class_">URI</span>(uri)).length());  </span><br><span class="line"><span class="comment">//        ScanOptions options = new ScanOptions(/*batchSize*/ 1, Optional.of(new String[] &#123;&quot;id&quot;, &quot;user_id&quot;&#125;));  </span></span><br><span class="line">        <span class="type">ScanOptions</span> <span class="variable">options</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ScanOptions</span>(<span class="comment">/*batchSize*/</span> <span class="number">1</span>);  </span><br><span class="line">        <span class="keyword">try</span> (  </span><br><span class="line">                <span class="type">BufferAllocator</span> <span class="variable">allocator</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">RootAllocator</span>(Long.MAX_VALUE);  </span><br><span class="line">                <span class="type">DatasetFactory</span> <span class="variable">datasetFactory</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileSystemDatasetFactory</span>(  </span><br><span class="line">                        allocator, NativeMemoryPool.getDefault(),  </span><br><span class="line">                        FileFormat.CSV, uri);  </span><br><span class="line">                <span class="type">Dataset</span> <span class="variable">dataset</span> <span class="operator">=</span> datasetFactory.finish();  </span><br><span class="line">                <span class="type">Scanner</span> <span class="variable">scanner</span> <span class="operator">=</span> dataset.newScan(options);  </span><br><span class="line">                <span class="type">ArrowReader</span> <span class="variable">reader</span> <span class="operator">=</span> scanner.scanBatches()  </span><br><span class="line">        ) &#123;  </span><br><span class="line">            <span class="type">Schema</span> <span class="variable">schema</span> <span class="operator">=</span> scanner.schema();  </span><br><span class="line"><span class="comment">//            Schema schema = datasetFactory.inspect();  </span></span><br><span class="line">            System.out.println(schema.toJson());  </span><br><span class="line">  </span><br><span class="line"><span class="comment">//            List&lt;ArrowRecordBatch&gt; batches = new ArrayList&lt;&gt;();  </span></span><br><span class="line">            <span class="keyword">while</span> (reader.loadNextBatch()) &#123;  </span><br><span class="line">                <span class="keyword">try</span> (<span class="type">VectorSchemaRoot</span> <span class="variable">root</span> <span class="operator">=</span> reader.getVectorSchemaRoot()) &#123;  </span><br><span class="line">                    System.out.print(root.contentToTSVString());  </span><br><span class="line">                &#125;  </span><br><span class="line">            &#125;  </span><br><span class="line">  </span><br><span class="line">            <span class="comment">// do something with read record batches, for example:  </span></span><br><span class="line"><span class="comment">//            analyzeArrowData(batches);  </span></span><br><span class="line">  </span><br><span class="line">            <span class="comment">// finished the analysis of the data, close all resources:  </span></span><br><span class="line"><span class="comment">//            AutoCloseables.close(batches);  </span></span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;  </span><br><span class="line">            e.printStackTrace();  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="substrait-Acero"><a href="#substrait-Acero" class="headerlink" title="substrait&#x2F;Acero"></a>substrait&#x2F;Acero</h3><p>使用SQL方式处理数据</p>
+<h1 id="其他数据操作"><a href="#其他数据操作" class="headerlink" title="其他数据操作"></a>其他数据操作</h1><p><a target="_blank" rel="noopener" href="https://arrow.apache.org/cookbook/java/data.html">Data manipulation — Apache Arrow Java Cookbook documentation</a></p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls"
+                data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+            <ul id="audio-list" style="display:none">
+                
+                
+                <li title='0' data-url='/statics/chengdu.mp3'></li>
+                
+                    
+            </ul>
+            
+                        
+            
+            
+        </div>
+        <div class="sidebar">
+            <div class="box animated fadeInRight">
+                <div class="subbox">
+                    <img src="https://s2.ax1x.com/2019/09/19/nLtSiD.png" height=300 width=300></img>
+                    <p>Manhua</p>
+                    <span>Think like an artist, develop like an artisan</span>
+                    <dl>
+                        
+                            
+                            
+                            
+                        
+                        
+                    </dl>
+                </div>
+                <ul>
+                    <li><a href="/">94 <p>Articles</p></a></li>
+                    <li><a href="/categories">10 <p>Categories</p></a></li>
+                    <li><a href="/tags">29 <p>Tags</p></a></li>
+                </ul>
+            </div>
+            
+            
+            
+            <div class="box sticky animated fadeInRight faster">
+                <div id="toc" class="subbox">
+                    <h4>Contents</h4>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#ValueVector"><span class="toc-number">1.</span> <span class="toc-text">ValueVector</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Field"><span class="toc-number">2.</span> <span class="toc-text">Field</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Schema"><span class="toc-number">3.</span> <span class="toc-text">Schema</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#VectorSchemaRoot"><span class="toc-number">4.</span> <span class="toc-text">VectorSchemaRoot</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IPC"><span class="toc-number">5.</span> <span class="toc-text">IPC</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Table-experimental"><span class="toc-number">6.</span> <span class="toc-text">Table (experimental)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Dataset"><span class="toc-number">7.</span> <span class="toc-text">Dataset</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#substrait-Acero"><span class="toc-number">8.</span> <span class="toc-text">substrait&#x2F;Acero</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C"><span class="toc-number"></span> <span class="toc-text">其他数据操作</span></a>
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
+    <div id="back-to-top" class="animated fadeIn faster">
+        <div class="flow"></div>
+        <span class="percentage animated fadeIn faster">0%</span>
+        <span class="iconfont icon-top02 animated fadeIn faster"></span>
+    </div>
+</body>
+<footer>
+    <p class="copyright" id="copyright">
+        &copy; 2025
+        <span class="gradient-text">
+            Manhua
+        </span>.
+        Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+        Theme
+        <span class="gradient-text">
+            <a href="https://github.com/TriDiamond/hexo-theme-obsidian" title="Obsidian" target="_blank" rel="noopener">Obsidian</a>
+        </span>
+        <small><a href="https://github.com/TriDiamond/hexo-theme-obsidian/blob/master/CHANGELOG.md" title="v1.4.9.4" target="_blank" rel="noopener">v1.4.9.4</a></small>
+        
+        
+    </p>
+</footer>
+
+<script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script>
+  MathJax.Hub.Config({
+    "HTML-CSS": {
+      preferredFont: "TeX",
+      availableFonts: ["STIX", "TeX"],
+      linebreaks: {
+        automatic: true
+      },
+      EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+      inlineMath: [
+        ["$", "$"],
+        ["\\(", "\\)"]
+      ],
+      processEscapes: true,
+      ignoreClass: "tex2jax_ignore|dno",
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      noUndefined: {
+        attributes: {
+          mathcolor: "red",
+          mathbackground: "#FFEEEE",
+          mathsize: "90%"
+        }
+      },
+      Macros: {
+        href: "{}"
+      }
+    },
+    messageStyle: "none"
+  });
+</script>
+<script>
+  function initialMathJax() {
+    MathJax.Hub.Queue(function () {
+      var all = MathJax.Hub.getAllJax(),
+        i;
+      // console.log(all);
+      for (i = 0; i < all.length; i += 1) {
+        console.log(all[i].SourceElement().parentNode)
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  }
+
+  function reprocessMathJax() {
+    if (typeof MathJax !== 'undefined') {
+      MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+    }
+  }
+</script>
+
+
+ 
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/obsidian.js"></script>
+<script src="/js/jquery.truncate.js"></script>
+<script src="/js/search.js"></script>
+ 
+<script src="//cdn.bootcss.com/typed.js/2.0.10/typed.min.js"></script>
+ 
+<script src="//cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+ 
+<script src="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+
+<script src="https://cdn.bootcss.com/codemirror/5.48.4/codemirror.min.js"></script>
+ 
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/javascript/javascript.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/css/css.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/xml/xml.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/htmlmixed/htmlmixed.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/clike/clike.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/php/php.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/shell/shell.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/python/python.min.js"></script>
+   
+<script src="/js/busuanzi.min.js"></script>
+
+<script>
+  $(document).ready(function () {
+    if ($('span[id^="busuanzi_"]').length) {
+      initialBusuanzi();
+    }
+  });
+</script>
+ 
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/default-skin/default-skin.min.css">
+
+
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+  
+
+<script>
+  function initialTyped() {
+    var typedTextEl = $('.typed-text');
+    if (typedTextEl && typedTextEl.length > 0) {
+      var typed = new Typed('.typed-text', {
+        strings: ['Think like an artist, develop like an artisan', '艺术家思维去思考问题，工匠创造精神去开发'],
+        typeSpeed: 90,
+        loop: true,
+        loopCount: Infinity,
+        backSpeed: 20,
+      });
+    }
+  }
+
+  if ($('.article-header') && $('.article-header').length) {
+    $(document).ready(function () {
+      initialTyped();
+    });
+  }
+</script>
+
+
+
+
+
+
+
+</html>

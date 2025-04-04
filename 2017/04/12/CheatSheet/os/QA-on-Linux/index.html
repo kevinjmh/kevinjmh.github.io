@@ -1,0 +1,533 @@
+
+<!DOCTYPE html>
+<html lang="en" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>QA-on-Linux - Manhua</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Obsidian,"> 
+    <meta name="description" content="Personal site,Linux ProblemsI’m in Mint可以把 http://www.cnblogs.com/manhua/p/3631046.html 删除了
+
+Install终端间通信linux里有自,"> 
+    <meta name="author" content="Manhua"> 
+    <link rel="alternative" href="atom.xml" title="Manhua" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1429596_nzgqgvnmkjb.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.7.2/animate.min.css">
+
+    
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/codemirror.min.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/theme/dracula.css">
+
+    
+<link rel="stylesheet" href="/css/obsidian.css">
+
+    
+<link rel="stylesheet" href="/css/ball-atom.min.css">
+
+    
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+
+    
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body class="loading">
+    <div class="loader">
+        <div class="la-ball-atom la-2x">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <span id="config-title" style="display:none">Manhua</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div class="scrollbar gradient-bg-rev"></div>
+<div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <div class="navigation animated fadeIn fast delay-1s">
+        <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="http://kevinjmh.github.io">
+        <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
+        <h3 class="subtitle">QA-on-Linux</h3>
+        <div class="social">
+            <!--        <div class="like-icon">-->
+            <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+            <!--        </div>-->
+            <div>
+                <div class="share">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="section">
+        <div class=article-header-wrapper>
+    <div class="article-header">
+        <div class="article-cover animated fadeIn" style="
+            animation-delay: 600ms;
+            animation-duration: 1.2s;
+            background-image: 
+                radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+                url('/img/cover.jpg') ">
+        </div>
+        <div class="else">
+            <p class="animated fadeInDown">
+                
+                <a href="javascript:;"><b>「 </b>Article<b> 」</b></a>
+                
+                April 12, 2017
+            </p>
+            <h3 class="post-title animated fadeInDown"><a href="/2017/04/12/CheatSheet/os/QA-on-Linux/" title="QA-on-Linux" class="">QA-on-Linux</a>
+            </h3>
+            
+            <p class="post-count animated fadeInDown">
+                
+                <span>
+                    <b class="iconfont icon-text2"></b> <i>Words count</i>
+                    10k
+                </span>
+                
+                
+                <span>
+                    <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
+                    9 mins.
+                </span>
+                
+                
+                
+                <span id="busuanzi_container_page_pv">
+                    <b class="iconfont icon-read"></b> <i>Read count</i>
+                    <span id="busuanzi_value_page_pv">0</span>
+                </span>
+                
+            </p>
+            
+            
+        </div>
+    </div>
+</div>
+
+<div class="screen-gradient-after">
+    <div class="screen-gradient-content">
+        <div class="screen-gradient-content-inside">
+            <div class="bold-underline-links screen-gradient-sponsor">
+                <p>
+                    <span class="animated fadeIn delay-1s"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="article">
+    <div class='main'>
+        <div class="content markdown animated fadeIn">
+            <h1 id="Linux-Problems"><a href="#Linux-Problems" class="headerlink" title="Linux Problems"></a>Linux Problems</h1><h4 id="I’m-in-Mint"><a href="#I’m-in-Mint" class="headerlink" title="I’m in Mint"></a><em>I’m in Mint</em></h4><p>可以把 <a target="_blank" rel="noopener" href="http://www.cnblogs.com/manhua/p/3631046.html">http://www.cnblogs.com/manhua/p/3631046.html</a> 删除了</p>
+<hr>
+<h2 id="Install"><a href="#Install" class="headerlink" title="Install"></a>Install</h2><h3 id="终端间通信"><a href="#终端间通信" class="headerlink" title="终端间通信"></a>终端间通信</h3><p>linux里有自带的终端间通信命令：write、wall</p>
+<p>使用who命令，查看目前登入系统的用户信息，比如pts&#x2F;0和pts&#x2F;1是本机登录的两个终端。</p>
+<p>在终端0上输入命令<code>write manhua /dev/pts/1</code>,此时在终端0上输入hello，在终端1上会显示。但如果要使终端1也能发送消息到终端0，则需要在终端1上输入<code>write manhua /dev/pts/0</code>,然后两个终端就可以互通消息，类似我们常用的聊天工具。</p>
+<p>如果要终止聊天，在终端0处按ctrl +D，则在另一终端1处显示EOF，此时，终端0不能再向终端1发送消息，但终端1可以向终端0发送消息。</p>
+<p>wall广播功能</p>
+<p>echo “message” | wall ，这样所有的登录用户都可以收到“message”。</p>
+<h3 id="shell-参数"><a href="#shell-参数" class="headerlink" title="shell 参数"></a>shell 参数</h3><table>
+<thead>
+<tr>
+<th>变量</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$$</td>
+<td>Shell本身的PID（ProcessID）</td>
+</tr>
+<tr>
+<td>$!</td>
+<td>Shell最后运行的后台Process的PID</td>
+</tr>
+<tr>
+<td>$?</td>
+<td>最后运行的命令的结束代码（返回值）</td>
+</tr>
+<tr>
+<td>$-</td>
+<td>使用Set命令设定的Flag一览</td>
+</tr>
+<tr>
+<td>$*</td>
+<td>所有参数列表。如用「”」括起来,以”$1 $2 … $n”的形式输出所有参数</td>
+</tr>
+<tr>
+<td>$@</td>
+<td>所有参数列表。如用「”」括起来,以”$1” “$2” … “$n” 的形式输出所有参数</td>
+</tr>
+<tr>
+<td>$#</td>
+<td>添加到Shell的参数个数</td>
+</tr>
+<tr>
+<td>$0</td>
+<td>Shell本身的文件名</td>
+</tr>
+<tr>
+<td>$1～$n</td>
+<td>添加到Shell的各参数值。$1是第1参数、$2是第2参数</td>
+</tr>
+</tbody></table>
+<p>测试代码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment"># params.sh</span></span><br><span class="line"><span class="built_in">printf</span> <span class="string">&quot;The complete list is %s\n&quot;</span> <span class="string">&quot;$$&quot;</span></span><br><span class="line"><span class="built_in">printf</span> <span class="string">&quot;The complete list is %s\n&quot;</span> <span class="string">&quot;$!&quot;</span></span><br><span class="line"><span class="built_in">printf</span> <span class="string">&quot;The complete list is %s\n&quot;</span> <span class="string">&quot;$?&quot;</span></span><br><span class="line"><span class="built_in">printf</span> <span class="string">&quot;The complete list is %s\n&quot;</span> <span class="string">&quot;$*&quot;</span></span><br><span class="line"><span class="built_in">printf</span> <span class="string">&quot;The complete list is %s\n&quot;</span> <span class="string">&quot;<span class="variable">$@</span>&quot;</span></span><br><span class="line"><span class="built_in">printf</span> <span class="string">&quot;The complete list is %s\n&quot;</span> <span class="string">&quot;<span class="variable">$#</span>&quot;</span></span><br><span class="line"><span class="built_in">printf</span> <span class="string">&quot;The complete list is %s\n&quot;</span> <span class="string">&quot;<span class="variable">$0</span>&quot;</span></span><br><span class="line"><span class="built_in">printf</span> <span class="string">&quot;The complete list is %s\n&quot;</span> <span class="string">&quot;<span class="variable">$1</span>&quot;</span></span><br><span class="line"><span class="built_in">printf</span> <span class="string">&quot;The complete list is %s\n&quot;</span> <span class="string">&quot;<span class="variable">$2</span></span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$ bash params.sh 123456 QQ</span><br><span class="line">The complete list is 24249</span><br><span class="line">The complete list is</span><br><span class="line">The complete list is 0</span><br><span class="line">The complete list is 123456 QQ</span><br><span class="line">The complete list is 123456</span><br><span class="line">The complete list is QQ</span><br><span class="line">The complete list is 2</span><br><span class="line">The complete list is params.sh</span><br><span class="line">The complete list is 123456</span><br><span class="line">The complete list is QQ</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="双系统安装"><a href="#双系统安装" class="headerlink" title="双系统安装"></a>双系统安装</h3><ul>
+<li><p>64位的vmlinuz有后缀名，删去就好了；</p>
+</li>
+<li><p>Easy BCD 设置iso路径时要以&#x2F;开头，我的h盘是hd(0,8)</p>
+</li>
+<li><p>启动后先执行命令sudo umount -l &#x2F;isodevice</p>
+</li>
+<li><p>安装时注意引导要安装到你所设置的root分区</p>
+</li>
+</ul>
+<h2 id="输入法"><a href="#输入法" class="headerlink" title="输入法"></a>输入法</h2><h3 id="安装ibus-搜狗输入法"><a href="#安装ibus-搜狗输入法" class="headerlink" title="安装ibus&#x2F;搜狗输入法"></a>安装ibus&#x2F;搜狗输入法</h3><p>1.在Mint中比较简单</p>
+<ul>
+<li><p>setting-&gt;language-&gt;Input method-&gt;add support for fcitx</p>
+</li>
+<li><p>安装搜狗官方的deb包 <a target="_blank" rel="noopener" href="http://pinyin.sogou.com/linux/">官网</a></p>
+</li>
+<li><p>重启-&gt;右下角键盘图标’设置’-&gt; ‘+’添加sougou</p>
+</li>
+</ul>
+<p>2.手动方法</p>
+<pre><code>sudo add-apt-repository ppa:fcitx-team/nightly
+sudo apt-get update
+sudo apt-get install fcitx fcitx fcitx-bin fcitx-config-common fcitx-config-gtk fcitx-data fcitx-frontend-all fcitx-frontend-gtk3:amd64 fcitx-libs:amd64 fcitx-libs-gclient:amd64 fcitx-libs-qt:amd64 fcitx-module-cloudpinyin fcitx-module-dbus fcitx-module-kimpanel fcitx-module-x11 fcitx-modules fcitx-qimpanel-configtool fcitx-ui-classic
+</code></pre>
+<ul>
+<li><code>sudo im-config</code> 选择“是” –&gt; 选择fcitx即可，然后确定</li>
+<li>安装搜狗官方提供的deb包</li>
+<li>如果出现状态栏显示两个相同图标，在系统设置-启动程序中取消fcitx的两个启动项留下搜狗的那个即可</li>
+</ul>
+<h3 id="Pinyin输入法只有双拼"><a href="#Pinyin输入法只有双拼" class="headerlink" title="Pinyin输入法只有双拼"></a>Pinyin输入法只有双拼</h3><pre><code>ibus-daemon -drx
+</code></pre>
+<h3 id="ibus输入法没有候选词（ibus-restart）"><a href="#ibus输入法没有候选词（ibus-restart）" class="headerlink" title="ibus输入法没有候选词（ibus restart）"></a>ibus输入法没有候选词（ibus restart）</h3><pre><code>ibus-setup
+</code></pre>
+<ul>
+<li><p>在常规页面，取消了“在应用程序窗口中启用内嵌编辑模式”</p>
+</li>
+<li><p>重新启动ibus</p>
+<p> killall ibus-daemon<br> ibus-daemon -d</p>
+</li>
+</ul>
+<h2 id="其他设置"><a href="#其他设置" class="headerlink" title="其他设置"></a>其他设置</h2><h3 id="保护眼睛-休息提醒"><a href="#保护眼睛-休息提醒" class="headerlink" title="保护眼睛 休息提醒"></a>保护眼睛 休息提醒</h3><ul>
+<li><a target="_blank" rel="noopener" href="http://www.workrave.org/download/">Workrave</a> <code>sudo apt-get install Workrave</code></li>
+</ul>
+<h3 id="自动挂载NTFS磁盘"><a href="#自动挂载NTFS磁盘" class="headerlink" title="自动挂载NTFS磁盘"></a>自动挂载NTFS磁盘</h3><ul>
+<li><p>查看硬盘分区情况<code>sudo fdisk -l</code></p>
+</li>
+<li><p>编辑fstab文件<code>sudo gedit /etc/fstab</code>  </p>
+</li>
+<li><p>添加<code>/dev/sda# /media/manhua/NAME auto defaults,locale=zh_CN.UTF-8 0 0</code></p>
+</li>
+</ul>
+<h1 id="限制文件夹大小"><a href="#限制文件夹大小" class="headerlink" title="限制文件夹大小"></a>限制文件夹大小</h1><p>配额是基于文件系统的，而不是基于目录的。因此，如果你想要限制特定目录的使用空间，你需要确保该目录是其文件系统的根目录或子目录。</p>
+<p>激活quota功能：编辑&#x2F;etc&#x2F;fstab文件并为要限制大小的文件夹添加<code>usrquota,grpquota</code>：<br><code>/dev/sda5 /home ext4 defaults,usrquota,grpquota 0 2</code></p>
+<h2 id="挂载镜像的方式限制"><a href="#挂载镜像的方式限制" class="headerlink" title="挂载镜像的方式限制"></a>挂载镜像的方式限制</h2><p>：用dd创建一个空的img镜像，进行格式化的配置，然后将其绑定到指定的文件夹上可以限制该文件夹的一些属性</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">dd if=/dev/zero of=test.img bs=10M count=1 # 创建img镜像</span><br><span class="line">losetup -f    # 查看可用的循环分区</span><br><span class="line">losetup /dev/loop0[可用的循环分区] test.img</span><br><span class="line">mkfs.ext4 /dev/loop0 # 格式化分区</span><br><span class="line">mkdir test # 创建挂载目录</span><br><span class="line">mount -o loop test.img test-dir/ # 挂载</span><br><span class="line">umount test-dir/ # 取消挂载</span><br><span class="line"></span><br><span class="line">dd if=/dev/zero of=1G.img bs=1G count=1 </span><br><span class="line">cat 1G.img &gt;&gt; test.img</span><br><span class="line">resize2fs test.img</span><br></pre></td></tr></table></figure>
+
+<h3 id="亮度调节只有三级"><a href="#亮度调节只有三级" class="headerlink" title="亮度调节只有三级"></a>亮度调节只有三级</h3><ul>
+<li>Linux Mint中任务栏右键菜单添加applet：Brightness</li>
+</ul>
+<h3 id="修改启动项倒计时"><a href="#修改启动项倒计时" class="headerlink" title="修改启动项倒计时"></a>修改启动项倒计时</h3><ul>
+<li><code>sudo cp /boot/grub/grub.cfg /boot/grub/grub.cfg_backup</code></li>
+<li><code>sudo gedit /boot/grub/grub.cfg</code></li>
+<li>在### END &#x2F;etc&#x2F;grub.d&#x2F;00_header ###上面找到timeout&#x3D;10，然后自己改吧</li>
+</ul>
+<h3 id="临时更改terminal语言区域"><a href="#临时更改terminal语言区域" class="headerlink" title="临时更改terminal语言区域"></a>临时更改terminal语言区域</h3><ul>
+<li><code>echo $LANG</code></li>
+<li><code>LANG=zh_CN.UTF-8</code> 或 <code>LANG=en_US.UTF-8</code></li>
+<li>测试可用日历的命令 <code>cal</code></li>
+</ul>
+<h1 id="桌面环境"><a href="#桌面环境" class="headerlink" title="桌面环境"></a>桌面环境</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update &amp;&amp; sudo apt -y upgrade &amp;&amp; \</span><br><span class="line">sudo apt-get purge xrdp &amp;&amp; \</span><br><span class="line">sudo apt install -y xrdp xfce4 xfce4-goodies</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls"
+                data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+            <ul id="audio-list" style="display:none">
+                
+                
+                <li title='0' data-url='/statics/chengdu.mp3'></li>
+                
+                    
+            </ul>
+            
+                        
+            
+            
+        </div>
+        <div class="sidebar">
+            <div class="box animated fadeInRight">
+                <div class="subbox">
+                    <img src="https://s2.ax1x.com/2019/09/19/nLtSiD.png" height=300 width=300></img>
+                    <p>Manhua</p>
+                    <span>Think like an artist, develop like an artisan</span>
+                    <dl>
+                        
+                            
+                            
+                            
+                        
+                        
+                    </dl>
+                </div>
+                <ul>
+                    <li><a href="/">94 <p>Articles</p></a></li>
+                    <li><a href="/categories">10 <p>Categories</p></a></li>
+                    <li><a href="/tags">29 <p>Tags</p></a></li>
+                </ul>
+            </div>
+            
+            
+            
+            <div class="box sticky animated fadeInRight faster">
+                <div id="toc" class="subbox">
+                    <h4>Contents</h4>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux-Problems"><span class="toc-number">1.</span> <span class="toc-text">Linux Problems</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Install"><span class="toc-number">1.1.</span> <span class="toc-text">Install</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%88%E7%AB%AF%E9%97%B4%E9%80%9A%E4%BF%A1"><span class="toc-number">1.1.1.</span> <span class="toc-text">终端间通信</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#shell-%E5%8F%82%E6%95%B0"><span class="toc-number">1.1.2.</span> <span class="toc-text">shell 参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8C%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85"><span class="toc-number">1.1.3.</span> <span class="toc-text">双系统安装</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%B3%95"><span class="toc-number">1.2.</span> <span class="toc-text">输入法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85ibus-%E6%90%9C%E7%8B%97%E8%BE%93%E5%85%A5%E6%B3%95"><span class="toc-number">1.2.1.</span> <span class="toc-text">安装ibus&#x2F;搜狗输入法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Pinyin%E8%BE%93%E5%85%A5%E6%B3%95%E5%8F%AA%E6%9C%89%E5%8F%8C%E6%8B%BC"><span class="toc-number">1.2.2.</span> <span class="toc-text">Pinyin输入法只有双拼</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ibus%E8%BE%93%E5%85%A5%E6%B3%95%E6%B2%A1%E6%9C%89%E5%80%99%E9%80%89%E8%AF%8D%EF%BC%88ibus-restart%EF%BC%89"><span class="toc-number">1.2.3.</span> <span class="toc-text">ibus输入法没有候选词（ibus restart）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E8%AE%BE%E7%BD%AE"><span class="toc-number">1.3.</span> <span class="toc-text">其他设置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%9D%E6%8A%A4%E7%9C%BC%E7%9D%9B-%E4%BC%91%E6%81%AF%E6%8F%90%E9%86%92"><span class="toc-number">1.3.1.</span> <span class="toc-text">保护眼睛 休息提醒</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BDNTFS%E7%A3%81%E7%9B%98"><span class="toc-number">1.3.2.</span> <span class="toc-text">自动挂载NTFS磁盘</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%99%90%E5%88%B6%E6%96%87%E4%BB%B6%E5%A4%B9%E5%A4%A7%E5%B0%8F"><span class="toc-number">2.</span> <span class="toc-text">限制文件夹大小</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%82%E8%BD%BD%E9%95%9C%E5%83%8F%E7%9A%84%E6%96%B9%E5%BC%8F%E9%99%90%E5%88%B6"><span class="toc-number">2.1.</span> <span class="toc-text">挂载镜像的方式限制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%AE%E5%BA%A6%E8%B0%83%E8%8A%82%E5%8F%AA%E6%9C%89%E4%B8%89%E7%BA%A7"><span class="toc-number">2.1.1.</span> <span class="toc-text">亮度调节只有三级</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E5%90%AF%E5%8A%A8%E9%A1%B9%E5%80%92%E8%AE%A1%E6%97%B6"><span class="toc-number">2.1.2.</span> <span class="toc-text">修改启动项倒计时</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%B4%E6%97%B6%E6%9B%B4%E6%94%B9terminal%E8%AF%AD%E8%A8%80%E5%8C%BA%E5%9F%9F"><span class="toc-number">2.1.3.</span> <span class="toc-text">临时更改terminal语言区域</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83"><span class="toc-number">3.</span> <span class="toc-text">桌面环境</span></a></li></ol>
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
+    <div id="back-to-top" class="animated fadeIn faster">
+        <div class="flow"></div>
+        <span class="percentage animated fadeIn faster">0%</span>
+        <span class="iconfont icon-top02 animated fadeIn faster"></span>
+    </div>
+</body>
+<footer>
+    <p class="copyright" id="copyright">
+        &copy; 2025
+        <span class="gradient-text">
+            Manhua
+        </span>.
+        Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+        Theme
+        <span class="gradient-text">
+            <a href="https://github.com/TriDiamond/hexo-theme-obsidian" title="Obsidian" target="_blank" rel="noopener">Obsidian</a>
+        </span>
+        <small><a href="https://github.com/TriDiamond/hexo-theme-obsidian/blob/master/CHANGELOG.md" title="v1.4.9.4" target="_blank" rel="noopener">v1.4.9.4</a></small>
+        
+        
+    </p>
+</footer>
+
+<script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script>
+  MathJax.Hub.Config({
+    "HTML-CSS": {
+      preferredFont: "TeX",
+      availableFonts: ["STIX", "TeX"],
+      linebreaks: {
+        automatic: true
+      },
+      EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+      inlineMath: [
+        ["$", "$"],
+        ["\\(", "\\)"]
+      ],
+      processEscapes: true,
+      ignoreClass: "tex2jax_ignore|dno",
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      noUndefined: {
+        attributes: {
+          mathcolor: "red",
+          mathbackground: "#FFEEEE",
+          mathsize: "90%"
+        }
+      },
+      Macros: {
+        href: "{}"
+      }
+    },
+    messageStyle: "none"
+  });
+</script>
+<script>
+  function initialMathJax() {
+    MathJax.Hub.Queue(function () {
+      var all = MathJax.Hub.getAllJax(),
+        i;
+      // console.log(all);
+      for (i = 0; i < all.length; i += 1) {
+        console.log(all[i].SourceElement().parentNode)
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  }
+
+  function reprocessMathJax() {
+    if (typeof MathJax !== 'undefined') {
+      MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+    }
+  }
+</script>
+
+
+ 
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/obsidian.js"></script>
+<script src="/js/jquery.truncate.js"></script>
+<script src="/js/search.js"></script>
+ 
+<script src="//cdn.bootcss.com/typed.js/2.0.10/typed.min.js"></script>
+ 
+<script src="//cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+ 
+<script src="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+
+<script src="https://cdn.bootcss.com/codemirror/5.48.4/codemirror.min.js"></script>
+ 
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/javascript/javascript.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/css/css.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/xml/xml.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/htmlmixed/htmlmixed.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/clike/clike.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/php/php.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/shell/shell.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/python/python.min.js"></script>
+   
+<script src="/js/busuanzi.min.js"></script>
+
+<script>
+  $(document).ready(function () {
+    if ($('span[id^="busuanzi_"]').length) {
+      initialBusuanzi();
+    }
+  });
+</script>
+ 
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/default-skin/default-skin.min.css">
+
+
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+  
+
+<script>
+  function initialTyped() {
+    var typedTextEl = $('.typed-text');
+    if (typedTextEl && typedTextEl.length > 0) {
+      var typed = new Typed('.typed-text', {
+        strings: ['Think like an artist, develop like an artisan', '艺术家思维去思考问题，工匠创造精神去开发'],
+        typeSpeed: 90,
+        loop: true,
+        loopCount: Infinity,
+        backSpeed: 20,
+      });
+    }
+  }
+
+  if ($('.article-header') && $('.article-header').length) {
+    $(document).ready(function () {
+      initialTyped();
+    });
+  }
+</script>
+
+
+
+
+
+
+
+</html>

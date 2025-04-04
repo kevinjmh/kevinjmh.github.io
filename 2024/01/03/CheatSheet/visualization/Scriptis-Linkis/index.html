@@ -1,0 +1,445 @@
+
+<!DOCTYPE html>
+<html lang="en" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Scriptis-Linkis - Manhua</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Obsidian,"> 
+    <meta name="description" content="Personal site,Scriptis是基于Linkis开发的数据分析工具
+Linkis定位： 计算存储引擎中间件
+启动用户会默认作为管理员权限Linkis支持指定提交、执行的用户linkis主要进程服务会通过sudo ,"> 
+    <meta name="author" content="Manhua"> 
+    <link rel="alternative" href="atom.xml" title="Manhua" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1429596_nzgqgvnmkjb.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.7.2/animate.min.css">
+
+    
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/codemirror.min.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/theme/dracula.css">
+
+    
+<link rel="stylesheet" href="/css/obsidian.css">
+
+    
+<link rel="stylesheet" href="/css/ball-atom.min.css">
+
+    
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+
+    
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body class="loading">
+    <div class="loader">
+        <div class="la-ball-atom la-2x">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <span id="config-title" style="display:none">Manhua</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div class="scrollbar gradient-bg-rev"></div>
+<div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <div class="navigation animated fadeIn fast delay-1s">
+        <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="http://kevinjmh.github.io">
+        <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
+        <h3 class="subtitle">Scriptis-Linkis</h3>
+        <div class="social">
+            <!--        <div class="like-icon">-->
+            <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+            <!--        </div>-->
+            <div>
+                <div class="share">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="section">
+        <div class=article-header-wrapper>
+    <div class="article-header">
+        <div class="article-cover animated fadeIn" style="
+            animation-delay: 600ms;
+            animation-duration: 1.2s;
+            background-image: 
+                radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+                url('/img/cover.jpg') ">
+        </div>
+        <div class="else">
+            <p class="animated fadeInDown">
+                
+                <a href="javascript:;"><b>「 </b>Article<b> 」</b></a>
+                
+                January 03, 2024
+            </p>
+            <h3 class="post-title animated fadeInDown"><a href="/2024/01/03/CheatSheet/visualization/Scriptis-Linkis/" title="Scriptis-Linkis" class="">Scriptis-Linkis</a>
+            </h3>
+            
+            <p class="post-count animated fadeInDown">
+                
+                <span>
+                    <b class="iconfont icon-text2"></b> <i>Words count</i>
+                    8.9k
+                </span>
+                
+                
+                <span>
+                    <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
+                    8 mins.
+                </span>
+                
+                
+                
+                <span id="busuanzi_container_page_pv">
+                    <b class="iconfont icon-read"></b> <i>Read count</i>
+                    <span id="busuanzi_value_page_pv">0</span>
+                </span>
+                
+            </p>
+            
+            
+        </div>
+    </div>
+</div>
+
+<div class="screen-gradient-after">
+    <div class="screen-gradient-content">
+        <div class="screen-gradient-content-inside">
+            <div class="bold-underline-links screen-gradient-sponsor">
+                <p>
+                    <span class="animated fadeIn delay-1s"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="article">
+    <div class='main'>
+        <div class="content markdown animated fadeIn">
+            <p>Scriptis是基于Linkis开发的数据分析工具</p>
+<h1 id="Linkis"><a href="#Linkis" class="headerlink" title="Linkis"></a>Linkis</h1><p>定位： 计算存储引擎中间件</p>
+<p>启动用户会默认作为管理员权限<br>Linkis支持指定提交、执行的用户<br>linkis主要进程服务会通过<code>sudo -u $&#123;linkis-user&#125;</code> 切换到对应用户下，然后执行对应的引擎启动命令，所以引擎<code>linkis-engine</code>进程归属的用户是任务的执行者（因此部署用户需要有sudo权限，而且是免密的）。</p>
+<h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p><a target="_blank" rel="noopener" href="https://linkis.apache.org/zh-CN/download/main/">版本列表 | Apache Linkis</a></p>
+<p>配置项</p>
+<ul>
+<li>元数据库：默认mysql <code>deploy-config/linkis-env.sh</code></li>
+<li>数据库连接信息： <code>deploy-config/db.sh</code><ul>
+<li>CREATE DATABASE linkis DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;</li>
+<li>create user linkis@’%’ identified by ‘Linkis@24’;</li>
+<li>GRANT ALL PRIVILEGES ON linkis.* TO ‘linkis‘@’%’;</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">MYSQL_HOST=</span><br><span class="line">MYSQL_PORT=3306</span><br><span class="line">MYSQL_DB=linkis</span><br><span class="line">MYSQL_USER=linkis</span><br><span class="line">MYSQL_PASSWORD=Linkis@24</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">deployUser=hadoop</span><br><span class="line">dbType=mysql</span><br><span class="line"></span><br><span class="line"># 指定用户使用的目录路径，一般用于存储用户的脚本文件和日志文件等，是用户的工作空间。</span><br><span class="line">WORKSPACE_USER_ROOT_PATH=file:///data/soft/linkis/workspace</span><br><span class="line"></span><br><span class="line"># 结果集日志等文件路径，用于存储Job的结果集文件  </span><br><span class="line">HDFS_USER_ROOT_PATH=hdfs:///spark/linkis </span><br><span class="line">  </span><br><span class="line"># 存放执行引擎的工作路径，需要部署用户有写权限的本地目录   </span><br><span class="line">ENGINECONN_ROOT_PATH=/data/soft/linkis/engine_runtime</span><br><span class="line"></span><br><span class="line">#可以通过访问http://xx.xx.xx.xx:8088/ws/v1/cluster/scheduler 接口确认是否可以正常访问</span><br><span class="line">YARN_RESTFUL_URL=http://10.27.48.7:8088</span><br><span class="line"></span><br><span class="line">#HADOOP  </span><br><span class="line">HADOOP_HOME=/data/soft/hadoop</span><br><span class="line">HADOOP_CONF_DIR=/data/soft/hadoop/etc/hadoop</span><br><span class="line"></span><br><span class="line">#Hive</span><br><span class="line">#HIVE_HOME=/appcom/Install/hive</span><br><span class="line">#HIVE_CONF_DIR=/appcom/config/hive-config</span><br><span class="line"></span><br><span class="line">#Spark</span><br><span class="line">SPARK_HOME=/data/soft/spark</span><br><span class="line">SPARK_CONF_DIR=/data/soft/spark/conf</span><br><span class="line"></span><br><span class="line">## java application default jvm memory</span><br><span class="line">export SERVER_HEAP_SIZE=&quot;1024M&quot;</span><br><span class="line"></span><br><span class="line">##The decompression directory and the installation directory need to be inconsistent</span><br><span class="line">LINKIS_HOME=/data/soft/linkis</span><br><span class="line">SPARK_VERSION=3.3.1 # update bin/checkEnv.sh if failed</span><br><span class="line">MYSQL_CONNECT_JAVA_PATH=/data/soft/spark/jars/mysql-connector-java-5.1.47.jar</span><br></pre></td></tr></table></figure>
+
+<p>cp mysql-connector-java-8.0.28.jar  ${LINKIS_HOME}&#x2F;lib&#x2F;linkis-spring-cloud-services&#x2F;linkis-mg-gateway&#x2F;<br>cp mysql-connector-java-8.0.28.jar  ${LINKIS_HOME}&#x2F;lib&#x2F;linkis-commons&#x2F;public-module&#x2F;</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><pre><code>sh bin/install.sh
+sh sbin/linkis-start-all.sh
+sh sbin/linkis-daemon.sh start ps-publicservice
+</code></pre>
+<p>访问eureka服务页面（<a href="http://eurekaip:20303），">http://eurekaip:20303），</a> 默认会启动6个 Linkis 微服务</p>
+<h1 id="Linkis-Web"><a href="#Linkis-Web" class="headerlink" title="Linkis Web"></a>Linkis Web</h1><p>web端是使用nginx作为静态资源服务器的，访问请求流程是: <br><code>Linkis管理台请求-&gt;nginx ip:port-&gt;linkis-gateway ip:port-&gt; 其他服务</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">tar -xvf apache-linkis-x.x.x-web-bin.tar.gz</span><br><span class="line"></span><br><span class="line">===== config.sh =====</span><br><span class="line">#访问管理台的端口</span><br><span class="line">linkis_port=&quot;8188&quot;</span><br><span class="line"></span><br><span class="line">#linkis-mg-gateway服务地址</span><br><span class="line">linkis_url=&quot;http://localhost:9020&quot;</span><br><span class="line"></span><br><span class="line">===== 执行部署脚本 =====</span><br><span class="line"># nginx 需要sudo权限进行安装  </span><br><span class="line">sudo sh install.sh</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="离线安装"><a href="#离线安装" class="headerlink" title="离线安装"></a>离线安装</h3><p>默认走yum，离线需下载nginx的rpm包安装</p>
+<p><a target="_blank" rel="noopener" href="http://mirror.centos.org/centos/7/os/x86_64/Packages/pcre2-10.23-2.el7.x86_64.rpm">http://mirror.centos.org/centos/7/os/x86_64/Packages/pcre2-10.23-2.el7.x86_64.rpm</a><br><a target="_blank" rel="noopener" href="http://nginx.org/packages/centos/7/x86_64/RPMS/nginx-1.24.0-1.el7.ngx.x86_64.rpm">http://nginx.org/packages/centos/7/x86_64/RPMS/nginx-1.24.0-1.el7.ngx.x86_64.rpm</a><br>sudo rpm -Uvh nginx-1.24.0-1.el7.ngx.x86_64.rpm<br>sudo rpm -ivh pcre2-10.23-2.el7.x86_64.rpm</p>
+<p>安装后，linkis的nginx配置文件默认是 在<code>/etc/nginx/conf.d/linkis.conf</code> <br>nginx的日志文件在 <code>/var/log/nginx/access.log</code> 和<code>/var/log/nginx/error.log</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd /etc/nginx/conf.d</span><br><span class="line">mv default.conf default.conf.bak</span><br><span class="line"></span><br><span class="line">vi /etc/nginx/nginx.conf # 修改启动用户、线程数等</span><br></pre></td></tr></table></figure>
+
+<p>如果需要修改端口或则静态资源目录等，请修改<code>/etc/nginx/conf.d/linkis.conf</code> 文件后执行 <code>sudo nginx -s reload</code> 命令</p>
+<p>管理命令  systemctl restart nginx</p>
+<p>浏览器登陆 <code>http://xx.xx.xx.xx:8188/#/login</code> 用户名&#x2F;密码在<code>&#123;LINKIS_HOME&#125;/conf/linkis-mg-gateway.properties</code>中查看<br>[hadoop&#x2F;a43d90a3e]</p>
+<h1 id="Scriptis"><a href="#Scriptis" class="headerlink" title="Scriptis"></a>Scriptis</h1><p>下载后端包，修改nginx配置</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> location /scriptis &#123; </span><br><span class="line">     alias     /data/soft/scriptis-web/dist/ ;</span><br><span class="line">     index     index.html ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>登陆Linkis网址 <a target="_blank" rel="noopener" href="http://10.27.48.3:8188/">http://10.27.48.3:8188/</a> 成功后, 修改URL到 <a target="_blank" rel="noopener" href="http://10.27.48.3:8188/scriptis">http://10.27.48.3:8188/scriptis</a></p>
+<p>体验不好用，引擎对接配置不明确，spark无法执行，shell执行缓慢</p>
+<h1 id="引擎部署"><a href="#引擎部署" class="headerlink" title="引擎部署"></a>引擎部署</h1><p>放弃使用。整体感觉是后端人员开发各种微服务，显得架构臃肿。</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls"
+                data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+            <ul id="audio-list" style="display:none">
+                
+                
+                <li title='0' data-url='/statics/chengdu.mp3'></li>
+                
+                    
+            </ul>
+            
+                        
+            
+            
+        </div>
+        <div class="sidebar">
+            <div class="box animated fadeInRight">
+                <div class="subbox">
+                    <img src="https://s2.ax1x.com/2019/09/19/nLtSiD.png" height=300 width=300></img>
+                    <p>Manhua</p>
+                    <span>Think like an artist, develop like an artisan</span>
+                    <dl>
+                        
+                            
+                            
+                            
+                        
+                        
+                    </dl>
+                </div>
+                <ul>
+                    <li><a href="/">94 <p>Articles</p></a></li>
+                    <li><a href="/categories">10 <p>Categories</p></a></li>
+                    <li><a href="/tags">29 <p>Tags</p></a></li>
+                </ul>
+            </div>
+            
+            
+            
+            <div class="box sticky animated fadeInRight faster">
+                <div id="toc" class="subbox">
+                    <h4>Contents</h4>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Linkis"><span class="toc-number">1.</span> <span class="toc-text">Linkis</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD"><span class="toc-number">1.1.</span> <span class="toc-text">下载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">1.2.</span> <span class="toc-text">安装</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Linkis-Web"><span class="toc-number">2.</span> <span class="toc-text">Linkis Web</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85"><span class="toc-number">2.0.1.</span> <span class="toc-text">离线安装</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Scriptis"><span class="toc-number">3.</span> <span class="toc-text">Scriptis</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%95%E6%93%8E%E9%83%A8%E7%BD%B2"><span class="toc-number">4.</span> <span class="toc-text">引擎部署</span></a></li></ol>
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
+    <div id="back-to-top" class="animated fadeIn faster">
+        <div class="flow"></div>
+        <span class="percentage animated fadeIn faster">0%</span>
+        <span class="iconfont icon-top02 animated fadeIn faster"></span>
+    </div>
+</body>
+<footer>
+    <p class="copyright" id="copyright">
+        &copy; 2025
+        <span class="gradient-text">
+            Manhua
+        </span>.
+        Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+        Theme
+        <span class="gradient-text">
+            <a href="https://github.com/TriDiamond/hexo-theme-obsidian" title="Obsidian" target="_blank" rel="noopener">Obsidian</a>
+        </span>
+        <small><a href="https://github.com/TriDiamond/hexo-theme-obsidian/blob/master/CHANGELOG.md" title="v1.4.9.4" target="_blank" rel="noopener">v1.4.9.4</a></small>
+        
+        
+    </p>
+</footer>
+
+<script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script>
+  MathJax.Hub.Config({
+    "HTML-CSS": {
+      preferredFont: "TeX",
+      availableFonts: ["STIX", "TeX"],
+      linebreaks: {
+        automatic: true
+      },
+      EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+      inlineMath: [
+        ["$", "$"],
+        ["\\(", "\\)"]
+      ],
+      processEscapes: true,
+      ignoreClass: "tex2jax_ignore|dno",
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      noUndefined: {
+        attributes: {
+          mathcolor: "red",
+          mathbackground: "#FFEEEE",
+          mathsize: "90%"
+        }
+      },
+      Macros: {
+        href: "{}"
+      }
+    },
+    messageStyle: "none"
+  });
+</script>
+<script>
+  function initialMathJax() {
+    MathJax.Hub.Queue(function () {
+      var all = MathJax.Hub.getAllJax(),
+        i;
+      // console.log(all);
+      for (i = 0; i < all.length; i += 1) {
+        console.log(all[i].SourceElement().parentNode)
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  }
+
+  function reprocessMathJax() {
+    if (typeof MathJax !== 'undefined') {
+      MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+    }
+  }
+</script>
+
+
+ 
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/obsidian.js"></script>
+<script src="/js/jquery.truncate.js"></script>
+<script src="/js/search.js"></script>
+ 
+<script src="//cdn.bootcss.com/typed.js/2.0.10/typed.min.js"></script>
+ 
+<script src="//cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+ 
+<script src="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+
+<script src="https://cdn.bootcss.com/codemirror/5.48.4/codemirror.min.js"></script>
+ 
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/javascript/javascript.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/css/css.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/xml/xml.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/htmlmixed/htmlmixed.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/clike/clike.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/php/php.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/shell/shell.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/python/python.min.js"></script>
+   
+<script src="/js/busuanzi.min.js"></script>
+
+<script>
+  $(document).ready(function () {
+    if ($('span[id^="busuanzi_"]').length) {
+      initialBusuanzi();
+    }
+  });
+</script>
+ 
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/default-skin/default-skin.min.css">
+
+
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+  
+
+<script>
+  function initialTyped() {
+    var typedTextEl = $('.typed-text');
+    if (typedTextEl && typedTextEl.length > 0) {
+      var typed = new Typed('.typed-text', {
+        strings: ['Think like an artist, develop like an artisan', '艺术家思维去思考问题，工匠创造精神去开发'],
+        typeSpeed: 90,
+        loop: true,
+        loopCount: Infinity,
+        backSpeed: 20,
+      });
+    }
+  }
+
+  if ($('.article-header') && $('.article-header').length) {
+    $(document).ready(function () {
+      initialTyped();
+    });
+  }
+</script>
+
+
+
+
+
+
+
+</html>

@@ -1,0 +1,437 @@
+
+<!DOCTYPE html>
+<html lang="en" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Delta Lake - Manhua</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Obsidian,"> 
+    <meta name="description" content="Personal site,https://docs.delta.io/1.2.1/delta-utility.html
+ReleaseDelta Lake 2.0.x  - for spark 3.2
+Delta Lake ,"> 
+    <meta name="author" content="Manhua"> 
+    <link rel="alternative" href="atom.xml" title="Manhua" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1429596_nzgqgvnmkjb.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.7.2/animate.min.css">
+
+    
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/codemirror.min.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/theme/dracula.css">
+
+    
+<link rel="stylesheet" href="/css/obsidian.css">
+
+    
+<link rel="stylesheet" href="/css/ball-atom.min.css">
+
+    
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+
+    
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body class="loading">
+    <div class="loader">
+        <div class="la-ball-atom la-2x">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <span id="config-title" style="display:none">Manhua</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div class="scrollbar gradient-bg-rev"></div>
+<div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <div class="navigation animated fadeIn fast delay-1s">
+        <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="http://kevinjmh.github.io">
+        <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
+        <h3 class="subtitle">Delta Lake</h3>
+        <div class="social">
+            <!--        <div class="like-icon">-->
+            <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+            <!--        </div>-->
+            <div>
+                <div class="share">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="section">
+        <div class=article-header-wrapper>
+    <div class="article-header">
+        <div class="article-cover animated fadeIn" style="
+            animation-delay: 600ms;
+            animation-duration: 1.2s;
+            background-image: 
+                radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+                url('/img/cover.jpg') ">
+        </div>
+        <div class="else">
+            <p class="animated fadeInDown">
+                
+                <a href="javascript:;"><b>「 </b>Article<b> 」</b></a>
+                
+                May 26, 2022
+            </p>
+            <h3 class="post-title animated fadeInDown"><a href="/2022/05/26/CheatSheet/database/delta/" title="Delta Lake" class="">Delta Lake</a>
+            </h3>
+            
+            <p class="post-count animated fadeInDown">
+                
+                <span>
+                    <b class="iconfont icon-text2"></b> <i>Words count</i>
+                    11k
+                </span>
+                
+                
+                <span>
+                    <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
+                    10 mins.
+                </span>
+                
+                
+                
+                <span id="busuanzi_container_page_pv">
+                    <b class="iconfont icon-read"></b> <i>Read count</i>
+                    <span id="busuanzi_value_page_pv">0</span>
+                </span>
+                
+            </p>
+            
+            
+        </div>
+    </div>
+</div>
+
+<div class="screen-gradient-after">
+    <div class="screen-gradient-content">
+        <div class="screen-gradient-content-inside">
+            <div class="bold-underline-links screen-gradient-sponsor">
+                <p>
+                    <span class="animated fadeIn delay-1s"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="article">
+    <div class='main'>
+        <div class="content markdown animated fadeIn">
+            <p><a target="_blank" rel="noopener" href="https://docs.delta.io/1.2.1/delta-utility.html">https://docs.delta.io/1.2.1/delta-utility.html</a></p>
+<h2 id="Release"><a href="#Release" class="headerlink" title="Release"></a>Release</h2><p>Delta Lake 2.0.x  - for spark 3.2</p>
+<p>Delta Lake 2.1&#x2F;2.x  - for spark 3.3</p>
+<h2 id="入口"><a href="#入口" class="headerlink" title="入口"></a>入口</h2><h3 id="sql"><a href="#sql" class="headerlink" title="sql"></a>sql</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">spark-sql \</span><br><span class="line">--jars delta-core_2.12-2.0.2.jar,delta-storage-2.0.2.jar \</span><br><span class="line">--conf &quot;spark.sql.extensions=io.delta.sql.DeltaSparkSessionExtension&quot; \</span><br><span class="line">--conf &quot;spark.sql.catalog.spark_catalog=org.apache.spark.sql.delta.catalog.DeltaCatalog&quot;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">spark-sql \</span><br><span class="line">--jars delta-spark_2.12-3.2.1.jar,delta-storage-3.2.1.jar \</span><br><span class="line">--conf &quot;spark.sql.extensions=io.delta.sql.DeltaSparkSessionExtension&quot; \</span><br><span class="line">--conf &quot;spark.sql.catalog.spark_catalog=org.apache.spark.sql.delta.catalog.DeltaCatalog&quot;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="shell"><a href="#shell" class="headerlink" title="shell"></a>shell</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line">spark-shell \</span><br><span class="line">--jars delta-core_2.12-1.2.1.jar,delta-storage-1.2.1.jar </span><br><span class="line"></span><br><span class="line">val spark = SparkSession.builder</span><br><span class="line">      .config(&quot;spark.sql.extensions&quot;, &quot;io.delta.sql.DeltaSparkSessionExtension&quot;)</span><br><span class="line">      .config(&quot;spark.sql.catalog.spark_catalog&quot;, &quot;org.apache.spark.sql.delta.catalog.DeltaCatalog&quot;)</span><br><span class="line">      .enableHiveSupport()</span><br><span class="line">      .getOrCreate()</span><br><span class="line"></span><br><span class="line">// ==read write==</span><br><span class="line">val data = spark.range(0, 5)</span><br><span class="line">data.write.format(&quot;delta&quot;).save(&quot;/tmp/delta-table&quot;)</span><br><span class="line">val df = spark.read.format(&quot;delta&quot;).load(&quot;/tmp/delta-table&quot;)</span><br><span class="line">df.show()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// ==update delete==</span><br><span class="line">import io.delta.tables._</span><br><span class="line">import org.apache.spark.sql.functions._</span><br><span class="line"></span><br><span class="line">val deltaTable = DeltaTable.forPath(&quot;/tmp/delta-table&quot;)</span><br><span class="line">deltaTable.toDF.show()</span><br><span class="line"></span><br><span class="line">// Delete every even value</span><br><span class="line">deltaTable.delete(condition = expr(&quot;id % 2 == 0&quot;))</span><br><span class="line"></span><br><span class="line">spark.sql(&quot;DELETE FROM people10m WHERE birthDate &lt; &#x27;1955-01-01&#x27;&quot;).show(false)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// Upsert (merge) new data</span><br><span class="line">val newData = spark.range(0, 7).toDF</span><br><span class="line">deltaTable.as(&quot;oldData&quot;)</span><br><span class="line">  .merge(newData.as(&quot;newData&quot;),</span><br><span class="line">    &quot;oldData.id = newData.id&quot;)</span><br><span class="line">  .whenMatched</span><br><span class="line">  .update(Map(&quot;id&quot; -&gt; col(&quot;newData.id&quot;)))</span><br><span class="line">  // .updateAll()</span><br><span class="line">  .whenNotMatched</span><br><span class="line">  .insert(Map(&quot;id&quot; -&gt; col(&quot;newData.id&quot;)))</span><br><span class="line">  // .insertAll()</span><br><span class="line">  .execute()</span><br><span class="line">  </span><br><span class="line">MERGE INTO people10m</span><br><span class="line">USING people10mupdates</span><br><span class="line">ON people10m.id = people10mupdates.id</span><br><span class="line">WHEN MATCHED THEN</span><br><span class="line">  UPDATE SET</span><br><span class="line">    id = people10mupdates.id,</span><br><span class="line">    firstName = people10mupdates.firstName</span><br><span class="line">WHEN NOT MATCHED</span><br><span class="line">  THEN INSERT (</span><br><span class="line">    id,</span><br><span class="line">    firstName</span><br><span class="line">  )</span><br><span class="line">  VALUES (</span><br><span class="line">    people10mupdates.id,</span><br><span class="line">    people10mupdates.firstName</span><br><span class="line">  )</span><br><span class="line">    </span><br><span class="line">with changes as (</span><br><span class="line">  select seqid, userid, serviceid, startdate, enddate, updatetime </span><br><span class="line">  from label.bmp_mq </span><br><span class="line">  where year=&#x27;2022&#x27; and month=&#x27;05&#x27; and day=&#x27;14&#x27;)</span><br><span class="line">MERGE INTO label.bmp_service_sub</span><br><span class="line">USING changes</span><br><span class="line">ON label.bmp_service_sub.seqid = changes.seqid</span><br><span class="line">WHEN MATCHED THEN</span><br><span class="line">  UPDATE SET *</span><br><span class="line">WHEN NOT MATCHED</span><br><span class="line">  THEN INSERT *</span><br></pre></td></tr></table></figure>
+
+<h2 id="建表"><a href="#建表" class="headerlink" title="建表"></a>建表</h2><p>1.<code>CREATE TABLE test.people10m (id INT, firstName STRING) USING DELTA</code></p>
+<ol start="2">
+<li>可以将现有的hive-parquet表转换为delta表<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">spark.sql(&quot;CONVERT TO DELTA &lt;TBL&gt;&quot;)</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="历史版本"><a href="#历史版本" class="headerlink" title="历史版本"></a>历史版本</h2><h3 id="列出历史版本"><a href="#列出历史版本" class="headerlink" title="列出历史版本"></a>列出历史版本</h3><p>deltaTable.history().show(5, false)<br>DESCRIBE HISTORY <TBL></p>
+<h3 id="查询历史版本"><a href="#查询历史版本" class="headerlink" title="查询历史版本"></a>查询历史版本</h3><p>当前sql方式不支持</p>
+<p>spark.read.format(“delta”).option(“versionAsOf”,1)<br>.load(“&#x2F;hive&#x2F;warehouse&#x2F;label.db&#x2F;bmp_service_sub”)<br>.where(“seqid&#x3D; ‘2733648354’ “).show()</p>
+<h3 id="清理历史数据"><a href="#清理历史数据" class="headerlink" title="清理历史数据"></a>清理历史数据</h3><p>&#x2F;&#x2F;  collapse small files into larger ones<br>OPTIMIZE default.people10m</p>
+<p>&#x2F;&#x2F; Clean up snapshots<br>deltaTable.vacuum(24) &#x2F;&#x2F; 小时</p>
+<p>VACUUM dbName.tableName; &#x2F;&#x2F; 7天之前</p>
+<p>set spark.databricks.delta.retentionDurationCheck.enabled &#x3D; false;<br>VACUUM dbName.tableName RETAIN 24 HOURS;<br>VACUUM dbName.tableName RETAIN 24 HOURS DRY RUN;</p>
+<h3 id="Rollback"><a href="#Rollback" class="headerlink" title="Rollback"></a>Rollback</h3><p>需要hadoop3.0版本，否则会报Path不可序列化 <a target="_blank" rel="noopener" href="https://github.com/apache/hadoop/commit/1192781a78e7fcfcbf01b15de5d5a1f22d982e0d">commit</a><br>deltaTable.restoreToVersion(90)</p>
+<h2 id="数据更新"><a href="#数据更新" class="headerlink" title="数据更新"></a>数据更新</h2><p>delta lake以增量写文件的方式支持数据的更新和删除。</p>
+<p>匹配数据，定位需要删除的行和涉及的文件；<br>将这些文件中需要保留的数据重写到新的文件，然后给旧文件打上墓碑标记。<br>删除、更新、合并（merge）都是这个流程。</p>
+<h1 id="事务日志"><a href="#事务日志" class="headerlink" title="事务日志"></a>事务日志</h1><p>事务日志是delta lake的核心，它记录了delta表相关的所有commit操作。</p>
+<ul>
+<li>delta表是一个目录，表的根目录除了表数据外，有一个_delta_log目录，用来存放事务日志； </li>
+<li>事务日志记录了从最初的delta表开始的所有commit事件，每个commit形成一个json文件，文件名是严格递增的，文件名就是版本号。 </li>
+<li>（默认）每10个json合并成一个parquet格式的checkpoint文件，记录之前所有的commit。 </li>
+<li>事务日志有一个最新checkpoint的文件（_delta_log&#x2F;_last_checkpoint），spark读的时候会自动跳到最新的checkpoint，然后再读之后的json。 </li>
+<li>delta lake 使用乐观的并发控制，当多个用户同时写数据时，（读数据是读当前最新版本的快照，互不影响），都是生成一个新版本的数据文件（文件名不重复），在提交commit时生成下一个版本的日志文件，因为日志版本号是连续递增的，如果检测到了同名的文件已存在，则说明有其他用户执行了新的commit，此时进行冲突检测，如果检测通过，则更新当前的snapshot，然后继续提交commit，如果未通过冲突检测，则报错。 </li>
+<li>因为事务日志的存在，可以找到历史版本的数据，这也是时间穿梭的实现原理，delta lake可以根据commit记录生成历史版本的数据。 </li>
+<li>新版本的数据生成后，旧版本的数据不会立刻从磁盘删除，可以使用 VACUUM 命令来删除磁盘上的历史版本数据。</li>
+</ul>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls"
+                data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+            <ul id="audio-list" style="display:none">
+                
+                
+                <li title='0' data-url='/statics/chengdu.mp3'></li>
+                
+                    
+            </ul>
+            
+                        
+            
+            
+        </div>
+        <div class="sidebar">
+            <div class="box animated fadeInRight">
+                <div class="subbox">
+                    <img src="https://s2.ax1x.com/2019/09/19/nLtSiD.png" height=300 width=300></img>
+                    <p>Manhua</p>
+                    <span>Think like an artist, develop like an artisan</span>
+                    <dl>
+                        
+                            
+                            
+                            
+                        
+                        
+                    </dl>
+                </div>
+                <ul>
+                    <li><a href="/">94 <p>Articles</p></a></li>
+                    <li><a href="/categories">10 <p>Categories</p></a></li>
+                    <li><a href="/tags">29 <p>Tags</p></a></li>
+                </ul>
+            </div>
+            
+            
+            
+            <div class="box sticky animated fadeInRight faster">
+                <div id="toc" class="subbox">
+                    <h4>Contents</h4>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Release"><span class="toc-number">1.</span> <span class="toc-text">Release</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%A5%E5%8F%A3"><span class="toc-number">2.</span> <span class="toc-text">入口</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#sql"><span class="toc-number">2.1.</span> <span class="toc-text">sql</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#shell"><span class="toc-number">2.2.</span> <span class="toc-text">shell</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BB%BA%E8%A1%A8"><span class="toc-number">3.</span> <span class="toc-text">建表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%86%E5%8F%B2%E7%89%88%E6%9C%AC"><span class="toc-number">4.</span> <span class="toc-text">历史版本</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%97%E5%87%BA%E5%8E%86%E5%8F%B2%E7%89%88%E6%9C%AC"><span class="toc-number">4.1.</span> <span class="toc-text">列出历史版本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2%E5%8E%86%E5%8F%B2%E7%89%88%E6%9C%AC"><span class="toc-number">4.2.</span> <span class="toc-text">查询历史版本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B8%85%E7%90%86%E5%8E%86%E5%8F%B2%E6%95%B0%E6%8D%AE"><span class="toc-number">4.3.</span> <span class="toc-text">清理历史数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Rollback"><span class="toc-number">4.4.</span> <span class="toc-text">Rollback</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%9B%B4%E6%96%B0"><span class="toc-number">5.</span> <span class="toc-text">数据更新</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8B%E5%8A%A1%E6%97%A5%E5%BF%97"><span class="toc-number"></span> <span class="toc-text">事务日志</span></a>
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
+    <div id="back-to-top" class="animated fadeIn faster">
+        <div class="flow"></div>
+        <span class="percentage animated fadeIn faster">0%</span>
+        <span class="iconfont icon-top02 animated fadeIn faster"></span>
+    </div>
+</body>
+<footer>
+    <p class="copyright" id="copyright">
+        &copy; 2025
+        <span class="gradient-text">
+            Manhua
+        </span>.
+        Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+        Theme
+        <span class="gradient-text">
+            <a href="https://github.com/TriDiamond/hexo-theme-obsidian" title="Obsidian" target="_blank" rel="noopener">Obsidian</a>
+        </span>
+        <small><a href="https://github.com/TriDiamond/hexo-theme-obsidian/blob/master/CHANGELOG.md" title="v1.4.9.4" target="_blank" rel="noopener">v1.4.9.4</a></small>
+        
+        
+    </p>
+</footer>
+
+<script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script>
+  MathJax.Hub.Config({
+    "HTML-CSS": {
+      preferredFont: "TeX",
+      availableFonts: ["STIX", "TeX"],
+      linebreaks: {
+        automatic: true
+      },
+      EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+      inlineMath: [
+        ["$", "$"],
+        ["\\(", "\\)"]
+      ],
+      processEscapes: true,
+      ignoreClass: "tex2jax_ignore|dno",
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      noUndefined: {
+        attributes: {
+          mathcolor: "red",
+          mathbackground: "#FFEEEE",
+          mathsize: "90%"
+        }
+      },
+      Macros: {
+        href: "{}"
+      }
+    },
+    messageStyle: "none"
+  });
+</script>
+<script>
+  function initialMathJax() {
+    MathJax.Hub.Queue(function () {
+      var all = MathJax.Hub.getAllJax(),
+        i;
+      // console.log(all);
+      for (i = 0; i < all.length; i += 1) {
+        console.log(all[i].SourceElement().parentNode)
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  }
+
+  function reprocessMathJax() {
+    if (typeof MathJax !== 'undefined') {
+      MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+    }
+  }
+</script>
+
+
+ 
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/obsidian.js"></script>
+<script src="/js/jquery.truncate.js"></script>
+<script src="/js/search.js"></script>
+ 
+<script src="//cdn.bootcss.com/typed.js/2.0.10/typed.min.js"></script>
+ 
+<script src="//cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+ 
+<script src="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+
+<script src="https://cdn.bootcss.com/codemirror/5.48.4/codemirror.min.js"></script>
+ 
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/javascript/javascript.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/css/css.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/xml/xml.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/htmlmixed/htmlmixed.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/clike/clike.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/php/php.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/shell/shell.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/python/python.min.js"></script>
+   
+<script src="/js/busuanzi.min.js"></script>
+
+<script>
+  $(document).ready(function () {
+    if ($('span[id^="busuanzi_"]').length) {
+      initialBusuanzi();
+    }
+  });
+</script>
+ 
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/default-skin/default-skin.min.css">
+
+
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+  
+
+<script>
+  function initialTyped() {
+    var typedTextEl = $('.typed-text');
+    if (typedTextEl && typedTextEl.length > 0) {
+      var typed = new Typed('.typed-text', {
+        strings: ['Think like an artist, develop like an artisan', '艺术家思维去思考问题，工匠创造精神去开发'],
+        typeSpeed: 90,
+        loop: true,
+        loopCount: Infinity,
+        backSpeed: 20,
+      });
+    }
+  }
+
+  if ($('.article-header') && $('.article-header').length) {
+    $(document).ready(function () {
+      initialTyped();
+    });
+  }
+</script>
+
+
+
+
+
+
+
+</html>
