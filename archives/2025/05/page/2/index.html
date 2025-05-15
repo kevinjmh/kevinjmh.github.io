@@ -216,23 +216,6 @@ yum list | grep mariadb
                                     </div>
                                     <div class="timeline-marker"></div>
                                     <div class="timeline-content">
-                                        <a class="timeline-title" target="_self" href="/2025/05/15/CheatSheet/database/Atlas/"></a>
-                                        <p>
-                                            元数据管理， 表关系分析，字段查询
-设计上按自动接入为主，手动要建json文件通过api实现，UI主要是做查询浏览管理
-build如何不编译其他模块？
-1234567891011121314151617181920wget https://mirrors.ustc.edu.cn/apache/atlas/2.4.0/apache-atlas-2.4.0-sources.tar.gzmvn c...
-                                        </p>
-                                    </div>
-                                </li>
-                            
-                                
-                                <li class="timeline-item">
-                                    <div class="timeline-info">
-                                        <span class="gradient-text">May 15, 2025</span>
-                                    </div>
-                                    <div class="timeline-marker"></div>
-                                    <div class="timeline-content">
                                         <a class="timeline-title" target="_self" href="/2025/05/15/CheatSheet/database/mermaid%E7%94%BB%E5%9B%BE/"></a>
                                         <p>
                                             About Mermaid | Mermaid
@@ -267,6 +250,23 @@ neo4j 3.x 数据表关联  neo4j consolecreate ( base_information:table {tableNa
                                     </div>
                                     <div class="timeline-marker"></div>
                                     <div class="timeline-content">
+                                        <a class="timeline-title" target="_self" href="/2025/05/15/CheatSheet/database/Atlas/"></a>
+                                        <p>
+                                            元数据管理， 表关系分析，字段查询
+设计上按自动接入为主，手动要建json文件通过api实现，UI主要是做查询浏览管理
+build如何不编译其他模块？
+1234567891011121314151617181920wget https://mirrors.ustc.edu.cn/apache/atlas/2.4.0/apache-atlas-2.4.0-sources.tar.gzmvn c...
+                                        </p>
+                                    </div>
+                                </li>
+                            
+                                
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span class="gradient-text">May 15, 2025</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
                                         <a class="timeline-title" target="_self" href="/2025/05/15/CheatSheet/computing/spark/%E6%89%8B%E6%9C%BA%E5%B0%BE%E5%8F%B7hugeJoin/"></a>
                                         <p>
                                             各个输入按号码尾号分区后关联，在输入数据已知分布均匀的情况可以比hash更有效避免倾斜
@@ -282,9 +282,10 @@ neo4j 3.x 数据表关联  neo4j consolecreate ( base_information:table {tableNa
                                     </div>
                                     <div class="timeline-marker"></div>
                                     <div class="timeline-content">
-                                        <a class="timeline-title" target="_self" href="/2025/05/15/CheatSheet/cluster/mermaid/"></a>
+                                        <a class="timeline-title" target="_self" href="/2025/05/15/CheatSheet/ai/ollama/"></a>
                                         <p>
-                                            1234567891011121314151617181920212223242526272829303132graph TD    %% 数据输入层    A[外部数据源] --&gt;|DataX/SFTP| B[Kafka]    A --&gt;|批量导入| C[HDFS]    B --&gt;|实时流| D[Flink]    C --&gt;|ETL| E[Hive]    %...
+                                            修改存储路径windows：新建或修改名为 OLLAMA_MODELS 的环境变量linux：export OLLAMA_MODELS&#x3D;&#x2F;path&#x2F;to&#x2F;ollama&#x2F;models
+模型文件默认存储在 C:\Users\你的用户名\.ollama\models 目录，将该文件夹中的 blobs 和 manifests 文件夹剪切到目标磁盘的指...
                                         </p>
                                     </div>
                                 </li>
@@ -296,10 +297,9 @@ neo4j 3.x 数据表关联  neo4j consolecreate ( base_information:table {tableNa
                                     </div>
                                     <div class="timeline-marker"></div>
                                     <div class="timeline-content">
-                                        <a class="timeline-title" target="_self" href="/2025/05/15/CheatSheet/ai/ollama/"></a>
+                                        <a class="timeline-title" target="_self" href="/2025/05/15/CheatSheet/cluster/mermaid/"></a>
                                         <p>
-                                            修改存储路径windows：新建或修改名为 OLLAMA_MODELS 的环境变量linux：export OLLAMA_MODELS&#x3D;&#x2F;path&#x2F;to&#x2F;ollama&#x2F;models
-模型文件默认存储在 C:\Users\你的用户名\.ollama\models 目录，将该文件夹中的 blobs 和 manifests 文件夹剪切到目标磁盘的指...
+                                            1234567891011121314151617181920212223242526272829303132graph TD    %% 数据输入层    A[外部数据源] --&gt;|DataX/SFTP| B[Kafka]    A --&gt;|批量导入| C[HDFS]    B --&gt;|实时流| D[Flink]    C --&gt;|ETL| E[Hive]    %...
                                         </p>
                                     </div>
                                 </li>
@@ -536,11 +536,10 @@ env.fromSequence(...
                                     </div>
                                     <div class="timeline-marker"></div>
                                     <div class="timeline-content">
-                                        <a class="timeline-title" target="_self" href="/2024/03/19/CheatSheet/database/clickhouse/">ClickHouse CheatSheet</a>
+                                        <a class="timeline-title" target="_self" href="/2024/03/19/CheatSheet/database/arrow/">Apache Arrow CheatSheet</a>
                                         <p>
-                                            启动默认绑定端口9000 与hdfs冲突，修改tcp_port默认配置文件/etc/clickhouse-server/config.xml自定义配置文件目录 /etc/clickhouse-server/config.d/
-clickhouse startclickhouse stopclickhouse-client
-docker12docker pull clickhouse/clic...
+                                            相关概念包括ValueVector、Field、Schema、VectorSchemaRoot以及Table
+1234567891011&lt;dependency&gt;    &lt;groupId&gt;org.apache.arrow&lt;/groupId&gt;    &lt;artifactId&gt;arrow-memory-netty&lt;/artifactId&gt; ...
                                         </p>
                                     </div>
                                 </li>
@@ -552,10 +551,11 @@ docker12docker pull clickhouse/clic...
                                     </div>
                                     <div class="timeline-marker"></div>
                                     <div class="timeline-content">
-                                        <a class="timeline-title" target="_self" href="/2024/03/19/CheatSheet/database/arrow/">Apache Arrow CheatSheet</a>
+                                        <a class="timeline-title" target="_self" href="/2024/03/19/CheatSheet/database/clickhouse/">ClickHouse CheatSheet</a>
                                         <p>
-                                            相关概念包括ValueVector、Field、Schema、VectorSchemaRoot以及Table
-1234567891011&lt;dependency&gt;    &lt;groupId&gt;org.apache.arrow&lt;/groupId&gt;    &lt;artifactId&gt;arrow-memory-netty&lt;/artifactId&gt; ...
+                                            启动默认绑定端口9000 与hdfs冲突，修改tcp_port默认配置文件/etc/clickhouse-server/config.xml自定义配置文件目录 /etc/clickhouse-server/config.d/
+clickhouse startclickhouse stopclickhouse-client
+docker12docker pull clickhouse/clic...
                                         </p>
                                     </div>
                                 </li>
@@ -1562,11 +1562,12 @@ PyQt6是由RiverbankComputing公司开发，出现的比较早；它采用GPLv3�
                                     </div>
                                     <div class="timeline-marker"></div>
                                     <div class="timeline-content">
-                                        <a class="timeline-title" target="_self" href="/2022/01/20/CheatSheet/database/elasticsearch/">elasticsearch</a>
+                                        <a class="timeline-title" target="_self" href="/2022/01/20/CheatSheet/database/doris/">doris</a>
                                         <p>
-                                            baiscindex → dbtype → tabledocument → row
-https://www.cnblogs.com/TianFang/p/12945202.htmltext支持分词  keyword不进行分词
-installhttps://www.elastic.co/guide/en/elasticsearch/reference/current/install-elast...
+                                            架构FE(Frontend)  1-5台（分为 Follower 和 Observer），存储元数据，包括日志和 image，通常从几百 MB 到几个 GB 不等。
+BE(Backend)  10-100台，存放用户数据。3副本。
+Broker 是用于访问外部数据源（如 hdfs）的进程。通常，在每台机器上部署一个 broker 实例即可。
+一台机器上可以部署多个 BE 实例，但是只能部署一...
                                         </p>
                                     </div>
                                 </li>
@@ -1578,12 +1579,11 @@ installhttps://www.elastic.co/guide/en/elasticsearch/reference/current/install-e
                                     </div>
                                     <div class="timeline-marker"></div>
                                     <div class="timeline-content">
-                                        <a class="timeline-title" target="_self" href="/2022/01/20/CheatSheet/database/doris/">doris</a>
+                                        <a class="timeline-title" target="_self" href="/2022/01/20/CheatSheet/database/elasticsearch/">elasticsearch</a>
                                         <p>
-                                            架构FE(Frontend)  1-5台（分为 Follower 和 Observer），存储元数据，包括日志和 image，通常从几百 MB 到几个 GB 不等。
-BE(Backend)  10-100台，存放用户数据。3副本。
-Broker 是用于访问外部数据源（如 hdfs）的进程。通常，在每台机器上部署一个 broker 实例即可。
-一台机器上可以部署多个 BE 实例，但是只能部署一...
+                                            baiscindex → dbtype → tabledocument → row
+https://www.cnblogs.com/TianFang/p/12945202.htmltext支持分词  keyword不进行分词
+installhttps://www.elastic.co/guide/en/elasticsearch/reference/current/install-elast...
                                         </p>
                                     </div>
                                 </li>
