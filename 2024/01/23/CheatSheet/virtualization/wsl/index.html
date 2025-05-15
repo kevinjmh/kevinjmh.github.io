@@ -10,9 +10,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="Obsidian,"> 
-    <meta name="description" content="Personal site,InitEnv安装12wsl --list --onlinewsl --install Ubuntu-22.04
-
-通过迁移 更改WSL存储目录12345678wsl -l --all -vwsl ,"> 
+    <meta name="description" content="Personal site,InitEnv安装1234567 # 重装wsl --shutdownwsl -l  -vwsl --unregister Ubuntuwsl -l --onlinewsl --install Ub,"> 
     <meta name="author" content="Manhua"> 
     <link rel="alternative" href="atom.xml" title="Manhua" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -101,13 +99,13 @@
                 
                 <span>
                     <b class="iconfont icon-text2"></b> <i>Words count</i>
-                    4.5k
+                    7.7k
                 </span>
                 
                 
                 <span>
                     <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
-                    4 mins.
+                    7 mins.
                 </span>
                 
                 
@@ -139,11 +137,11 @@
 <div class="article">
     <div class='main'>
         <div class="content markdown animated fadeIn">
-            <h1 id="InitEnv"><a href="#InitEnv" class="headerlink" title="InitEnv"></a>InitEnv</h1><h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wsl --list --online</span><br><span class="line">wsl --install Ubuntu-22.04</span><br></pre></td></tr></table></figure>
+            <h1 id="InitEnv"><a href="#InitEnv" class="headerlink" title="InitEnv"></a>InitEnv</h1><h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> # 重装</span><br><span class="line">wsl --shutdown</span><br><span class="line">wsl -l  -v</span><br><span class="line">wsl --unregister Ubuntu</span><br><span class="line">wsl -l --online</span><br><span class="line">wsl --install Ubuntu-24.04 --name Ubuntu --location E:\runtime\wsl-ubuntu\</span><br><span class="line">wsl --set-default Ubuntu</span><br></pre></td></tr></table></figure>
 
-<h2 id="通过迁移-更改WSL存储目录"><a href="#通过迁移-更改WSL存储目录" class="headerlink" title="通过迁移 更改WSL存储目录"></a>通过迁移 更改WSL存储目录</h2><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">wsl -l --all -v</span><br><span class="line">wsl --shutdown</span><br><span class="line">wsl --export Ubuntu E:\runtime\wsl-ubuntu.tar</span><br><span class="line">wsl --unregister Ubuntu</span><br><span class="line"></span><br><span class="line">wsl --import Ubuntu E:\runtime\wsl-ubuntu\ E:\runtime\wsl-ubuntu.tar --version <span class="number">2</span></span><br><span class="line">wsl --setdefault Ubuntu</span><br><span class="line">Ubuntu config --default-user manhua</span><br></pre></td></tr></table></figure>
+<h2 id="通过迁移-更改WSL存储目录"><a href="#通过迁移-更改WSL存储目录" class="headerlink" title="通过迁移 更改WSL存储目录"></a>通过迁移 更改WSL存储目录</h2><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">wsl -l  -v</span><br><span class="line">wsl --shutdown</span><br><span class="line">wsl --export Ubuntu E:\runtime\wsl-ubuntu.tar</span><br><span class="line">wsl --unregister Ubuntu</span><br><span class="line"></span><br><span class="line">wsl --import Ubuntu E:\runtime\wsl-ubuntu\ E:\runtime\wsl-ubuntu.tar --version <span class="number">2</span></span><br><span class="line">wsl --setdefault Ubuntu</span><br><span class="line">Ubuntu config --default-user manhua</span><br></pre></td></tr></table></figure>
 
-<h2 id="配置磁盘"><a href="#配置磁盘" class="headerlink" title="配置磁盘"></a>配置磁盘</h2><ul>
+<h2 id="配置磁盘-重启后有问题"><a href="#配置磁盘-重启后有问题" class="headerlink" title="配置磁盘-重启后有问题"></a>配置磁盘-重启后有问题</h2><ul>
 <li>我的电脑–右键–管理–磁盘管理-点击一下任意磁盘明细- 操作–创建VHD</li>
 <li>PowerShell执行<code>Get-Disk</code>获得磁盘序号（磁盘管理界面也有显示） 或者 <code>GET-CimInstance -query &quot;SELECT * from Win32_DiskDrive&quot;</code></li>
 <li><code>wsl --mount \\.\PhysicalDrive2 --bare</code>  卸载<code>wsl --unmount \\.\PhysicalDrive2</code></li>
@@ -153,6 +151,9 @@
 <li>sudo mkdir -p &#x2F;data </li>
 <li>sudo mount &#x2F;dev&#x2F;sde &#x2F;data</li>
 </ul>
+<h2 id="基础配置"><a href="#基础配置" class="headerlink" title="基础配置"></a>基础配置</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ping www.baidu.com</span><br><span class="line"></span><br><span class="line">wget https://download.oracle.com/java/21/latest/jdk-21_linux-x64_bin.deb</span><br><span class="line">sudo dpkg -i jdk-21_linux-x64_bin.deb</span><br><span class="line">java -version</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>[[mvn#setting文件]]</p>
 <h2 id="修改dns"><a href="#修改dns" class="headerlink" title="修改dns"></a>修改dns</h2><p>默认是宿主机，无法下载软件</p>
 <p>先修改wsl配置 以免每次启动时覆盖（需要重启）</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[network] </span><br><span class="line">generateResolvConf = false</span><br></pre></td></tr></table></figure>
@@ -161,7 +162,7 @@
 <h1 id="BaseDevEnv"><a href="#BaseDevEnv" class="headerlink" title="BaseDevEnv"></a>BaseDevEnv</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install net-tools</span><br><span class="line">sudo apt install openssh-server</span><br><span class="line"></span><br><span class="line">sudo chown manhua /opt</span><br><span class="line">mkdir -p /opt/soft</span><br><span class="line">tar -xf /mnt/e/pkg/jdk-8u202-linux-x64.tar.gz -C /opt/soft/</span><br><span class="line">ln -s jdk1.8.0_202/ jdk</span><br><span class="line">tar -xf /mnt/e/pkg/apache-maven-3.8.8-bin.tar.gz -C /opt/soft/</span><br><span class="line">ln -s apache-maven-3.8.8/ maven</span><br><span class="line"></span><br><span class="line">vi /etc/profile</span><br><span class="line"></span><br><span class="line">#sudo apt install openjdk-8-jre-headless</span><br><span class="line">#sudo apt install maven</span><br><span class="line">#sudo apt install mysql-server</span><br><span class="line"></span><br><span class="line">service ssh start</span><br></pre></td></tr></table></figure>
 
 <h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>本地磁盘的文件权限等有问题，建议复制到linux内运行</p>
-
+<h1 id="mvn-git"><a href="#mvn-git" class="headerlink" title="mvn+git"></a>mvn+git</h1><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">wget https://dlcdn.apache.org/maven/maven-3/3.9.9/binaries/apache-maven-3.9.9-bin.tar.gz</span><br><span class="line">tar -xvzf apache-maven-3.9.9-bin.tar.gz</span><br><span class="line"><span class="built_in">mv</span> apache-maven-3.9.9 /opt/maven</span><br><span class="line"><span class="built_in">cd</span> /opt/maven/conf</span><br><span class="line">vi settings.xml</span><br><span class="line"></span><br><span class="line">git <span class="built_in">clone</span> --depth 1  -b my0.12.0  https://github.com/kevinjmh/zeppelin.git</span><br><span class="line"><span class="built_in">cd</span> zeppelin</span><br><span class="line">git branch -a</span><br><span class="line"><span class="built_in">export</span> MAVEN_OPTS=<span class="string">&quot;-Xmx3g -XX:MaxMetaspaceSize=512m&quot;</span></span><br><span class="line">mvn clean install  -P build-distr -P spark-scala-2.12 -Pspark-3.5 -DskipTests</span><br><span class="line"></span><br><span class="line">git fetch --depth 1 origin branch-0.12</span><br><span class="line">git checkout -b branch-0.12 origin/branch-0.12</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 若github访问有问题，可下载压缩包后编译</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls"
                 data-autoplay="false">
@@ -196,7 +197,7 @@
                     </dl>
                 </div>
                 <ul>
-                    <li><a href="/">94 <p>Articles</p></a></li>
+                    <li><a href="/">101 <p>Articles</p></a></li>
                     <li><a href="/categories">10 <p>Categories</p></a></li>
                     <li><a href="/tags">29 <p>Tags</p></a></li>
                 </ul>
@@ -207,7 +208,7 @@
             <div class="box sticky animated fadeInRight faster">
                 <div id="toc" class="subbox">
                     <h4>Contents</h4>
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#InitEnv"><span class="toc-number">1.</span> <span class="toc-text">InitEnv</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">2.</span> <span class="toc-text">安装</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%9A%E8%BF%87%E8%BF%81%E7%A7%BB-%E6%9B%B4%E6%94%B9WSL%E5%AD%98%E5%82%A8%E7%9B%AE%E5%BD%95"><span class="toc-number">2.1.</span> <span class="toc-text">通过迁移 更改WSL存储目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E7%A3%81%E7%9B%98"><span class="toc-number">2.2.</span> <span class="toc-text">配置磁盘</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9dns"><span class="toc-number">2.3.</span> <span class="toc-text">修改dns</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9repo"><span class="toc-number">2.4.</span> <span class="toc-text">修改repo</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#BaseDevEnv"><span class="toc-number">3.</span> <span class="toc-text">BaseDevEnv</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-number">4.</span> <span class="toc-text">问题</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#InitEnv"><span class="toc-number">1.</span> <span class="toc-text">InitEnv</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">2.</span> <span class="toc-text">安装</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%9A%E8%BF%87%E8%BF%81%E7%A7%BB-%E6%9B%B4%E6%94%B9WSL%E5%AD%98%E5%82%A8%E7%9B%AE%E5%BD%95"><span class="toc-number">2.1.</span> <span class="toc-text">通过迁移 更改WSL存储目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E7%A3%81%E7%9B%98-%E9%87%8D%E5%90%AF%E5%90%8E%E6%9C%89%E9%97%AE%E9%A2%98"><span class="toc-number">2.2.</span> <span class="toc-text">配置磁盘-重启后有问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE"><span class="toc-number">2.3.</span> <span class="toc-text">基础配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9dns"><span class="toc-number">2.4.</span> <span class="toc-text">修改dns</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9repo"><span class="toc-number">2.5.</span> <span class="toc-text">修改repo</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#BaseDevEnv"><span class="toc-number">3.</span> <span class="toc-text">BaseDevEnv</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-number">4.</span> <span class="toc-text">问题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#mvn-git"><span class="toc-number">5.</span> <span class="toc-text">mvn+git</span></a></li></ol>
                 </div>
             </div>
             
