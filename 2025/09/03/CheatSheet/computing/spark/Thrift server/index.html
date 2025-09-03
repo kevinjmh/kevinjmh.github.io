@@ -1,0 +1,641 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Manhua</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Manhua">
+    
+
+    
+    <meta name="description" content="部署spark12345678910111213141516171819202122cd &#x2F;data&#x2F;softhdfs dfs -get &#x2F;spark&#x2F;pkg&#x2F;spark-3.5.6-bin-hadoop3.tgz &amp;&amp; tar -xf spark-3.5.6-bin-hadoop3.tgz &amp;&amp; rm spark-3.5.6-bin-hadoop3.tgz &amp;am">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Manhua">
+<meta property="og:url" content="http://kevinjmh.github.io/2025/09/03/CheatSheet/computing/spark/Thrift%20server/index.html">
+<meta property="og:site_name" content="Manhua">
+<meta property="og:description" content="部署spark12345678910111213141516171819202122cd &#x2F;data&#x2F;softhdfs dfs -get &#x2F;spark&#x2F;pkg&#x2F;spark-3.5.6-bin-hadoop3.tgz &amp;&amp; tar -xf spark-3.5.6-bin-hadoop3.tgz &amp;&amp; rm spark-3.5.6-bin-hadoop3.tgz &amp;am">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-09-03T02:57:28.912Z">
+<meta property="article:modified_time" content="2025-09-03T02:57:28.912Z">
+<meta property="article:author" content="Manhua">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:creator" content="@jiangmanhua">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Manhua" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="Manhua" title="Manhua"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Manhua">Manhua</a></h1>
+				<h2 class="blog-motto">Never Say Die</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页 | Home</a></li>
+					
+						<li><a href="/archives">归档 | Archives</a></li>
+					
+						<li><a href="/about">简介 | About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:kevinjmh.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2025/09/03/CheatSheet/computing/spark/Thrift server/" title="" itemprop="url"></a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Manhua" target="_blank" itemprop="author">Manhua</a>
+		
+  <p class="article-time">
+    <time datetime="2025-09-03T02:57:28.912Z" itemprop="datePublished"> Published 2025-09-03</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%83%A8%E7%BD%B2spark"><span class="toc-number">1.</span> <span class="toc-text">部署spark</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Thrift-Server-Lake"><span class="toc-number">2.</span> <span class="toc-text">Thrift Server Lake</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%81%9C%E6%AD%A2%E8%84%9A%E6%9C%AC"><span class="toc-number">2.1.</span> <span class="toc-text">停止脚本</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Thrift-Server-Zeppelin"><span class="toc-number">3.</span> <span class="toc-text">Thrift Server Zeppelin</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%81%9C%E6%AD%A2%E8%84%9A%E6%9C%AC-1"><span class="toc-number">3.1.</span> <span class="toc-text">停止脚本</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%9D%E6%B4%BB"><span class="toc-number">4.</span> <span class="toc-text">保活</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%87%8D%E5%90%AF"><span class="toc-number">5.</span> <span class="toc-text">重启</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#crontab"><span class="toc-number">6.</span> <span class="toc-text">crontab</span></a></li></ol>
+		
+		</div>
+		
+		<h2 id="部署spark"><a href="#部署spark" class="headerlink" title="部署spark"></a>部署spark</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /data/soft</span><br><span class="line">hdfs dfs -get /spark/pkg/spark-3.5.6-bin-hadoop3.tgz &amp;&amp; tar -xf spark-3.5.6-bin-hadoop3.tgz &amp;&amp; <span class="built_in">rm</span> spark-3.5.6-bin-hadoop3.tgz &amp;&amp; <span class="built_in">cd</span> spark-3.5.6-bin-hadoop3</span><br><span class="line"></span><br><span class="line">hdfs dfs -get /spark/pkg/SparkHiveAuth-1.0-SNAPSHOT.jar jars</span><br><span class="line">hdfs dfs -get /spark/jdbc/mysql-connector-java-5.1.47.jar jars</span><br><span class="line">hdfs dfs -get /spark/jdbc/iceberg-spark-runtime-3.5_2.12-1.6.0.jar jars</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> conf</span><br><span class="line">hdfs dfs -get /spark/pkg/hive-site.xml </span><br><span class="line">hdfs dfs -get /spark/pkg/thriftAuth </span><br><span class="line">hdfs dfs -get /spark/pkg/spark-env.sh</span><br><span class="line">hdfs dfs -get /spark/pkg/spark-defaults.conf</span><br><span class="line"></span><br><span class="line"><span class="comment">#sed -i &#x27;s/355/356/&#x27; spark-defaults.conf</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># spark-daemon.sh去除$SPARK_PID_DIR检查</span></span><br><span class="line"><span class="comment"># 或者指定pid目录</span></span><br><span class="line"><span class="comment"># 或者通过下面启动脚本指定instance环境变量</span></span><br><span class="line"><span class="comment">#cd ../sbin</span></span><br><span class="line"><span class="comment">#cp spark-daemon.sh spark-thrift-daemon.sh</span></span><br><span class="line"><span class="comment">#vi spark-thrift-daemon.sh</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="Thrift-Server-Lake"><a href="#Thrift-Server-Lake" class="headerlink" title="Thrift Server Lake"></a>Thrift Server Lake</h2><figure class="highlight sh"><figcaption><span>thrift-lake.sh</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">instance=<span class="string">&quot;lake&quot;</span></span><br><span class="line"><span class="built_in">export</span> SPARK_HOME=<span class="string">&quot;<span class="subst">$(cd <span class="string">&quot;`dirname &quot;</span>$0<span class="string">&quot;`&quot;</span>/..; pwd)</span>&quot;</span></span><br><span class="line"><span class="built_in">export</span> SPARK_PID_DIR=<span class="string">&quot;<span class="variable">$&#123;SPARK_HOME&#125;</span>/pid-<span class="variable">$&#123;instance&#125;</span>&quot;</span></span><br><span class="line"><span class="built_in">export</span> SPARK_LOG_DIR=<span class="string">&quot;<span class="variable">$&#123;SPARK_HOME&#125;</span>/logs-<span class="variable">$&#123;instance&#125;</span>&quot;</span></span><br><span class="line"></span><br><span class="line">CLASS=<span class="string">&quot;org.apache.spark.sql.hive.thriftserver.HiveThriftServer2&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">exec</span> <span class="string">&quot;<span class="variable">$&#123;SPARK_HOME&#125;</span>&quot;</span>/sbin/spark-daemon.sh submit <span class="variable">$CLASS</span> <span class="variable">$instance</span>  \</span><br><span class="line">--name <span class="string">&quot;Thrift <span class="variable">$&#123;instance&#125;</span>&quot;</span> \</span><br><span class="line">--hiveconf hive.server2.thrift.port=10199 \</span><br><span class="line">--hiveconf hive.default.fileformat=Orc \</span><br><span class="line">--hiveconf hive.server2.authentication=CUSTOM \</span><br><span class="line">--master yarn  \</span><br><span class="line">--queue a17 \</span><br><span class="line">--deploy-mode client \</span><br><span class="line">--driver-cores 2  \</span><br><span class="line">--driver-memory 5G  \</span><br><span class="line">--executor-cores 6  \</span><br><span class="line">--executor-memory 15G  \</span><br><span class="line">--num-executors 3  \</span><br><span class="line">--conf spark.sql.extensions=org.apache.iceberg.spark.extensions.IcebergSparkSessionExtensions \</span><br><span class="line">--conf spark.sql.catalog.spark_catalog=org.apache.iceberg.spark.SparkSessionCatalog  \</span><br><span class="line">--conf spark.sql.catalog.prod=org.apache.iceberg.spark.SparkSessionCatalog  \</span><br><span class="line">--conf spark.sql.catalog.spark_catalog.type=hive \</span><br><span class="line">--conf spark.driver.maxResultSize=200MB \</span><br><span class="line">--conf spark.default.parallelism=500  \</span><br><span class="line">--conf spark.sql.shuffle.partitions=500  \</span><br><span class="line">--conf spark.sql.adaptive.enabled=<span class="literal">true</span>  \</span><br><span class="line">--conf spark.scheduler.mode=FAIR  \</span><br><span class="line">--conf spark.network.timeout=6000s  \</span><br><span class="line">--conf spark.memory.fraction=0.8  \</span><br><span class="line">--conf spark.dynamicAllocation.shuffleTracking.enabled=<span class="literal">true</span> \</span><br><span class="line">--conf spark.dynamicAllocation.shuffleTracking.<span class="built_in">timeout</span>=180000 \</span><br><span class="line">--conf spark.dynamicAllocation.enabled=<span class="literal">true</span> \</span><br><span class="line">--conf spark.dynamicAllocation.minExecutors=3 \</span><br><span class="line">--conf spark.dynamicAllocation.maxExecutors=50 \</span><br><span class="line">--jars hdfs:///spark/jdbc/ojdbc6-11.2.0.3.jar,hdfs:///spark/jdbc/clickhouse-jdbc-0.4.6.jar,hdfs:///spark/jdbc/guava-31.0.1-jre.jar,hdfs:///spark/jdbc/iceberg-spark-runtime-3.5_2.12-1.6.0.jar</span><br></pre></td></tr></table></figure>
+
+<h3 id="停止脚本"><a href="#停止脚本" class="headerlink" title="停止脚本"></a>停止脚本</h3><figure class="highlight sh"><figcaption><span>thrift-lake-stop.sh</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">instance=<span class="string">&quot;lake&quot;</span></span><br><span class="line"><span class="built_in">export</span> SPARK_HOME=<span class="string">&quot;<span class="subst">$(cd <span class="string">&quot;`dirname &quot;</span>$0<span class="string">&quot;`&quot;</span>/..; pwd)</span>&quot;</span></span><br><span class="line"><span class="built_in">export</span> SPARK_PID_DIR=<span class="string">&quot;<span class="variable">$&#123;SPARK_HOME&#125;</span>/pid-<span class="variable">$&#123;instance&#125;</span>&quot;</span></span><br><span class="line"><span class="built_in">export</span> SPARK_LOG_DIR=<span class="string">&quot;<span class="variable">$&#123;SPARK_HOME&#125;</span>/logs-<span class="variable">$&#123;instance&#125;</span>&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="string">&quot;<span class="variable">$&#123;SPARK_HOME&#125;</span>/sbin&quot;</span>/spark-daemon.sh stop org.apache.spark.sql.hive.thriftserver.HiveThriftServer2 <span class="variable">$&#123;instance&#125;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="Thrift-Server-Zeppelin"><a href="#Thrift-Server-Zeppelin" class="headerlink" title="Thrift Server Zeppelin"></a>Thrift Server Zeppelin</h2><figure class="highlight sh"><figcaption><span>thrift-zeppelin.sh</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">instance=<span class="string">&quot;zeppelin&quot;</span></span><br><span class="line"><span class="built_in">export</span> SPARK_HOME=<span class="string">&quot;<span class="subst">$(cd <span class="string">&quot;`dirname &quot;</span>$0<span class="string">&quot;`&quot;</span>/..; pwd)</span>&quot;</span></span><br><span class="line"><span class="built_in">export</span> SPARK_PID_DIR=<span class="string">&quot;<span class="variable">$&#123;SPARK_HOME&#125;</span>/pid-<span class="variable">$&#123;instance&#125;</span>&quot;</span></span><br><span class="line"><span class="built_in">export</span> SPARK_LOG_DIR=<span class="string">&quot;<span class="variable">$&#123;SPARK_HOME&#125;</span>/logs-<span class="variable">$&#123;instance&#125;</span>&quot;</span></span><br><span class="line"></span><br><span class="line">CLASS=<span class="string">&quot;org.apache.spark.sql.hive.thriftserver.HiveThriftServer2&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">exec</span> <span class="string">&quot;<span class="variable">$&#123;SPARK_HOME&#125;</span>&quot;</span>/sbin/spark-daemon.sh submit <span class="variable">$CLASS</span> <span class="variable">$instance</span>  \</span><br><span class="line">--name <span class="string">&quot;Thrift <span class="variable">$&#123;instance&#125;</span>&quot;</span> \</span><br><span class="line">--hiveconf hive.server2.thrift.port=10198 \</span><br><span class="line">--hiveconf hive.default.fileformat=Orc \</span><br><span class="line">--hiveconf hive.server2.authentication=CUSTOM \</span><br><span class="line">--master yarn  \</span><br><span class="line">--queue a17 \</span><br><span class="line">--deploy-mode client \</span><br><span class="line">--driver-cores 2  \</span><br><span class="line">--driver-memory 5G  \</span><br><span class="line">--executor-cores 6  \</span><br><span class="line">--executor-memory 15G  \</span><br><span class="line">--num-executors 3  \</span><br><span class="line">--proxy-user zeppelin \</span><br><span class="line">--conf spark.driver.maxResultSize=200MB \</span><br><span class="line">--conf spark.default.parallelism=200  \</span><br><span class="line">--conf spark.sql.shuffle.partitions=200  \</span><br><span class="line">--conf spark.sql.adaptive.enabled=<span class="literal">true</span>  \</span><br><span class="line">--conf spark.scheduler.mode=FAIR  \</span><br><span class="line">--conf spark.network.timeout=600s  \</span><br><span class="line">--conf spark.memory.fraction=0.8  \</span><br><span class="line">--conf spark.dynamicAllocation.shuffleTracking.enabled=<span class="literal">true</span> \</span><br><span class="line">--conf spark.dynamicAllocation.shuffleTracking.<span class="built_in">timeout</span>=18000 \</span><br><span class="line">--conf spark.dynamicAllocation.enabled=<span class="literal">true</span> \</span><br><span class="line">--conf spark.dynamicAllocation.minExecutors=3 \</span><br><span class="line">--conf spark.dynamicAllocation.maxExecutors=40 \</span><br><span class="line">--jars hdfs:///spark/jdbc/ojdbc6-11.2.0.3.jar,hdfs:///spark/jdbc/clickhouse-jdbc-0.4.6.jar,hdfs:///spark/jdbc/guava-31.0.1-jre.jar</span><br></pre></td></tr></table></figure>
+
+<h3 id="停止脚本-1"><a href="#停止脚本-1" class="headerlink" title="停止脚本"></a>停止脚本</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cp</span> thrift-lake-stop.sh  thrift-zeppelin-stop.sh</span><br><span class="line">sed -i <span class="string">&#x27;s/lake/zeppelin/&#x27;</span> thrift-zeppelin-stop.sh</span><br></pre></td></tr></table></figure>
+
+<h2 id="保活"><a href="#保活" class="headerlink" title="保活"></a>保活</h2><figure class="highlight sh"><figcaption><span>thrift-daemon.sh</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">EXPECTED_ARGS=2  <span class="comment"># 期望的参数数量</span></span><br><span class="line"><span class="keyword">if</span> [ <span class="variable">$#</span> -ne <span class="variable">$EXPECTED_ARGS</span> ]; <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;错误: 需要 exactly <span class="variable">$EXPECTED_ARGS</span> 个参数&quot;</span></span><br><span class="line">    <span class="built_in">exit</span> 1</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">source</span> /etc/profile</span><br><span class="line"></span><br><span class="line">CURTIME=`<span class="built_in">date</span> +%Y%m%d-%H:%M:%S`</span><br><span class="line"></span><br><span class="line">instance=<span class="variable">$1</span></span><br><span class="line">port=<span class="variable">$2</span></span><br><span class="line">name=<span class="string">&quot;Thrift <span class="variable">$&#123;instance&#125;</span>&quot;</span></span><br><span class="line"></span><br><span class="line">pscount=`ps -ef | grep <span class="string">&quot;<span class="variable">$&#123;name&#125;</span>&quot;</span> |grep -v <span class="string">&quot;grep&quot;</span>|<span class="built_in">wc</span> -l`</span><br><span class="line">yarncount=`yarn application -list | grep <span class="string">&quot;<span class="variable">$&#123;name&#125;</span>&quot;</span> | grep RUNNING |<span class="built_in">wc</span> -l`</span><br><span class="line">pid=`ps -ef | grep <span class="string">&quot;<span class="variable">$&#123;name&#125;</span>&quot;</span> |grep -v <span class="string">&quot;grep&quot;</span> |awk -F<span class="string">&#x27; &#x27;</span> <span class="string">&#x27;&#123; print $2 &#125;&#x27;</span>`</span><br><span class="line">isListen=`netstat -plntu |grep <span class="variable">$port</span> |<span class="built_in">wc</span> -l`</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [[ <span class="variable">$isListen</span> -lt 1 || <span class="variable">$pscount</span> == 0 || <span class="variable">$yarncount</span> == 0 ]];</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">  /bin/sh /data/soft/spark/sbin/thrift-<span class="variable">$&#123;instance&#125;</span>-stop.sh</span><br><span class="line">  /bin/kill -9 <span class="variable">$pid</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="string">&quot;<span class="variable">$&#123;CURTIME&#125;</span> 重启&quot;</span> &gt;&gt; /data/soft/spark/logs-<span class="variable">$&#123;instance&#125;</span>/daemon_thrift-<span class="variable">$&#123;instance&#125;</span>.<span class="built_in">log</span></span><br><span class="line">  /bin/sh /data/soft/spark/sbin/thrift-<span class="variable">$&#123;instance&#125;</span>.sh</span><br><span class="line">  <span class="built_in">exit</span> 0</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">  <span class="built_in">touch</span>  /data/soft/spark/logs-<span class="variable">$&#123;instance&#125;</span>/daemon_thrift-<span class="variable">$&#123;instance&#125;</span>.<span class="built_in">log</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="重启"><a href="#重启" class="headerlink" title="重启"></a>重启</h2><figure class="highlight sh"><figcaption><span>thrift-restart.sh</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">EXPECTED_ARGS=1  <span class="comment"># 期望的参数数量</span></span><br><span class="line"><span class="keyword">if</span> [ <span class="variable">$#</span> -ne <span class="variable">$EXPECTED_ARGS</span> ]; <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;错误: 需要 exactly <span class="variable">$EXPECTED_ARGS</span> 个参数&quot;</span></span><br><span class="line">    <span class="built_in">exit</span> 1</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line">instance=<span class="variable">$1</span></span><br><span class="line">/bin/sh /data/soft/spark/sbin/thrift-<span class="variable">$&#123;instance&#125;</span>-stop.sh</span><br><span class="line">/bin/sh /data/soft/spark/sbin/thrift-<span class="variable">$&#123;instance&#125;</span>.sh</span><br></pre></td></tr></table></figure>
+
+<h2 id="crontab"><a href="#crontab" class="headerlink" title="crontab"></a>crontab</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">*/5 * * * * /bin/sh /data/soft/spark/sbin/thrift-daemon.sh lake 10199</span><br><span class="line">*/5 * * * * /bin/sh /data/soft/spark/sbin/thrift-daemon.sh zeppelin 10198</span><br><span class="line">0  8 * * * /bin/sh /data/soft/spark/sbin/thrift-restart.sh zeppelin</span><br><span class="line">0 13 * * * /bin/sh /data/soft/spark/sbin/thrift-restart.sh zeppelin</span><br><span class="line">0 19 * * * /bin/sh /data/soft/spark/sbin/thrift-restart.sh zeppelin</span><br><span class="line">0 21 * * * /bin/sh /data/soft/spark/sbin/thrift-restart.sh zeppelin</span><br></pre></td></tr></table></figure>  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://kevinjmh.github.io/2025/09/03/CheatSheet/computing/spark/Thrift%20server/" data-title="Manhua" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2025/09/03/CheatSheet/web/nginx/" title="">
+  <strong>上一篇：</strong><br/>
+  <span>
+  (no title)</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2025/05/22/CheatSheet/database/gravitino/"  title="gravitino">
+ <strong>下一篇：</strong><br/> 
+ <span>gravitino
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github Card</p>
+<div class="github-card" data-github="kevinjmh" data-width="220" data-height="119" data-theme="medium">
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+  </div>
+
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/CheatSheet/2-10-2/" title="2.10.2">2.10.2<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/CheatSheet/AI/" title="AI">AI<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Application/" title="Application">Application<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/BigData/" title="BigData">BigData<sup>7</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/CheatSheet/" title="CheatSheet">CheatSheet<sup>42</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/CheatSheet/Computing/" title="Computing">Computing<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/CheatSheet/Database/" title="Database">Database<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/CheatSheet/Development/" title="Development">Development<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Info/" title="Info">Info<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/CheatSheet/Infrastructure/" title="Infrastructure">Infrastructure<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/CheatSheet/System/" title="System">System<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/CheatSheet/ai/" title="ai">ai<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/CheatSheet/cluster/" title="cluster">cluster<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/CheatSheet/database/" title="database">database<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/CheatSheet/os/" title="os">os<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/CheatSheet/spark/" title="spark">spark<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/CheatSheet/storage/" title="storage">storage<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/CheatSheet/virtualization/" title="virtualization">virtualization<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/CheatSheet/visualization/" title="visualization">visualization<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/慢话/" title="慢话">慢话<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/BigData/" title="BigData">BigData<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/carbondata/" title="carbondata">carbondata<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/project/" title="project">project<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Hadoop/" title="Hadoop">Hadoop<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Database/" title="Database">Database<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/rdma/" title="rdma">rdma<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/software/" title="software">software<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/recommendation/" title="recommendation">recommendation<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/RAG/" title="RAG">RAG<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/LLM/" title="LLM">LLM<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Langchain/" title="Langchain">Langchain<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Ollama/" title="Ollama">Ollama<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Git/" title="Git">Git<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Version-Control/" title="Version Control">Version Control<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Development/" title="Development">Development<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Cluster/" title="Cluster">Cluster<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/HDFS/" title="HDFS">HDFS<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Infrastructure/" title="Infrastructure">Infrastructure<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Flink/" title="Flink">Flink<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Stream-Processing/" title="Stream Processing">Stream Processing<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://www.cnblogs.com/manhua" target="_blank" title="cnBlogs">cnBlogs</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m Manhua Jiang. <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/443181876" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/kevinjmh" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		<a href="https://twitter.com/jiangmanhua" target="_blank" class="icon-twitter" title="twitter"></a>
+		
+		
+		<a href="https://www.facebook.com/jiangmanhua" target="_blank" class="icon-facebook" title="facebook"></a>
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2025 
+		
+		<a href="/about" target="_blank" title="Manhua">Manhua</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+        getSize();
+        if (myWidth >= 1024) {
+          c.click();
+        }
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

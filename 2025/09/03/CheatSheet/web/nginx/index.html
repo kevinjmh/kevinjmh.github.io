@@ -1,0 +1,635 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Manhua</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Manhua">
+    
+
+    
+    <meta name="description" content="门户代理用户浏览器  ↓Nginx代理服务器 (含Portal页面)  ↓后端服务 (HDFS Web UI及其他服务) 1. 创建门户页面在Nginx服务器上创建门户目录： 1234567tar -xf nginx-1.29.0.tar.gz.&#x2F;configure --prefix&#x3D;&#x2F;data&#x2F;soft&#x2F;nginxmake &amp;&amp; make installmkdir -p port">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Manhua">
+<meta property="og:url" content="http://kevinjmh.github.io/2025/09/03/CheatSheet/web/nginx/index.html">
+<meta property="og:site_name" content="Manhua">
+<meta property="og:description" content="门户代理用户浏览器  ↓Nginx代理服务器 (含Portal页面)  ↓后端服务 (HDFS Web UI及其他服务) 1. 创建门户页面在Nginx服务器上创建门户目录： 1234567tar -xf nginx-1.29.0.tar.gz.&#x2F;configure --prefix&#x3D;&#x2F;data&#x2F;soft&#x2F;nginxmake &amp;&amp; make installmkdir -p port">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-09-03T02:57:28.916Z">
+<meta property="article:modified_time" content="2025-09-03T02:57:28.916Z">
+<meta property="article:author" content="Manhua">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:creator" content="@jiangmanhua">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Manhua" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="Manhua" title="Manhua"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Manhua">Manhua</a></h1>
+				<h2 class="blog-motto">Never Say Die</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页 | Home</a></li>
+					
+						<li><a href="/archives">归档 | Archives</a></li>
+					
+						<li><a href="/about">简介 | About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:kevinjmh.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2025/09/03/CheatSheet/web/nginx/" title="" itemprop="url"></a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Manhua" target="_blank" itemprop="author">Manhua</a>
+		
+  <p class="article-time">
+    <time datetime="2025-09-03T02:57:28.916Z" itemprop="datePublished"> Published 2025-09-03</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%97%A8%E6%88%B7%E4%BB%A3%E7%90%86"><span class="toc-number">1.</span> <span class="toc-text">门户代理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%88%9B%E5%BB%BA%E9%97%A8%E6%88%B7%E9%A1%B5%E9%9D%A2"><span class="toc-number">1.0.1.</span> <span class="toc-text">1. 创建门户页面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%9B%B4%E6%96%B0Nginx%E9%85%8D%E7%BD%AE"><span class="toc-number">1.0.2.</span> <span class="toc-text">2. 更新Nginx配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%88%9B%E5%BB%BA%E8%AE%A4%E8%AF%81%E6%96%87%E4%BB%B6"><span class="toc-number">1.0.3.</span> <span class="toc-text">3. 创建认证文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E9%85%8D%E7%BD%AE%E5%90%8E%E7%AB%AF%E6%9C%8D%E5%8A%A1%E9%98%B2%E7%81%AB%E5%A2%99"><span class="toc-number">1.0.4.</span> <span class="toc-text">4. 配置后端服务防火墙</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AB%98%E7%BA%A7%E5%A2%9E%E5%BC%BA%E5%8A%9F%E8%83%BD"><span class="toc-number">1.1.</span> <span class="toc-text">高级增强功能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%83%A8%E7%BD%B2%E4%B8%8E%E7%BB%B4%E6%8A%A4"><span class="toc-number">1.2.</span> <span class="toc-text">部署与维护</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<h1 id="门户代理"><a href="#门户代理" class="headerlink" title="门户代理"></a>门户代理</h1><p>用户浏览器<br>  ↓<br>Nginx代理服务器 (含Portal页面)<br>  ↓<br>后端服务 (HDFS Web UI及其他服务)</p>
+<h3 id="1-创建门户页面"><a href="#1-创建门户页面" class="headerlink" title="1. 创建门户页面"></a>1. 创建门户页面</h3><p>在Nginx服务器上创建门户目录：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">tar -xf nginx-1.29.0.tar.gz</span><br><span class="line">./configure --prefix=/data/soft/nginx</span><br><span class="line">make &amp;&amp; make install</span><br><span class="line"></span><br><span class="line">mkdir -p portal</span><br><span class="line">vi portal/index.html</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><strong>index.html 内容</strong>:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;zh-CN&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;403 Forbidden&lt;/title&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">        :root &#123;</span><br><span class="line">            --primary: #2c3e50;</span><br><span class="line">            --secondary: #3498db;</span><br><span class="line">            --accent: #e74c3c;</span><br><span class="line">            --light: #ecf0f1;</span><br><span class="line">            --dark: #2c3e50;</span><br><span class="line">            --online: #2ecc71;</span><br><span class="line">            --offline: #e74c3c;</span><br><span class="line">            --checking: #f39c12;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        * &#123;</span><br><span class="line">            box-sizing: border-box;</span><br><span class="line">            margin: 0;</span><br><span class="line">            padding: 0;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        body &#123;</span><br><span class="line">            font-family: &#x27;Segoe UI&#x27;, Tahoma, Geneva, Verdana, sans-serif;</span><br><span class="line">            line-height: 1.6;</span><br><span class="line">            color: #333;</span><br><span class="line">            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);</span><br><span class="line">            min-height: 100vh;</span><br><span class="line">            padding: 20px;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        .container &#123;</span><br><span class="line">            max-width: 1200px;</span><br><span class="line">            margin: 0 auto;</span><br><span class="line">            padding: 20px;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        header &#123;</span><br><span class="line">            text-align: center;</span><br><span class="line">            padding: 30px 0;</span><br><span class="line">            margin-bottom: 30px;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        .services-grid &#123;</span><br><span class="line">            display: grid;</span><br><span class="line">            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));</span><br><span class="line">            gap: 25px;</span><br><span class="line">            margin-top: 30px;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        .service-card &#123;</span><br><span class="line">            background: white;</span><br><span class="line">            border-radius: 10px;</span><br><span class="line">            overflow: hidden;</span><br><span class="line">            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);</span><br><span class="line">            transition: transform 0.3s ease, box-shadow 0.3s ease;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        .service-card:hover &#123;</span><br><span class="line">            transform: translateY(-5px);</span><br><span class="line">            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        .card-header &#123;</span><br><span class="line">            background: var(--secondary);</span><br><span class="line">            color: white;</span><br><span class="line">            padding: 20px;</span><br><span class="line">            position: relative;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        .service-status &#123;</span><br><span class="line">            display: flex;</span><br><span class="line">            align-items: center;</span><br><span class="line">            padding: 10px 20px;</span><br><span class="line">            background: rgba(255, 255, 255, 0.9);</span><br><span class="line">            border-top: 1px solid #eee;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        .status-indicator &#123;</span><br><span class="line">            display: inline-block;</span><br><span class="line">            width: 12px;</span><br><span class="line">            height: 12px;</span><br><span class="line">            border-radius: 50%;</span><br><span class="line">            margin-right: 8px;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        .status-indicator.online &#123;</span><br><span class="line">            background-color: var(--online);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        .status-indicator.offline &#123;</span><br><span class="line">            background-color: var(--offline);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        .status-indicator.checking &#123;</span><br><span class="line">            background-color: var(--checking);</span><br><span class="line">            animation: pulse 1.5s infinite;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        .status-text &#123;</span><br><span class="line">            font-size: 0.9rem;</span><br><span class="line">            color: var(--dark);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        @keyframes pulse &#123;</span><br><span class="line">            0% &#123; opacity: 1; &#125;</span><br><span class="line">            50% &#123; opacity: 0.5; &#125;</span><br><span class="line">            100% &#123; opacity: 1; &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        /* 403 Page Styles */</span><br><span class="line">        #forbidden-page &#123;</span><br><span class="line">            position: fixed;</span><br><span class="line">            top: 0;</span><br><span class="line">            left: 0;</span><br><span class="line">            width: 100%;</span><br><span class="line">            height: 100%;</span><br><span class="line">            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);</span><br><span class="line">            display: flex;</span><br><span class="line">            flex-direction: column;</span><br><span class="line">            justify-content: center;</span><br><span class="line">            align-items: center;</span><br><span class="line">            z-index: 1000;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        #forbidden-page h1 &#123;</span><br><span class="line">            font-size: 5rem;</span><br><span class="line">            color: var(--accent);</span><br><span class="line">            margin-bottom: 20px;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        #forbidden-page p &#123;</span><br><span class="line">            font-size: 1.5rem;</span><br><span class="line">            color: var(--dark);</span><br><span class="line">            margin-bottom: 30px;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        #secret-area &#123;</span><br><span class="line">            position: fixed;</span><br><span class="line">            top: 0;</span><br><span class="line">            left: 0;</span><br><span class="line">            width: 100px;</span><br><span class="line">            height: 100px;</span><br><span class="line">            z-index: 1001;</span><br><span class="line">            opacity: 0;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        .hidden-content &#123;</span><br><span class="line">            display: none;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div id=&quot;forbidden-page&quot;&gt;</span><br><span class="line">        &lt;h1&gt;403&lt;/h1&gt;</span><br><span class="line">        &lt;p&gt;Forbidden - Access Denied&lt;/p&gt;</span><br><span class="line">        &lt;p&gt;You don&#x27;t have permission to access this resource.&lt;/p&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    </span><br><span class="line">    &lt;div id=&quot;secret-area&quot;&gt;&lt;/div&gt;</span><br><span class="line">    </span><br><span class="line">    &lt;div class=&quot;container hidden-content&quot;&gt;</span><br><span class="line">        &lt;header&gt;</span><br><span class="line">            &lt;h1&gt;服务状态监控&lt;/h1&gt;</span><br><span class="line">        &lt;/header&gt;</span><br><span class="line">        </span><br><span class="line">        &lt;div class=&quot;services-grid&quot;&gt;</span><br><span class="line">            &lt;div class=&quot;service-card&quot;&gt;</span><br><span class="line">                &lt;a href=&quot;/hdfs/&quot;&gt;</span><br><span class="line">                    &lt;div class=&quot;card-header&quot;&gt;</span><br><span class="line">                        &lt;h2&gt;HDFS&lt;/h2&gt;</span><br><span class="line">                    &lt;/div&gt;</span><br><span class="line">                &lt;/a&gt;</span><br><span class="line">                &lt;div class=&quot;service-status&quot; id=&quot;hdfs-status&quot;&gt;</span><br><span class="line">                    &lt;span class=&quot;status-indicator checking&quot;&gt;&lt;/span&gt;</span><br><span class="line">                    &lt;span class=&quot;status-text&quot;&gt;正在检测...&lt;/span&gt;</span><br><span class="line">                &lt;/div&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">            &lt;div class=&quot;service-card&quot;&gt;</span><br><span class="line">                &lt;a href=&quot;/yarn/&quot;&gt;</span><br><span class="line">                    &lt;div class=&quot;card-header&quot;&gt;</span><br><span class="line">                        &lt;h2&gt;YARN&lt;/h2&gt;</span><br><span class="line">                    &lt;/div&gt;</span><br><span class="line">                &lt;/a&gt;</span><br><span class="line">                &lt;div class=&quot;service-status&quot; id=&quot;yarn-status&quot;&gt;</span><br><span class="line">                    &lt;span class=&quot;status-indicator checking&quot;&gt;&lt;/span&gt;</span><br><span class="line">                    &lt;span class=&quot;status-text&quot;&gt;正在检测...&lt;/span&gt;</span><br><span class="line">                &lt;/div&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">            &lt;div class=&quot;service-card&quot;&gt;</span><br><span class="line">                &lt;a href=&quot;/spark-history/&quot;&gt;</span><br><span class="line">                    &lt;div class=&quot;card-header&quot;&gt;</span><br><span class="line">                        &lt;h2&gt;Spark&lt;/h2&gt;</span><br><span class="line">                    &lt;/div&gt;</span><br><span class="line">                &lt;/a&gt;</span><br><span class="line">                &lt;div class=&quot;service-status&quot; id=&quot;spark-status&quot;&gt;</span><br><span class="line">                    &lt;span class=&quot;status-indicator checking&quot;&gt;&lt;/span&gt;</span><br><span class="line">                    &lt;span class=&quot;status-text&quot;&gt;正在检测...&lt;/span&gt;</span><br><span class="line">                &lt;/div&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">            &lt;div class=&quot;service-card&quot;&gt;</span><br><span class="line">                &lt;a href=&quot;/hbase/&quot;&gt;</span><br><span class="line">                    &lt;div class=&quot;card-header&quot;&gt;</span><br><span class="line">                        &lt;h2&gt;HBase&lt;/h2&gt;</span><br><span class="line">                    &lt;/div&gt;</span><br><span class="line">                &lt;/a&gt;</span><br><span class="line">                &lt;div class=&quot;service-status&quot; id=&quot;hbase-status&quot;&gt;</span><br><span class="line">                    &lt;span class=&quot;status-indicator checking&quot;&gt;&lt;/span&gt;</span><br><span class="line">                    &lt;span class=&quot;status-text&quot;&gt;正在检测...&lt;/span&gt;</span><br><span class="line">                &lt;/div&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    </span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        document.addEventListener(&#x27;DOMContentLoaded&#x27;, function() &#123;</span><br><span class="line">            const forbiddenPage = document.getElementById(&#x27;forbidden-page&#x27;);</span><br><span class="line">            const secretArea = document.getElementById(&#x27;secret-area&#x27;);</span><br><span class="line">            const hiddenContent = document.querySelector(&#x27;.container&#x27;);</span><br><span class="line">            </span><br><span class="line">            // Set initial state</span><br><span class="line">            forbiddenPage.style.display = &#x27;flex&#x27;;</span><br><span class="line">            hiddenContent.style.display = &#x27;none&#x27;;</span><br><span class="line">            </span><br><span class="line">            // Add double-click event to secret area</span><br><span class="line">            secretArea.addEventListener(&#x27;dblclick&#x27;, function() &#123;</span><br><span class="line">                forbiddenPage.style.display = &#x27;none&#x27;;</span><br><span class="line">                hiddenContent.style.display = &#x27;block&#x27;;</span><br><span class="line">                checkServiceStatus(); // Check services when content is revealed</span><br><span class="line">            &#125;);            </span><br><span class="line">            </span><br><span class="line">            // Service status checking function</span><br><span class="line">            async function checkServiceStatus() &#123;</span><br><span class="line">                const services = [</span><br><span class="line">                    &#123; id: &#x27;hdfs&#x27;, path: &#x27;/hdfs/&#x27; &#125;,</span><br><span class="line">                    &#123; id: &#x27;yarn&#x27;, path: &#x27;/yarn/&#x27; &#125;,</span><br><span class="line">                    &#123; id: &#x27;spark&#x27;, path: &#x27;/spark-history/&#x27; &#125;,</span><br><span class="line">                    &#123; id: &#x27;hbase&#x27;, path: &#x27;/hbase/&#x27; &#125;</span><br><span class="line">                ];</span><br><span class="line"></span><br><span class="line">                for (const service of services) &#123;</span><br><span class="line">                    try &#123;</span><br><span class="line">                        const statusElem = document.getElementById(`$&#123;service.id&#125;-status`);</span><br><span class="line">                        const indicator = statusElem.querySelector(&#x27;.status-indicator&#x27;);</span><br><span class="line">                        const text = statusElem.querySelector(&#x27;.status-text&#x27;);</span><br><span class="line">                        </span><br><span class="line">                        indicator.className = &#x27;status-indicator checking&#x27;;</span><br><span class="line">                        text.textContent = &#x27;正在检测...&#x27;;</span><br><span class="line">                        </span><br><span class="line">                        const response = await fetch(service.path, &#123; method: &#x27;HEAD&#x27; &#125;);</span><br><span class="line">                        </span><br><span class="line">                        if (response.ok) &#123;</span><br><span class="line">                            indicator.className = &#x27;status-indicator online&#x27;;</span><br><span class="line">                            text.textContent = &#x27;在线&#x27;;</span><br><span class="line">                        &#125; else &#123;</span><br><span class="line">                            indicator.className = &#x27;status-indicator offline&#x27;;</span><br><span class="line">                            text.textContent = &#x27;离线&#x27;;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125; catch (error) &#123;</span><br><span class="line">                        const statusElem = document.getElementById(`$&#123;service.id&#125;-status`);</span><br><span class="line">                        statusElem.querySelector(&#x27;.status-indicator&#x27;).className = &#x27;status-indicator offline&#x27;;</span><br><span class="line">                        statusElem.querySelector(&#x27;.status-text&#x27;).textContent = &#x27;离线&#x27;;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="2-更新Nginx配置"><a href="#2-更新Nginx配置" class="headerlink" title="2. 更新Nginx配置"></a>2. 更新Nginx配置</h3><p>&#x2F;etc&#x2F;nginx&#x2F;conf.d&#x2F;portal.conf</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">http</span> &#123;</span><br><span class="line">    <span class="attribute">include</span>       mime.types;</span><br><span class="line">    <span class="attribute">default_type</span>  application/octet-stream;</span><br><span class="line"></span><br><span class="line">    <span class="attribute">keepalive_timeout</span>  <span class="number">65</span>;</span><br><span class="line">    <span class="attribute">sendfile</span>        <span class="literal">on</span>;</span><br><span class="line"></span><br><span class="line">    <span class="attribute">geo</span> <span class="variable">$whitelist</span> &#123;</span><br><span class="line">        <span class="attribute">default</span> <span class="number">0</span>;</span><br><span class="line">        127.0.0.1 1;</span><br><span class="line">        10.17.14.0/24 1;    </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="attribute">limit_req_zone</span> <span class="variable">$binary_remote_addr</span> zone=auth_limit:<span class="number">1m</span> rate=2r/m;</span><br><span class="line">    <span class="attribute">limit_req_zone</span> <span class="variable">$binary_remote_addr</span> zone=api_limit:<span class="number">1m</span> rate=1r/s;</span><br><span class="line">    <span class="attribute">limit_conn_zone</span> <span class="variable">$binary_remote_addr</span> zone=perip_conn:<span class="number">1m</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="section">server</span> &#123;</span><br><span class="line">        <span class="attribute">listen</span> <span class="number">8888</span>;</span><br><span class="line">        <span class="attribute">server_name</span> localhost; </span><br><span class="line">        </span><br><span class="line">        <span class="attribute">if</span> (<span class="variable">$whitelist</span> != <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="attribute">return</span> <span class="number">404</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">        <span class="attribute">limit_req</span> zone=api_limit burst=<span class="number">20</span> nodelay;</span><br><span class="line">        <span class="attribute">limit_req</span> zone=auth_limit burst=<span class="number">10</span> nodelay; </span><br><span class="line">        <span class="attribute">auth_basic</span> <span class="string">&quot;认证&quot;</span>;</span><br><span class="line">        <span class="attribute">auth_basic_user_file</span> /data/soft/nginx/conf/portal_wd;</span><br><span class="line">        </span><br><span class="line">        <span class="attribute">root</span> /data/soft/nginx/portal;</span><br><span class="line">        <span class="attribute">index</span> index.html;  </span><br><span class="line">        </span><br><span class="line">        <span class="section">location</span> = / &#123;            </span><br><span class="line">            <span class="attribute">limit_conn</span> perip_conn <span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="section">location</span> /hdfs/ &#123;</span><br><span class="line">            <span class="attribute">proxy_pass</span> http://10.27.48.1:50070/;</span><br><span class="line">            <span class="attribute">proxy_set_header</span> Host <span class="variable">$host</span>;</span><br><span class="line">            <span class="attribute">proxy_set_header</span> X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">            <span class="attribute">proxy_set_header</span> X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">            <span class="attribute">proxy_set_header</span> Authorization <span class="variable">$http_authorization</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="section">location</span> /yarn/ &#123;</span><br><span class="line">            <span class="attribute">proxy_pass</span> http://10.27.48.1:8088/;</span><br><span class="line">            <span class="attribute">proxy_set_header</span> Host <span class="variable">$host</span>;</span><br><span class="line">            <span class="attribute">proxy_set_header</span> X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">            <span class="attribute">proxy_set_header</span> X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">            <span class="attribute">proxy_set_header</span> Authorization <span class="variable">$http_authorization</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="section">location</span> /spark-history/ &#123;</span><br><span class="line">            <span class="attribute">proxy_pass</span> http://10.27.48.1:18080/;</span><br><span class="line">            <span class="attribute">proxy_set_header</span> Host <span class="variable">$host</span>;</span><br><span class="line">            <span class="attribute">proxy_set_header</span> X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">            <span class="attribute">proxy_set_header</span> X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">            <span class="attribute">proxy_set_header</span> Authorization <span class="variable">$http_authorization</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="section">location</span> /ds/ &#123;</span><br><span class="line">            <span class="attribute">proxy_pass</span> http://10.27.48.1:12345/;</span><br><span class="line">            <span class="attribute">proxy_set_header</span> Host <span class="variable">$host</span>;</span><br><span class="line">            <span class="attribute">proxy_set_header</span> X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">            <span class="attribute">proxy_set_header</span> X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">            <span class="attribute">proxy_set_header</span> Authorization <span class="variable">$http_authorization</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="attribute">log_format</span> portal_log <span class="string">&#x27;<span class="variable">$remote_addr</span> - <span class="variable">$remote_user</span> [<span class="variable">$time_local</span>] &#x27;</span></span><br><span class="line">                              <span class="string">&#x27;&quot;<span class="variable">$request</span>&quot; <span class="variable">$status</span> <span class="variable">$body_bytes_sent</span> &#x27;</span></span><br><span class="line">                              <span class="string">&#x27;&quot;<span class="variable">$http_referer</span>&quot; &quot;<span class="variable">$http_user_agent</span>&quot;&#x27;</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="attribute">access_log</span> /data/soft/nginx/logs/portal-access.log portal_log;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="3-创建认证文件"><a href="#3-创建认证文件" class="headerlink" title="3. 创建认证文件"></a>3. 创建认证文件</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sudo htpasswd -c /etc/nginx/conf.d/portal_wd admin</span><br><span class="line"># 添加更多用户</span><br><span class="line">sudo htpasswd /etc/nginx/conf.d/portal_wd user1</span><br><span class="line"></span><br><span class="line"># 用户管理</span><br><span class="line">sudo htpasswd /etc/nginx/conf.d/portal_wd new_user</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-配置后端服务防火墙"><a href="#4-配置后端服务防火墙" class="headerlink" title="4. 配置后端服务防火墙"></a>4. 配置后端服务防火墙</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 只允许Nginx服务器IP访问</span><br><span class="line">sudo iptables -A INPUT -p tcp --dport &lt;服务端口&gt; -s [Nginx服务器IP] -j ACCEPT</span><br><span class="line">sudo iptables -A INPUT -p tcp --dport &lt;服务端口&gt; -j DROP</span><br></pre></td></tr></table></figure>
+
+<h2 id="高级增强功能"><a href="#高级增强功能" class="headerlink" title="高级增强功能"></a>高级增强功能</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">### 2. 基于角色的访问控制</span><br><span class="line"></span><br><span class="line">在Nginx中实现不同用户访问不同服务：</span><br><span class="line"></span><br><span class="line">```nginx</span><br><span class="line"># 在http块中添加映射</span><br><span class="line">map $remote_user $allowed_services &#123;</span><br><span class="line">    default          &quot;&quot;;</span><br><span class="line">    admin            &quot;hdfs|yarn|spark|hbase&quot;;</span><br><span class="line">    data_engineer    &quot;hdfs|spark&quot;;</span><br><span class="line">    analyst          &quot;yarn&quot;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># 在服务location中添加检查</span><br><span class="line">location ~ ^/(hdfs|yarn|spark|hbase)/ &#123;</span><br><span class="line">    if ($allowed_services !~ $1) &#123;</span><br><span class="line">        return 403;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    # 原始代理配置</span><br><span class="line">    proxy_pass ...;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="部署与维护"><a href="#部署与维护" class="headerlink" title="部署与维护"></a>部署与维护</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl restart nginx</span><br><span class="line">sudo systemctl enable nginx</span><br><span class="line"></span><br><span class="line">nginx</span><br><span class="line">nginx -s stop</span><br><span class="line">nginx -s reload</span><br><span class="line">nginx -t #检查配置</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://kevinjmh.github.io/2025/09/03/CheatSheet/web/nginx/" data-title="Manhua" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2025/09/03/CheatSheet/computing/spark/Thrift server/"  title="">
+ <strong>下一篇：</strong><br/> 
+ <span>(no title)
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github Card</p>
+<div class="github-card" data-github="kevinjmh" data-width="220" data-height="119" data-theme="medium">
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+  </div>
+
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/CheatSheet/2-10-2/" title="2.10.2">2.10.2<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/CheatSheet/AI/" title="AI">AI<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Application/" title="Application">Application<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/BigData/" title="BigData">BigData<sup>7</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/CheatSheet/" title="CheatSheet">CheatSheet<sup>42</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/CheatSheet/Computing/" title="Computing">Computing<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/CheatSheet/Database/" title="Database">Database<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/CheatSheet/Development/" title="Development">Development<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Info/" title="Info">Info<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/CheatSheet/Infrastructure/" title="Infrastructure">Infrastructure<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/CheatSheet/System/" title="System">System<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/CheatSheet/ai/" title="ai">ai<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/CheatSheet/cluster/" title="cluster">cluster<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/CheatSheet/database/" title="database">database<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/CheatSheet/os/" title="os">os<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/CheatSheet/spark/" title="spark">spark<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/CheatSheet/storage/" title="storage">storage<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/CheatSheet/virtualization/" title="virtualization">virtualization<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/CheatSheet/visualization/" title="visualization">visualization<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/慢话/" title="慢话">慢话<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/BigData/" title="BigData">BigData<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/carbondata/" title="carbondata">carbondata<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/project/" title="project">project<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Hadoop/" title="Hadoop">Hadoop<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Database/" title="Database">Database<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/rdma/" title="rdma">rdma<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/software/" title="software">software<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/recommendation/" title="recommendation">recommendation<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/RAG/" title="RAG">RAG<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/LLM/" title="LLM">LLM<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Langchain/" title="Langchain">Langchain<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Ollama/" title="Ollama">Ollama<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Git/" title="Git">Git<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Version-Control/" title="Version Control">Version Control<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Development/" title="Development">Development<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Cluster/" title="Cluster">Cluster<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/HDFS/" title="HDFS">HDFS<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Infrastructure/" title="Infrastructure">Infrastructure<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Flink/" title="Flink">Flink<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Stream-Processing/" title="Stream Processing">Stream Processing<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://www.cnblogs.com/manhua" target="_blank" title="cnBlogs">cnBlogs</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m Manhua Jiang. <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/443181876" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/kevinjmh" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		<a href="https://twitter.com/jiangmanhua" target="_blank" class="icon-twitter" title="twitter"></a>
+		
+		
+		<a href="https://www.facebook.com/jiangmanhua" target="_blank" class="icon-facebook" title="facebook"></a>
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2025 
+		
+		<a href="/about" target="_blank" title="Manhua">Manhua</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+        getSize();
+        if (myWidth >= 1024) {
+          c.click();
+        }
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
