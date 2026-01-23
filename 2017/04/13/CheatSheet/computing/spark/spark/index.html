@@ -19,7 +19,7 @@
 <meta property="og:description" content="Spark简单之美 | RDD：基于内存的集群计算容错抽象 Spark on YarnSpark 官方提供了三种集群部署方案： Standalone, Mesos, YARN，区别就在于资源管理调度平台不同。 想在已有的Hadoop集群上使用Spark，实现Spark on Yarn只需修改配置文件vi .&#x2F;conf&#x2F;spark-env.sh添加以下内容  export HADOOP_HOME&amp;#">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2017-04-13T07:13:13.000Z">
-<meta property="article:modified_time" content="2025-12-22T08:54:15.956Z">
+<meta property="article:modified_time" content="2026-01-23T06:45:58.077Z">
 <meta property="article:author" content="Manhua">
 <meta property="article:tag" content="spark">
 <meta name="twitter:card" content="summary">
@@ -191,6 +191,10 @@
 
 <h1 id="MergeDataframe"><a href="#MergeDataframe" class="headerlink" title="MergeDataframe"></a>MergeDataframe</h1><p>新老数据合并，右表有取右表，否则取左表</p>
 <figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> spark.implicits._  </span><br><span class="line">df.joinWith(d, df(<span class="string">&quot;slot&quot;</span>) === d(<span class="string">&quot;slot&quot;</span>) &amp;&amp;  </span><br><span class="line">      df(<span class="string">&quot;servicetype&quot;</span>) === d(<span class="string">&quot;servicetype&quot;</span>) &amp;&amp;  </span><br><span class="line">      df(<span class="string">&quot;utype&quot;</span>) === d(<span class="string">&quot;utype&quot;</span>) &amp;&amp;  </span><br><span class="line">      df(<span class="string">&quot;userid&quot;</span>) === d(<span class="string">&quot;userid&quot;</span>) &amp;&amp;  </span><br><span class="line">      df(<span class="string">&quot;id&quot;</span>) === d(<span class="string">&quot;id&quot;</span>), <span class="string">&quot;fullouter&quot;</span>)  </span><br><span class="line">  .map &#123;  </span><br><span class="line">    <span class="keyword">case</span> (left, right) =&gt; &#123;  </span><br><span class="line">      <span class="type">Vcollection</span>.apply(<span class="keyword">if</span> (right != <span class="literal">null</span>) right <span class="keyword">else</span> left)  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;.filter(_.op_type != <span class="number">2</span>)  </span><br><span class="line">  .write.mode(<span class="string">&quot;overwrite&quot;</span>)  </span><br><span class="line">  .orc(<span class="string">s&quot;/tmp/drs_collectino&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>新版本</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> keyCols = <span class="type">Seq</span>(<span class="string">&quot;slot&quot;</span>, <span class="string">&quot;servicetype&quot;</span>, <span class="string">&quot;utype&quot;</span>, <span class="string">&quot;userid&quot;</span>, <span class="string">&quot;id&quot;</span>)  </span><br><span class="line"><span class="keyword">val</span> joinedDF = df.alias(<span class="string">&quot;left&quot;</span>).join(d.alias(<span class="string">&quot;right&quot;</span>), keyCols, <span class="string">&quot;fullouter&quot;</span>)  </span><br><span class="line">  </span><br><span class="line"><span class="keyword">val</span> isRightTableRow = keyCols  </span><br><span class="line">  .map(c =&gt; col(<span class="string">s&quot;right.<span class="subst">$c</span>&quot;</span>).isNotNull)  </span><br><span class="line">  .reduce(_ &amp;&amp; _) <span class="comment">// Key列非空 → 判定为右表行  </span></span><br><span class="line">  </span><br><span class="line">joinedDF.select(  </span><br><span class="line">  df.columns.map(c =&gt;  </span><br><span class="line">    when(isRightTableRow, col(<span class="string">s&quot;right.<span class="subst">$c</span>&quot;</span>))  </span><br><span class="line">      .otherwise(col(<span class="string">s&quot;left.<span class="subst">$c</span>&quot;</span>))  </span><br><span class="line">      .alias(c)  </span><br><span class="line">  ): _*  </span><br><span class="line">).filter(<span class="string">&quot;op_type != 2&quot;</span>) <span class="comment">// 排除删除数据  </span></span><br><span class="line">  .write.mode(<span class="string">&quot;overwrite&quot;</span>)</span><br></pre></td></tr></table></figure>
+
 
 <h2 id="合并修改数据"><a href="#合并修改数据" class="headerlink" title="合并修改数据"></a>合并修改数据</h2><figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> inc_result = spark.sql(</span><br><span class="line">   <span class="string">s&quot;&quot;</span><span class="string">&quot;</span></span><br><span class="line"><span class="string">      |select rq_channel, 1 from dim.mcloud_channel</span></span><br><span class="line"><span class="string">      |limit 3</span></span><br><span class="line"><span class="string">      |&quot;</span><span class="string">&quot;&quot;</span>.stripMargin)</span><br><span class="line">      inc_result.cache()</span><br><span class="line"></span><br><span class="line"> <span class="keyword">val</span> result = inc_result</span><br><span class="line"></span><br><span class="line">inc_result.joinWith(result, inc_result(<span class="string">&quot;rq_channel&quot;</span>) === result(<span class="string">&quot;rq_channel&quot;</span>), <span class="string">&quot;fullouter&quot;</span>)</span><br><span class="line">   .map&#123;<span class="keyword">case</span> (left, right) =&gt; &#123;</span><br><span class="line">     <span class="keyword">val</span> newValues = <span class="type">Seq</span>(</span><br><span class="line">       left.getAs[<span class="type">String</span>](<span class="string">&quot;rq_channel&quot;</span>),</span><br><span class="line">       left.getAs[<span class="type">Int</span>](<span class="string">&quot;1&quot;</span>) + right.getAs[<span class="type">Int</span>](<span class="string">&quot;1&quot;</span>)</span><br><span class="line">     )</span><br><span class="line">     <span class="type">Row</span>.fromSeq(newValues)</span><br><span class="line">   &#125;&#125;(result.encoder).show</span><br></pre></td></tr></table></figure>
 
@@ -456,11 +460,11 @@
 		<ul class="clearfix">
 		
 			
-				<li><a href="/tags/BigData/" title="BigData">BigData<sup>4</sup></a></li>
+				<li><a href="/tags/carbondata/" title="carbondata">carbondata<sup>4</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/carbondata/" title="carbondata">carbondata<sup>4</sup></a></li>
+				<li><a href="/tags/BigData/" title="BigData">BigData<sup>4</sup></a></li>
 			
 		
 			
@@ -485,6 +489,10 @@
 		
 			
 				<li><a href="/tags/recommendation/" title="recommendation">recommendation<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/carbon/" title="carbon">carbon<sup>1</sup></a></li>
 			
 		
 			
@@ -529,10 +537,6 @@
 		
 			
 				<li><a href="/tags/Flink/" title="Flink">Flink<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Stream-Processing/" title="Stream Processing">Stream Processing<sup>1</sup></a></li>
 			
 		
 		</ul>
@@ -592,7 +596,7 @@
 		
 
 		<p class="copyright">
-		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2025 
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2026 
 		
 		<a href="/about" target="_blank" title="Manhua">Manhua</a>
 		

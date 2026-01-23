@@ -11,15 +11,15 @@
     
 
     
-    <meta name="description" content="install 1234567891011121314tar -xf &#x2F;mnt&#x2F;c&#x2F;Users&#x2F;Manhua&#x2F;Downloads&#x2F;gravitino-0.9.0-incubating-bin.tar.gzbin&#x2F;gravitino.sh start#Web UIbin&#x2F;gravitino.sh runhttp:&#x2F;&#x2F;localhost:8090&#x2F;#mysqlcp &#x2F;data&#x2F;soft&#x2F;spark&#x2F;j">
+    <meta name="description" content="理解为元数据的目录，统一入口、权限管理、血缘记录 install 1234567891011121314tar -xf &#x2F;mnt&#x2F;c&#x2F;Users&#x2F;Manhua&#x2F;Downloads&#x2F;gravitino-0.9.0-incubating-bin.tar.gzbin&#x2F;gravitino.sh start#Web UIbin&#x2F;gravitino.sh runhttp:&#x2F;&#x2F;localhost:8090&#x2F;#m">
 <meta property="og:type" content="article">
 <meta property="og:title" content="gravitino">
 <meta property="og:url" content="http://kevinjmh.github.io/2025/05/22/CheatSheet/database/gravitino/index.html">
 <meta property="og:site_name" content="Manhua">
-<meta property="og:description" content="install 1234567891011121314tar -xf &#x2F;mnt&#x2F;c&#x2F;Users&#x2F;Manhua&#x2F;Downloads&#x2F;gravitino-0.9.0-incubating-bin.tar.gzbin&#x2F;gravitino.sh start#Web UIbin&#x2F;gravitino.sh runhttp:&#x2F;&#x2F;localhost:8090&#x2F;#mysqlcp &#x2F;data&#x2F;soft&#x2F;spark&#x2F;j">
+<meta property="og:description" content="理解为元数据的目录，统一入口、权限管理、血缘记录 install 1234567891011121314tar -xf &#x2F;mnt&#x2F;c&#x2F;Users&#x2F;Manhua&#x2F;Downloads&#x2F;gravitino-0.9.0-incubating-bin.tar.gzbin&#x2F;gravitino.sh start#Web UIbin&#x2F;gravitino.sh runhttp:&#x2F;&#x2F;localhost:8090&#x2F;#m">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2025-05-22T09:10:36.000Z">
-<meta property="article:modified_time" content="2025-12-22T08:54:15.957Z">
+<meta property="article:modified_time" content="2026-01-23T06:45:58.078Z">
 <meta property="article:author" content="Manhua">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:creator" content="@jiangmanhua">
@@ -104,7 +104,8 @@
 		
 		</div>
 		
-		<p>install</p>
+		<p>理解为元数据的目录，统一入口、权限管理、血缘记录</p>
+<p>install</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">tar -xf /mnt/c/Users/Manhua/Downloads/gravitino-0.9.0-incubating-bin.tar.gz</span><br><span class="line"></span><br><span class="line">bin/gravitino.sh start</span><br><span class="line"><span class="comment">#Web UI</span></span><br><span class="line">bin/gravitino.sh run</span><br><span class="line"></span><br><span class="line">http://localhost:8090/</span><br><span class="line"></span><br><span class="line"><span class="comment">#mysql</span></span><br><span class="line"><span class="built_in">cp</span> /data/soft/spark/jars/mysql-connector-java-8.0.30.jar  catalogs/jdbc-mysql/libs</span><br><span class="line"><span class="comment">#hive</span></span><br><span class="line">/data/soft/hive/bin/hive --service metastore &amp;</span><br><span class="line"><span class="comment"># thrift://localhost:9083</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <h1 id="security"><a href="#security" class="headerlink" title="security"></a>security</h1>  
@@ -133,7 +134,7 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2025/12/22/CheatSheet/computing/spark/Thrift server/" title="">
+ <a href="/2026/01/23/CheatSheet/computing/spark/Thrift server/" title="">
   <strong>上一篇：</strong><br/>
   <span>
   (no title)</span>
@@ -265,11 +266,11 @@
 		<ul class="clearfix">
 		
 			
-				<li><a href="/tags/BigData/" title="BigData">BigData<sup>4</sup></a></li>
+				<li><a href="/tags/carbondata/" title="carbondata">carbondata<sup>4</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/carbondata/" title="carbondata">carbondata<sup>4</sup></a></li>
+				<li><a href="/tags/BigData/" title="BigData">BigData<sup>4</sup></a></li>
 			
 		
 			
@@ -294,6 +295,10 @@
 		
 			
 				<li><a href="/tags/recommendation/" title="recommendation">recommendation<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/carbon/" title="carbon">carbon<sup>1</sup></a></li>
 			
 		
 			
@@ -338,10 +343,6 @@
 		
 			
 				<li><a href="/tags/Flink/" title="Flink">Flink<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Stream-Processing/" title="Stream Processing">Stream Processing<sup>1</sup></a></li>
 			
 		
 		</ul>
@@ -401,7 +402,7 @@
 		
 
 		<p class="copyright">
-		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2025 
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2026 
 		
 		<a href="/about" target="_blank" title="Manhua">Manhua</a>
 		

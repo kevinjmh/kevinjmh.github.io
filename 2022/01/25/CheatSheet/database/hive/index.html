@@ -19,7 +19,7 @@
 <meta property="og:description" content="提取数据为csv1insert overwrite directory &#x27;&#x2F;tmp&#x2F;blog&#x27; row format delimited fields terminated by &#x27;,&#x27;  STORED AS TEXTFILE select * from tbl where  concat(year,month,day) &#x3D; &#x27;20210721&amp;#">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-01-25T06:11:43.000Z">
-<meta property="article:modified_time" content="2025-12-22T08:54:15.957Z">
+<meta property="article:modified_time" content="2026-01-23T06:45:58.078Z">
 <meta property="article:author" content="Manhua">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:creator" content="@jiangmanhua">
@@ -115,7 +115,7 @@
 <h2 id="分区修复"><a href="#分区修复" class="headerlink" title="分区修复"></a>分区修复</h2><p>hdfs直接删除分区文件，hive里分区仍存在，需要 <code>ALTER TABLE table_name DROP [IF EXISTS] PARTITION partition_spec[, PARTITION partition_spec, ...]</code><br>批量修复可以使用以下命令：<br><code>MSCK [REPAIR] TABLE table_name [ADD/DROP/SYNC PARTITIONS];</code><br>默认是add操作，hdfs有，meta无的，添加元数据；<br>drop操作是hdfs无，meta有的，删除元数据；<br>sync操作是 add+drop</p>
 <h2 id="修改注释"><a href="#修改注释" class="headerlink" title="修改注释"></a>修改注释</h2><p><code>alter table ads.whitelist_extraction ALTER COLUMN platform comment &#39;1:营销投放白名单,2:139邮箱侧勾选协议用户,3:各端勾选协议用户,4:配置中心&#39;</code></p>
 <h2 id="增加列"><a href="#增加列" class="headerlink" title="增加列"></a>增加列</h2><p>ALTER TABLE ods.burpoint_active_log_d ADD COLUMNS (clouddevice string);</p>
-<h1 id="删除列orc"><a href="#删除列orc" class="headerlink" title="删除列orc"></a>删除列orc</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">hiveserver2 --hiveconf hive.exec.schema.evolution=false</span><br><span class="line">(log/hive.log有SQL日志)</span><br><span class="line"></span><br><span class="line">beeline -u jdbc:hive2://10.27.48.4:10100 -n hadoop</span><br><span class="line"></span><br><span class="line">CREATE TABLE tmp.test_change (a int comment &quot;aa&quot;, b int comment &quot;ab&quot;, c int comment &quot;ac&quot;);</span><br><span class="line">insert into tmp.test_change values(1,1,1),(2,2,2);</span><br><span class="line">select * from  tmp.test_change;</span><br><span class="line">show create table tmp.test_change; --用于节选所需字段和备注</span><br><span class="line">ALTER TABLE tmp.test_change REPLACE COLUMNS (a int comment &quot;aa&quot;, c int comment &quot;cc&quot;);</span><br><span class="line">drop table tmp.test_change;</span><br></pre></td></tr></table></figure>
+<h1 id="删除列orc"><a href="#删除列orc" class="headerlink" title="删除列orc"></a>删除列orc</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">hiveserver2 --hiveconf hive.exec.schema.evolution=false</span><br><span class="line">(log/hive.log有SQL日志)</span><br><span class="line"></span><br><span class="line">beeline -u jdbc:hive2://10.xx.xx.4:10100 -n hadoop</span><br><span class="line"></span><br><span class="line">CREATE TABLE tmp.test_change (a int comment &quot;aa&quot;, b int comment &quot;ab&quot;, c int comment &quot;ac&quot;);</span><br><span class="line">insert into tmp.test_change values(1,1,1),(2,2,2);</span><br><span class="line">select * from  tmp.test_change;</span><br><span class="line">show create table tmp.test_change; --用于节选所需字段和备注</span><br><span class="line">ALTER TABLE tmp.test_change REPLACE COLUMNS (a int comment &quot;aa&quot;, c int comment &quot;cc&quot;);</span><br><span class="line">drop table tmp.test_change;</span><br></pre></td></tr></table></figure>
 
 
 <h2 id="获取所有数据库表"><a href="#获取所有数据库表" class="headerlink" title="获取所有数据库表"></a>获取所有数据库表</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">val dbs = spark.sql(&quot;show databases&quot;).collect().map(_.getString(0))</span><br><span class="line">spark.sql(&quot;create table tmp.dbtbl_test(namespace string, tablename string) row format delimited fields terminated by &#x27;,&#x27;  STORED AS TEXTFILE &quot;)</span><br><span class="line">dbs.foreach(r=&gt;&#123;spark.sql(s&quot;show tables in $r &quot;).select(&quot;namespace&quot;,&quot;tablename&quot;).write.insertInto(&quot;tmp.dbtbl_test&quot;) &#125;)</span><br></pre></td></tr></table></figure>
@@ -447,11 +447,11 @@
 		<ul class="clearfix">
 		
 			
-				<li><a href="/tags/BigData/" title="BigData">BigData<sup>4</sup></a></li>
+				<li><a href="/tags/carbondata/" title="carbondata">carbondata<sup>4</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/carbondata/" title="carbondata">carbondata<sup>4</sup></a></li>
+				<li><a href="/tags/BigData/" title="BigData">BigData<sup>4</sup></a></li>
 			
 		
 			
@@ -476,6 +476,10 @@
 		
 			
 				<li><a href="/tags/recommendation/" title="recommendation">recommendation<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/carbon/" title="carbon">carbon<sup>1</sup></a></li>
 			
 		
 			
@@ -520,10 +524,6 @@
 		
 			
 				<li><a href="/tags/Flink/" title="Flink">Flink<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Stream-Processing/" title="Stream Processing">Stream Processing<sup>1</sup></a></li>
 			
 		
 		</ul>
@@ -583,7 +583,7 @@
 		
 
 		<p class="copyright">
-		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2025 
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2026 
 		
 		<a href="/about" target="_blank" title="Manhua">Manhua</a>
 		

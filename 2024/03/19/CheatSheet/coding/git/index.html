@@ -11,15 +11,15 @@
     
 
     
-    <meta name="description" content="检出checkout  git checkout 分支名&#x2F;标签， 该命令会变成detach 只读状态  git checkout -b|-B &lt;new_branch&gt; [&lt;start point&gt;]  基于远程分支名&#x2F;标签&#x2F;commit创建新分支  分支管理branch  列出分支 仅本地 git branch 所有 git branch -a">
+    <meta name="description" content="检出checkout git checkout 分支名&#x2F;标签， 该命令会变成detach 只读状态  git checkout -b|-B &lt;new_branch&gt; [&lt;start point&gt;]  基于远程分支名&#x2F;标签&#x2F;commit创建新分支  track12345678git branch --set-upstream-to&#x3D;origin&#x2F;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Git CheatSheet">
 <meta property="og:url" content="http://kevinjmh.github.io/2024/03/19/CheatSheet/coding/git/index.html">
 <meta property="og:site_name" content="Manhua">
-<meta property="og:description" content="检出checkout  git checkout 分支名&#x2F;标签， 该命令会变成detach 只读状态  git checkout -b|-B &lt;new_branch&gt; [&lt;start point&gt;]  基于远程分支名&#x2F;标签&#x2F;commit创建新分支  分支管理branch  列出分支 仅本地 git branch 所有 git branch -a">
+<meta property="og:description" content="检出checkout git checkout 分支名&#x2F;标签， 该命令会变成detach 只读状态  git checkout -b|-B &lt;new_branch&gt; [&lt;start point&gt;]  基于远程分支名&#x2F;标签&#x2F;commit创建新分支  track12345678git branch --set-upstream-to&#x3D;origin&#x2F;">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-03-19T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-12-22T08:54:15.954Z">
+<meta property="article:modified_time" content="2026-01-23T06:45:58.076Z">
 <meta property="article:author" content="Manhua">
 <meta property="article:tag" content="Git">
 <meta property="article:tag" content="Version Control">
@@ -103,17 +103,19 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A3%80%E5%87%BAcheckout"><span class="toc-number">1.</span> <span class="toc-text">检出checkout</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#track"><span class="toc-number">2.</span> <span class="toc-text">track</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#wsl%E5%8F%AA%E5%8F%96%E6%9C%80%E6%96%B0%E6%9D%A5%E7%BC%96%E8%AF%91"><span class="toc-number">3.</span> <span class="toc-text">wsl只取最新来编译</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%86%E6%94%AF%E7%AE%A1%E7%90%86branch"><span class="toc-number">4.</span> <span class="toc-text">分支管理branch</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BF%9C%E7%A8%8B%E7%AE%A1%E7%90%86"><span class="toc-number">5.</span> <span class="toc-text">远程管理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9B%B4%E6%96%B0commit%E6%97%B6%E9%97%B4"><span class="toc-number">6.</span> <span class="toc-text">更新commit时间</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#token%E7%99%BB%E5%BD%95"><span class="toc-number">7.</span> <span class="toc-text">token登录</span></a></li></ol>
 		
 		</div>
 		
-		<p>检出checkout</p>
-<ul>
+		<h1 id="检出checkout"><a href="#检出checkout" class="headerlink" title="检出checkout"></a>检出checkout</h1><ul>
 <li>git checkout 分支名&#x2F;标签， 该命令会变成detach 只读状态 </li>
 <li><code>git checkout -b|-B &lt;new_branch&gt; [&lt;start point&gt;]</code>  基于远程分支名&#x2F;标签&#x2F;commit创建新分支</li>
 </ul>
-<p>分支管理branch</p>
-<ul>
+<h1 id="track"><a href="#track" class="headerlink" title="track"></a>track</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">git branch --set-upstream-to=origin/my@0.11.2 my@0.11.2</span><br><span class="line">git pull --rebase</span><br><span class="line"></span><br><span class="line">git rebase --continue</span><br><span class="line">git rebase --abort</span><br><span class="line"></span><br><span class="line">git reset --hard HEAD^</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="wsl只取最新来编译"><a href="#wsl只取最新来编译" class="headerlink" title="wsl只取最新来编译"></a>wsl只取最新来编译</h1><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. 切换到dev分支（若已在dev分支可跳过）</span></span><br><span class="line">git checkout dev</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 拉取远程dev分支最新代码（同步Windows提交的修改）</span></span><br><span class="line">git pull origin dev</span><br><span class="line">若提示本地有未提交修改，可先用`git stash`暂存（后续用`git stash pop`恢复）；</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. 强制重置本地dev分支到远程origin/dev的最新版本（覆盖所有本地变更） </span></span><br><span class="line">git fetch --all </span><br><span class="line">git reset --hard origin/dev </span><br><span class="line"></span><br><span class="line"><span class="comment"># 4. 确保本地分支与远程分支完全同步（可选，防止有未清理的跟踪文件） </span></span><br><span class="line">git clean -fd</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="分支管理branch"><a href="#分支管理branch" class="headerlink" title="分支管理branch"></a>分支管理branch</h1><ul>
 <li>列出分支<ul>
 <li>仅本地 git branch</li>
 <li>所有 git branch -a</li>
@@ -129,12 +131,16 @@
 </ul>
 </li>
 </ul>
-<p>远程管理</p>
-<ul>
+<h1 id="远程管理"><a href="#远程管理" class="headerlink" title="远程管理"></a>远程管理</h1><ul>
 <li>git remote</li>
 <li>git fetch  all &#x2F; repository url &#x2F; 本地配置的名称</li>
 <li>git pull -r</li>
 </ul>
+<h1 id="更新commit时间"><a href="#更新commit时间" class="headerlink" title="更新commit时间"></a>更新commit时间</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 改最近1个commit</span></span><br><span class="line">git commit --amend --no-edit</span><br><span class="line">git commit --amend --reset-author --no-edit</span><br><span class="line">git commit --amend --<span class="built_in">date</span>=<span class="string">&quot;2026-01-05 15:40:00&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 改最近3个commit（数字3可改，如改全部写 HEAD~ALL）</span></span><br><span class="line">git rebase -i HEAD~3</span><br></pre></td></tr></table></figure>
+
+<h1 id="token登录"><a href="#token登录" class="headerlink" title="token登录"></a>token登录</h1><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://x-access-token:your-token@github.com/your-username/your-repo.git</span><br></pre></td></tr></table></figure>
+
+
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -303,11 +309,11 @@
 		<ul class="clearfix">
 		
 			
-				<li><a href="/tags/BigData/" title="BigData">BigData<sup>4</sup></a></li>
+				<li><a href="/tags/carbondata/" title="carbondata">carbondata<sup>4</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/carbondata/" title="carbondata">carbondata<sup>4</sup></a></li>
+				<li><a href="/tags/BigData/" title="BigData">BigData<sup>4</sup></a></li>
 			
 		
 			
@@ -332,6 +338,10 @@
 		
 			
 				<li><a href="/tags/recommendation/" title="recommendation">recommendation<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/carbon/" title="carbon">carbon<sup>1</sup></a></li>
 			
 		
 			
@@ -376,10 +386,6 @@
 		
 			
 				<li><a href="/tags/Flink/" title="Flink">Flink<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Stream-Processing/" title="Stream Processing">Stream Processing<sup>1</sup></a></li>
 			
 		
 		</ul>
@@ -439,7 +445,7 @@
 		
 
 		<p class="copyright">
-		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2025 
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2026 
 		
 		<a href="/about" target="_blank" title="Manhua">Manhua</a>
 		

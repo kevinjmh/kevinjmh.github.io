@@ -19,7 +19,7 @@
 <meta property="og:description" content="读取文件为参数12ans_lines&#x3D;&#96;sed -n 1p  $&#123;verf_file&#125;&#96;ans_md5&#x3D;&#96;sed -n 2p $&#123;verf_file&#125;&#96;  if-else1234567891011121314# value equalif [ $&#123;ans_lines&#125; -eq $&#123;lines&#125; ]then    ech">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-02-24T06:11:43.000Z">
-<meta property="article:modified_time" content="2025-12-22T08:54:15.954Z">
+<meta property="article:modified_time" content="2026-01-23T06:45:58.076Z">
 <meta property="article:author" content="Manhua">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:creator" content="@jiangmanhua">
@@ -339,7 +339,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ZZ 保存退出 </span><br><span class="line">ZQ 不保存退出</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
-<h1 id="telnet批量连通性测试"><a href="#telnet批量连通性测试" class="headerlink" title="telnet批量连通性测试"></a>telnet批量连通性测试</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">for i in &#123;14..23&#125;; </span><br><span class="line">do  </span><br><span class="line">  a=`(sleep 1;echo &#x27;quit&#x27;) |telnet 10.27.48.$&#123;i&#125; 22 |grep OpenS |wc -l`; </span><br><span class="line">  if [ $&#123;a&#125; == 0 ]; </span><br><span class="line">    then     echo &quot;10.27.48.$&#123;i&#125; failed&quot;; </span><br><span class="line">    else     echo &quot;10.27.48.$&#123;i&#125; ok&quot;; </span><br><span class="line">  fi; </span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+<h1 id="telnet批量连通性测试"><a href="#telnet批量连通性测试" class="headerlink" title="telnet批量连通性测试"></a>telnet批量连通性测试</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">for i in &#123;14..23&#125;; </span><br><span class="line">do  </span><br><span class="line">  a=`(sleep 1;echo &#x27;quit&#x27;) |telnet 10.xx.xx.$&#123;i&#125; 22 |grep OpenS |wc -l`; </span><br><span class="line">  if [ $&#123;a&#125; == 0 ]; </span><br><span class="line">    then     echo &quot;10.xx.xx.$&#123;i&#125; failed&quot;; </span><br><span class="line">    else     echo &quot;10.xx.xx.$&#123;i&#125; ok&quot;; </span><br><span class="line">  fi; </span><br><span class="line">done</span><br></pre></td></tr></table></figure>
 
 <h1 id="nc网络连通性测试"><a href="#nc网络连通性测试" class="headerlink" title="nc网络连通性测试"></a>nc网络连通性测试</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">!/bin/bash</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">chmod</span> +x check_ports.sh</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">yum install nc</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">declare -a targets  # 存储所有输入的 IP:PORT</span><br><span class="line">success_count=0</span><br><span class="line">fail_count=0</span><br><span class="line">declare -a fail_list</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">提示用户输入多行信息</span></span><br><span class="line">echo &quot;请输入 IP 地址和端口，每行一个，格式为 IP:PORT。&quot;</span><br><span class="line">echo &quot;输入完成后，按 Ctrl+D 结束输入。&quot;</span><br><span class="line"></span><br><span class="line">while IFS= read -r line; do</span><br><span class="line">    # 检查输入格式是否正确</span><br><span class="line">    if [[ &quot;$line&quot; =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+$ ]]; then</span><br><span class="line">        targets+=(&quot;$line&quot;)</span><br><span class="line">    else</span><br><span class="line">        echo &quot;无效的输入格式，跳过：$line&quot;</span><br><span class="line">    fi</span><br><span class="line">done</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">检测到 EOF 后的提示</span></span><br><span class="line">echo &quot;输入结束，正在处理数据...&quot;</span><br><span class="line">for target in &quot;$&#123;targets[@]&#125;&quot;; do</span><br><span class="line">    IP=$(echo &quot;$target&quot; | cut -d: -f1)</span><br><span class="line">    PORT=$(echo &quot;$target&quot; | cut -d: -f2)</span><br><span class="line">    # 打印一个点号，不换行</span><br><span class="line">    echo -n &quot;.&quot;</span><br><span class="line">    # 使用 nc 检测连通性</span><br><span class="line">    if nc -z -w 5 &quot;$IP&quot; &quot;$PORT&quot;; then</span><br><span class="line">        ((success_count++))</span><br><span class="line">    else</span><br><span class="line">        ((fail_count++))</span><br><span class="line">        fail_list+=(&quot;$target&quot;)</span><br><span class="line">    fi</span><br><span class="line">done</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">echo &quot;====汇总结果====&quot;</span><br><span class="line">echo &quot;成功连接的总数: $success_count&quot;</span><br><span class="line">echo &quot;失败连接的总数: $fail_count&quot;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">输出失败清单</span></span><br><span class="line">if [ $&#123;#fail_list[@]&#125; -gt 0 ]; then</span><br><span class="line">    echo &quot;失败的清单：&quot;</span><br><span class="line">    for fail in &quot;$&#123;fail_list[@]&#125;&quot;; do</span><br><span class="line">        echo &quot;$fail&quot;</span><br><span class="line">    done</span><br><span class="line">else</span><br><span class="line">    echo &quot;没有失败的连接。&quot;</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
 
@@ -544,11 +544,11 @@
 		<ul class="clearfix">
 		
 			
-				<li><a href="/tags/BigData/" title="BigData">BigData<sup>4</sup></a></li>
+				<li><a href="/tags/carbondata/" title="carbondata">carbondata<sup>4</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/carbondata/" title="carbondata">carbondata<sup>4</sup></a></li>
+				<li><a href="/tags/BigData/" title="BigData">BigData<sup>4</sup></a></li>
 			
 		
 			
@@ -573,6 +573,10 @@
 		
 			
 				<li><a href="/tags/recommendation/" title="recommendation">recommendation<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/carbon/" title="carbon">carbon<sup>1</sup></a></li>
 			
 		
 			
@@ -617,10 +621,6 @@
 		
 			
 				<li><a href="/tags/Flink/" title="Flink">Flink<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Stream-Processing/" title="Stream Processing">Stream Processing<sup>1</sup></a></li>
 			
 		
 		</ul>
@@ -680,7 +680,7 @@
 		
 
 		<p class="copyright">
-		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2025 
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2026 
 		
 		<a href="/about" target="_blank" title="Manhua">Manhua</a>
 		
