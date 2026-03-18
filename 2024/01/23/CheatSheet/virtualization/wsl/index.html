@@ -19,7 +19,7 @@
 <meta property="og:description" content="InitEnvCreate12345678 # 重装wsl --shutdownwsl -l  -vwsl --unregister Ubuntuwsl -l --onlinewsl --install Ubuntu-24.04 --name Ubuntu --location E:\runtime\wsl-ubuntu\wsl --set-default Ubuntuwsl -d Ubuntu">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-01-23T02:02:31.000Z">
-<meta property="article:modified_time" content="2026-03-06T00:44:53.556Z">
+<meta property="article:modified_time" content="2026-03-18T03:29:33.718Z">
 <meta property="article:author" content="Manhua">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:creator" content="@jiangmanhua">
@@ -100,7 +100,7 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#InitEnv"><span class="toc-number">1.</span> <span class="toc-text">InitEnv</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Create"><span class="toc-number">1.1.</span> <span class="toc-text">Create</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#prepare"><span class="toc-number">1.2.</span> <span class="toc-text">prepare</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#dev"><span class="toc-number">1.3.</span> <span class="toc-text">dev</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#need-root"><span class="toc-number">1.3.1.</span> <span class="toc-text">need root</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#user"><span class="toc-number">1.3.2.</span> <span class="toc-text">user</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#hadoop"><span class="toc-number">1.3.2.1.</span> <span class="toc-text">hadoop</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#hive"><span class="toc-number">1.3.2.2.</span> <span class="toc-text">hive</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#spark"><span class="toc-number">1.3.2.3.</span> <span class="toc-text">spark</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#bak"><span class="toc-number">1.3.2.4.</span> <span class="toc-text">bak</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#snapshot"><span class="toc-number">1.4.</span> <span class="toc-text">snapshot</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-number">2.</span> <span class="toc-text">问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%9A%E8%BF%87%E8%BF%81%E7%A7%BB-%E6%9B%B4%E6%94%B9WSL%E5%AD%98%E5%82%A8%E7%9B%AE%E5%BD%95"><span class="toc-number">2.1.</span> <span class="toc-text">通过迁移 更改WSL存储目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E7%A3%81%E7%9B%98-%E9%87%8D%E5%90%AF%E5%90%8E%E6%9C%89%E9%97%AE%E9%A2%98"><span class="toc-number">2.2.</span> <span class="toc-text">配置磁盘-重启后有问题</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#mvn-git"><span class="toc-number">3.</span> <span class="toc-text">mvn+git</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#InitEnv"><span class="toc-number">1.</span> <span class="toc-text">InitEnv</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Create"><span class="toc-number">1.1.</span> <span class="toc-text">Create</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#prepare"><span class="toc-number">1.2.</span> <span class="toc-text">prepare</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#dev"><span class="toc-number">1.3.</span> <span class="toc-text">dev</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#need-root"><span class="toc-number">1.3.1.</span> <span class="toc-text">need root</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#user"><span class="toc-number">1.3.2.</span> <span class="toc-text">user</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#hadoop"><span class="toc-number">1.3.2.1.</span> <span class="toc-text">hadoop</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#hive"><span class="toc-number">1.3.2.2.</span> <span class="toc-text">hive</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#spark"><span class="toc-number">1.3.2.3.</span> <span class="toc-text">spark</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#bak"><span class="toc-number">1.3.2.4.</span> <span class="toc-text">bak</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#snapshot"><span class="toc-number">1.4.</span> <span class="toc-text">snapshot</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-number">2.</span> <span class="toc-text">问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%9A%E8%BF%87%E8%BF%81%E7%A7%BB-%E6%9B%B4%E6%94%B9WSL%E5%AD%98%E5%82%A8%E7%9B%AE%E5%BD%95"><span class="toc-number">2.1.</span> <span class="toc-text">通过迁移 更改WSL存储目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E7%A3%81%E7%9B%98-%E9%87%8D%E5%90%AF%E5%90%8E%E6%9C%89%E9%97%AE%E9%A2%98"><span class="toc-number">2.2.</span> <span class="toc-text">配置磁盘-重启后有问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BF%E9%97%AE%E5%AE%BF%E4%B8%BB%E6%9C%BA"><span class="toc-number">2.3.</span> <span class="toc-text">访问宿主机</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#mvn-git"><span class="toc-number">3.</span> <span class="toc-text">mvn+git</span></a></li></ol>
 		
 		</div>
 		
@@ -140,6 +140,10 @@
 <li>sudo mount &#x2F;dev&#x2F;sde &#x2F;data</li>
 </ul>
 <p>[[mvn#setting文件]]</p>
+<h2 id="访问宿主机"><a href="#访问宿主机" class="headerlink" title="访问宿主机"></a>访问宿主机</h2><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">New-NetFirewallRule</span> <span class="literal">-DisplayName</span> <span class="string">&quot;WSL TCP&quot;</span> `</span><br><span class="line"><span class="literal">-Direction</span> Inbound `</span><br><span class="line"><span class="literal">-InterfaceAlias</span> <span class="string">&quot;vEthernet (WSL)&quot;</span> `</span><br><span class="line"><span class="literal">-Protocol</span> TCP `</span><br><span class="line"><span class="literal">-Action</span> Allow `</span><br><span class="line"><span class="literal">-Profile</span> Any `</span><br><span class="line"><span class="literal">-Enabled</span> True `</span><br><span class="line"><span class="literal">-LocalAddress</span> Any `</span><br><span class="line"><span class="literal">-RemoteAddress</span> Any </span><br><span class="line"></span><br><span class="line"><span class="comment"># 禁用规则</span></span><br><span class="line"><span class="built_in">Disable-NetFirewallRule</span> <span class="literal">-Name</span> <span class="string">&quot;WSL&quot;</span></span><br><span class="line"><span class="comment"># 删除规则</span></span><br><span class="line"><span class="built_in">Remove-NetFirewallRule</span> <span class="literal">-Name</span> <span class="string">&quot;WSL&quot;</span></span><br><span class="line">  </span><br><span class="line">  </span><br></pre></td></tr></table></figure>
+
+
+
 <h1 id="mvn-git"><a href="#mvn-git" class="headerlink" title="mvn+git"></a>mvn+git</h1><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">wget https://dlcdn.apache.org/maven/maven-3/3.9.9/binaries/apache-maven-3.9.9-bin.tar.gz</span><br><span class="line">tar -xvzf apache-maven-3.9.9-bin.tar.gz</span><br><span class="line"><span class="built_in">mv</span> apache-maven-3.9.9 /opt/maven</span><br><span class="line"><span class="built_in">cd</span> /opt/maven/conf</span><br><span class="line">vi settings.xml</span><br><span class="line"></span><br><span class="line">git <span class="built_in">clone</span> --depth 1  -b my0.12.0  https://github.com/kevinjmh/zeppelin.git</span><br><span class="line"><span class="built_in">cd</span> zeppelin</span><br><span class="line">git branch -a</span><br><span class="line"><span class="built_in">export</span> MAVEN_OPTS=<span class="string">&quot;-Xmx3g -XX:MaxMetaspaceSize=512m&quot;</span></span><br><span class="line">mvn clean install  -P build-distr -P spark-scala-2.12 -Pspark-3.5 -DskipTests</span><br><span class="line"></span><br><span class="line">git fetch --depth 1 origin branch-0.12</span><br><span class="line">git checkout -b branch-0.12 origin/branch-0.12</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 若github访问有问题，可下载压缩包后编译</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
@@ -301,11 +305,11 @@
 		<ul class="clearfix">
 		
 			
-				<li><a href="/tags/carbondata/" title="carbondata">carbondata<sup>4</sup></a></li>
+				<li><a href="/tags/BigData/" title="BigData">BigData<sup>4</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/BigData/" title="BigData">BigData<sup>4</sup></a></li>
+				<li><a href="/tags/carbondata/" title="carbondata">carbondata<sup>4</sup></a></li>
 			
 		
 			
@@ -330,10 +334,6 @@
 		
 			
 				<li><a href="/tags/recommendation/" title="recommendation">recommendation<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/carbon/" title="carbon">carbon<sup>1</sup></a></li>
 			
 		
 			
@@ -378,6 +378,10 @@
 		
 			
 				<li><a href="/tags/Flink/" title="Flink">Flink<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Stream-Processing/" title="Stream Processing">Stream Processing<sup>1</sup></a></li>
 			
 		
 		</ul>
