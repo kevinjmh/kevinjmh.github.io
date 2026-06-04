@@ -81,16 +81,16 @@
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/2022/01/19/CheatSheet/os/windows/" title="windows" itemprop="url">
+    <a href="/2022/01/20/CheatSheet/database/kylin/" title="kylin" itemprop="url">
   
-    <h1 itemprop="name">windows</h1>
+    <h1 itemprop="name">kylin</h1>
     
      
-           <p itemprop="description" >网络本机外网ipwindows&amp;#x2F;linux通用
-123456curl ip.sb # 只显示ipv4 curl cip.cc #显示ipv4和地址信息# 指定ip信息curl ifconfig.me/ip  --resolve &amp;#x27;ifconfig.me:80:</p>
+           <p itemprop="description" >在126搭建新组件服务：
+kylin 4.0.0hadoop 3.2.2spark 3.2.0  - 代码写死支持spark2.4&amp;#x2F;3.1.  修改kylin.sh 环境变量的SPARK_HOME&amp;#x3D;&amp;#x2F;data&amp;#x2F;soft&amp;#x2F;kylin</p>
         
     
-    <time datetime="2022-01-19T16:00:00.000Z" itemprop="datePublished">2022-01-19</time>
+    <time datetime="2022-01-20T06:11:43.000Z" itemprop="datePublished">2022-01-20</time>
   </a>
 </section>
 
@@ -102,15 +102,155 @@
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/2021/04/10/Doc/carbon/load/" title="Carbondata加载逻辑" itemprop="url">
+    <a href="/2022/01/20/CheatSheet/mobile/android/" title="android" itemprop="url">
   
-    <h1 itemprop="name">Carbondata加载逻辑</h1>
+    <h1 itemprop="name">android</h1>
     
      
-           <p itemprop="description" >入口加载命令的入口在CarbonLoadDataCommand，command的处理主要分为meta和data两部分的处理。数据加载主要在org.apache.carbondata.spark.rdd.CarbonDataRDDFactory#loadCarbonData实现，还</p>
+           <p itemprop="description" >https://developer.android.google.cn/studio/releases/platform-tools?hl=zh-cn#downloads.html
+uiautomator获取控件信息
+连接(Nox)C:\Users\Manhua\AppData\</p>
         
     
-    <time datetime="2021-04-10T12:15:10.000Z" itemprop="datePublished">2021-04-10</time>
+    <time datetime="2022-01-20T06:11:43.000Z" itemprop="datePublished">2022-01-20</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/2022/01/20/CheatSheet/storage/hdfs/" title="hdfs" itemprop="url">
+  
+    <h1 itemprop="name">hdfs</h1>
+    
+     
+           <p itemprop="description" >shell直接写文件12dfs dfs -appendToFile - HDFSfile# 按ctrl+C结束写入
+
+启停命令123456789$HADOOP_HOME/sbin/hadoop-daemon.sh start namenode	$HADOOP_HOME/sbin/</p>
+        
+    
+    <time datetime="2022-01-20T06:11:43.000Z" itemprop="datePublished">2022-01-20</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/2022/01/20/CheatSheet/storage/parquet/" title="parquet" itemprop="url">
+  
+    <h1 itemprop="name">parquet</h1>
+    
+     
+           <p itemprop="description" >df.write.mode(“overwrite”).format(“parquet”).save(path)
+org.apache.spark.sql.DataFrameWriter#save
+定位table 获得relation
+12runCommand(df.sparkSe</p>
+        
+    
+    <time datetime="2022-01-20T06:11:43.000Z" itemprop="datePublished">2022-01-20</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/2022/01/20/CheatSheet/virtualization/vbox/" title="vm" itemprop="url">
+  
+    <h1 itemprop="name">vm</h1>
+    
+     
+           <p itemprop="description" >编译环境1
+new vm(vbox)同时连通本机和外网-(两张网卡nat + hostonly)
+添加新NAT网络
+ip addr
+修改ip： vi &amp;#x2F;etc&amp;#x2F;sysconfig&amp;#x2F;network-scripts&amp;#x2F;ifcfg-enp0s3
+G</p>
+        
+    
+    <time datetime="2022-01-20T06:11:43.000Z" itemprop="datePublished">2022-01-20</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/2022/01/20/CheatSheet/visualization/metabase/" title="metabase" itemprop="url">
+  
+    <h1 itemprop="name">metabase</h1>
+    
+     
+           <p itemprop="description" >应用只用于单纯查询数据+展示，诸如报表、元数据，可实现浏览器式的数据探索
+若连接上SparkSQL会逐一表进行扫描，不太合适。
+所以使用场景更多在用户直接对每个数据都感兴趣 且 数据量不大，类似Excel的使用方式，但数据存储在数据 &amp;#x3D;&amp;gt; 通过计算处理写入数据库，</p>
+        
+    
+    <time datetime="2022-01-20T06:11:43.000Z" itemprop="datePublished">2022-01-20</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/2022/01/20/CheatSheet/scheduler/dolphinscheduler/dolphinscheduler/" title="dolphinscheduler" itemprop="url">
+  
+    <h1 itemprop="name">dolphinscheduler</h1>
+    
+     
+           <p itemprop="description" >dolphinschedulerSite 
+Is：分布式 工作流 调度平台，带DAG可视化
+For：复杂任务依赖  
+去中心化（动态主，zk选）  
+DolphinScheduler本身不依赖Hadoop、Hive、Spark,仅是会调用他们的Client，用于对应任务的提交
+基</p>
+        
+    
+    <time datetime="2022-01-20T06:11:43.000Z" itemprop="datePublished">2022-01-20</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/2022/01/19/CheatSheet/os/windows/" title="windows" itemprop="url">
+  
+    <h1 itemprop="name">windows</h1>
+    
+     
+           <p itemprop="description" >网络本机外网ipwindows&amp;#x2F;linux通用
+123456curl ip.sb # 只显示ipv4 curl cip.cc #显示ipv4和地址信息# 指定ip信息curl ifconfig.me/ip  --resolve &amp;#x27;ifconfig.me:80:</p>
+        
+    
+    <time datetime="2022-01-19T16:00:00.000Z" itemprop="datePublished">2022-01-19</time>
   </a>
 </section>
 
@@ -143,13 +283,12 @@
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/2021/04/10/Doc/carbon/query/" title="Carbondata查询逻辑" itemprop="url">
+    <a href="/2021/04/10/Doc/carbon/load/" title="Carbondata加载逻辑" itemprop="url">
   
-    <h1 itemprop="name">Carbondata查询逻辑</h1>
+    <h1 itemprop="name">Carbondata加载逻辑</h1>
     
      
-           <p itemprop="description" >入口CarbonSession继承SparkSession，查询时我们使用的是CarbonSession。
-12345678override def sql(sqlText: String): DataFrame = &amp;#123;  withProfiler(    sqlTex</p>
+           <p itemprop="description" >入口加载命令的入口在CarbonLoadDataCommand，command的处理主要分为meta和data两部分的处理。数据加载主要在org.apache.carbondata.spark.rdd.CarbonDataRDDFactory#loadCarbonData实现，还</p>
         
     
     <time datetime="2021-04-10T12:15:10.000Z" itemprop="datePublished">2021-04-10</time>
@@ -161,148 +300,9 @@
 
 
 
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2021/04/10/Doc/RDMA/" title="RDMA" itemprop="url">
-  
-    <h1 itemprop="name">RDMA</h1>
-    
-     
-           <p itemprop="description" >计算和存储都在想方设法地提高速度，谁都不想成为性能瓶颈，而在分布式架构下，网络带宽也是一个优化的地方。
-带宽，是做性能估算时常用的一个单位。
-在单机的情况下，我们学过DMA (直接内存访问)是一种能力，允许在计算机主板上的设备直接把数据发送到内存中去，数据搬运不需要CPU的参与。</p>
-        
-    
-    <time datetime="2021-04-10T07:13:13.000Z" itemprop="datePublished">2021-04-10</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2021/04/09/Doc/carbon/1_carbon/" title="Day 1 to Carbondata" itemprop="url">
-  
-    <h1 itemprop="name">Day 1 to Carbondata</h1>
-    
-     
-           <p itemprop="description" >What is carbonCarbondata is an indexed columnar data format for fast analytics on big data platform, like parquet, orc.
-Reference Site
-Offic</p>
-        
-    
-    <time datetime="2021-04-09T12:15:10.000Z" itemprop="datePublished">2021-04-09</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2021/04/09/Doc/carbon/pr/" title="Carbondata PR" itemprop="url">
-  
-    <h1 itemprop="name">Carbondata PR</h1>
-    
-     
-           <p itemprop="description" >CarbonFor each column stored in carbon, we will record min-max value in meta space called DataChunk.
-It is recommanded to set a proper colum</p>
-        
-    
-    <time datetime="2021-04-09T12:15:10.000Z" itemprop="datePublished">2021-04-09</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2017/04/13/CheatSheet/computing/spark/spark/" title="Spark" itemprop="url">
-  
-    <h1 itemprop="name">Spark</h1>
-    
-     
-           <p itemprop="description" >Spark简单之美 | RDD：基于内存的集群计算容错抽象
-Spark on YarnSpark 官方提供了三种集群部署方案： Standalone, Mesos, YARN，区别就在于资源管理调度平台不同。
-想在已有的Hadoop集群上使用Spark，实现Spark on Ya</p>
-        
-    
-    <time datetime="2017-04-13T07:13:13.000Z" itemprop="datePublished">2017-04-13</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2017/04/13/CheatSheet/virtualization/docker/" title="Docker" itemprop="url">
-  
-    <h1 itemprop="name">Docker</h1>
-    
-     
-           <p itemprop="description" >Infomoby、docker-ce与docker-ee最早的时候docker就是一个开源项目，主要由docker公司维护。
-2017年年初，docker公司将原先的docker项目改名为moby，并创建了docker-ce和docker-ee。
-这三者的关系是：
-moby是继承</p>
-        
-    
-    <time datetime="2017-04-13T06:11:43.000Z" itemprop="datePublished">2017-04-13</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2017/04/12/System/Resources/" title="Resources常用资源" itemprop="url">
-  
-    <h1 itemprop="name">Resources常用资源</h1>
-    
-     
-           <p itemprop="description" >常用软件OS
-MSDN itellyou
-USTC Mirror
-Maven Repository
-alibabaMavenRepo
-
-Internet
-Firefox
-
-123456789wget https://dl.google.com/linux/direct/googl</p>
-        
-    
-    <time datetime="2017-04-12T08:25:49.000Z" itemprop="datePublished">2017-04-12</time>
-  </a>
-</section>
-
-
-
-
-
-
 
   <nav id="page-nav" class="clearfix unexpand">
-    <a class="extend prev" rel="prev" href="/page/9/">&lt;span&gt;&lt;&#x2F;span&gt;Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/11/">Next&lt;span&gt;&lt;&#x2F;span&gt;</a>
+    <a class="extend prev" rel="prev" href="/page/9/">&lt;span&gt;&lt;&#x2F;span&gt;Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/11/">Next&lt;span&gt;&lt;&#x2F;span&gt;</a>
   </nav>
 
 </div>

@@ -11,15 +11,15 @@
     
 
     
-    <meta name="description" content="安装一键安装12iwr -useb https:&#x2F;&#x2F;openclaw.ai&#x2F;install.ps1 | iexcurl -fsSL https:&#x2F;&#x2F;openclaw.ai&#x2F;install.sh | bash 手动安装123456789curl -fsSL https:&#x2F;&#x2F;deb.nodesource.com&#x2F;setup_22.x | sudo -E bash -sudo apt install -">
+    <meta name="description" content="区别简而言之：DuckLake 简化了 Lakehouse，它使用标准 SQL 数据库存储所有元数据，而不是复杂的基于文件的系统，同时仍然以 Parquet 等开放格式存储数据。这使得它更可靠、更快速、更易于管理。 DuckLake 的架构 DuckLake 的架构：只有一个数据库和一些 Parquet 文件 具体使用哪种 SQL 数据库取决于用户，唯一的要求是系统支持 ACID 操作和主键以及标">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Manhua">
-<meta property="og:url" content="http://kevinjmh.github.io/2026/03/18/CheatSheet/ai/claw/index.html">
+<meta property="og:url" content="http://kevinjmh.github.io/2026/06/04/CheatSheet/database/duckdb-ducklake/index.html">
 <meta property="og:site_name" content="Manhua">
-<meta property="og:description" content="安装一键安装12iwr -useb https:&#x2F;&#x2F;openclaw.ai&#x2F;install.ps1 | iexcurl -fsSL https:&#x2F;&#x2F;openclaw.ai&#x2F;install.sh | bash 手动安装123456789curl -fsSL https:&#x2F;&#x2F;deb.nodesource.com&#x2F;setup_22.x | sudo -E bash -sudo apt install -">
+<meta property="og:description" content="区别简而言之：DuckLake 简化了 Lakehouse，它使用标准 SQL 数据库存储所有元数据，而不是复杂的基于文件的系统，同时仍然以 Parquet 等开放格式存储数据。这使得它更可靠、更快速、更易于管理。 DuckLake 的架构 DuckLake 的架构：只有一个数据库和一些 Parquet 文件 具体使用哪种 SQL 数据库取决于用户，唯一的要求是系统支持 ACID 操作和主键以及标">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2026-03-18T03:29:33.712Z">
-<meta property="article:modified_time" content="2026-03-18T03:29:33.712Z">
+<meta property="article:published_time" content="2026-06-04T00:38:40.202Z">
+<meta property="article:modified_time" content="2026-06-04T00:38:40.202Z">
 <meta property="article:author" content="Manhua">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:creator" content="@jiangmanhua">
@@ -84,14 +84,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2026/03/18/CheatSheet/ai/claw/" title="" itemprop="url"></a>
+      <a href="/2026/06/04/CheatSheet/database/duckdb-ducklake/" title="" itemprop="url"></a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="Manhua" target="_blank" itemprop="author">Manhua</a>
 		
   <p class="article-time">
-    <time datetime="2026-03-18T03:29:33.712Z" itemprop="datePublished"> Published 2026-03-18</time>
+    <time datetime="2026-06-04T00:38:40.202Z" itemprop="datePublished"> Published 2026-06-04</time>
     
   </p>
 </header>
@@ -100,27 +100,13 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">1.</span> <span class="toc-text">安装</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85"><span class="toc-number">1.1.</span> <span class="toc-text">一键安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%8B%E5%8A%A8%E5%AE%89%E8%A3%85"><span class="toc-number">1.2.</span> <span class="toc-text">手动安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85"><span class="toc-number">1.3.</span> <span class="toc-text">编译安装</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE"><span class="toc-number">2.</span> <span class="toc-text">配置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#channel"><span class="toc-number">2.1.</span> <span class="toc-text">channel</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#QQBot"><span class="toc-number">2.1.1.</span> <span class="toc-text">QQBot</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AF%B9%E8%AF%9D"><span class="toc-number">3.</span> <span class="toc-text">对话</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E7%9B%B8%E5%85%B3"><span class="toc-number">4.</span> <span class="toc-text">安全相关</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8C%BA%E5%88%AB"><span class="toc-number">1.</span> <span class="toc-text">区别</span></a></li></ol>
 		
 		</div>
 		
-		<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h2 id="一键安装"><a href="#一键安装" class="headerlink" title="一键安装"></a>一键安装</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">iwr -useb https://openclaw.ai/install.ps1 | iex</span><br><span class="line">curl -fsSL https://openclaw.ai/install.sh | bash</span><br></pre></td></tr></table></figure>
-<h2 id="手动安装"><a href="#手动安装" class="headerlink" title="手动安装"></a>手动安装</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL https://deb.nodesource.com/setup_22.x | <span class="built_in">sudo</span> -E bash -</span><br><span class="line"><span class="built_in">sudo</span> apt install -y nodejs</span><br><span class="line">npm config <span class="built_in">set</span> registry https://registry.npmmirror.com</span><br><span class="line">npm config get registry</span><br><span class="line">npm config <span class="built_in">set</span> strict-ssl <span class="literal">false</span></span><br><span class="line">npm install -g openclaw@latest</span><br><span class="line">npm config <span class="built_in">set</span> strict-ssl <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">npm uninstall -g @openclaw/cli</span><br></pre></td></tr></table></figure>
-
-<h2 id="编译安装"><a href="#编译安装" class="headerlink" title="编译安装"></a>编译安装</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/openclaw/openclaw.git</span><br><span class="line"><span class="built_in">cd</span> openclaw</span><br><span class="line"></span><br><span class="line">pnpm install</span><br><span class="line">pnpm ui:build <span class="comment"># auto-installs UI deps on first run</span></span><br><span class="line">pnpm build</span><br></pre></td></tr></table></figure>
-
-<h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><p><a target="_blank" rel="noopener" href="https://docs.openclaw.ai/cli/">https://docs.openclaw.ai/cli/</a></p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">openclaw onboard --install-daemon</span><br><span class="line"><span class="comment"># &quot;baseUrl&quot;: &quot;http://172.31.64.1:11434/v1&quot;</span></span><br><span class="line"><span class="comment"># ollama list</span></span><br><span class="line"><span class="comment"># qwen3.5:4b</span></span><br><span class="line"><span class="comment"># 手动干预配置，请修改 ~/.openclaw/openclaw.json</span></span><br><span class="line">openclaw gateway install --port 18789</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>openclaw config set models.providers.ollama.apiKey “ollama-local”</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">openclaw models list</span><br><span class="line">openclaw models set &lt;model-or-alias&gt;</span><br><span class="line"># ollama stop  lfm2.5-thinking:1.2b</span><br></pre></td></tr></table></figure>
-
-<h2 id="channel"><a href="#channel" class="headerlink" title="channel"></a>channel</h2><h3 id="QQBot"><a href="#QQBot" class="headerlink" title="QQBot"></a>QQBot</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1.安装OpenClaw开源社区QQBot插件</span><br><span class="line">openclaw plugins install @sliverp/qqbot@latest</span><br><span class="line">2.配置绑定当前QQ机器人</span><br><span class="line">openclaw channels add --channel qqbot --token <span class="string">&quot;1903268287:CLOI3gCg1ISVO6e3&quot;</span></span><br><span class="line">3.重启本地OpenClaw服务</span><br><span class="line">openclaw gateway restart</span><br></pre></td></tr></table></figure>
-
-
-<h1 id="对话"><a href="#对话" class="headerlink" title="对话"></a>对话</h1><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">openclaw gateway </span><br><span class="line">openclaw gateway start</span><br><span class="line">openclaw gateway <span class="built_in">enable</span></span><br><span class="line">openclaw gateway stop</span><br><span class="line"></span><br><span class="line">openclaw dashboard</span><br><span class="line">openclaw update</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-<h1 id="安全相关"><a href="#安全相关" class="headerlink" title="安全相关"></a>安全相关</h1><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Set-ExecutionPolicy</span> RemoteSigned <span class="literal">-Scope</span> CurrentUser</span><br></pre></td></tr></table></figure>
+		<h1 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h1><p>简而言之：DuckLake 简化了 Lakehouse，它使用标准 SQL 数据库存储所有元数据，而不是复杂的基于文件的系统，同时仍然以 Parquet 等开放格式存储数据。这使得它更可靠、更快速、更易于管理。</p>
+<p>DuckLake 的架构 DuckLake 的架构：只有一个数据库和一些 Parquet 文件</p>
+<p>具体使用哪种 SQL 数据库取决于用户，唯一的要求是系统支持 ACID 操作和主键以及标准 SQL 支持。DuckLake 内部表模式刻意保持简单，以最大限度地兼容不同的 SQL 数据库。以下是通过示例展示的核心模式。</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -133,7 +119,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://kevinjmh.github.io/2026/03/18/CheatSheet/ai/claw/" data-title="Manhua" data-tsina="" class="share clearfix">
+	  <div data-url="http://kevinjmh.github.io/2026/06/04/CheatSheet/database/duckdb-ducklake/" data-title="Manhua" data-tsina="" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -147,7 +133,7 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2026/03/18/CheatSheet/computing/spark/Thrift server/" title="">
+ <a href="/2026/06/04/CheatSheet/web/nodejs/" title="">
   <strong>上一篇：</strong><br/>
   <span>
   (no title)</span>
@@ -156,9 +142,9 @@
 
 
 <div class="next">
-<a href="/2025/05/22/CheatSheet/database/gravitino/"  title="gravitino">
+<a href="/2026/06/04/CheatSheet/database/trino/"  title="">
  <strong>下一篇：</strong><br/> 
- <span>gravitino
+ <span>(no title)
 </span>
 </a>
 </div>

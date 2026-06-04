@@ -81,6 +81,166 @@
   
 <section class="post" itemscope itemprop="blogitem">
   
+    <a href="/2021/04/10/Doc/carbon/query/" title="Carbondata查询逻辑" itemprop="url">
+  
+    <h1 itemprop="name">Carbondata查询逻辑</h1>
+    
+     
+           <p itemprop="description" >入口CarbonSession继承SparkSession，查询时我们使用的是CarbonSession。
+12345678override def sql(sqlText: String): DataFrame = &amp;#123;  withProfiler(    sqlTex</p>
+        
+    
+    <time datetime="2021-04-10T12:15:10.000Z" itemprop="datePublished">2021-04-10</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/2021/04/10/Doc/RDMA/" title="RDMA" itemprop="url">
+  
+    <h1 itemprop="name">RDMA</h1>
+    
+     
+           <p itemprop="description" >计算和存储都在想方设法地提高速度，谁都不想成为性能瓶颈，而在分布式架构下，网络带宽也是一个优化的地方。
+带宽，是做性能估算时常用的一个单位。
+在单机的情况下，我们学过DMA (直接内存访问)是一种能力，允许在计算机主板上的设备直接把数据发送到内存中去，数据搬运不需要CPU的参与。</p>
+        
+    
+    <time datetime="2021-04-10T07:13:13.000Z" itemprop="datePublished">2021-04-10</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/2021/04/09/Doc/carbon/1_carbon/" title="Day 1 to Carbondata" itemprop="url">
+  
+    <h1 itemprop="name">Day 1 to Carbondata</h1>
+    
+     
+           <p itemprop="description" >What is carbonCarbondata is an indexed columnar data format for fast analytics on big data platform, like parquet, orc.
+Reference Site
+Offic</p>
+        
+    
+    <time datetime="2021-04-09T12:15:10.000Z" itemprop="datePublished">2021-04-09</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/2021/04/09/Doc/carbon/pr/" title="Carbondata PR" itemprop="url">
+  
+    <h1 itemprop="name">Carbondata PR</h1>
+    
+     
+           <p itemprop="description" >CarbonFor each column stored in carbon, we will record min-max value in meta space called DataChunk.
+It is recommanded to set a proper colum</p>
+        
+    
+    <time datetime="2021-04-09T12:15:10.000Z" itemprop="datePublished">2021-04-09</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/2017/04/13/CheatSheet/computing/spark/spark/" title="Spark" itemprop="url">
+  
+    <h1 itemprop="name">Spark</h1>
+    
+     
+           <p itemprop="description" >Spark简单之美 | RDD：基于内存的集群计算容错抽象
+Spark on YarnSpark 官方提供了三种集群部署方案： Standalone, Mesos, YARN，区别就在于资源管理调度平台不同。
+想在已有的Hadoop集群上使用Spark，实现Spark on Ya</p>
+        
+    
+    <time datetime="2017-04-13T07:13:13.000Z" itemprop="datePublished">2017-04-13</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/2017/04/13/CheatSheet/virtualization/docker/" title="Docker" itemprop="url">
+  
+    <h1 itemprop="name">Docker</h1>
+    
+     
+           <p itemprop="description" >Infomoby、docker-ce与docker-ee最早的时候docker就是一个开源项目，主要由docker公司维护。
+2017年年初，docker公司将原先的docker项目改名为moby，并创建了docker-ce和docker-ee。
+这三者的关系是：
+moby是继承</p>
+        
+    
+    <time datetime="2017-04-13T06:11:43.000Z" itemprop="datePublished">2017-04-13</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/2017/04/12/System/Resources/" title="Resources常用资源" itemprop="url">
+  
+    <h1 itemprop="name">Resources常用资源</h1>
+    
+     
+           <p itemprop="description" >常用软件OS
+MSDN itellyou
+USTC Mirror
+Maven Repository
+alibabaMavenRepo
+
+Internet
+Firefox
+
+123456789wget https://dl.google.com/linux/direct/googl</p>
+        
+    
+    <time datetime="2017-04-12T08:25:49.000Z" itemprop="datePublished">2017-04-12</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
     <a href="/2017/04/12/CheatSheet/os/QA-on-Linux/" title="QA-on-Linux" itemprop="url">
   
     <h1 itemprop="name">QA-on-Linux</h1>
@@ -148,60 +308,9 @@ Install终端间通信linux里有自带的终端间通信命令：write、wall
 
 
 
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2017/04/12/UCAS/Film-Recommendation/" title="Film-Recommendation" itemprop="url">
-  
-    <h1 itemprop="name">Film-Recommendation</h1>
-    
-     
-           <p itemprop="description" >任务描述• 这是一个经典的评分预测任务。 要求在训练数据上学习得到评分模型，然后预测Test 数据上给定用户对给定电影的评分。 系统评价由预测评分与实际评分的误差决定。
-• 除用户评分矩阵外，另有用户标记(tag)和电影元信息http://gucasir.org/SC/Proj/</p>
-        
-    
-    <time datetime="2017-04-12T08:14:10.000Z" itemprop="datePublished">2017-04-12</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2017/04/12/UCAS/ContactSync/" title="ContactSync" itemprop="url">
-  
-    <h1 itemprop="name">ContactSync</h1>
-    
-     
-           <p itemprop="description" >Idea首先大家进入到同一群组，然后将自己的联系方式上传，组内的其他成员可以通过该软件即时获取他人信息，并且有同学更新信息时，其他人也可以自动获取更新信息，避免出现不能及时联系到其他人
-功能 AND 测试内容
-用户
-
-imei自动登录
-用户信息更新
-logout
-login
-
-
-</p>
-        
-    
-    <time datetime="2017-04-12T08:11:43.000Z" itemprop="datePublished">2017-04-12</time>
-  </a>
-</section>
-
-
-
-
-
-
 
   <nav id="page-nav" class="clearfix unexpand">
-    <a class="extend prev" rel="prev" href="/page/10/">&lt;span&gt;&lt;&#x2F;span&gt;Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span>
+    <a class="extend prev" rel="prev" href="/page/10/">&lt;span&gt;&lt;&#x2F;span&gt;Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/12/">Next&lt;span&gt;&lt;&#x2F;span&gt;</a>
   </nav>
 
 </div>
