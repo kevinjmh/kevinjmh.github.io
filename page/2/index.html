@@ -125,9 +125,9 @@ install
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/2025/04/10/CheatSheet/cluster/hadoop/2.10.2/hdfs-site/" title="hdfs-site" itemprop="url">
+    <a href="/2025/04/10/CheatSheet/cluster/hadoop/2.10.2/yarn-site/" title="yarn-site" itemprop="url">
   
-    <h1 itemprop="name">hdfs-site</h1>
+    <h1 itemprop="name">yarn-site</h1>
     
      
            <p itemprop="description" >name
@@ -136,9 +136,17 @@ description
 
 
 
-dfs.blocksize
-134217728
-The default block size for new files, in bytes. You can use the following suffix (case ins</p>
+yarn.acl.enable
+FALSE
+Are acls enabled.
+
+
+yarn.admin.acl
+*
+ACL of who can be admin of the YARN cluster.
+
+
+yarn.log</p>
         
     
     <time datetime="2025-04-10T16:00:00.000Z" itemprop="datePublished">2025-04-10</time>
@@ -181,9 +189,9 @@ Queue to which a job is submitted. This must match one of the queues defined in 
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/2025/04/10/CheatSheet/cluster/hadoop/2.10.2/yarn-site/" title="yarn-site" itemprop="url">
+    <a href="/2025/04/10/CheatSheet/cluster/hadoop/2.10.2/hdfs-site/" title="hdfs-site" itemprop="url">
   
-    <h1 itemprop="name">yarn-site</h1>
+    <h1 itemprop="name">hdfs-site</h1>
     
      
            <p itemprop="description" >name
@@ -192,17 +200,9 @@ description
 
 
 
-yarn.acl.enable
-FALSE
-Are acls enabled.
-
-
-yarn.admin.acl
-*
-ACL of who can be admin of the YARN cluster.
-
-
-yarn.log</p>
+dfs.blocksize
+134217728
+The default block size for new files, in bytes. You can use the following suffix (case ins</p>
         
     
     <time datetime="2025-04-10T16:00:00.000Z" itemprop="datePublished">2025-04-10</time>
@@ -291,8 +291,12 @@ List of fencing methods to use for service fencing. May contain builtin methods 
     <h1 itemprop="name">ollama</h1>
     
      
-           <p itemprop="description" >修改存储路径windows：新建或修改名为 OLLAMA_MODELS 的环境变量linux：export OLLAMA_MODELS&amp;#x3D;&amp;#x2F;path&amp;#x2F;to&amp;#x2F;ollama&amp;#x2F;models
-模型文件默认存储在 C:\Users\你的用户名</p>
+           <p itemprop="description" >模型Quadro RTX 4000（8G 显存）适合：
+12ollama pull qwen3:8b      # 日常默认ollama pull qwen2.5-coder:7b  # 写代码时切换
+
+
+
+修改存储路径windows：新建或修改名为 OLLAMA_MODELS </p>
         
     
     <time datetime="2025-02-11T16:00:00.000Z" itemprop="datePublished">2025-02-11</time>
@@ -529,11 +533,11 @@ List of fencing methods to use for service fencing. May contain builtin methods 
 			
 		
 			
-				<li><a href="/tags/Flink/" title="Flink">Flink<sup>1</sup></a></li>
+				<li><a href="/tags/ClickHouse/" title="ClickHouse">ClickHouse<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/Stream-Processing/" title="Stream Processing">Stream Processing<sup>1</sup></a></li>
+				<li><a href="/tags/OLAP/" title="OLAP">OLAP<sup>1</sup></a></li>
 			
 		
 		</ul>

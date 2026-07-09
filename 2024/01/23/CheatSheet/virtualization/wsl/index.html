@@ -11,15 +11,15 @@
     
 
     
-    <meta name="description" content="InitEnvCreate12345678 # 重装wsl --shutdownwsl -l  -vwsl --unregister Ubuntuwsl -l --onlinewsl --install Ubuntu-24.04 --name Ubuntu --location E:\runtime\wsl-ubuntu\wsl --set-default Ubuntuwsl -d Ubuntu">
+    <meta name="description" content="InitEnvCreate12345678 # 重装wsl --shutdownwsl -l  -vwsl --unregister Ubuntuwsl -l --onlinewsl --install Ubuntu-26.04 --name Ubuntu26 --location E:\runtime\wsl-ubuntu26\wsl --set-default Ubuntuwsl -d Ubu">
 <meta property="og:type" content="article">
 <meta property="og:title" content="wsl">
 <meta property="og:url" content="http://kevinjmh.github.io/2024/01/23/CheatSheet/virtualization/wsl/index.html">
 <meta property="og:site_name" content="Manhua">
-<meta property="og:description" content="InitEnvCreate12345678 # 重装wsl --shutdownwsl -l  -vwsl --unregister Ubuntuwsl -l --onlinewsl --install Ubuntu-24.04 --name Ubuntu --location E:\runtime\wsl-ubuntu\wsl --set-default Ubuntuwsl -d Ubuntu">
+<meta property="og:description" content="InitEnvCreate12345678 # 重装wsl --shutdownwsl -l  -vwsl --unregister Ubuntuwsl -l --onlinewsl --install Ubuntu-26.04 --name Ubuntu26 --location E:\runtime\wsl-ubuntu26\wsl --set-default Ubuntuwsl -d Ubu">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-01-23T02:02:31.000Z">
-<meta property="article:modified_time" content="2026-06-17T08:02:13.331Z">
+<meta property="article:modified_time" content="2026-07-09T09:10:22.359Z">
 <meta property="article:author" content="Manhua">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:creator" content="@jiangmanhua">
@@ -104,7 +104,7 @@
 		
 		</div>
 		
-		<h1 id="InitEnv"><a href="#InitEnv" class="headerlink" title="InitEnv"></a>InitEnv</h1><h2 id="Create"><a href="#Create" class="headerlink" title="Create"></a>Create</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> # 重装</span><br><span class="line">wsl --shutdown</span><br><span class="line">wsl -l  -v</span><br><span class="line">wsl --unregister Ubuntu</span><br><span class="line">wsl -l --online</span><br><span class="line">wsl --install Ubuntu-24.04 --name Ubuntu --location E:\runtime\wsl-ubuntu\</span><br><span class="line">wsl --set-default Ubuntu</span><br><span class="line">wsl -d Ubuntu</span><br></pre></td></tr></table></figure>
+		<h1 id="InitEnv"><a href="#InitEnv" class="headerlink" title="InitEnv"></a>InitEnv</h1><h2 id="Create"><a href="#Create" class="headerlink" title="Create"></a>Create</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> # 重装</span><br><span class="line">wsl --shutdown</span><br><span class="line">wsl -l  -v</span><br><span class="line">wsl --unregister Ubuntu</span><br><span class="line">wsl -l --online</span><br><span class="line">wsl --install Ubuntu-26.04 --name Ubuntu26 --location E:\runtime\wsl-ubuntu26\</span><br><span class="line">wsl --set-default Ubuntu</span><br><span class="line">wsl -d Ubuntu</span><br></pre></td></tr></table></figure>
 
 <h2 id="prepare"><a href="#prepare" class="headerlink" title="prepare"></a>prepare</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> su</span><br><span class="line"><span class="comment"># dns</span></span><br><span class="line"><span class="built_in">mv</span> /etc/wsl.conf /etc/wsl.conf.bak</span><br><span class="line"><span class="built_in">echo</span> -e <span class="string">&quot;\n[network]\ngenerateResolvConf=false&quot;</span> &gt;&gt; /etc/wsl.conf</span><br><span class="line"><span class="built_in">cat</span> /etc/wsl.conf</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;nameserver 223.5.5.5&quot;</span> &gt;  /etc/resolv.conf</span><br><span class="line">chattr +i /etc/resolv.conf <span class="comment">#文件保护</span></span><br><span class="line">ping -c 2 www.baidu.com</span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改源</span></span><br><span class="line"><span class="built_in">cat</span> /etc/lsb-release</span><br><span class="line"><span class="built_in">cp</span> /etc/apt/sources.list.d/ubuntu.sources /etc/apt/sources.list.d/ubuntu.sources.bak</span><br><span class="line">sed -i \</span><br><span class="line">    -e <span class="string">&#x27;s|http://archive.ubuntu.com|https://mirrors.aliyun.com|g&#x27;</span> \</span><br><span class="line">    -e <span class="string">&#x27;s|http://security.ubuntu.com|https://mirrors.aliyun.com|g&#x27;</span> \</span><br><span class="line">    /etc/apt/sources.list.d/ubuntu.sources</span><br><span class="line">apt update</span><br><span class="line"></span><br><span class="line">apt install -y net-tools openssh-server </span><br><span class="line">systemctl <span class="built_in">enable</span> ssh</span><br><span class="line">service ssh start</span><br></pre></td></tr></table></figure>
 
@@ -393,11 +393,11 @@
 			
 		
 			
-				<li><a href="/tags/Flink/" title="Flink">Flink<sup>1</sup></a></li>
+				<li><a href="/tags/ClickHouse/" title="ClickHouse">ClickHouse<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/Stream-Processing/" title="Stream Processing">Stream Processing<sup>1</sup></a></li>
+				<li><a href="/tags/OLAP/" title="OLAP">OLAP<sup>1</sup></a></li>
 			
 		
 		</ul>
