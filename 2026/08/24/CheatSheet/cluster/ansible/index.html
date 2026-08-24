@@ -4,22 +4,22 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>未命名 | Manhua</title>
+    <title>Manhua</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Manhua">
     
 
     
-    <meta name="description" content="IBM LinuxONE Open Source Cloud Virtual Machine(s) Request Form | IBM Z and LinuxONE Community">
+    <meta name="description" content="离线安装123456789101112131415mkdir -p &#x2F;tmp&#x2F;ansible-offlinecd &#x2F;tmp&#x2F;ansible-offlinepip3 download ansible-core -d .&#x2F;pkgs \  --python-version 38 \  --only-binary&#x3D;:all:tar zcf ansible-offline.tar.gz pkgscd &#x2F;tm">
 <meta property="og:type" content="article">
-<meta property="og:title" content="未命名">
-<meta property="og:url" content="http://kevinjmh.github.io/2024/12/23/CheatSheet/virtualization/%E6%9C%AA%E5%91%BD%E5%90%8D/index.html">
+<meta property="og:title" content="Manhua">
+<meta property="og:url" content="http://kevinjmh.github.io/2026/08/24/CheatSheet/cluster/ansible/index.html">
 <meta property="og:site_name" content="Manhua">
-<meta property="og:description" content="IBM LinuxONE Open Source Cloud Virtual Machine(s) Request Form | IBM Z and LinuxONE Community">
+<meta property="og:description" content="离线安装123456789101112131415mkdir -p &#x2F;tmp&#x2F;ansible-offlinecd &#x2F;tmp&#x2F;ansible-offlinepip3 download ansible-core -d .&#x2F;pkgs \  --python-version 38 \  --only-binary&#x3D;:all:tar zcf ansible-offline.tar.gz pkgscd &#x2F;tm">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-12-23T16:00:00.000Z">
-<meta property="article:modified_time" content="2026-07-09T09:10:22.359Z">
+<meta property="article:published_time" content="2026-08-24T06:41:26.959Z">
+<meta property="article:modified_time" content="2026-08-24T06:41:26.959Z">
 <meta property="article:author" content="Manhua">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:creator" content="@jiangmanhua">
@@ -84,14 +84,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2024/12/23/CheatSheet/virtualization/未命名/" title="未命名" itemprop="url">未命名</a>
+      <a href="/2026/08/24/CheatSheet/cluster/ansible/" title="" itemprop="url"></a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="Manhua" target="_blank" itemprop="author">Manhua</a>
 		
   <p class="article-time">
-    <time datetime="2024-12-23T16:00:00.000Z" itemprop="datePublished"> Published 2024-12-23</time>
+    <time datetime="2026-08-24T06:41:26.959Z" itemprop="datePublished"> Published 2026-08-24</time>
     
   </p>
 </header>
@@ -100,20 +100,18 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85"><span class="toc-number">1.</span> <span class="toc-text">离线安装</span></a></li></ol>
 		
 		</div>
 		
-		<p><a target="_blank" rel="noopener" href="https://community.ibm.com/zsystems/form/l1cc-oss-vm-request/">IBM LinuxONE Open Source Cloud Virtual Machine(s) Request Form | IBM Z and LinuxONE Community</a></p>
+		<h1 id="离线安装"><a href="#离线安装" class="headerlink" title="离线安装"></a>离线安装</h1><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -p /tmp/ansible-offline</span><br><span class="line"><span class="built_in">cd</span> /tmp/ansible-offline</span><br><span class="line"></span><br><span class="line">pip3 download ansible-core -d ./pkgs \</span><br><span class="line">  --python-version 38 \</span><br><span class="line">  --only-binary=:all:</span><br><span class="line">tar zcf ansible-offline.tar.gz pkgs</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> /tmp</span><br><span class="line">tar zxf ansible-offline.tar.gz</span><br><span class="line"><span class="built_in">cd</span> pkgs</span><br><span class="line">python3 -m pip install --user --no-index --find-links=. ansible-core</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">ansible --version</span><br></pre></td></tr></table></figure>
+
+<p>ansible.cfg（当前目录优先）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">[defaults]</span><br><span class="line">host_key_checking = False</span><br><span class="line">remote_user = hadoop</span><br></pre></td></tr></table></figure>
   
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/CheatSheet/">CheatSheet</a>►<a class="article-category-link" href="/categories/CheatSheet/virtualization/">virtualization</a>
-</div>
 
 
 </div>
@@ -122,7 +120,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://kevinjmh.github.io/2024/12/23/CheatSheet/virtualization/%E6%9C%AA%E5%91%BD%E5%90%8D/" data-title="未命名 | Manhua" data-tsina="" class="share clearfix">
+	  <div data-url="http://kevinjmh.github.io/2026/08/24/CheatSheet/cluster/ansible/" data-title="Manhua" data-tsina="" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -136,18 +134,18 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2025/02/11/CheatSheet/ai/ollama/" title="ollama">
+ <a href="/2026/08/24/CheatSheet/cluster/hadoop/多集群客户端部署/" title="">
   <strong>上一篇：</strong><br/>
   <span>
-  ollama</span>
+  (no title)</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/2024/10/23/CheatSheet/storage/orc/"  title="orc">
+<a href="/2026/05/28/CheatSheet/log/审计日志/"  title="审计日志">
  <strong>下一篇：</strong><br/> 
- <span>orc
+ <span>审计日志
 </span>
 </a>
 </div>
@@ -195,7 +193,7 @@
 		  
 		
 		  
-			<li><a href="/categories/CheatSheet/" title="CheatSheet">CheatSheet<sup>53</sup></a></li>
+			<li><a href="/categories/CheatSheet/" title="CheatSheet">CheatSheet<sup>52</sup></a></li>
 		  
 		
 		  
@@ -256,10 +254,6 @@
 		
 		  
 			<li><a href="/categories/CheatSheet/storage/" title="storage">storage<sup>2</sup></a></li>
-		  
-		
-		  
-			<li><a href="/categories/CheatSheet/virtualization/" title="virtualization">virtualization<sup>1</sup></a></li>
 		  
 		
 		  
@@ -356,11 +350,11 @@
 			
 		
 			
-				<li><a href="/tags/ClickHouse/" title="ClickHouse">ClickHouse<sup>1</sup></a></li>
+				<li><a href="/tags/Flink/" title="Flink">Flink<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/OLAP/" title="OLAP">OLAP<sup>1</sup></a></li>
+				<li><a href="/tags/Stream-Processing/" title="Stream Processing">Stream Processing<sup>1</sup></a></li>
 			
 		
 		</ul>
